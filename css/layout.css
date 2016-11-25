@@ -62,10 +62,10 @@ a{ color:#333}a:hover{ color:#3598db}
     transform: rotate(180deg);
 }
 .hd-loading, .sd-loading{
-    background-image: url(/hennes/images/loading.gif);
+    background-image: url(../js/plugins/layer/skin/default/loading-0.gif);
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: 40px auto;
+    background-size: 30px auto;
 }
 .hd-loading{ height: 60px;}
 /* sidebar */

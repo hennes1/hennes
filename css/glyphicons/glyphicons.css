@@ -1,12 +1,12 @@
 /* Glyphicons font */
 @font-face {
     font-family: 'Glyphicons Regular';
-    src: url('../fonts/glyphicons/glyphicons/glyphicons-regular.eot');
-    src: url('../fonts/glyphicons/glyphicons-regular.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/glyphicons/glyphicons-regular.woff2') format('woff2'),
-    url('../fonts/glyphicons/glyphicons-regular.woff') format('woff'),
-    url('../fonts/glyphicons/glyphicons-regular.ttf') format('truetype'),
-    url('../fonts/glyphicons/glyphicons-regular.svg#glyphiconsregular') format('svg');
+    src: url('fonts/glyphicons-regular.eot');
+    src: url('fonts/glyphicons-regular.eot?#iefix') format('embedded-opentype'),
+    url('fonts/glyphicons-regular.woff2') format('woff2'),
+    url('fonts/glyphicons-regular.woff') format('woff'),
+    url('fonts/glyphicons-regular.ttf') format('truetype'),
+    url('fonts/glyphicons-regular.svg#glyphiconsregular') format('svg');
 }
 .glyphicons {
     position: relative;

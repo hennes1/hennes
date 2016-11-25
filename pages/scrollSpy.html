@@ -8,8 +8,8 @@
     <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
     <meta name="Author" Content="Hennes，Email：hsokio@qq.com；Home：https://hennes1.github.io/hennes/">
     <title>ScrollSpy插件 - HennesProject</title>
-    <link rel="stylesheet" href="../css/bootStrap.css">
-    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
+    <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
     <link rel="stylesheet" href="../css/layout.css">
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.min.js"></script>
@@ -163,26 +163,26 @@
         <!--/ panel }-->
     </div>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap/bootstrap.js"></script>
-<!-- 弹窗插件 -->
-<script src="../js/plugins/layer/layer.js"></script>
-<!-- flash复制插件 -->
-<script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-<!-- 滚动条插件 -->
-<script src="../js/plugins/slimScroll/jq.slimScroll.min.js"></script>
-<!-- 公用Js -->
-<script src="../js/common.js"></script>
-<script>
-    $(function () {
-        //当前页
-        Hennes.loadNav('../', 'header', 'side_nav2_4');
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 滚动条插件 -->
+    <script src="../js/plugins/slimScroll/jq.slimScroll.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function () {
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_4');
 
-        //滚动条
-        $('.scrollSpy-body').slimScroll({
-            height: '550px'
+            //滚动条
+            $('.scrollSpy-body').slimScroll({
+                height: '550px'
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

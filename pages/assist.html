@@ -8,8 +8,8 @@
     <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
     <meta name="Author" Content="Hennes，Email：hsokio@qq.com；Home：https://hennes1.github.io/hennes/">
     <title>辅助类 - HennesProject</title>
-    <link rel="stylesheet" href="../css/bootStrap.css">
-    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
+    <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
     <link rel="stylesheet" href="../css/layout.css">
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.min.js"></script>
@@ -31,20 +31,148 @@
                 <h4><i class="glyphicons glyphicons-beach-umbrella fn-mr-10"></i>辅助类</h4>
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        辅助类
-                    </div>
-                </div>
+                <p>BootStrap作为前端的一个比较有名的框架，在辅助显示方面也是考虑得比较全面的。</p>
+                <h3>文本</h3>
+                <table class="table table-bordered table-striped">
+                    <caption>以下不同的类展示了不同的文本颜色；如果文本是个链接鼠标移动到文本上会变暗。</caption>
+                    <thead>
+                    <tr>
+                        <th>类</th>
+                        <th>说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>.text-muted</td>
+                        <td><span class="text-muted">显示灰色字体</span></td>
+                    </tr>
+                    <tr>
+                        <td>.text-primary</td>
+                        <td><span class="text-primary">显示蓝色字体</span></td>
+                    </tr>
+                    <tr>
+                        <td>.text-success</td>
+                        <td><span class="text-success">显示浅绿色字体</span></td>
+                    </tr>
+                    <tr>
+                        <td>.text-info</td>
+                        <td><span class="text-info">显示浅蓝色字体</span></td>
+                    </tr>
+                    <tr>
+                        <td>.text-warning</td>
+                        <td><span class="text-warning">显示浅橙色字体</span></td>
+                    </tr>
+                    <tr>
+                        <td>.text-danger</td>
+                        <td><span class="text-danger">显示浅红色字体</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h3>背景</h3>
+                <table class="table table-bordered table-striped">
+                    <caption>以下不同的类展示了不同的背景颜色；如果文本是个链接鼠标移动到文本上会变暗。</caption>
+                    <thead>
+                    <tr>
+                        <th>类</th>
+                        <th>说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>.bg-primary</td>
+                        <td class="bg-primary">背景色为蓝色</td>
+                    </tr>
+                    <tr>
+                        <td>.bg-success</td>
+                        <td class="bg-success">背景色为浅绿色</td>
+                    </tr>
+                    <tr>
+                        <td>.bg-info</td>
+                        <td class="bg-info">背景色为浅蓝色</td>
+                    </tr>
+                    <tr>
+                        <td>.bg-warning</td>
+                        <td class="bg-warning">背景色为浅橙色</td>
+                    </tr>
+                    <tr>
+                        <td>.bg-danger</td>
+                        <td class="bg-danger">背景色为浅红色</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h3>其它辅助类</h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>类</th>
+                        <th>说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>.pull-left</td>
+                        <td>元素向左浮动</td>
+                    </tr>
+                    <tr>
+                        <td>.pull-right</td>
+                        <td>元素向右浮动</td>
+                    </tr>
+                    <tr>
+                        <td>.center-block</td>
+                        <td>
+                            设置元素为块元素并居中显示
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>.clearfix</td>
+                        <td>清除浮动</td>
+                    </tr>
+                    <tr>
+                        <td>.show</td>
+                        <td>强制元素显示</td>
+                    </tr>
+                    <tr>
+                        <td>.hidden</td>
+                        <td>强制元素隐藏，包括可视状态</td>
+                    </tr>
+                    <tr>
+                        <td>.hide</td>
+                        <td>强制元素隐藏</td>
+                    </tr>
+                    <tr>
+                        <td>.sr-only</td>
+                        <td>除了屏幕阅读器外，其他设备上隐藏元素</td>
+                    </tr>
+                    <tr>
+                        <td>.sr-only-focusable</td>
+                        <td>与 <code>.sr-only</code> 类结合使用，在元素获取焦点时显示(如：键盘操作的用户)</td>
+                    </tr>
+                    <tr>
+                        <td>.text-hide</td>
+                        <td>将页面元素所包含的文本内容替换为背景图</td>
+                    </tr>
+                    <tr>
+                        <td>.close</td>
+                        <td>
+                            显示关闭按钮，默认浮动在右侧，如：<code>&lt;button class="close"&gt;&times;&lt;/button&gt;</code>
+                            <button class="close">&times;</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>.caret</td>
+                        <td>
+                            显示下拉箭头，如：<code>&lt;i class="caret"&gt;&lt;/i&gt;</code> <i class="caret"></i>，例子可见本项目头部菜单
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!--/ panel }-->
     </div>
 
     <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
     <!-- 公用Js -->
     <script src="../js/common.js"></script>
     <script>

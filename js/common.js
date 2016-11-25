@@ -188,7 +188,7 @@ var Hennes = {
             if(typeof sideID === 'undefined'){
                 return false;
             }else{
-                $sideNav.load(root + 'include/sidebar.html', function () {
+                $sideNav.load(root + 'include/sideBar.html', function () {
                     setTimeout(function () {
                         Hennes.currNav(sideID);
                     }, 300);

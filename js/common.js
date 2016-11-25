@@ -191,7 +191,7 @@ var Hennes = {
                 $sideNav.load(root + 'include/sideBar.html', function () {
                     setTimeout(function () {
                         Hennes.currNav(sideID);
-                    }, 300);
+                    }, 600);
                 });
             }
         }

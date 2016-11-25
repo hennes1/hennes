@@ -175,7 +175,7 @@ var Hennes = {
         if($headNav.length === 1){
             if(topID === 'header'){
                 $headNav.load(root + 'include/header.html', function () {
-                    $(this).removeClass('hd-loading');
+                    //$(this).removeClass('hd-loading');
                 });
             }
             if(typeof topID !== 'undefined') {

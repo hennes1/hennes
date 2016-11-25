@@ -1,0 +1,246 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. 设置默认字体为非衬线字体 (自定义)；
+ * 2. 修正所有浏览器的行高；
+ * 3. 防止 iOS 和 IE 横屏时调整文本大小，不用none值禁止用户缩放。
+ * =============================================================
+ * ①. Segoe UI - Windows UI 字体（从 Windows Vista 开始使用）；
+ * ②. Helvetica Neue 是 iOS7 及 OSX 10.10 UI 字体（在部分文字垂直居中的场景有一些小问题，暂时先使用 Lucida Grande）；
+ * ③. 有些 Windows 用户安装了丽黑字体，丽黑字体在 Windows 上渲染出来很模糊，所以把微软雅黑放在苹果丽黑之前；
+ * ④. FreeSans - 包括 Ubuntu 之类的 Linux 分发版包含的字体。
+ */
+
+html {
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* 针对所有浏览器移除margin（自定义） */
+body { margin: 0;}
+
+/* 修正补充IE9-的显示方式 */
+article, aside, footer, header, nav, section { display: block;}
+
+/* 更正Chrome，Firefox，Safari浏览器下`section`和`article`节点内的h1的字体大小和margin */
+h1 { font-size: 2em; margin: 0.67em 0;}
+
+/**
+ * 修正补充IE9-的显示方式
+ * 1. 修正补充IE的显示方式
+ */
+figcaption, figure, main { display: block;} /* 1 */
+
+/* 修正补充IE8下的margin */
+figure { margin: 1em 40px;}
+
+/**
+ * 1. 修正补充Firefox下的box-sizing
+ * 2. 在Edge和IE下溢出显示
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. 纠正所有浏览器的字体和字体大小的继承和缩放
+ * 2. 纠正所有浏览器的‘em’字体大小
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * 1. 移除IE10下激活链接时的灰背景
+ * 2. 移除iOS 8+ 和 Safari 8+下链接下划线的间隔
+ */
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/* 移除所有浏览器下活动链接和悬浮链接获取焦点时的外框线（自定义） */
+a:active, a:hover { outline-width: 0;}
+
+/**
+ * 1. 移除Firefox 39-的bottom border
+ * 2. 添加修正Chrome, Edge, IE, Opera和Safari下的text decoration
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/* 在Safari 6中下条规则避免重复运用"bolder" */
+b, strong { font-weight: inherit;}
+
+/* 添加修正Chrome, Edge和Safari下的font weight */
+b, strong { font-weight: bolder;}
+
+/**
+ * 1. 纠正所有浏览器的字体和字体大小的继承和缩放
+ * 2. 纠正所有浏览器的‘em’字体大小
+ */
+code, kbd, samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* 添加修正Android 4.3-下的font style */
+dfn { font-style: italic;}
+
+/* 添加修正IE9-的背景色和字体颜色 */
+mark { background-color: #ff0; color: #000;}
+
+/* 添加修正所有浏览器下的字号 */
+small { font-size: 80%;}
+
+/* 防止所有浏览器下`sub` 和 `sup`元素对行高的影响 */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub { bottom: -0.25em;}
+sup { top: -0.5em;}
+
+/* 添加修正IE 9-下的显示方式 */
+audio, video { display: inline-block;}
+
+/* 添加修正iOS 4-7下的显示方式 */
+audio:not([controls]) { display: none; height: 0;}
+
+/* 删除IE 10-中链接内图像上的边框 */
+img { border-style: none;}
+
+/* 隐藏IE中的溢出 */
+svg:not(:root) { overflow: hidden;}
+
+/**
+ * 1. 更改所有浏览器中的字体样式（自定义）。
+ * 2. 删除Firefox和Safari中的边距。
+ */
+button, input, optgroup, select, textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/* 在Edge中显示溢出 */
+button, input { overflow: visible;}
+
+/* 删除Edge，Firefox和IE中的text-transform的继承 */
+button, select { text-transform: none;}
+
+/**
+ * 1. 防止WebKit的bug（2）在安卓4的版本下破坏原生`audio‘和 `video ` 控制条
+ * 2. 修正在iOS和Safari下不可点击的bug
+ */
+button,
+html [type="button"], /* 1 */
+[type="reset"], [type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/* 移除Firefox中的border和padding */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner { border-style: none; padding: 0;}
+
+/* 通过恢复以前的规则取消设置的focus样式 */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring { outline: 1px dotted ButtonText;}
+
+/* 更改所有的浏览器的border, margin和padding（自定义） */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. 更正Edge和IE中的文字换行
+ * 2. 纠正IE浏览器`fieldset`元素的字体颜色继承
+ * 3. 针对所有浏览器移除padding
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. 添加修正IE 9-的显示.
+ * 2. 添加修正Chrome, Firefox和Opera下的垂直对齐方式
+ */
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/* 移除IE中默认的垂直滚动条 */
+textarea { overflow: auto;}
+
+/**
+ * 1. 添加修正IE10-下的box sizing
+ * 2. 移除IE10-的内边距
+ */
+[type="checkbox"], [type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/* 修正Chrome下递增和递减按钮光标样式 */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button { height: auto;}
+
+/**
+ * 1. 修正Chrome和Safari中的奇怪外观
+ * 2. 修正Safari下outline样式
+ */
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/* 在Mac操作系统上删除Chrome和Safari中的内部填充和取消按钮 */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration { -webkit-appearance: none;}
+
+/**
+ * 1. 修正在iOS和Safari下不可点击的bug
+ * 2. 在Safari中将字体属性更改为“inherit”
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* 添加修正Edge, IE和Firefox下的显示 */
+details, menu { display: block;}
+
+/* 添加修正所有浏览器下的显示 */
+summary { display: list-item;}
+
+/* 添加修正IE9-下的显示 */
+canvas { display: inline-block;}
+
+/* 添加修正IE下的显示 */
+template { display: none;}
+
+/*  添加修正IE10-下的显示 */
+[hidden] { display: none;}

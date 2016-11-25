@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>表单 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/select2.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>元素</li>
+            <li class="active">表单</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-notes fn-mr-10"></i>表单</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <fieldset>
+                            <legend>水平排列表单</legend>
+                            <form class="form-inline" role="form">
+                                <div class="form-group">
+                                    <label class="sr-only">Email：</label>
+                                    <input type="email" placeholder="请输入Email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only">密码：</label>
+                                    <input type="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div class="checkbox custom-custom fn-ml-5 fn-mr-5" data-toggle="customCheck">
+                                    <label>
+                                        <input type="checkbox" class="ipt-checkbox">
+                                        <i class="glyphicons glyphicons-unchecked"></i>
+                                        <span>记住密码</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row fn-mt-20 fn-mb-20">
+                    <div class="col-sm-6">
+                        <fieldset>
+                            <legend>堆叠表单</legend>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Email：</label>
+                                    <input type="email" placeholder="请输入Email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>密码：</label>
+                                    <input type="password" placeholder="请输入密码" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-custom" data-toggle="customCheck">
+                                        <label>
+                                            <input type="checkbox" class="ipt-checkbox">
+                                            <i class="glyphicons glyphicons-unchecked"></i>
+                                            <span>记住密码</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                    <button type="reset" class="btn btn-default">重置</button>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-6">
+                        <fieldset>
+                            <legend>横向表单</legend>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Email：</label>
+                                    <div class="col-lg-10">
+                                        <input type="email" placeholder="请输入Email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">密码：</label>
+                                    <div class="col-lg-10">
+                                        <input type="password" placeholder="请输入密码" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-custom col-lg-10 col-lg-offset-2" data-toggle="customCheck">
+                                        <label>
+                                            <input type="checkbox" class="ipt-checkbox">
+                                            <i class="glyphicons glyphicons-unchecked"></i>
+                                            <span>记住密码</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="button" class="btn btn-primary">确定</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row fn-mb-20">
+                    <div class="col-sm-12">
+                        <fieldset>
+                            <legend>输入框常用形态</legend>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">有说明文字：</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control">
+                                        <span class="help-block">帮助说明文本块，可一行或多行</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Placeholder：</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="请输入placeholder">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Disabled：</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" placeholder="此输入框禁用了" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Inline Checkboxes：</label>
+                                    <div class="col-sm-10">
+                                        <label class="checkbox-inline"><input type="checkbox" id="inline_bl1"> 第一个Checkbox</label>
+                                        <label class="checkbox-inline disabled"><input type="checkbox" id="inline_bl2" disabled> 第二个Checkbox</label>
+                                        <label class="checkbox-inline"><input type="checkbox" id="inline_bl3"> 第三个Checkbox</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Block Checkboxes：</label>
+                                    <div class="col-sm-10">
+                                        <div class="checkbox"><label><input type="checkbox" id="block_bl1"> 垂直第一个Checkbox</label></div>
+                                        <div class="checkbox"><label><input type="checkbox" id="block_bl2"> 垂直第二个Checkbox</label></div>
+                                        <div class="checkbox disabled"><label><input type="checkbox" id="block_bl3" disabled>垂直第三个Checkbox</label></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Inline Radios：</label>
+                                    <div class="col-sm-10">
+                                        <label class="radio-inline disabled">
+                                            <input type="radio" name="inline_rd_a" id="inline_rd1" disabled> 第一个Radio
+                                        </label>
+                                        <label class="radio-inline"><input type="radio" name="inline_rd_a" id="inline_rd2"> 垂直第二个Radio</label>
+                                        <label class="radio-inline"><input type="radio" name="inline_rd_a" id="inline_rd3"> 第三个Radio</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Block Radios：</label>
+                                    <div class="col-sm-10">
+                                        <div class="radio" disabled>
+                                            <label><input type="radio" name="bl_rd_b" id="block_rd1" disabled> 垂直第一个Radio</label>
+                                        </div>
+                                        <div class="radio"><label><input type="radio" name="bl_rd_b" id="block_rd2"> 垂直第二个Radio</label></div>
+                                        <div class="radio"><label><input type="radio" name="bl_rd_b" id="block_rd3"> 垂直第三个Radio</label></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <fieldset>
+                            <legend>多列表单</legend>
+                            <div class="bg-warning fn-pg-15 fn-mn-15">多列表单中的列主要是以 <code>.col-sm-*</code>来定义的（风格系统）, <b class="text-danger">*</b>代表一行总数为12，4列就是平均每列为3（<code>.col-sm-3</code>），最终布局视情况而定。</div>
+                            <form class="form-horizontal" role="form" id="form_1">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">联系人：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <input type="text" class="form-control" name="c_contact">
+                                        <div class="help-block"></div>
+                                    </div>
+                                    <label class="col-sm-2 control-label">联系电话</label>
+                                    <div class="col-sm-4 control-item">
+                                        <input type="text" class="form-control" name="c_phone">
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">性别：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <div class="custom-custom chk-radio" data-toggle="customCheck">
+                                            <label class="checkbox-inline">
+                                                <input type="radio" class="ipt-radio" name="c_rd" id="rd_1" value="男">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>男</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="radio" class="ipt-radio" name="c_rd" id="rd_2" value="女">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>女</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="radio" class="ipt-radio" name="c_rd" id="rd_3" value="中间人">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>中间人</span>
+                                            </label>
+                                        </div>
+                                        <div class="help-block"></div>
+                                    </div>
+                                    <label class="col-sm-2 control-label">年龄：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <select name="c_ages" class="select" data-search="true" style="width: 100%;">
+                                            <option></option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">在职公司：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <div class="input-group">
+                                            <div class="input-group-btn" id="nation">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span id="state">中国  <small class="text-muted">(CHN)</small><input type="hidden" name="c_country" value="中国(CHN)"></span> <span class="caret"></span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="javascript:void(0);">中国 <small class="text-muted">(CHN)</small></a></li>
+                                                    <li><a href="javascript:void(0);">美国 <small class="text-muted">(USA)</small></a></li>
+                                                    <li><a href="javascript:void(0);">英国 <small class="text-muted">(GBR)</small></a></li>
+                                                    <li><a href="javascript:void(0);">俄罗斯 <small class="text-muted">(BLR)</small></a></li>
+                                                    <li><a href="javascript:void(0);">加拿大 <small class="text-muted">(CAN)</small></a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0);">中国台湾</a></li>
+                                                    <li><a href="javascript:void(0);">中国香港</a></li>
+                                                    <li><a href="javascript:void(0);">中国澳门</a></li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" class="form-control" name="c_company">
+                                        </div>
+                                        <div class="help-block"></div>
+                                    </div>
+                                    <label class="col-sm-2 control-label">最高学历：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <select name="c_educ" class="select" style="width: 100%;">
+                                            <option></option>
+                                            <option value="11">小学</option>
+                                            <option value="12">初中/中专</option>
+                                            <option value="13">高中</option>
+                                            <option value="14">大专</option>
+                                            <option value="15">本科</option>
+                                            <option value="16">博士</option>
+                                        </select>
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">个人主页：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Http://</span>
+                                            <input type="text" class="form-control" name="c_page">
+                                        </div>
+                                        <div class="help-block"></div>
+                                    </div>
+                                    <label class="col-sm-2 control-label">邮箱：</label>
+                                    <div class="col-sm-4 control-item">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="c_email">
+                                            <div class="input-group-btn dropup" id="e_mail">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span id="suffix">.com</span><input type="hidden" name="c_suffix" value=".com"> <span class="caret"></span></button>
+                                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                    <li><a href="javascript:void(0);">.com</a></li>
+                                                    <li><a href="javascript:void(0);">.cn</a></li>
+                                                    <li><a href="javascript:void(0);">.com.cn</a></li>
+                                                    <li><a href="javascript:void(0);">.org</a></li>
+                                                    <li><a href="javascript:void(0);">.net</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0);">.co.za</a></li>
+                                                    <li><a href="javascript:void(0);">.co.nz</a></li>
+                                                    <li><a href="javascript:void(0);">.it</a></li>
+                                                    <li><a href="javascript:void(0);">.net.sg</a></li>
+                                                    <li><a href="javascript:void(0);">.net.sy</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">紧急联系人：</label>
+                                    <div class="col-sm-10 control-item">
+                                        <div class="input-group">
+                                            <div class="input-group-btn dropup" id="contact">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span id="name">父亲</span><input type="hidden" name="c_pa" value="父亲"> <span class="caret"></span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="javascript:void(0);">父亲</a></li>
+                                                    <li><a href="javascript:void(0);">母亲</a></li>
+                                                    <li><a href="javascript:void(0);">兄弟</a></li>
+                                                    <li><a href="javascript:void(0);">姐妹</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0);">邻居</a></li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" class="form-control" name="c_relation" placeholder="请在此输入联系人的电话和联系地址，如，某某：13800000000，广州省广州市天河区科韵路XX路XXXX号">
+                                        </div>
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">掌握语言：</label>
+                                    <div class="col-sm-10">
+                                        <div class="custom-custom" data-toggle="customCheck">
+                                            <label class="checkbox-inline active">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl1" checked>
+                                                <i class="glyphicons glyphicons-check"></i>
+                                                <span>中文</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl2">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>英语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl3">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>俄语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl4">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>法语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl5">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>德语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl6">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>意大利语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl7">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>西班牙语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl8">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>葡萄牙语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl9">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>日语</span>
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" class="ipt-checkbox" name="c_chk[]" id="d_bl_bl10">
+                                                <i class="glyphicons glyphicons-unchecked"></i>
+                                                <span>韩语</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">自我评价：</label>
+                                    <div class="col-sm-10 control-item">
+                                        <textarea rows="4" class="form-control" name="c_about"></textarea>
+                                        <div class="help-block"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <button class="btn btn-primary" id="c_ok"><i class="glyphicons glyphicons-ok fn-mr-5"></i>确定</button>
+                                        <button type="reset" class="btn btn-default"><i class="glyphicons glyphicons-remove fn-mr-5"></i>重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- select2插件 -->
+    <script src="../js/plugins/select2/select2.min.js"></script>
+    <!-- 表单检测插件 -->
+    <script src="../js/plugins/validation/jquery.validate.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav1_3');
+
+            //复选框和单选框选取
+            Hennes.chkBoxAndRd();
+
+            Hennes.getName('#nation', '#state'); //国家
+            Hennes.getName('#contact', '#name'); //联系人
+            Hennes.getName('#e_mail', '#suffix'); //邮箱后缀
+
+            //手机号码
+            jQuery.validator.addMethod('mobile', function(value, element, param){
+                return this.optional(element) || /^1[3|4|5|7|8]\d{9}$/.test(value);
+            }, '手机格式不对或不存在');
+
+            //常用字符(包括:中英文字符, 数字, 下划线, 中划线)
+            jQuery.validator.addMethod('real_str', function(value, element, param){
+                return this.optional(element) || /^[\u4e00-\u9fa5\w\-]+$/.test(value);
+            }, '只能包含中英文字符, 数字, 下划线');
+
+            //对所有表单只验证不提交
+            $.validator.setDefaults({
+                debug: true
+            });
+
+            $('#form_1').validate({
+                rules: {
+                    c_contact: "required",
+                    c_phone: {required: true, mobile: true},
+                    c_rd: "required",
+                    c_ages: "required",
+                    c_company: "required",
+                    c_educ: "required",
+                    c_page: {required: true, url: true},
+                    c_email: {required: true, email: true},
+                    c_relation: {required: true, real_str: true},
+                    c_about: {required: true, rangelength: [10, 200]}
+                },
+                messages: {
+                    c_contact: "请输入联系人",
+                    c_phone: {required: "请输入联系电话", mobile: "手机号格式不正确"},
+                    c_rd: "请选择性别",
+                    c_ages: "请选择年龄",
+                    c_company: "请填写在职公司",
+                    c_educ: "请选择最高学历",
+                    c_page: {required: "请填写个人主页地址", url: "个人主页格式不正确"},
+                    c_email: {required: "请填写联系邮箱", email: "邮箱格式不正确"},
+                    c_relation: {required: "请填写紧急联系人", real_str: "只能包含中英文字符, 数字, 下划线"},
+                    c_about: {required: "请填写自我评价", rangelength: "自我评价在10-200个字符间"}
+                },
+                errorPlacement: function (error, element) {
+                    error.appendTo(element.parents('.control-item').find('.help-block'));
+                },
+                onfocusout: function (element) {
+                    var ele = $(element), eParent = ele.parent();
+                    ele.valid();
+                    if(ele.hasClass("error")){
+                        eParent.addClass("has-error");
+                    }else{
+                        eParent.removeClass("has-error");
+                    }
+                },
+                submitHandler: function (form) {
+                    var frmData = $(form).serialize();
+                    console.log(frmData);
+                    return false;
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

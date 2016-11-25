@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>按钮 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>元素</li>
+            <li class="active">按钮</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-hand-up fn-mr-10"></i>按钮</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        按钮
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav1_6');
+        });
+    </script>
+</body>
+</html>

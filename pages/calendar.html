@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>日历控件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/dateRangePicker.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">日历插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-calendar fn-mr-10"></i>日历插件<small>（外部插件，部分css依赖）</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form-horizontal fn-mt-15">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">单日历有时间：</label>
+                                <div class="col-sm-5">
+                                    <div class="date-picker">
+                                        <input type="text" class="form-control datepicker" id="odd_cal_time">
+                                        <span class="help-block"><i class="glyphicons glyphicons-exclamation-sign fn-mr-5"></i>有时间选择下拉框且居左的单日历</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">单日历：</label>
+                                <div class="col-sm-5">
+                                    <div class="date-picker">
+                                        <input type="text" class="form-control datepicker" id="odd_cal">
+                                        <span class="help-block"><i class="glyphicons glyphicons-exclamation-sign fn-mr-5"></i>无时间选择下拉框，自定义日历选择范围在上周日到下下周日且居右的单日历</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">双日历有时间：</label>
+                                <div class="col-sm-5">
+                                    <div class="date-picker">
+                                        <input type="text" class="form-control datepicker" id="double_cal_time">
+                                        <span class="help-block"><i class="glyphicons glyphicons-exclamation-sign fn-mr-5"></i>有日历选择范围的时间选择下拉框且居左的双日历</span>
+                                    </div>
+                                    <input type="hidden" name="start_month">
+                                    <input type="hidden" name="end_month">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">仅双日历：</label>
+                                <div class="col-sm-5">
+                                    <div class="date-picker">
+                                        <input type="text" class="form-control datepicker" id="double_cal">
+                                        <span class="help-block"><i class="glyphicons glyphicons-exclamation-sign fn-mr-5"></i>无时间选择下拉框且居左的双日历</span>
+                                    </div>
+                                    <input type="hidden" name="s_month2">
+                                    <input type="hidden" name="e_month2">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-9 col-sm-offset-3">
+                                    <button type="button" class="btn btn-primary" id="ok_btn">
+                                        <i class="glyphicons glyphicons-ok fn-mr-5"></i>确定
+                                    </button>
+                                    <button type="button" class="btn btn-default fn-ml-5" id="cancel_btn">
+                                        <i class="glyphicons glyphicons-repeat fn-mr-5"></i>取消
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/ row end-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>使用说明：</h4>
+                        <div class="usage-cont">
+                            <ol>
+                                <li>
+                                    <p>请确定已经引入了 <code>dateRangePicker.css</code> 、 <code>moment.min.js</code> 和 <code>dateRangePicker.js</code></p>
+                                </li>
+                                <li>
+                                    <p>参数说明 <small>（以下参数视情况定义引用）</small></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">var defaultSetting = {</span></li>
+                                            <li><span class="p tx-indent">open : 'right', <span class="s">//默认箭头在左，即右打开</span></span></li>
+                                            <li><span class="p tx-indent">format: 'YYYY-MM-DD', <span class="s">//默认为短日期，长日期：YYYY-MM-DD HH:mm:ss</span></span></li>
+                                            <li><span class="p tx-indent">timeSelect: false, <span class="s">//默认不显示下拉时间</span></span></li>
+                                            <li><span class="p tx-indent">dateType: false, <span class="s">//默认双日历</span></span></li>
+                                            <li><span class="p tx-indent">monSelect: false, <span class="s">//默认不显示下拉月</span></span></li>
+                                            <li><span class="p tx-indent">customType: false, <span class="s">//默认不显示“自定义”</span></span></li>
+                                            <li><span class="p tx-indent">applyLabel: '确定',<span class="s">//确定按钮</span></span></li>
+                                            <li><span class="p tx-indent">cancelLabel: '取消',<span class="s">//取消按钮</span></span></li>
+                                            <li><span class="p tx-indent">minDate: false,<span class="s">//最小日期，在此之前的不可选择</span></span></li>
+                                            <li><span class="p tx-indent">maxDate: false,<span class="s">//最大日期，在此之后的不可选择</span></span></li>
+                                            <li><span class="p tx-indent">daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],<span class="s">//星期</span></span></li>
+                                            <li><span class="p tx-indent">monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]<span class="s">//月份</span></span></li>
+                                            <li><span class="p">};</span></li>
+                                        </ol>
+                                    </code></div>
+                                </li>
+                                <li>
+                                    <p>minDate和maxDate的取值说明</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().millisecond(Number)<span class="s">//毫秒，取值0-999，版本1.3.0+</span></span></li>
+                                            <li><span class="p">moment().second(Number)<span class="s">//秒，取值0-59，版本1.0.0+</span></span></li>
+                                            <li><span class="p">moment().minute(Number)<span class="s">//分钟，取值0-59，版本1.0.0+</span></span></li>
+                                            <li><span class="p">moment().hour(Number)<span class="s">//小时，取值0-24，版本1.0.0+</span></span></li>
+                                            <li><span class="p">moment().date(Number)<span class="s">//日期，取值0-31，版本1.0.0+</span></span></li>
+                                            <li><span class="p">moment().day(Number|String)<span class="s">或</span> moment().days(Number|String)<span class="s">//星期，版本1.3.0+</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p><b>星期</b><span class="s">版本1.3.0+ ===========================</span></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().day(Number|String);</span></li>
+                                            <li><span class="p">moment().day();<span class="s">// 数字</span></span></li>
+                                            <li><span class="p">moment().days(Number|String);</span></li>
+                                            <li><span class="p">moment().days();<span class="s">// 数字</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">获取或设置一周中的某一天；此方法可用于设置星期几，星期日为0，星期六为6；如果超出范围，它会冒泡到其他星期。</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().day(-7);<span class="s">//上个周日 (0 - 7)</span></span></li>
+                                            <li><span class="p">moment().day(7);<span class="s">//下个周日 (0 + 7)</span></span></li>
+                                            <li><span class="p">moment().day(10);<span class="s">//下周三 (3 + 7)</span></span></li>
+                                            <li><span class="p">moment().day(24);<span class="s">//从现在开始的3周后 (3 + 7 + 7 + 7)</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml"><b>注意</b>：<code>Moment#date</code>是月份的日期，<code>Moment#day</code>是星期几；<br />从2.1.0开始，还支持日期名称；这在当前的当前语言环境中解析。</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().day("Sunday");</span></li>
+                                            <li><span class="p">moment().day("Monday");</span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p><b>星期 (区域标准)</b><span class="s">版本2.1.0+ ===========================</span></p>
+                                    <p class="s no-ml">根据语言环境获取或设置一周中的某一天。<br />如果语言环境将星期一指定为一周的第一天，<code>moment().weekday(0)</code>将是周一；<br />如果星期天是一周的第一天，<code>moment().weekday(0)</code>将是星期日；<br />与<code>moment#day</code>一样，如果超过范围，它将泡沫到其他星期。</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p"><span class="s no-ml">// 当星期一是一周的第一天</span></span></li>
+                                            <li><span class="p">moment().weekday(-7);<span class="s">// 上周一</span></span></li>
+                                            <li><span class="p">moment().weekday(7);<span class="s">// 下周一</span></span></li>
+                                            <li><span class="p"><span class="s no-ml">// 当星期天是一周的第一天</span></span></li>
+                                            <li><span class="p">moment().weekday(-7);<span class="s">// 上周日</span></span></li>
+                                            <li><span class="p">moment().weekday(7);<span class="s">// 下周日</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p><b>星期 (ISO)</b><span class="s">版本2.1.0+ ===========================</span></p>
+                                    <p class="s no-ml">获取或设置一周的ISO日期，其中1为星期一，7为星期日。</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().isoWeekday(1);<span class="s">// 星期一</span></span></li>
+                                            <li><span class="p">moment().isoWeekday(7);<span class="s">// 星期日</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p><b>天</b><span class="s">版本2.0.0+ ===========================</span></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().dayOfYear(Number);</span></li>
+                                            <li><span class="p">moment().dayOfYear();<span class="s">// 数字</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">获取或设置一年中的某一天。接受从1到366的数字。如果超出范围，它将冒泡到几年。</p>
+                                    <p><b>周</b><span class="s">版本2.0.0+ ===========================</span></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().week(Number);</span></li>
+                                            <li><span class="p">moment().week();<span class="s">// 数字</span></span></li>
+                                            <li><span class="p">moment().weeks(Number);</span></li>
+                                            <li><span class="p">moment().weeks();<span class="s">// 数字</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">
+                                        获取或设置一年的周。<br />
+                                        因为不同的区域设置定义了不同年份的星期编号，Moment.js添加 <code>moment#week</code>以获取/设置一年中的本地化星期。<br />
+                                        一年的周取决于哪一天是一周中的第一天（星期日，星期一等），以及哪一周是一年的第一个星期。
+                                    </p>
+                                    <p><b>周(ISO)</b><span class="s">版本2.0.0+ ===========================</span></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().isoWeek(Number);</span></li>
+                                            <li><span class="p">moment().isoWeek();<span class="s">// 数字</span></span></li>
+                                            <li><span class="p">moment().isoWeeks(Number);</span></li>
+                                            <li><span class="p">moment().isoWeeks();<span class="s">// 数字</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">获取或设置一年的ISO周。设置一年的周时，将保留一周中的某一天。</p>
+                                    <p><b>月</b><span class="s">版本1.0.0+ ===========================</span></p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().month(Number|String);</span></li>
+                                            <li><span class="p">moment().month();<span class="s">// 数字</span></span></li>
+                                            <li><span class="p">moment().months(Number|String);</span></li>
+                                            <li><span class="p">moment().months();<span class="s">// 数字</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">
+                                        获取或设置月份。接受从0到11的数字。如果超出范围，它将一直到一年。<br />
+                                        <b>注意</b>：月份是零索引，所以一月是0。从2.1.0开始，还支持月份名称，这在当前的语言环境中解析。
+                                    </p>
+                                    <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().month("January");</span></li>
+                                            <li><span class="p">moment().month("Feb");</span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">
+                                        在版本2.1.0之前，如果一个时刻改变了几个月，新的月份没有足够的天来保持当前的一天，它会溢出到下个月。<br />从版本2.1.0开始，这被更改为目标月份的末尾。
+                                    </p>
+                                    <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p"><span class="s no-ml">// 2.1.0之前</span></span></li>
+                                            <li><span class="p">moment([2012, 0, 31]).month(1).format("YYYY-MM-DD");<span class="s">// 2012-03-02</span></span></li>
+                                            <li><span class="p"><span class="s no-ml">// 2.1.0之后</span></span></li>
+                                            <li><span class="p">moment([2012, 0, 31]).month(1).format("YYYY-MM-DD");<span class="s">// 2012-02-29</span></span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p><b>年</b><span class="s">版本1.0.0+ ===========================</span></p>
+                                    <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">moment().year(Number);</span></li>
+                                            <li><span class="p">moment().year();<span class="s">// 数字</span></span></li>
+                                            <li><span class="p">moment().years(Number);</span></li>
+                                            <li><span class="p">moment().years();<span class="s">// 数字</span></li>
+                                        </ol>
+                                    </code></div>
+                                    <p class="s no-ml">获取或设置年份。接受从-270,000到270,000的数字。</p>
+                                </li>
+                                <li>
+                                    <p>调用 <small>（参照第2步参数）</small></p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p"><span class="s">//单日历有时间</span></span></li>
+                                                <li><span class="p">$('#odd_cal_time').daterangepicker(Hennes.timeFrameOption({</span></li>
+                                                <li><span class="p tx-indent">format: 'YYYY-MM-DD HH:mm:ss',</span></li>
+                                                <li><span class="p tx-indent">timeSelect: true,</span></li>
+                                                <li><span class="p tx-indent">dateType: true</span></li>
+                                                <li><span class="p tx-indent">}), function (end) {</span></li>
+                                                <li><span class="p tx-indent">var endDate = end.format('YYYY-MM-DD HH:mm:ss');</span></li>
+                                                <li><span class="p tx-indent">console.log('你选择了: ' + endDate);</span></li>
+                                                <li><span class="p">});</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                    如果是双日历，最后添加两个隐藏表单，代码查看本例；<br />js可参考common.js中的 <code>timeFrameOption</code>函数部分和本示例调用
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!--/ row end-->
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 日历插件 -->
+    <script src="../js/plugins/dateRangePicker/moment.min.js"></script>
+    <script src="../js/plugins/dateRangePicker/dateRangePicker.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_3');
+
+            //单日历有时间
+            $('#odd_cal_time').daterangepicker(Hennes.timeFrameOption({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                timeSelect: true,
+                dateType: true
+            }), function (end) {
+                var endDate = end.format('YYYY-MM-DD HH:mm:ss');
+                console.log('你选择了: ' + endDate);
+            });
+
+            //单日历
+            $('#odd_cal').daterangepicker(Hennes.timeFrameOption({
+                format: 'YYYY-MM-DD',
+                dateType: true,
+                open: 'left',
+                minDate: moment().weekday(-7), //上个周日
+                maxDate: moment().weekday(14) //下下个周日
+            }), function (end) {
+                var endDate = end.format('YYYY-MM-DD');
+                console.log('你选择了: ' + endDate);
+            });
+
+            //双日历有时间
+            $('#double_cal_time').daterangepicker(Hennes.timeFrameOption({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                timeSelect: true,
+                minDate: moment(),
+                maxDate: moment().day(16) //一周：7，2周：7*2，...
+            }), function (start, end) {
+                var starDate = start.format('YYYY-MM-DD HH:mm:ss'),
+                    endDate = end.format('YYYY-MM-DD HH:mm:ss');
+
+                console.log('你选择了: ' + starDate + ' ～ ' + endDate);
+
+                //给开始和结束时间传值
+                $('input[name="s_month1"]').val(starDate);
+                $('input[name="e_month1"]').val(endDate);
+            });
+
+            //双日历
+            $('#double_cal').daterangepicker(Hennes.timeFrameOption({
+                format: 'YYYY-MM-DD'
+            }), function (start, end) {
+                var starDate = start.format('YYYY-MM-DD'),
+                    endDate = end.format('YYYY-MM-DD');
+
+                console.log('你选择了: ' + starDate + ' ～ ' + endDate);
+
+                //给开始和结束时间传值
+                $('input[name="s_month2"]').val(starDate);
+                $('input[name="e_month2"]').val(endDate);
+            });
+        });
+    </script>
+</body>
+</html>

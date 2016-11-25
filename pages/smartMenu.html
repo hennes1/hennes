@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>右键菜单 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/smartMenu.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">右键菜单插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-list fn-mr-10"></i>右键菜单<small>（外部插件，部分css依赖）</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="4%"></th>
+                                    <th>姓名</th>
+                                    <th>外号</th>
+                                    <th>手机</th>
+                                    <th>QQ</th>
+                                    <th>联系地址</th>
+                                </tr>
+                            </thead>
+                            <tbody id="info_list">
+                                <tr data-id="m001">
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" class="i-detail-btn"><i class="glyphicons glyphicons-plus"></i></a>
+                                    </td>
+                                    <td>黄药师</td>
+                                    <td>东邪</td>
+                                    <td>13658964785</td>
+                                    <td>588588</td>
+                                    <td>浙江省舟山桃花岛</td>
+                                </tr>
+                                <tr data-id="m002">
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" class="i-detail-btn"><i class="glyphicons glyphicons-plus"></i></a>
+                                    </td>
+                                    <td>欧阳锋</td>
+                                    <td>西毒</td>
+                                    <td>13796964355</td>
+                                    <td>577577</td>
+                                    <td>昆仑山东麓白驼山</td>
+                                </tr>
+                                <tr data-id="m003">
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" class="i-detail-btn"><i class="glyphicons glyphicons-plus"></i></a>
+                                    </td>
+                                    <td>段智兴</td>
+                                    <td>南帝</td>
+                                    <td>13786964688</td>
+                                    <td>566566</td>
+                                    <td>云南大理</td>
+                                </tr>
+                                <tr data-id="m004">
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" class="i-detail-btn"><i class="glyphicons glyphicons-plus"></i></a>
+                                    </td>
+                                    <td>洪七公</td>
+                                    <td>北丐</td>
+                                    <td>13476964677</td>
+                                    <td>544544</td>
+                                    <td>居无定所</td>
+                                </tr>
+                                <tr data-id="m005">
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);" class="i-detail-btn"><i class="glyphicons glyphicons-plus"></i></a>
+                                    </td>
+                                    <td>王重阳</td>
+                                    <td>中神通</td>
+                                    <td>13876884656</td>
+                                    <td>555555</td>
+                                    <td>陕西省终南山</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--{ 分页 -->
+                    <div class="col-sm-12">
+                        <div class="page-wrap pull-right no-margin">
+                            <ul class="pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/ 分页}-->
+                </div>
+                <!--/ row end-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>使用说明：</h4>
+                        <div class="usage-cont">
+                            <ol>
+                                <li>
+                                    <p>请确定已经引入了 <code>smartMenu.css</code> 和 <code>smartMenu.js</code></p>
+                                </li>
+                                <li>
+                                    <p>定义右键菜单数据 <small>（查看本例代码）</small></p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p">var rightMenu = {</span></li>
+                                                <li><span class="p tx-indent">text: "功能按钮1", <span class="s">//菜单名称</span></span></li>
+                                                <li><span class="p tx-indent">icoClass: 'glyphicons glyphicons-magic', <span class="s">//菜单前的图标样式名，多个用空格隔开；如果没有，此参数可省略</span></span></li>
+                                                <li><span class="p tx-indent">func: function () { <span class="s">//菜单执行函数</span></span></li>
+                                                <li><span class="p long-indent">var id = Hennes.getCurrentEleID(this); <span class="s">//获取当前元素id，可自定义</span></span></li>
+                                                <li><span class="p long-indent">layer.alert('你在ID为' + id + '的行中点击了'); <span class="s">//弹窗插件</span></span></li>
+                                                <li><span class="p tx-indent">}</span></li>
+                                                <li><span class="p">},</span></li>
+                                                <li><span class="p">rightMenu2 = { <span class="s">//可定义多个右键菜单</span></span></li>
+                                                <li><span class="p tx-indent">...</span></li>
+                                                <li><span class="p">};</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>装载自定义菜单数据</p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p">var loadMenuData = [</span></li>
+                                                <li><span class="p tx-indent">[rightMenu, rightMenu2, ...]</span></li>
+                                                <li><span class="p">];</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>执行自定义函数</p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p">Hennes.rightMenu(e, loadMenuData);</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                    <p>
+                                        <code>Hennes.rightMenu</code>：为自定义封装的右键函数<br />
+                                        <code>e</code>：执行右键菜单的元素<br />
+                                        详情可查看本示例源码和common.js文件
+                                    </p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!--/ row end-->
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 右键菜单插件 -->
+    <script src="../js/plugins/jq.smartMenu.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_1');
+
+            //定义右键菜单data
+            var rightMenu_1 = {
+                    text: "功能按钮1",
+                    icoClass: 'glyphicons glyphicons-magic',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                },
+                rightMenu_2 = {
+                    text: "功能按钮2",
+                    icoClass: 'glyphicons glyphicons-keys',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                },
+                rightMenu_3 = {
+                    text: "功能按钮3",
+                    icoClass: 'glyphicons glyphicons-git-pull-request',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                },
+                rightMenu_4 = {
+                    text: "功能按钮4",
+                    icoClass: 'glyphicons glyphicons-shop-window',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                };
+
+            //定义装载菜单容器
+            var loadMenuData = [
+                [rightMenu_1, rightMenu_2, rightMenu_3, rightMenu_4]
+            ];
+
+            //调用右键菜单
+            Hennes.rightMenu('table tbody tr', loadMenuData);
+
+            //定义右键子菜单data
+            var subRightMenu_1 = {
+                    text: "子菜单1",
+                    icoClass: 'glyphicons glyphicons-boat',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                },
+                subRightMenu_2 = {
+                    text: "子菜单2",
+                    icoClass: 'glyphicons glyphicons-cardio',
+                    func: function () {
+                        var id = Hennes.getCurrentEleID(this);
+                        layer.alert('你在ID为' + id + '的行中点击了');
+                    }
+                };
+
+            //定义装载子菜单容器
+            var loadSubMenuData = [
+                [subRightMenu_1, subRightMenu_2]
+            ];
+            
+            //显示|隐藏详情
+            $('.i-detail-btn').click(function () {
+                var self = this, id = $(self).parents('tr').data('id');
+                var html = '';
+                var loading = layer.load(0, {shade: false});
+
+                $.getJSON('../json/smartData.json', function (data) {
+                    html += '<table class="table table-bordered table-striped table-hover">'
+                        +'  <thead>'
+                        +'      <tr>'
+                        +'          <th width="45%">拿手武功</th>'
+                        +'          <th width="45%">得意弟子</th>'
+                        +'          <th width="10%">关系</th>'
+                        +'      </tr>'
+                        +'  </thead>'
+                        +'  <tbody>';
+                        for(var i = 0; i < data.length; i++) {
+                            var leaderId = data[i].leader;
+                            if(leaderId == id) {
+                                for (var n = 0; n < data[i].other.length; n++) {
+                                    html += '<tr data-id="s_' + data[i].leader + '_'+ (n+i+1) +'">'
+                                        + '     <td>' + data[i].other[n].skills + '</td>'
+                                        + '     <td>' + data[i].other[n].disciple + '</td>'
+                                        + '     <td>' + data[i].other[n].relation + '</td>'
+                                        + ' </tr>';
+                                }
+                            }
+                        }
+                    html += '</tbody>';
+
+                    //插入数据
+                    Hennes.insertTrData(self, 'tr', 'td', html);
+
+                    //关闭loading
+                    layer.closeAll('loading');
+
+                    //调用右键子菜单
+                    Hennes.rightMenu('.detail-view tbody tr', loadSubMenuData);
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

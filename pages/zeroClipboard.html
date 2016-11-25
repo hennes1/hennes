@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>ZeroClipboard插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!-- Tour引导插件css -->
+    <link rel="stylesheet" href="../css/tour/bootstrap-tour.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">ZeroClipboard插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>
+                    <i class="glyphicons glyphicons-duplicate fn-mr-10"></i>ZeroClipboard插件<small>（第三方插件）</small>
+                </h4>
+            </div>
+            <div class="panel-body tour-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="h-first">ZeroClipboard介绍</h3>
+                        <p class="tx-indent"><code>ZeroClipboard</code> 是国外大神开发的一个用于剪贴板复制的 JS 插件，它是基于 Flash 来实现跨浏览器的复制功能的。当用户使用 <code>ZeroClipboard</code> 的时候，它会悄悄隐藏一个小小的 Flash 影片(swf)，不会对用户的界面造成影响。用户只需要借助它实现复制功能就行了。 <code>ZeroClipboard</code> 中的 "Zero" 指的就是"不可见，零干扰"。</p>
+                        <p class="tx-indent">不过从 Flash10开始，由于浏览器和Flash的安全限制，要求用户必须在Flash区域上进行真实操作才能操作剪贴板。于是，<code>ZeroClipboard</code> 的作者想到一个办法：它将 Flash 做成透明的，以便于用户放在诸如链接、按钮等需要放置的任何地方。这样，用户界面看起来没有变化，当点击链接或按钮时，实际上点击是却是 Flash，从而实现复制操作。
+                        </p>
+                        <h3>本站应用代码</h3>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p"><span class="s no-ml">/*</span></span></li>
+                                    <li><span class="p"><span class="s no-ml">* zClipboard：Flash复制插件</span></span></li>
+                                    <li><span class="p"><span class="s no-ml">* @btn：复制按钮</span></span></li>
+                                    <li><span class="p"><span class="s no-ml">* @target：要复制的目标元素，如：$(this).next('code')</span></span></li>
+                                    <li><span class="p"><span class="s no-ml">*/</span></span></li>
+                                    <li><span class="p">function zClipboard(btn, target) {</span></li>
+                                    <li><span class="p tx-indent">if (typeof ZeroClipboard === 'undefined') {</span></li>
+                                    <li><span class="p long-indent">throw new Error('缺少ZeroClipboard插件，请引入');</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p tx-indent">if (typeof layer === 'undefined') {</span></li>
+                                    <li><span class="p long-indent">throw new Error('缺少layer弹层插件，请引入');</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li></li>
+                                    <li><span class="p tx-indent"><span class="s no-ml">//定义ZeroClipboard对像</span></span></li>
+                                    <li><span class="p tx-indent">var zClip = new ZeroClipboard($(btn));</span></li>
+                                    <li><span class="p tx-indent">zClip.on('ready', function (event) {</span></li>
+                                    <li><span class="p long-indent"><span class="s no-ml">//console.log('成功装入装入Flash！');</span></span></li>
+                                    <li><span class="p long-indent"><span class="s no-ml">//开始复制</span></span></li>
+                                    <li><span class="p long-indent">zClip.on('copy', function (event) {</span></li>
+                                    <li><span class="p max-indent">var clipboard = event.clipboardData,</span></li>
+                                    <li><span class="p max-indent">text = target.text(); //获取要复制的内容</span></li>
+                                    <li><span class="p max-indent">clipboard.setData('text/plain', text);</span></li>
+                                    <li><span class="p long-indent">})</span></li>
+                                    <li><span class="p long-indent">.on('aftercopy', function (event) {</span></li>
+                                    <li><span class="p max-indent">layer.msg('复制成功', {time: 600}, function () {</span></li>
+                                    <li><span class="p max-indent">layer.closeAll();</span></li>
+                                    <li><span class="p long-indent">});</span></li>
+
+                                    <li><span class="p tx-indent">});</span></li>
+                                    <li></li>
+                                    <li><span class="p tx-indent"><span class="s no-ml">//出错时销毁</span></span></li>
+                                    <li><span class="p tx-indent">zClip.on('error', function (event) {</span></li>
+                                    <li><span class="p long-indent">ZeroClipboard.destroy();</span></li>
+                                    <li><span class="p tx-indent">});</span></li>
+                                    <li><span class="p">}</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p>通过jQuery的append追加系列复制按钮</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p">$(function () {</span></li>
+                                    <li><span class="p tx-indent"><span class="s no-ml">//如果引入了ZeroClipboard和layer插件，则添加复制按钮</span></span></li>
+                                    <li><span class="p tx-indent">if (typeof ZeroClipboard !== 'undefined' && typeof layer !== 'undefined') {</span></li>
+                                    <li><span class="p long-indent"><span class="s no-ml">//定义复制按钮容器</span></span></li>
+                                    <li><span class="p long-indent">var copyBtn = '&lt;a href="javascript:void(0);" class="btn btn-default btn-xs flash-copy"&gt;复制&lt;/a&gt;';</span></li>
+                                    <li></li>
+                                    <li><span class="p long-indent"><span class="s no-ml">//将复制按钮容器添加到所有.highlight内</span></span></li>
+                                    <li><span class="p long-indent">$('.highlight').find('code').before(copyBtn);</span></li>
+                                    <li></li>
+                                    <li><span class="p long-indent"><span class="s no-ml">//给每个.flash-copy都添加相应操作，便于点击复制</span></span></li>
+                                    <li><span class="p long-indent">$('.flash-copy').each(function () {</span></li>
+                                    <li><span class="p max-indent">Hennes.zClipboard(this, $(this).next('code'));</span></li>
+                                    <li><span class="p long-indent">});</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p">});</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p class="tx-indent">到此就大功告成了，是不是很容易上手？！当然，你的方法可能比本例更简单，可以不用本站的追加按钮方法，完全可以写在DOM中，直接调用就行，操作起来也简单：只需要将本例中的追加的那段代码去掉就可以了。如果想更深入的了解一些详细的ZeroClipboard资料，请继续往下阅读。</p>
+                        <h3>ZeroClipboard使用须知</h3>
+                        <ol>
+                            <li>
+                                <p class="text-primary"><b>文件引入和使用</b></p>
+                                <p class="tx-indent">使用<code>ZeroClipboard</code>的复制功能，需要引入两个文件：<code class="label label-success">ZeroClipboard.js</code> 和 <code class="label label-success">ZeroClipboard.swf</code>；请确保它们被放在同一目录下，以便于 <code class="label label-success">ZeroClipboard.js</code> 自动加载 <code class="label label-success">ZeroClipboard.swf</code> 文件，否则，在使用前就需要额外配置swf文件的路径。<span class="text-muted">假如这两个文件不在同一路径</span>，则需如下配置：</p>
+                                <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">ZeroClipboard.config({</span></li>
+                                            <li><span class="p tx-indent">swfPath: "http://YOURSERVER/path/ZeroClipboard.swf"</span></li>
+                                            <li><span class="p">});</span></li>
+                                        </ol>
+                                    </code>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="text-primary"><b>定义ZeroClipboard实例</b></p>
+                                <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p"><span class="s no-ml">// 通过getElementById定义（也可通过ByName或ByTagName）</span></span></li>
+                                            <li><span class="p">var client = new ZeroClipboard(document.getElementById("copy"));</span></li>
+                                            <li><span class="p"><span class="s no-ml">// 通过纯jQuery对象定义</span></span></li>
+                                            <li><span class="p">var client = new ZeroClipboard($(".copy-btn"));</span></li>
+                                        </ol>
+                                    </code>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="text-primary"><b>数据类型</b></p>
+                                <p>
+                                    剪贴板中的数据是有类型的，每一种类型都可以有自己的数据。用户复制的数据可以有多种类型，当用户粘贴的时候，会粘贴当前程序可接受类型的数据。</p>
+                                <p>
+
+                                    ZeroClipboard也支持设置多种类型的剪贴板数据。它为用户提供了 <code>setText()</code>、<code>setHtml</code>、<code>setRichText()</code> 方法分别用于设置纯文本数据、HTML内容、富文本内容。
+                                </p>
+                                <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p"><span class="s no-ml">// 可同时设置，粘贴时根据接收程序的不同，而粘贴出不同的内容</span></span></li>
+                                            <li><span class="p">clip.setText("CodePlayer");</span></li>
+                                            <li><span class="p">clip.setHtml("&lt;strong&gt;CodePlayer&lt;/strong&gt;");</span></li>
+                                            <li><span class="p">clip.setRichText("{\\rtf1\\ansi\n{\\b CodePlayer}}");</span></li>
+                                        </ol>
+                                    </code>
+                                </div>
+                                <p>此外，ZeroClipboard还提供了一个通用的设置方法 <code>setData()</code>，用于设置各种类型的数据。</p>
+                                <div class="highlight">
+                                    <code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">client.on( "copy", function (event) {</span></li>
+                                            <li><span class="p tx-indent">var clipboard = event.clipboardData;</span></li>
+                                            <li><span class="p tx-indent">clipboard.setData( "text/plain", "Copy me!" );</span></li>
+                                            <li><span class="p tx-indent">clipboard.setData( "text/html", "<b>Copy me!</b>" );</span></li>
+                                            <li><span class="p tx-indent">clipboard.setData( "application/rtf", "{\\rtf1\\ansi\n{\\b Copy me!}}" );</span></li>
+                                            <li><span class="p">});</span></li>
+                                        </ol>
+                                    </code>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="text-primary"><b>设置用于复制的文本数据</b></p>
+                                <p class="tx-indent">
+                                    如果指定了 <code>data-clipboard-target</code> 属性，ZeroClipboard 将依次尝试通过该元素的 <code>value</code>、<code>textContent</code>、 <code>innerText</code> 属性来获取文本数据(依次判断是否有上述属性，并以最靠前的属性为准)。
+                                </p>
+                                <p class="tx-indent">当然，ZeroClipboard 也并非只能通过其他元素才能获得用于复制的文本数据，用户还可以给复制载体自身的 <code>data-clipboard-target</code> 属性来设置用于复制的文本数据，之后你还可以通过设置该属性值(<code>setAttribute()</code>)来更改需要复制的文本内容。</p>
+                                <code class="pretty-print fn-mb-10">
+                                    <ol>
+                                        <li><span class="p">&lt;button id=&quot;my-button_text&quot; data-clipboard-target=&quot;clipboard_text&quot;&gt;Copy to Clipboard&lt;/button&gt;</span></li>
+                                        <li><span class="p">&lt;button id=&quot;my-button_textarea&quot; data-clipboard-target=&quot;clipboard_textarea&quot;&gt;Copy to Clipboard&lt;/button&gt;</span></li>
+                                        <li><span class="p">&lt;button id=&quot;my-button_pre&quot; data-clipboard-target=&quot;clipboard_pre&quot;&gt;Copy to Clipboard&lt;/button&gt;</span></li>
+                                        <li></li>
+                                        <li><span class="p">&lt;input type=&quot;text&quot; id=&quot;clipboard_text&quot; value=&quot;Clipboard Text&quot;/&gt;</span></li>
+                                        <li><span class="p">&lt;textarea id=&quot;clipboard_textarea&quot;&gt;这里是textarea中要复制的文本。&lt;/textarea&gt;</span></li>
+                                        <li><span class="p">&lt;pre id=&quot;clipboard_pre&quot;&gt;这里是pre中要复制的文本。&lt;/pre&gt;</span></li>
+                                    </ol>
+                                </code>
+                                <p class="tx-indent">
+                                    此外，用户甚至无需通过元素节点的属性来设置用于复制的文本数据，用户可以直接使用 ZeroClipboard 对象的 <code>setText()</code> 方法来设置文本数据。注意，该方法设置的数据是一次性的，使用该方法设置复制数据后，只在下一次复制操作时生效。之后即使你点击复制按钮也不再执行复制，除非你再次调用 <code>setText()</code> 方法(你可以绑定复制("copy")事件来调用该方法，从而实现每次复制操作都设置数据，下面用户会讲到)。
+                                </p>
+                                <code class="pretty-print fn-mb-10">
+                                    <ol>
+                                        <li><span class="p">client.setText( "Copy me!" );</span></li>
+                                    </ol>
+                                </code>
+                                <p class="tx-indent">
+                                    <b>数据来源的优先级问题</b>：如果用户同时为复制载体设置了 <code>data-clipboard-text</code>、<code>data-clipboard-target</code> 属性，并调用了 <code>setText()</code> 方法，那么 ZeroClipboard 复制数据的优先级是：<code>setText() > data-clipboard-target > data-clipboard-text</code>。
+                                </p>
+                            </li>
+                            <li>
+                                <p class="text-primary"><b>设置用于复制的文本数据</b></p>
+                                <p class="tx-indent">
+                                    ZeroClipboard 还为用户提供了事件支持，以便于处理ZeroClipboard触发的各种事件。ZeroClipboard支持的事件有<code>"ready"</code>、<code>"beforecopy"</code>、<code>"copy"</code>、<code>"aftercopy"</code>、<code>"destroy"</code> 和 <code>"error"</code>，用户可以通过 <code>on()</code> 方法来注册事件处理函数。
+                                </p>
+                                <code class="pretty-print fn-mb-10">
+                                    <ol>
+                                        <li><span class="p"><span class="s no-ml">// 当Flash SWF文件加载完成并准备就绪时触发ready事件</span></span></li>
+                                        <li><span class="p">clip.on("ready", function(){ alert("加载完成!"); });</span></li>
+                                        <li></li>
+                                        <li><span class="p"><span class="s no-ml">// 当触发copy事件时，设置用于复制的文本数据</span></span></li>
+                                        <li><span class="p">clip.on("copy", function(e){</span></li>
+                                        <li><span class="p tx-indent">e.clipboardData.setData("text/plain", "这里是用于复制的纯文本数据")</span></li>
+                                        <li><span class="p">});</span></li>
+                                    </ol>
+                                </code>
+                                <p class="tx-indent">
+                                    此外，<code>off()</code> 方法用来取消注册的事件处理函数，<code>emit()</code> 方法用来手动触发事件。其用法与jQuery的on()、 off()、 trigger()方法非常相似；如果有多个ZeroClipboard对象，想为它们都注册事件处理函数，就可以使用全局对象ZeroClipboard的静态方法<code>ZeroClipboard.on()</code>、<code>ZeroClipboard.off()</code> 和 <code>ZeroClipboard.emit()</code> 来全局性地设置事件。全局事件将对每个对象都生效。
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_9');
+
+        });
+    </script>
+</body>
+</html>

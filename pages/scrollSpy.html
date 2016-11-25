@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>ScrollSpy插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">ScrollSpy插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-mouse-scroll fn-mr-10"></i>ScrollSpy插件
+                    <small>（滚动监听，集成在bootstrap中，经测试可单独拿出来使用）</small>
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--{ scrollSpy -->
+                        <div class="scrollSpy-wrap" id="scroll_spy">
+                            <ul class="nav navbar-nav scrollSpy-nav">
+                                <li class="active"><a href="#sm">使用说明</a></li>
+                                <li><a href="#usage">用法</a></li>
+                                <li><a href="#note">须知</a></li>
+                            </ul>
+                            <!--/ scrollSpy-nav end-->
+                            <div class="scrollSpy-body fn-mb-20" data-spy="scroll" data-target="#scroll_spy">
+                                <h3 id="sm">使用说明</h3>
+                                <div class="usage-cont">
+                                    <div class="spy-usage">
+                                        <h5>需要Bootstrap导航</h5>
+                                        <p>Scrollspy目前需要使用Bootstrap导航组件来正确突出显示活动链接。</p>
+                                        <h5>需要相对定位</h5>
+                                        <p>scrollspy都需要使用<code>position：relative;</code>相对定位来监视元素。 在大多数情况下，作用在<code>&lt;body&gt;</code>上，当然也可以放在其它元素上。
+                                        </p>
+                                    </div>
+                                </div>
+                                <h3 id="usage">用法</h3>
+                                <div class="usage-cont">
+                                    <ol>
+                                        <li>
+                                            <p>通过data属性</p>
+                                            <p>
+                                                根据情况，给需要监视的页面元素添加 <code>data-spy="scroll"</code> (一般是 <code>body</code> 元素，本例是在 <code>&lt;div class="scrollSpy-body fn-mb-20"&gt;&lt;/div&gt;</code> )上，并且通过
+                                                <code>data-target</code> 属性指定目标
+                                            </p>
+                                            <div class="fn-mt-10">
+                                                <code class="pretty-print">
+                                                    <ol>
+                                                        <li><span class="p">body{</span></li>
+                                                        <li><span class="p tx-indent">position: relative;</span></li>
+                                                        <li><span class="p">}</span></li>
+                                                    </ol>
+                                                </code>
+                                            </div>
+                                            <div class="fn-mt-10 fn-mb-20">
+                                                <code class="pretty-print">
+                                                    <ol>
+                                                        <li><span class="p">&lt;body data-spy="scroll" data-target=".navbar-example"&gt;</span></li>
+                                                        <li><span class="p tx-indent">...</span></li>
+                                                        <li><span class="p tx-indent">&lt;div class="navbar-example"&gt;</span></li>
+                                                        <li><span class="p long-indent">&lt;ul class="nav nav-tabs" role="tablist"&gt;</span></li>
+                                                        <li><span class="p long-indent">...</span></li>
+                                                        <li><span class="p long-indent">&lt;/ul&gt;</span></li>
+                                                        <li><span class="p tx-indent">&lt;/div&gt;</span></li>
+                                                        <li><span class="p tx-indent">...</span></li>
+                                                        <li><span class="p">&lt;/body&gt;</span></li>
+                                                    </ol>
+                                                </code>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p>通过 Javascript 语句</p>
+                                            <p>当你在CSS中添加了<code>position：relative;</code>后，可以通过Javascript来监听滚动</p>
+                                            <div class="fn-mt-10">
+                                                <code class="pretty-print">
+                                                    <ol>
+                                                        <li><span class="p">$('body').scrollspy({</span></li>
+                                                        <li><span class="p tx-indent">target: '.navbar-example'</span></li>
+                                                        <li><span class="p">});</span></li>
+                                                    </ol>
+                                                </code>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <h3 id="note">须知</h3>
+                                <div class="usage-cont">
+                                    <p class="bg-success">导航代码中 ul 含有一个 CSS 类 <code>.nav</code>，它是必需的，没有的话就会导致插件无效果</p>
+                                    <p><span class="label label-primary">Bootstrap 文档推荐第一种方法</span>，因为不用任何的 JavaScript 语句即可实现 ScrollSpy 效果。</p>
+                                </div>
+                            </div>
+                            <!--/ scrollSpy-body end-->
+                        </div>
+                        <!--/ scrollSpy }-->
+                    </div>
+                </div>
+                <!--/ scrollSpy容器 end-->
+                <div class="row fn-mt-20">
+                    <div class="col-sm-12">
+                        <h4><span class="label label-danger">使用总结</span><small>（可用以下两种方式分别在本页测试）</small></h4>
+                        <div class="usage-cont">
+                            <ol>
+                                <li>
+                                    <p>通过data属性来实现</p>
+                                    <p>向要监听的元素（通常是 body）添加 <code>data-spy="scroll"</code>，本例要监听的内容是 <code>.scrollSpy-body</code>，监听的菜单是 <code>#scroll_spy</code>，必须要用 <code>div</code>包起来，不然会没有效果，代码如下：</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p">&lt;div&nbsp;class="scrollSpy-wrap"&nbsp;id="scroll_spy"&gt;</span></li>
+                                            <li><span class="p tx-indent">&lt;ul class="nav navbar-nav scrollSpy-nav"&gt;</span></li>
+                                            <li><span class="p long-indent">&lt;li&gt;&lt;a&nbsp;href="#spy_1"&gt;&lt;/a&gt;菜单一&lt;/li&gt;</span></li>
+                                            <li><span class="p long-indent">...</span></li>
+                                            <li><span class="p tx-indent">&lt;/ul&gt;</span></li>
+                                            <li><span class="p tx-indent">&lt;div class="scrollSpy-body fn-mb-20" data-spy="scroll" data-target="#scroll_spy"&gt;</span></li>
+                                            <li><span class="p long-indent">...</span></li>
+                                            <li><span class="p tx-indent">&lt;div&gt;</span></li>
+                                            <li><span class="p">&lt;/div&gt;</span></li>
+                                        </ol>
+                                    </code></div>
+                                </li>
+                                <li>
+                                    <p>通过Js来实现</p>
+                                    <div class="highlight"><code class="pretty-print">
+                                        <ol>
+                                            <li><span class="p"><span class="s">//Div代码</span></span></li>
+                                            <li><span class="p">&lt;div class="scrollSpy-body fn-mb-20"&gt;</span></li>
+                                            <li><span class="p tx-indent">...</span></li>
+                                            <li><span class="p">&lt;div&gt;</span></li>
+                                            <li><span class="p"><span class="s">//Js代码</span></span></li>
+                                            <li><span class="p">$('.scrollSpy-body').scrollspy({</span></li>
+                                            <li><span class="p tx-indent">target: '#scroll_spy'</span></li>
+                                            <li><span class="p">})</span></li>
+                                        </ol>
+                                    </code></div>
+                                </li>
+                                <li>另一个通过Js来实现的例子是作用在 <code>body</code>上的，可查看 <a href="Affix.php" class="a-primary">Affix粘附导航</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap/bootstrap.js"></script>
+<!-- 弹窗插件 -->
+<script src="../js/plugins/layer/layer.js"></script>
+<!-- flash复制插件 -->
+<script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+<!-- 滚动条插件 -->
+<script src="../js/plugins/slimScroll/jq.slimScroll.min.js"></script>
+<!-- 公用Js -->
+<script src="../js/common.js"></script>
+<script>
+    $(function () {
+        //当前页
+        Hennes.loadNav('../', 'header', 'side_nav2_4');
+
+        //滚动条
+        $('.scrollSpy-body').slimScroll({
+            height: '550px'
+        });
+    });
+</script>
+</body>
+</html>

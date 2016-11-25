@@ -1,0 +1,77 @@
+[
+  {
+    "leader": "m001",
+    "other": [
+      {
+        "skills": "弹指神通、落英神剑、奇门五转",
+        "disciple": "陈玄风",
+        "relation": "师徒"
+      },
+      {
+        "skills": "三招火叉、三招掌法",
+        "disciple": "梅超风",
+        "relation": "师徒"
+      },
+      {
+        "skills": "碧海潮生曲",
+        "disciple": "曲灵风",
+        "relation": "师徒"
+      },
+      {
+        "skills": "玉漏催银剑",
+        "disciple": "陆乘风",
+        "relation": "师徒"
+      }
+    ]
+  },
+  {
+    "leader": "m002",
+    "other": [
+      {
+        "skills": "灵蛇拳、神驼雪山掌、灵蛇杖法、 蛤蟆功、逆运九阴",
+        "disciple": "欧阳克",
+        "relation": "父子"
+      }
+    ]
+  },
+  {
+    "leader": "m003",
+    "other": [
+      {
+        "skills": "一阳指",
+        "disciple": "慈恩",
+        "relation": "师徒"
+      },
+      {
+        "skills": "先天功",
+        "disciple": "渔樵耕读",
+        "relation": "仆人、师徒"
+      }
+    ]
+  },
+  {
+    "leader": "m004",
+    "other": [
+      {
+        "skills": "打狗棒法",
+        "disciple": "郭靖",
+        "relation": "师徒"
+      },
+      {
+        "skills": "降龙十八掌",
+        "disciple": "黄蓉",
+        "relation": "师徒"
+      }
+    ]
+  },
+  {
+    "leader": "m005",
+    "other": [
+      {
+        "skills": "先天功、一阳指",
+        "disciple": "全真七子",
+        "relation": "师徒"
+      }
+    ]
+  }
+]

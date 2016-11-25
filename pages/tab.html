@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>Tab插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/smartMenu.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">Tab插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-puzzle fn-mr-10"></i>Tab插件<small>（可单独拿出来使用）</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row tab-wrap">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_p1" data-toggle="tab">插件说明</a></li>
+                        <li><a href="#tab_p2" data-toggle="tab">通过Data属性调用</a></li>
+                        <li><a href="#tab_p3" data-toggle="tab">通过JavaScript调用</a></li>
+                    </ul>
+                    <div class="col-sm-12">
+                        <div class="tab-content fn-mt-20">
+                            <div class="tab-pane fade in active" id="tab_p1">
+                                <p>首先创建一个标签式的导航菜单：</p>
+                                <ul>
+                                    <li>以一个带有 class <code>.nav</code> 的无序列表开始。</li>
+                                    <li>添加 class <code>.nav-tabs</code>。</li>
+                                </ul>
+                                <p>可以通过这个插件轻松地创建一个标签页界面。</p>
+                                <p>如果想要 tab 标签铺满屏幕，可以在 <code>&lt;ul class="nav nav-tabs"&gt;</code>的基础上增加class <code>.nav-justified</code>，如：</p>
+                                <div class="row sub-row">
+                                    <div class="col-sm-6">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title">普通标签式的Tab</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row loss-mt-15">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a href="#nav_tab_1" data-toggle="tab">Button 1</a></li>
+                                                        <li><a href="#nav_tab_2" data-toggle="tab">Button 2</a></li>
+                                                        <li><a href="#nav_tab_3" data-toggle="tab">Button 3</a></li>
+                                                    </ul>
+                                                    <div class="tab-content fn-mt-15">
+                                                        <div class="tab-pane active" id="nav_tab_1">+++++++ Button 1 内容</div>
+                                                        <div class="tab-pane" id="nav_tab_2">+++++++ Button 2 内容</div>
+                                                        <div class="tab-pane" id="nav_tab_3">+++++++ Button 3 内容</div>
+                                                    </div>
+                                                </div>
+                                                <!--{ 代码 -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <p class="code-title"><b>代码</b></p>
+                                                        <code class="pretty-print no-mb">
+                                                            <ol>
+                                                                <li><span class="p">&lt;ul class="nav nav-tabs"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li class="active"&gt;</span></li>
+                                                                <li><span class="p long-indent">&lt;a href="#nav_tab_1" data-toggle="tab"&gt;Button 1&lt;/a&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li&gt;</span></li>
+                                                                <li><span class="p long-indent">&lt;a href="#nav_tab_2" data-toggle="tab"&gt;Button 2&lt;/a&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/ul&gt;</span></li>
+                                                                <li><span class="p">&lt;div class="tab-content"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;div class="tab-pane active" id="nav_tab_1"&gt;内容1&lt;/div&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;div class="tab-pane" id="nav_tab_2"&gt;内容2&lt;/div&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/div&gt;</span></li>
+                                                            </ol>
+                                                        </code>
+                                                    </div>
+                                                </div>
+                                                <!--/ 代码 }-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ 普通标签式的Tab -->
+                                    <div class="col-sm-6">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title">标签式铺满容器的Tab <small>（此例为Js调用，可查看下面代码部分）</small></h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row loss-mt-15">
+                                                    <ul class="nav nav-tabs nav-justified" id="myTab">
+                                                        <li class="active"><a href="#nav_tab_4">Button 4</a></li>
+                                                        <li><a href="#nav_tab_5">Button 5</a></li>
+                                                        <li><a href="#nav_tab_6">Button 6</a></li>
+                                                    </ul>
+                                                    <div class="tab-content fn-mt-15">
+                                                        <div class="tab-pane active" id="nav_tab_4">+++++++ Button 4 内容</div>
+                                                        <div class="tab-pane" id="nav_tab_5">+++++++ Button 5 内容</div>
+                                                        <div class="tab-pane" id="nav_tab_6">+++++++ Button 6 内容</div>
+                                                    </div>
+                                                </div>
+                                                <!--{ 代码 -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <p class="code-title"><b>代码</b></p>
+                                                        <code class="pretty-print no-mb">
+                                                            <ol>
+                                                                <li><span class="p">&lt;ul class="nav nav-tabs nav-justified" id="myTab"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li class="active"&gt;&lt;a href="#nav_tab_1"&gt;Button 1&lt;/a&gt;&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li&gt;&lt;a href="#nav_tab_2"&gt;Button 2&lt;/a&gt;&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/ul&gt;</span></li>
+                                                                <li><span class="p">&lt;div class="tab-content"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;div class="tab-pane active" id="nav_tab_1"&gt;内容1&lt;/div&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/div&gt;</span></li>
+                                                                <li><span class="p"><span class="s no-ml">// JavaScript</span></span></li>
+                                                                <li><span class="p">$('ul#myTab a').click(function (e) {<span class="s">//tab标签js调用</span></span></li>
+                                                                <li><span class="p tx-indent">e.preventDefault();</span></li>
+                                                                <li><span class="p tx-indent">$(this).tab('show');</span></li>
+                                                                <li><span class="p">});</span></li>
+                                                            </ol>
+                                                        </code>
+                                                    </div>
+                                                </div>
+                                                <!--/ 代码 }-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ 标签式铺满容器的Tab -->
+                                </div>
+                                <div class="row sub-row">
+                                    <div class="col-sm-6">
+                                        <div class="panel panel-success">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title">普通胶囊式的Tab</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <ul class="nav nav-pills">
+                                                        <li class="active"><a href="#nav_pill_1" data-toggle="tab">Button 1</a></li>
+                                                        <li><a href="#nav_pill_2" data-toggle="tab">Button 2</a></li>
+                                                        <li><a href="#nav_pill_3" data-toggle="tab">Button 3</a></li>
+                                                    </ul>
+                                                    <div class="tab-content fn-mt-15">
+                                                        <div class="tab-pane active" id="nav_pill_1">+++++++ Button 1 内容</div>
+                                                        <div class="tab-pane" id="nav_pill_2">+++++++ Button 2 内容</div>
+                                                        <div class="tab-pane" id="nav_pill_3">+++++++ Button 3 内容</div>
+                                                    </div>
+                                                </div>
+                                                <!--{ 代码 -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <p class="code-title"><b>代码</b></p>
+                                                        <code class="pretty-print no-mb">
+                                                            <ol>
+                                                                <li><span class="p">&lt;ul class="nav nav-pills"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li class="active"&gt;</span></li>
+                                                                <li><span class="p long-indent">&lt;a href="#nav_pill_1" data-toggle="tab"&gt;Button 1&lt;/a&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/ul&gt;</span></li>
+                                                                <li><span class="p">&lt;div class="tab-content"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;div class="tab-pane active" id="nav_pill_1"&gt;内容1&lt;/div&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/div&gt;</span></li>
+                                                            </ol>
+                                                        </code>
+                                                    </div>
+                                                </div>
+                                                <!--/ 代码 }-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ 普通胶囊式的Tab -->
+                                    <div class="col-sm-6">
+                                        <div class="panel panel-success">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title">胶囊式铺满容器的Tab</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <ul class="nav nav-pills nav-justified">
+                                                        <li class="active"><a href="#nav_pill_4" data-toggle="tab">Button 4</a></li>
+                                                        <li><a href="#nav_pill_5" data-toggle="tab">Button 5</a></li>
+                                                        <li><a href="#nav_pill_6" data-toggle="tab">Button 6</a></li>
+                                                    </ul>
+                                                    <div class="tab-content fn-mt-15">
+                                                        <div class="tab-pane active" id="nav_pill_4">+++++++ Button 4 内容</div>
+                                                        <div class="tab-pane" id="nav_pill_5">+++++++ Button 5 内容</div>
+                                                        <div class="tab-pane" id="nav_pill_6">+++++++ Button 6 内容</div>
+                                                    </div>
+                                                </div>
+                                                <!--{ 代码 -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <p class="code-title"><b>代码</b></p>
+                                                        <code class="pretty-print no-mb">
+                                                            <ol>
+                                                                <li><span class="p">&lt;ul class="nav nav-pills nav-justified"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;li class="active"&gt;</span></li>
+                                                                <li><span class="p long-indent">&lt;a href="#nav_pill_1" data-toggle="tab"&gt;Button 1&lt;/a&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;/li&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/ul&gt;</span></li>
+                                                                <li><span class="p">&lt;div class="tab-content"&gt;</span></li>
+                                                                <li><span class="p tx-indent">&lt;div class="tab-pane active" id="nav_pill_1"&gt;内容1&lt;/div&gt;</span></li>
+                                                                <li><span class="p tx-indent">...</span></li>
+                                                                <li><span class="p">&lt;/div&gt;</span></li>
+                                                            </ol>
+                                                        </code>
+                                                    </div>
+                                                </div>
+                                                <!--/ 代码 }-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ 胶囊式铺满容器的Tab -->
+                                </div>
+                            </div>
+                            <!--/ tab1-->
+                            <div class="tab-pane" id="tab_p2">
+                                <p>添加 data-toggle="tab" 或 data-toggle="pill" 到锚文本链接中。</p>
+                                <ul>
+                                    <li>添加 nav 和 nav-tabs 类到 ul 中，将会应用 Bootstrap 标签样式，</li>
+                                    <li>添加 nav 和 nav-pills 类到 ul 中，将会应用 Bootstrap 胶囊式样式。</li>
+                                </ul>
+                                <p><code>data-toggle="tab"</code>的代码如下：</p>
+                                <code class="pretty-print fn-mb-15">
+                                    <ol>
+                                        <li><span class="p">&lt;ul class="nav nav-tabs"&gt;</span></li>
+                                        <li><span class="p tx-indent">&lt;li class="active">&lt;a href="#tab_p1" data-toggle="tab"&gt;插件说明&lt;/a&gt;&lt;/li&gt;</span></li>
+                                        <li><span class="p tx-indent">&lt;li>&lt;a href="#tab_p2" data-toggle="tab"&gt;通过Data属性调用&lt;/a&gt;&lt;/li&gt;</span></li>
+                                        <li><span class="p tx-indent">...</span></li>
+                                        <li><span class="p">&lt;/ul&gt;</span></li>
+                                    </ol>
+                                </code>
+                                <p><code>data-toggle="pill"</code>的代码如下：</p>
+                                <code class="pretty-print">
+                                    <ol>
+                                        <li><span class="p">&lt;ul class="nav nav-pills"&gt;</span></li>
+                                        <li><span class="p tx-indent">&lt;li class="active">&lt;a href="#tab_p1" data-toggle="pill"&gt;插件说明&lt;/a&gt;&lt;/li&gt;</span></li>
+                                        <li><span class="p tx-indent">&lt;li>&lt;a href="#tab_p2" data-toggle="pill"&gt;通过Data属性调用&lt;/a&gt;&lt;/li&gt;</span></li>
+                                        <li><span class="p tx-indent">...</span></li>
+                                        <li><span class="p">&lt;/ul&gt;</span></li>
+                                    </ol>
+                                </code>
+                            </div>
+                            <!--/ tab2 -->
+                            <div class="tab-pane" id="tab_p3">
+                                <p>可以通过以下JS代码来调用：</p>
+                                <code class="pretty-print fn-mb-15">
+                                    <ol>
+                                        <li><span class="p">$('#myTab a').click(function (e) {</span></li>
+                                        <li><span class="p tx-indent">e.preventDefault()</span></li>
+                                        <li><span class="p tx-indent">$(this).tab('show')</span></li>
+                                        <li><span class="p">});</span></li>
+                                    </ol>
+                                </code>
+                                <p>下面的实例演示了以不同的方式来激活各个标签页：</p>
+                                <code class="pretty-print">
+                                    <ol>
+                                        <li><span class="p"><span class="s no-ml">// 通过名称选取标签页</span></span></li>
+                                        <li><span class="p">$('#myTab a[href="#profile"]').tab('show')</span></li>
+                                        <li><span class="p"><span class="s no-ml">// 选取第一个标签页</span></span></li>
+                                        <li><span class="p">$('#myTab a:first').tab('show')</span></li>
+                                        <li><span class="p"><span class="s no-ml">// 选取最后一个标签页</span></span></li>
+                                        <li><span class="p">$('#myTab a:last').tab('show')</span></li>
+                                        <li><span class="p"><span class="s no-ml">// 选取第三个标签页（从 0 开始索引）</span></span></li>
+                                        <li><span class="p">$('#myTab li:eq(2) a').tab('show')</span></li>
+                                    </ol>
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ row end-->
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_7');
+
+            //tab标签js调用
+            $('ul#myTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>表格 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>元素</li>
+            <li class="active">表格</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-table fn-mr-10"></i>表格</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                    <caption>表格类的说明，通过给 <code>&lt;table&gt;</code> 添加以下类或组合，会有不同的展现效果</caption>
+                    <thead>
+                        <tr>
+                            <th>类</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>.table</td>
+                        <td>为任意 <code>&lt;table&gt;</code> 添加基本样式 (只有横向分隔线)</td>
+                    </tr>
+                    <tr>
+                        <td>.table-striped</td>
+                        <td>在 <code>&lt;tbody&gt;</code> 内添加斑马线形式的条纹 ( IE8 不支持)</td>
+                    </tr>
+                    <tr>
+                        <td>.table-bordered</td>
+                        <td>为所有表格的单元格添加边框</td>
+                    </tr>
+                    <tr>
+                        <td>.table-hover</td>
+                        <td>在 <code>&lt;tbody&gt;</code> 内的任一行启用鼠标悬停状态</td>
+                    </tr>
+                    <tr>
+                        <td>.table-condensed</td>
+                        <td>让表格更加紧凑（即将内边距padding改小）</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h3>紧凑表格</h3>
+                <table class="table table-bordered table-condensed">
+                    <caption>如果想将 <code>&lt;table&gt;</code> 中的行和列的间距变小，可以给它添加类 <code>table-condensed</code>，效果如下：</caption>
+                    <thead>
+                        <tr class="success">
+                            <th class="text-center" width="4%">ID</th>
+                            <th>姓名</th>
+                            <th>外号</th>
+                            <th>手机</th>
+                            <th>QQ</th>
+                            <th>联系地址</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">1001</td>
+                            <td>黄药师</td>
+                            <td>东邪</td>
+                            <td>13658964785</td>
+                            <td>588588</td>
+                            <td>浙江省舟山桃花岛</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">1002</td>
+                            <td>欧阳锋</td>
+                            <td>西毒</td>
+                            <td>13796964355</td>
+                            <td>577577</td>
+                            <td>昆仑山东麓白驼山</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>紧凑表格代码</p>
+                <div class="highlight">
+                    <code class="pretty-print">
+                        <ol>
+                            <li><span class="p">&lt;table class=&quot;table table-condensed&quot;&gt;</span></li>
+                            <li><span class="p tx-indent">...</span></li>
+                            <li><span class="p">&lt;/table&gt;</span></li>
+                        </ol>
+                    </code>
+                </div>
+                <h3>状态类</h3>
+                <p>通过这些状态类可以为 <code>&lt;table&gt;</code> 中的行或单元格设置颜色。</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>
+                                <code>.active</code>
+                            </td>
+                            <td>鼠标悬停在行或单元格上时所设置的颜色</td>
+                        </tr>
+                        <tr class="success">
+                            <td>
+                                <code>.success</code>
+                            </td>
+                            <td>标识成功或积极的动作</td>
+                        </tr>
+                        <tr class="info">
+                            <td>
+                                <code>.info</code>
+                            </td>
+                            <td>标识普通的提示信息或动作</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>
+                                <code>.warning</code>
+                            </td>
+                            <td>标识警告或需要用户注意</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>
+                                <code>.danger</code>
+                            </td>
+                            <td>标识危险或潜在的带来负面影响的动作</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>响应式表格</h3>
+                <p>将任何 <code>.table</code> 元素包裹在 <code>.table-responsive</code> 元素内，即可创建响应式表格，其会在小屏幕设备上（小于768px）水平滚动（即有水平滚动条）；当屏幕大于 768px 宽度时，水平滚动条消失。</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center" width="4%">ID</th>
+                                <th>姓名</th>
+                                <th>外号</th>
+                                <th>手机</th>
+                                <th>QQ</th>
+                                <th>联系地址</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1001</td>
+                                <td>黄药师</td>
+                                <td>东邪</td>
+                                <td>13658964785</td>
+                                <td>588588</td>
+                                <td>浙江省舟山桃花岛</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1002</td>
+                                <td>欧阳锋</td>
+                                <td>西毒</td>
+                                <td>13796964355</td>
+                                <td>577577</td>
+                                <td>昆仑山东麓白驼山</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1003</td>
+                                <td>段智兴</td>
+                                <td>南帝</td>
+                                <td>13786964688</td>
+                                <td>566566</td>
+                                <td>云南大理</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1004</td>
+                                <td>洪七公</td>
+                                <td>北丐</td>
+                                <td>13476964677</td>
+                                <td>544544</td>
+                                <td>居无定所</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1005</td>
+                                <td>王重阳</td>
+                                <td>中神通</td>
+                                <td>13876884656</td>
+                                <td>555555</td>
+                                <td>陕西省终南山</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>响应式表格代码</p>
+                <div class="highlight">
+                    <code class="pretty-print">
+                        <ol>
+                            <li><span class="p">&lt;div class=&quot;table-responsive&quot;&gt;</span></li>
+                            <li><span class="p tx-indent">&lt;table class=&quot;table&quot;&gt;</span></li>
+                            <li><span class="p long-indent">...</span></li>
+                            <li><span class="p tx-indent">&lt;/table&gt;</span></li>
+                            <li><span class="p">&lt;/div&gt;</span></li>
+                        </ol>
+                    </code>
+                </div>
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- ZeroClipboard插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav1_4');
+        });
+    </script>
+</body>
+</html>

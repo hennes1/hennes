@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>Tour引导插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!-- Tour引导插件css -->
+    <link rel="stylesheet" href="../css/tour/bootstrap-tour.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">Tour引导插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>
+                    <i class="glyphicons glyphicons-nearby-square fn-mr-10"></i>Tour引导插件<small>（第三方bootstrap插件，提供了单独使用的文件）</small>
+                </h4>
+            </div>
+            <div class="panel-body tour-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="h-first">
+                            BootStrap Tour介绍
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm" id="run_tour">运行Tour</a>
+                        </h3>
+                        <div>
+                            BootStrap Tour是基于BootStrap的一个引导插件，调用方便。如果在不需要BootStrap的情况下调用，需要引入 <code>bootstrap-tour.js</code> 和 <code>bootstrap-tour.css</code>。
+                        </div>
+                        <h4>添加依赖文件</h4>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row sub-row">
+                            <div class="col-sm-6">
+                                <p>如果当前正在使用BootStrap框架，请先引入<code>bootstrap-tour.css</code> 和 <code>bootstrap-tour.js</code>：</p>
+                                <code class="pretty-print" id="bootstrap">
+                                    <ol>
+                                        <li><span class="p">&lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span></li>
+                                        <li><span class="p">&lt;link href=&quot;bootstrap-tour.css&quot; rel=&quot;stylesheet&quot;&gt;</span></li>
+                                        <li><span class="p">&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</span></li>
+                                        <li><span class="p">&lt;script src=&quot;bootstrap.min.js&quot;&gt;&lt;/script&gt;</span></li>
+                                        <li><span class="p">&lt;script src=&quot;bootstrap-tour.js&quot;&gt;&lt;/script&gt;</span></li>
+                                    </ol>
+                                </code>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>如果单独使用，需引入 <code>bootstrap-tour-standalone.css</code> 和 <code>bootstrap-tour-standalone.js</code></p>
+                                <code class="pretty-print" id="standalone">
+                                    <ol>
+                                        <li><span class="p">&lt;link href=&quot;bootstrap-tour-standalone.css&quot; rel=&quot;stylesheet&quot;&gt;</span></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li><span class="p">&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</span></li>
+                                        <li><span class="p">&lt;script src=&quot;bootstrap-tour-standalone.js&quot;&gt;&lt;/script&gt;</span></li>
+                                    </ol>
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>配置Tour</h3>
+                        <div class="highlight">
+                            <code class="pretty-print" id="simple">
+                                <ol>
+                                    <li><span class="p"><span class="s no-ml">// 配置Tour</span></span></li>
+                                    <li><span class="p">var tour = new Tour({</span></li>
+                                    <li><span class="p tx-indent">storage: false,<span class="s">// 自定义不存储</span></span></li>
+                                    <li><span class="p tx-indent">steps: [</span></li>
+                                    <li><span class="p tx-indent">{</span></li>
+                                    <li><span class="p long-indent">element: "#my-element",<span class="s">// 目标元素id或class</span></span></li>
+                                    <li><span class="p long-indent">title: "Title of my step",<span class="s">// 步骤标题</span></span></li>
+                                    <li><span class="p long-indent">content: "Content of my step"<span class="s">// 步骤内容介绍</span></span></li>
+                                    <li><span class="p tx-indent">},</span></li>
+                                    <li><span class="p tx-indent">{</span></li>
+                                    <li><span class="p long-indent">element: "#my-other-element",</span></li>
+                                    <li><span class="p long-indent">title: "Title of my step",</span></li>
+                                    <li><span class="p long-indent">content: "Content of my step"</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p">]});</span></li>
+                                    <li></li>
+                                    <li><span class="p"><span class="s no-ml">// 初始化Tour</span></span></li>
+                                    <li><span class="p">tour.init();</span></li>
+                                    <li></li>
+                                    <li><span class="p"><span class="s no-ml">// 运行Tour</span></span></li>
+                                    <li><span class="p">tour.start();</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>全部参数说明</h3>
+                        <code class="pretty-print" id="minute">
+                            <ol>
+                                <li><span class="p">var tour = new Tour({</span></li>
+                                <li><span class="p tx-indent">name: "tour"<span class="s">// 同一页面和应用程序中初始化具有不同名称的多个引导 <code>String</code></span></span></li>
+                                <li><span class="p tx-indent">steps: []<span class="s">// 引导的个数 <code>Array</code></span></span></li>
+                                <li><span class="p tx-indent">container: "body"<span class="s">// 引导窗口附加到特定元素上 <code>String</code></span></span></li>
+                                <li><span class="p tx-indent">smartPlacement: true<span class="s">// 默认情况下，它会通过为展示位置指定自动每次动态重定向弹出框 <code>Boolean</code></span></span></li>
+                                <li><span class="p tx-indent">autoscroll: true<span class="s">// 引导窗口不在视图中时，自动滚动窗口 <code>Boolean</code></span></span></li>
+                                <li><span class="p tx-indent">keyboard: true<span class="s">// 设置左右箭头导航 <code>Boolean</code></span></span></li>
+                                <li><span class="p tx-indent">storage: window.localStorage<span class="s">// 存储，可以设置false以禁用存储持久性（浏览从每次加载网页时开始）<code>Object</code></span></span></li>
+                                <li><span class="p tx-indent">debug: false<span class="s">// 错误报告 <code>Boolean</code></span></span></li>
+                                <li><span class="p tx-indent">backdrop: false<span class="s">// 是否显示透明背景 <code>Boolean</code></span></span></li>
+                                <li><span class="p tx-indent">backdropContainer: 'body'<span class="s">// 显示背景的HTML元素 <code>String (jQuery selector)</code></span></span></li>
+                                <li><span class="p tx-indent">backdropPadding: 0<span class="s">// 高亮文字的填充，<code>Number|Object(numbers|top|right|bottom|left)</code></span></span></li>
+                                <li><span class="p tx-indent">redirect: true<span class="s">// 自定义重定向函数 <code>Boolean|Function</code></span></span></li>
+                                <li><span class="p tx-indent">orphan: false<span class="s">// 允许显示步骤，不管其是否设置 <code>Boolean|String|function</code></span></span></li>
+                                <li><span class="p tx-indent">duration: false<span class="s">// 设置步骤的到期时间；当前步骤到期时，将自动显示下一步；该值以毫秒为单位指定 <code>Boolean|Number</code></span></span></li>
+                                <li><span class="p tx-indent">delay: false<span class="s">// 显示和隐藏步骤的延迟 <code>Boolean|Number</code></span></span></li>
+                                <li><span class="p tx-indent">basePath: ""<span class="s">// 指定每个步骤的path选项前面的默认基本路径 <code>String</code></span></span></li>
+                                <li><span class="p tx-indent">template: ""<span class="s">// 引导的模板 <code>String|Function</code></span></span></li>
+                                <li><span class="p tx-indent">afterGetState: function (key, value) {}</span></li>
+                                <li><span class="p tx-indent">afterSetState: function (key, value) {}</span></li>
+                                <li><span class="p tx-indent">afterRemoveState: function (key, value) {}</span></li>
+                                <li><span class="p tx-indent">onStart: function (tour) {}<span class="s">// 引导开始时执行</span></span></li>
+                                <li><span class="p tx-indent">onEnd: function (tour) {}<span class="s">// 引导结束时执行</span></span></li>
+                                <li><span class="p tx-indent">onShow: function (tour) {}<span class="s">// 显示每个步骤前执行</span></span></li>
+                                <li><span class="p tx-indent">onShown: function (tour) {}<span class="s">// 显示每个步骤后执行</span></span></li>
+                                <li><span class="p tx-indent">onHide: function (tour) {}<span class="s">// 隐藏每个步骤前执行</span></span></li>
+                                <li><span class="p tx-indent">onHidden: function (tour) {}<span class="s">// 隐藏每个步骤后执行</span></span></li>
+                                <li><span class="p tx-indent">onNext: function (tour) {}<span class="s">// 执行下一步</span></span></li>
+                                <li><span class="p tx-indent">onPrev: function (tour) {}<span class="s">// 执行上一步</span></span></li>
+                                <li><span class="p tx-indent">onPause: function (tour, duration) {}<span class="s">// 调用暂停时执行的函数； 第二个参数指剩余持续时间</span></span></li>
+                                <li><span class="p tx-indent">onResume: function (tour, duration) {}<span class="s">// 恢复时执行</span></span></li>
+                                <li><span class="p tx-indent">onRedirectError: function (tour) {}<span class="s">// 当存在重定向错误时执行</span></span></span></li>
+                                <li><span class="p">});</span></li>
+                            </ol>
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- Tour引导插件 -->
+    <script src="../js/plugins/bootStrapTour/bootstrap-tour.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_8');
+
+            var runLay = '#run_tour', $runBtn = $(runLay), pageGuide;
+
+            //Tour引导
+            pageGuide = new Tour({
+                storage: false, //window.localStorage
+                backdrop: true, //透明背景
+                backdropPadding: '5',
+                animation: true,
+                onStart: function() {
+                    return $runBtn.addClass("disabled", true);
+                },
+                onEnd: function() {
+                    return $runBtn.removeClass("disabled", true);
+                },
+                steps: [
+                    {
+                        element: "#bootstrap",
+                        title: "基于BootStrap使用时",
+                        placement: "right",
+                        content: "基于BootStrap使用时，需引入相关CSS和JS文件。"
+                    },
+                    {
+                        element: "#standalone",
+                        title: "单独使用时",
+                        placement: "left",
+                        content: "不依赖BootStrap时，需引入带有standalone的CSS和JS文件。"
+                    },
+                    {
+                        element: '#simple',
+                        title: '基本调用参数',
+                        placement: 'bottom',
+                        content: '做以下的一些基本设置，就可以调用引导了；详情参数会在下面的内容中讲到。'
+                    },
+                    {
+                        element: '#minute',
+                        title: '详细参数',
+                        placement: 'top',
+                        content: '以下的参数按照提示说明，可根据需要应用到项目中。'
+                    }
+                ]
+            }).init();
+
+            //运行Tour
+            $(document).on('click', runLay, function(e) {
+                e.preventDefault();
+                if ($(this).hasClass("disabled")) {
+                    return;
+                }
+                pageGuide.restart();
+            });
+        });
+    </script>
+</body>
+</html>

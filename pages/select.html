@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>select控件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/select2.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">select控件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-list-alt fn-mr-10"></i>select控件<small>（外部插件）</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form-horizontal fn-mt-15">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">姓名：</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="page_tle" name="page_tle">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">无搜索框：</label>
+                                <div class="col-sm-5">
+                                    <select name="status" class="select" data-search="true" style="width: 100%;">
+                                        <option></option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">性别：</label>
+                                <div class="col-sm-5">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="status" value="1"> 男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="status" value="2"> 女
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">爱好：</label>
+                                <div class="col-sm-5">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="chkbox_1" value="1"> 读书
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="chkbox_2" value="2"> 运动
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="chkbox_3" value="3"> 旅游
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" id="chkbox_4" value="4"> 睡觉
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">有搜索框：</label>
+                                <div class="col-sm-5">
+                                    <select name="status" class="select" style="width: 100%;">
+                                        <option></option>
+                                        <option value="1">广州小朋网络有限公司</option>
+                                        <option value="2">网易</option>
+                                        <option value="3">搜狐网络</option>
+                                        <option value="4">深圳市腾讯计算机系统有限公司</option>
+                                        <option value="5">阿里巴巴网络技术有限公司</option>
+                                        <option value="6">百度</option>
+                                        <option value="7">新浪</option>
+                                        <option value="8">上海盛大网络发展有限公司</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">可多选：</label>
+                                <div class="col-sm-5">
+                                    <select class="select" name="role_ids[]" multiple="multiple" style="width: 100%;">
+                                        <option value="1" selected>guest</option>
+                                        <option value="2">test</option>
+                                        <option value="3">admin</option>
+                                        <option value="4">那一剑的风情</option>
+                                        <option value="5">test123</option>
+                                        <option value="6" selected>test 预发布直发</option>
+                                        <option value="7">一望无极在此处 静待发生</option>
+                                        <option value="8">走自己的路，让别人无路可走</option>
+                                        <option value="34">数据统计</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">带有图标的：</label>
+                                <div class="col-sm-5">
+                                    <select class="select" name="has_ico" style="width: 100%;">
+                                        <option value="ICBC">中国工商银行</option>
+                                        <option value="ABC">中国农业银行</option>
+                                        <option value="CCB">中国建设银行</option>
+                                        <option value="BOC" selected>中国银行</option>
+                                        <option value="CMBC">中国民生银行</option>
+                                        <option value="CEB">中国光大银行</option>
+                                        <option value="CMB">招商银行</option>
+                                        <option value="CIB">兴业银行</option>
+                                        <option value="BCM">交通银行</option>
+                                        <option value="PSBC">中国邮政储蓄银行</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">select其它操作：</label>
+                                <div class="col-sm-5">
+                                    <select class="select" id="tag_select" multiple="multiple" style="width: 100%;">
+                                        <option value="2">test</option>
+                                        <option value="3">admin</option>
+                                        <option value="4">那一剑的风情</option>
+                                        <option value="5">test123</option>
+                                        <option value="6">test 预发布直发</option>
+                                        <option value="7">一望无极在此处 静待发生</option>
+                                        <option value="8">走自己的路，让别人无路可走</option>
+                                        <option value="34">数据统计</option>
+                                    </select>
+                                    <div class="help-block">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="javascript:void(0);" class="btn btn-default tag-item" data-value="7"><i>+</i>一望无极在此处 静待发生</a>
+                                            <a href="javascript:void(0);" class="btn btn-default tag-item" data-value="6"><i>+</i>test 预发布直发</a>
+                                            <a href="javascript:void(0);" class="btn btn-default tag-item" data-value="34"><i>+</i>数据统计</a>
+                                        </div>
+                                    </div>
+                                    <div class="help-block">
+                                        <div class="btn-group btn-group-sm fn-mt-5">
+                                            <a href="javascript:void(0);" class="btn btn-default open">打开Select</a>
+                                            <a href="javascript:void(0);" class="btn btn-default clear">清空Select</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-9 col-sm-offset-3">
+                                    <button type="button" class="btn btn-primary" id="ok_btn">
+                                        <i class="glyphicons glyphicons-ok fn-mr-5"></i>确定
+                                    </button>
+                                    <button type="reset" class="btn btn-default fn-ml-5" id="cancel_btn">
+                                        <i class="glyphicons glyphicons-repeat fn-mr-5"></i>取消
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--/ row end-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>使用说明：</h4>
+                        <div class="usage-cont">
+                            <ol>
+                                <li>
+                                    <p>请确定已经引入了 <code>select2.css</code> 和 <code>select2.min.js</code></p>
+                                </li>
+                                <li>
+                                    <p>给select加为class或id</p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p">&lt;select class="select" data-search="true" multiple="multiple" style="width: 100%;"&gt;</span></li>
+                                                <li><span class="p tx-indent">&lt;option&gt;&lt;/option&gt;</span></li>
+                                                <li><span class="p tx-indent">&lt;option value="2"&gt;测试&lt;/option&gt;</span></li>
+                                                <li><span class="p tx-indent">...</span></li>
+                                                <li><span class="p">&lt;select&gt;</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                    <p>
+                                        select默认情况下，下拉时是有搜索框的，如果不要搜索框可以加上 <code>data-search="true"</code><br />
+                                        如果要多选，须要加上 <code>multiple="multiple"</code>；最好可以去掉 <del><code>data-search="true"</code></del>，因为多选时，默认就有搜索功能
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>调用select</p>
+                                    <div class="highlight">
+                                        <code class="pretty-print">
+                                            <ol>
+                                                <li><span class="p">$(e).select2({</span></li>
+                                                <li><span class="p tx-indent">placeholder: '请选择'</span></li>
+                                                <li><span class="p">});</span></li>
+                                            </ol>
+                                        </code>
+                                    </div>
+                                    <p>
+                                        <code>e</code>：为select的class或id<br />
+                                        <code>placeholder</code>：为空时显示的文字；必须在select下第一个加空的 <code>&lt;option&gt;&lt;/option&gt;</code><br />
+                                        详情可查看本示例源码和common.js文件的<code>select2</code>部分
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>执行清空</p>
+                                    <p>当要清空时，要保证select下面没有空的 <code>&lt;option&gt;&lt;/option&gt;</code>，否则select上会出现没有值的 <code>X</code></p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!--/ row end-->
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- select2插件 -->
+    <script src="../js/plugins/select2/select2.min.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        //定义有图片时select下拉显示格式
+        function formatState (state) {
+            if (!state.id) { return state.text;}
+
+            var $state = $('<span><img src="../images/bank/'+ state.element.value.toLowerCase() +'.png" class="select-ico" />' + state.text + '</span>');
+            return $state;
+        }
+
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_2');
+
+            //执行有图片的select
+            $('select[name="has_ico"]').select2({
+                templateResult: formatState,
+                templateSelection: formatState
+            });
+
+            //点击标签执行select选择
+            var $tagSelect = $('#tag_select').select2();
+            $('.tag-item').click(function () {
+                var val = $(this).data('value');
+                $tagSelect.val(val).trigger('change');
+            });
+
+            //打开select
+            $('.open').click(function () {
+                $tagSelect.select2('open');
+            });
+
+            //清空select
+            $('.clear').on('click', function () {
+                $tagSelect.val(null).trigger("change");
+            });
+        });
+    </script>
+</body>
+</html>

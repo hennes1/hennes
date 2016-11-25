@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <title>网格系统 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav" id="header_nav"></nav>
+    <aside class="aside" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>元素</li>
+            <li class="active">网格系统</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-dice-6 fn-mr-10"></i>网格系统</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>网格系统介绍</h3>
+                        <p>网格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，用户的内容就可以放入这些创建好的布局中。下面就介绍一下 Bootstrap 网格系统的工作原理：</p>
+                        <ul>
+                            <li>“行（row）”必须包含在 <code>.container</code> （固定宽度）或 <code>.container-fluid</code> （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。</li>
+                            <li>通过“行（row）”在水平方向创建一组“列（column）”。</li>
+                            <li>内容应当放置于“列（column）”内，并且，只有“列（column）”可以作为行（row）”的直接子元素。</li>
+                            <li>类似 <code>.row</code> 和 <code>.col-xs-4</code> 这种预定义的类，可以用来快速创建网格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。</li>
+                            <li>通过为“列（column）”设置 <code>padding</code> 属性，从而创建列与列之间的间隔（gutter）。通过为 <code>.row</code> 元素设置负值 <code>margin</code> 从而抵消掉为 <code>.container</code> 元素设置的 <code>padding</code>，也就间接为“行（row）”所包含的“列（column）”抵消掉了<code>padding</code>。</li>
+                            <li>如果一“行（row）”中包含了的“列（column）”大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。</li>
+                        </ul>
+                        <h3>媒体查询</h3>
+                        <p>在网格系统中使用以下媒体查询（media query）来创建关键的分界点阈值。</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p"><span class="s no-ml">/* 超小屏幕（手机，小于 768px） */</span></span></li>
+                                    <li><span class="p"><span class="s no-ml">/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */</span></span></li>
+                                    <li></li>
+                                    <li><span class="p"><span class="s no-ml">/* 小屏幕（平板，大于等于 768px） */</span></span></li>
+                                    <li><span class="p">@media (min-width: 768px) { ... }</span></li>
+                                    <li></li>
+                                    <li><span class="p"><span class="s no-ml">/* 中等屏幕（桌面显示器，大于等于 992px） */</span></span></li>
+                                    <li><span class="p">@media (min-width: 992px) { ... }</span></li>
+                                    <li></li>
+                                    <li><span class="p"><span class="s no-ml">/* 大屏幕（大桌面显示器，大于等于 1200px） */</span></span></li>
+                                    <li><span class="p">@media (min-width: 1200px) { ... }</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p>偶尔也会在媒体查询代码中包含 max-width 从而将 CSS 的影响限制在更小范围的屏幕大小之内。</p>
+                        <h3>网格参数</h3>
+                        <p>通过下表可以详细查看 Bootstrap 的网格系统是如何在多种屏幕设备上工作的。</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        超小屏幕
+                                        <small>手机 (&lt;768px)</small>
+                                    </th>
+                                    <th>
+                                        小屏幕
+                                        <small>平板 (≥768px)</small>
+                                    </th>
+                                    <th>
+                                        中等屏幕
+                                        <small>桌面显示器 (≥992px)</small>
+                                    </th>
+                                    <th>
+                                        大屏幕
+                                        <small>大桌面显示器 (≥1200px)</small>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th class="text-nowrap">网格系统行为</th>
+                                    <td>总是水平排列</td>
+                                    <td colspan="3">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap"><code>.container</code> 最大宽度</th>
+                                    <td>None （自动）</td>
+                                    <td>750px</td>
+                                    <td>970px</td>
+                                    <td>1170px</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">类前缀</th>
+                                    <td><code>.col-xs-</code></td>
+                                    <td><code>.col-sm-</code></td>
+                                    <td><code>.col-md-</code></td>
+                                    <td><code>.col-lg-</code></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">列（column）数</th>
+                                    <td colspan="4">12</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">最大列（column）宽</th>
+                                    <td class="text-muted">自动</td>
+                                    <td>~62px</td>
+                                    <td>~81px</td>
+                                    <td>~97px</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">槽（gutter）宽</th>
+                                    <td colspan="4">30px （每列左右均有 15px）</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">可嵌套</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">偏移（Offsets）</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-nowrap">列排序</th>
+                                    <td colspan="4">是</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p>以下是上面参数的实例运用展示</p>
+                <ol>
+                    <li>
+                        <p><b class="text-primary">实例：从堆叠到水平排列</b><small class="text-muted">(≥992px)</small></p>
+                        <p>使用单一的一组 <code>.col-md-*</code> 网格类，就可以创建一个基本的网格系统，在手机和平板设备上一开始是堆叠在一起的（超小屏幕到小屏幕这一范围），在桌面（中等）屏幕设备上变为水平排列。所有“列（column）必须放在 ” .row 内。</p>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="box-placeholder">.col-md-1</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><div class="box-placeholder">.col-md-4</div></div>
+                            <div class="col-md-4"><div class="box-placeholder">.col-md-4</div></div>
+                            <div class="col-md-4"><div class="box-placeholder">.col-md-4</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><div class="box-placeholder">.col-md-6</div></div>
+                            <div class="col-md-4"><div class="box-placeholder">.col-md-4</div></div>
+                            <div class="col-md-2"><div class="box-placeholder">.col-md-2</div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><div class="box-placeholder">.col-md-3</div></div>
+                            <div class="col-md-7"><div class="box-placeholder">.col-md-7</div></div>
+                            <div class="col-md-2"><div class="box-placeholder">.col-md-2</div></div>
+                        </div>
+                    </li>
+                    <li>
+                        <p><b class="text-primary">实例：流式布局容器</b></p>
+                        <p>将最外面的布局元素 <code>.container</code> 修改为 <code>.container-fluid</code>，就可以将固定宽度的网格布局转换为 100% 宽度的布局。</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p">&lt;div class=&quot;container-fluid&quot;&gt;</span></li>
+                                    <li><span class="p tx-indent">&lt;div class=&quot;row&quot;&gt;</span></li>
+                                    <li><span class="p long-indent">...</span></li>
+                                    <li><span class="p tx-indent">&lt;/div&gt;</span></li>
+                                    <li><span class="p">&lt;/div&gt;</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                    </li>
+                    <li>
+                        <p><b class="text-primary">实例：移动设备和桌面屏幕</b></p>
+                        <p>是否不希望在小屏幕设备上所有列都堆叠在一起？那就使用针对超小屏幕<small class="text-muted">(<768px)</small>和中等屏幕<small class="text-muted">(≥992px)</small>设备所定义的类吧，即 <code>.col-xs-*</code> 和 <code>.col-md-*</code>。请看下面的实例</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                                <div class="box-placeholder">.col-xs-12 .col-md-8</div>
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                                <div class="box-placeholder">.col-xs-6 .col-md-4</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4">
+                                <div class="box-placeholder">.col-xs-6 .col-md-4</div>
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                                <div class="box-placeholder">.col-xs-6 .col-md-4</div>
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                                <div class="box-placeholder">.col-xs-6 .col-md-4</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="box-placeholder">.col-xs-6</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="box-placeholder">.col-xs-6</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <p><b class="text-primary">实例：手机、平板、桌面</b></p>
+                        <p>在上面案例的基础上，通过使用针对平板设备的 <code>.col-sm-*</code> 类，来创建更加动态和强大的布局。</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-8">
+                                <div class="box-placeholder">.col-xs-12 .col-sm-6 .col-md-8</div>
+                            </div>
+                            <div class="col-xs-6 col-md-4">
+                                <div class="box-placeholder">.col-xs-6 .col-md-4</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="box-placeholder">.col-xs-6 .col-sm-4</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="box-placeholder">.col-xs-6 .col-sm-4</div>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="box-placeholder">.col-xs-6 .col-sm-4</div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <p>基本上网格系统到这里就讲解得差不多了，像<b>列偏移</b> <code>.col-md-offset-*</code>、<b>嵌套列</b><small class="text-muted">（<code>.row</code> 元素和一系列 <code>.col-sm-*</code> 的组合）</small>和<b>列排序</b><small class="text-muted">（通过使用 <code>.col-md-push-*</code> 和 <code>.col-md-pull-*</code> 类）</small>等，如何灵活运用见人见智</p>
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <!-- 弹窗插件 -->
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- flash复制插件 -->
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <!-- 公用Js -->
+    <script src="../js/common.js"></script>
+    <script>
+        $(function(){
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav1_2');
+        });
+    </script>
+</body>
+</html>

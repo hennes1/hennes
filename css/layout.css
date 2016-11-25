@@ -8,7 +8,7 @@ a{ color:#333}a:hover{ color:#3598db}
 .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6{ margin-top: 2px; margin-bottom: 2px;}
 .current-page{ margin-top: -5px; margin-bottom: 10px;}
 /* head nav */
-.head-nav{ background: #3598db; margin-bottom: 0;}
+.head-nav{ background-color: #3598db; margin-bottom: 0;}
 .head-nav .nav>li>a{ color: #9bccee; height: 60px; line-height: 30px;}
 .head-nav .nav .open>a, .head-nav .nav .open>a:focus, .head-nav .nav .open>a:hover{ border-color: transparent;}
 .navbar-brand{
@@ -61,6 +61,12 @@ a{ color:#333}a:hover{ color:#3598db}
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+.hd-loading, .sd-loading{
+    background-image: url(/hennes/images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.hd-loading{ height: 60px;}
 /* sidebar */
 .aside{
     background-color: #fff;

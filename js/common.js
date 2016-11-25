@@ -171,13 +171,18 @@ var Hennes = {
         var $headNav = $('#header_nav'), //头部菜单id
             $sideNav = $('#side_nav'); //侧边菜单id
 
+        $headNav.addClass('hd-loading');
+        $sideNav.addClass('sd-loading');
         //如果有头部菜单
         if($headNav.length === 1){
             if(topID === 'header'){
-                $headNav.load(root + 'include/header.html');
+                $headNav.load(root + 'include/header.html', function () {
+                    $(this).removeClass('hd-loading');
+                });
             }
             if(typeof topID !== 'undefined') {
                 $headNav.load(root + 'include/header.html', function () {
+                    $(this).removeClass('hd-loading');
                     Hennes.currNav(topID);
                 });
             }
@@ -189,6 +194,7 @@ var Hennes = {
                 return false;
             }else{
                 $sideNav.load(root + 'include/sideBar.html', function () {
+                    $sideNav.removeClass('sd-loading');
                     setTimeout(function () {
                         Hennes.currNav(sideID);
                     }, 600);

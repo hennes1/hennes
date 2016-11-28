@@ -191,8 +191,37 @@ var Hennes = {
             if(typeof sideID === 'undefined'){
                 return false;
             }else{
-                $sideNav.load(root + 'include/sideBar.html', function () {
-                    $sideNav.removeClass('sd-loading');
+                $.getJSON(root + 'json/indexData.json?v=' + new Date, function (data) {
+                    var html = '';
+                    html += '<div class="panel-group" id="accordion">';
+                    for(var i = 0, len = data.length; i < len; i++) {
+                        html += '<div class="panel panel-default">'
+                             +'     <div class="panel-heading">'
+                             +'         <h4 class="panel-title">'
+                             +'             <a data-toggle="collapse" data-parent="#accordion" href="#'+ data[i].name +'">'
+                             +'                 <i class="glyphicons '+ data[i].ico +' fn-mr-10"></i>'+ data[i].column +''
+                             +'             </a>'
+                             +'         </h4>'
+                             +'     </div>'
+                             +'     <div id="'+ data[i].name +'" class="panel-collapse collapse">'
+                             +'         <div class="panel-body">'
+                             +'             <ul class="nav navbar-nav">';
+                                            for(var n = 0; n < data[i].menu.length; n++){
+                                                html += '  <li id="side_nav'+ (i+1) +'_'+ (n+1) +'">'
+                                                     +'        <a href="/hennes/pages/'+ data[i].menu[n].link +'">'
+                                                     +'            <i class="glyphicons '+ data[i].menu[n].icoName +' fn-mr-10"></i>'
+                                                     +'            '+ data[i].menu[n].title +''
+                                                     +'        </a>'
+                                                     +'    </li>';
+                                            }
+                        html += '           </ul>'
+                             +'         </div>'
+                             +'     </div>'
+                             +' </div>';
+                    }
+                    html += '</div>';
+
+                    $sideNav.removeClass('sd-loading').append(html);
                     setTimeout(function () {
                         Hennes.currNav(sideID);
                     }, 600);

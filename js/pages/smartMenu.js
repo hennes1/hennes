@@ -77,7 +77,7 @@ $(function () {
         var html = '';
         var loading = layer.load(0, {shade: false});
 
-        $.getJSON('../json/smartData.json', function (data) {
+        $.getJSON('../json/smartData.json?v=' + new Date, function (data) {
             html += '<table class="table table-bordered table-striped table-hover">'
                 +'  <thead>'
                 +'      <tr>'

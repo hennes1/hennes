@@ -1,65 +1,121 @@
 [
   {
-    "title": "字体图标",
-    "icoName": "glyphicons-font",
-    "icoColor": "text-info",
-    "description": "点击所选图标，就可将其粘贴至所需之处使用，前提是先引入其CSS！",
-    "link": "font.html"
+    "column": "元素",
+    "name": "element",
+    "ico": "glyphicons-flower",
+    "menu": [
+      {
+        "title": "字体图标",
+        "icoName": "glyphicons-font",
+        "icoColor": "text-info",
+        "description": "点击所选图标，就可将其粘贴至所需之处使用，前提是先引入其CSS！",
+        "link": "font.html"
+      },
+      {
+        "title": "网格系统",
+        "icoName": "glyphicons-dice-6",
+        "icoColor": "text-muted",
+        "description": "......",
+        "link": "grid.html"
+      },
+      {
+        "title": "表单",
+        "icoName": "glyphicons-notes",
+        "icoColor": "text-info",
+        "description": "......",
+        "link": "form.html"
+      },
+      {
+        "title": "表格",
+        "icoName": "glyphicons-table",
+        "icoColor": "text-muted",
+        "description": "......",
+        "link": "table.html"
+      },
+      {
+        "title": "辅助类",
+        "icoName": "glyphicons-beach-umbrella",
+        "icoColor": "text-success",
+        "description": "......",
+        "link": "assist.html"
+      },
+      {
+        "title": "按钮",
+        "icoName": "glyphicons-hand-up",
+        "icoColor": "text-primary",
+        "description": "......",
+        "link": "button.html"
+      }
+    ]
   },
   {
-    "title": "右键菜单",
-    "icoName": "glyphicons-list",
-    "icoColor": "text-success",
-    "description": "单独JS和CSS，可自定义标题、图标样式（可选）和对应功能操作！",
-    "link": "smartMenu.html"
-  },
-  {
-    "title": "Select控件",
-    "icoName": "glyphicons-list-alt",
-    "icoColor": "text-muted",
-    "description": "下拉框选择插件，功能强大；提供单选、多选及其它一些实用功能等。",
-    "link": "select.html"
-  },
-  {
-    "title": "日历插件",
-    "icoName": "glyphicons-calendar",
-    "icoColor": "text-danger",
-    "description": "此为Bootstrap自有插件，本站进行了JS和CSS完全分离，可直接使用！",
-    "link": "calendar.html"
-  },
-  {
-    "title": "scrollSpy插件",
-    "icoName": "glyphicons-mouse-scroll",
-    "icoColor": "text-warning",
-    "description": "此为Bootstrap的滚动监听插件，调用简单，可以剥离出来单独使用。",
-    "link": "scrollSpy.html"
-  },
-  {
-    "title": "slimScroll插件",
-    "icoName": "glyphicons-reflect-y",
-    "icoColor": "text-info",
-    "description": "此为第三方滚动条插件，提供了较多用户可自定义的参数，值得拥有。",
-    "link": "slimScroll.html"
-  },
-  {
-    "title": "Affix粘附导航",
-    "icoName": "glyphicons-lasso",
-    "icoColor": "text-warning",
-    "description": "此为Bootstrap的粘附导航插件，调用简单，可以剥离出来单独使用。",
-    "link": "Affix.html"
-  },
-  {
-    "title": "Tab插件",
-    "icoName": "glyphicons-puzzle",
-    "icoColor": "text-success",
-    "description": "此为Bootstrap的标签切换插件，调用简单，可以剥离出来单独使用。",
-    "link": "tab.html"
-  },
-  {
-    "title": "Tour引导插件",
-    "icoName": "glyphicons-nearby-square",
-    "icoColor": "text-primary",
-    "description": "可不依赖Bootstrap，单独拿后缀名带有standalone的JS和CSS使用。",
-    "link": "tour.html"
+    "column": "插件控件",
+    "name": "plugins",
+    "ico": "glyphicons-magic",
+    "menu": [
+      {
+        "title": "右键菜单",
+        "icoName": "glyphicons-list",
+        "icoColor": "text-success",
+        "description": "单独JS和CSS，可自定义标题、图标样式（可选）和对应功能操作！",
+        "link": "smartMenu.html"
+      },
+      {
+        "title": "Select控件",
+        "icoName": "glyphicons-list-alt",
+        "icoColor": "text-muted",
+        "description": "下拉框选择插件，功能强大；提供单选、多选及其它一些实用功能等。",
+        "link": "select.html"
+      },
+      {
+        "title": "日历插件",
+        "icoName": "glyphicons-calendar",
+        "icoColor": "text-danger",
+        "description": "此为Bootstrap自有插件，本站进行了JS和CSS完全分离，可直接使用！",
+        "link": "calendar.html"
+      },
+      {
+        "title": "scrollSpy",
+        "icoName": "glyphicons-mouse-scroll",
+        "icoColor": "text-warning",
+        "description": "此为Bootstrap的滚动监听插件，调用简单，可以剥离出来单独使用。",
+        "link": "scrollSpy.html"
+      },
+      {
+        "title": "slimScroll",
+        "icoName": "glyphicons-reflect-y",
+        "icoColor": "text-info",
+        "description": "此为第三方滚动条插件，提供了较多用户可自定义的参数，值得拥有。",
+        "link": "slimScroll.html"
+      },
+      {
+        "title": "Affix粘附导航",
+        "icoName": "glyphicons-lasso",
+        "icoColor": "text-warning",
+        "description": "此为Bootstrap的粘附导航插件，调用简单，可以剥离出来单独使用。",
+        "link": "Affix.html"
+      },
+      {
+        "title": "Tab插件",
+        "icoName": "glyphicons-puzzle",
+        "icoColor": "text-success",
+        "description": "此为Bootstrap的标签切换插件，调用简单，可以剥离出来单独使用。",
+        "link": "tab.html"
+      },
+      {
+        "title": "Tour引导插件",
+        "icoName": "glyphicons-nearby-square",
+        "icoColor": "text-primary",
+        "description": "可不依赖Bootstrap，单独拿后缀名带有standalone的JS和CSS使用。",
+        "link": "tour.html"
+      },
+      {
+        "title": "ZeroClipboard",
+        "icoName": "glyphicons-duplicate",
+        "icoColor": "text-success",
+        "description": "......",
+        "link": "zeroClipboard.html"
+      }
+    ]
   }
 ]

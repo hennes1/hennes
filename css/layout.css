@@ -7,6 +7,8 @@ body{ background-color: #f5f7fa;}
 a{ color:#333}a:hover{ color:#3598db}
 .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6{ margin-top: 2px; margin-bottom: 2px;}
 .current-page{ margin-top: -5px; margin-bottom: 10px;}
+.blockquote-reverse.index-quote{ border-right-color: #ace1ff; margin-bottom: 0; padding: 0 15px 0 0;}
+.blockquote-reverse.index-quote footer:after{ content: "";}
 /* head nav */
 .head-nav{ background-color: #3598db; margin-bottom: 0;}
 .head-nav .nav>li>a{ color: #9bccee; height: 60px; line-height: 30px;}
@@ -90,6 +92,7 @@ a{ color:#333}a:hover{ color:#3598db}
     border-radius: 0;
     border: 0;
     margin-top: 2px!important;
+    margin-bottom: 0;
     box-shadow: none;
     -webkit-box-shadow: none;
 }

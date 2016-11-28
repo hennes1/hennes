@@ -425,8 +425,6 @@ if (typeof jQuery === 'undefined') {
  * Bootstrap: collapse.js v3.3.7
  * ======================================================================== */
 
-/* jshint latedef: false */
-
 +function ($) {
   'use strict';
 

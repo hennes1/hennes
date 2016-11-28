@@ -200,7 +200,7 @@ p{margin: 0 0 10px}
     font-weight: 300;
     line-height: 1.4
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .lead { font-size: 21px}
 }
 small, .small{font-size: 85%}
@@ -252,7 +252,7 @@ dl{margin-top: 0; margin-bottom: 20px}
 dt, dd{line-height: 1.42857143}
 dt{font-weight: 700}
 dd{margin-left: 0}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .dl-horizontal dt {
         float: left;
         width: 160px;
@@ -346,7 +346,7 @@ pre code {
     margin-right: auto;
     margin-left: auto
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .container { width: 750px}
 }
 @media (min-width: 992px) {
@@ -924,7 +924,7 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
     margin-bottom: 10px;
     color: #737373
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .form-inline .form-group {
         display: inline-block;
         margin-bottom: 0;
@@ -954,7 +954,7 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
 .form-horizontal .radio, .form-horizontal .checkbox { min-height: 27px}
 .form-horizontal .form-group { margin-right: -15px; margin-left: -15px}
 
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .form-horizontal .control-label {
         padding-top: 7px;
         margin-bottom: 0;
@@ -962,8 +962,8 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
     }
 }
 .form-horizontal .has-feedback .form-control-feedback{right: 15px}
-@media (min-width: 360px){.form-horizontal .form-group-lg .control-label{padding-top: 14.3px}}
-@media (min-width: 360px){.form-horizontal .form-group-sm .control-label{padding-top: 6px}}
+@media (min-width: 768px){.form-horizontal .form-group-lg .control-label{padding-top: 14.3px}}
+@media (min-width: 768px){.form-horizontal .form-group-sm .control-label{padding-top: 6px}}
 /* btn */
 .btn {
     display: inline-block;
@@ -1277,7 +1277,7 @@ tbody.collapse.in{display: table-row-group}
     bottom: 100%;
     margin-bottom: 1px
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-right .dropdown-menu { right: 0; left: auto}
     .navbar-right .dropdown-menu-left { right: auto; left: 0}
 }
@@ -1485,7 +1485,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 .nav-tabs.nav-justified > li{float: none}
 .nav-tabs.nav-justified > li > a{margin-bottom: 5px; text-align: center}
 .nav-tabs.nav-justified > .dropdown .dropdown-menu{top: auto; left: auto}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .nav-tabs.nav-justified > li{display: table-cell; width: 1%}
     .nav-tabs.nav-justified > li > a{margin-bottom: 0}
 }
@@ -1493,7 +1493,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
     border: 1px solid #ddd
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .nav-tabs.nav-justified > li > a {
         border-bottom: 1px solid #ddd;
         border-radius: 4px 4px 0 0
@@ -1512,7 +1512,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 .nav-justified > li{float: none}
 .nav-justified > li > a{margin-bottom: 5px; text-align: center}
 .nav-justified > .dropdown .dropdown-menu{top: auto; left: auto}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .nav-justified > li {
         display: table-cell;
         width: 1%
@@ -1522,7 +1522,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 .nav-tabs-justified{border-bottom: 0}
 .nav-tabs-justified > li > a{margin-right: 0; border-radius: 4px}
 .nav-tabs-justified > .active > a, .nav-tabs-justified > .active > a:hover, .nav-tabs-justified > .active > a:focus{border: 1px solid #ddd}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .nav-tabs-justified > li > a {
         border-bottom: 1px solid #ddd;
         border-radius: 4px 4px 0 0
@@ -1550,10 +1550,10 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     margin-bottom: 20px;
     border: 1px solid transparent
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar { border-radius: 4px}
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-header { float: left}
 }
 .navbar-collapse {
@@ -1566,7 +1566,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1)
 }
 .navbar-collapse.in { overflow-y: auto}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-collapse {
         width: auto;
         border-top: 0;
@@ -1594,14 +1594,14 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     margin-right: -15px;
     margin-left: -15px
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
         margin-right: 0;
         margin-left: 0
     }
 }
 .navbar-static-top { z-index: 1000; border-width: 0 0 1px}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-static-top { border-radius: 0}
 }
 .navbar-fixed-top, .navbar-fixed-bottom {
@@ -1610,7 +1610,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     left: 0;
     z-index: 1030
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-fixed-top, .navbar-fixed-bottom { border-radius: 0}
 }
 .navbar-fixed-top { top: 0; border-width: 0 0 1px}
@@ -1628,7 +1628,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 }
 .navbar-brand:hover, .navbar-brand:focus { text-decoration: none}
 .navbar-brand > img { display: block}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand { margin-left: -15px}
 }
 .navbar-toggle {
@@ -1651,7 +1651,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     border-radius: 1px
 }
 .navbar-toggle .icon-bar + .icon-bar { margin-top: 4px}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-toggle { display: none }
 }
 .navbar-nav {
@@ -1683,7 +1683,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
         background-image: none
     }
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-nav{float: left; margin: 0}
     .navbar-nav > li{float: left}
     .navbar-nav > li > a{padding-top: 15px; padding-bottom: 15px}
@@ -1700,7 +1700,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1)
 }
 
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-form .form-group{display: inline-block; margin-bottom: 0; vertical-align: middle}
     .navbar-form .form-control{display: inline-block; width: auto; vertical-align: middle}
     .navbar-form .form-control-static{display: inline-block}
@@ -1717,7 +1717,7 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
     .navbar-form .form-group { margin-bottom: 5px}
     .navbar-form .form-group:last-child { margin-bottom: 0}
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-form {
         width: auto;
         padding-top: 0;
@@ -1739,14 +1739,14 @@ select[multiple].input-group-sm > .input-group-addon, select[multiple].input-gro
 .navbar-btn.btn-sm{margin-top: 10px; margin-bottom: 10px}
 .navbar-btn.btn-xs{margin-top: 14px; margin-bottom: 14px}
 .navbar-text{margin-top: 15px; margin-bottom: 15px}
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-text {
         float: left;
         margin-right: 15px;
         margin-left: 15px
     }
 }
-@media (min-width: 360px) {
+@media (min-width: 768px) {
     .navbar-left { float: left !important}
     .navbar-right { float: right !important; margin-right: -15px}
     .navbar-right ~ .navbar-right { margin-right: 0}
@@ -2000,7 +2000,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge{color: #359
 .container .jumbotron, .container-fluid .jumbotron{border-radius: 6px}
 .jumbotron .container{max-width: 100%}
 
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 768px) {
     .jumbotron{padding: 48px 0}
     .container .jumbotron{padding-right: 60px; padding-left: 60px}
     .jumbotron h1, .jumbotron .h1{font-size: 63px}
@@ -2667,14 +2667,14 @@ button.close {
     outline: 0;
     opacity: .9
 }
-.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicons-chevron-right {
     position: absolute;
     top: 50%;
     z-index: 5;
     display: inline-block
 }
-.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left{left: 50%; margin-left: -10px}
-.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right{right: 50%; margin-right: -10px}
+.carousel-control .icon-prev, .carousel-control .glyphicons-chevron-left{left: 50%; margin-left: -10px}
+.carousel-control .icon-next, .carousel-control .glyphicons-chevron-right{right: 50%; margin-right: -10px}
 .carousel-control .icon-prev, .carousel-control .icon-next {
     width: 20px;
     height: 20px;
@@ -2725,16 +2725,16 @@ button.close {
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6)
 }
 .carousel-caption .btn { text-shadow: none}
-@media screen and (min-width: 360px) {
-    .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right,
+@media screen and (min-width: 768px) {
+    .carousel-control .glyphicons-chevron-left, .carousel-control .glyphicons-chevron-right,
     .carousel-control .icon-prev, .carousel-control .icon-next {
         width: 30px;
         height: 30px;
         margin-top: -15px;
         font-size: 30px
     }
-    .carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev { margin-left: -15px}
-    .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next { margin-right: -15px}
+    .carousel-control .glyphicons-chevron-left, .carousel-control .icon-prev { margin-left: -15px}
+    .carousel-control .glyphicons-chevron-right, .carousel-control .icon-next { margin-right: -15px}
     .carousel-caption {
         right: 20%;
         left: 20%;
@@ -2777,15 +2777,15 @@ button.close {
     tr.visible-xs{display: table-row !important}
     th.visible-xs, td.visible-xs{display: table-cell !important}
 }
-@media (min-width: 360px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px){
     .visible-sm{display: block !important}
     table.visible-sm{display: table}
     tr.visible-sm{display: table-row !important}
     th.visible-sm, td.visible-sm{display: table-cell !important}
 }
-@media (min-width: 360px) and (max-width: 991px){.visible-sm-block{display: block !important}}
-@media (min-width: 360px) and (max-width: 991px){.visible-sm-inline{display: inline !important}}
-@media (min-width: 360px) and (max-width: 991px){.visible-sm-inline-block{display: inline-block !important}}
+@media (min-width: 768px) and (max-width: 991px){.visible-sm-block{display: block !important}}
+@media (min-width: 768px) and (max-width: 991px){.visible-sm-inline{display: inline !important}}
+@media (min-width: 768px) and (max-width: 991px){.visible-sm-inline-block{display: inline-block !important}}
 @media (min-width: 992px) and (max-width: 1199px){
     .visible-md{display: block !important}
     table.visible-md{display: table}
@@ -2805,7 +2805,7 @@ button.close {
 @media (min-width: 1200px){.visible-lg-inline{display: inline !important}}
 @media (min-width: 1200px){.visible-lg-inline-block{display: inline-block !important}}
 @media (max-width: 767px){.hidden-xs{display: none !important}}
-@media (min-width: 360px) and (max-width: 991px){.hidden-sm{display: none !important}}
+@media (min-width: 768px) and (max-width: 991px){.hidden-sm{display: none !important}}
 @media (min-width: 992px) and (max-width: 1199px){.hidden-md{display: none !important}}
 @media (min-width: 1200px){.hidden-lg{display: none !important}}
 .visible-print{display: none !important}

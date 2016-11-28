@@ -191,7 +191,7 @@ var Hennes = {
             if(typeof sideID === 'undefined'){
                 return false;
             }else{
-                $.getJSON(root + 'json/indexData.json?v=' + new Date, function (data) {
+                $.getJSON(root + 'json/indexData.json', function (data) {
                     var html = '';
                     html += '<div class="panel-group" id="accordion">';
                     for(var i = 0, len = data.length; i < len; i++) {

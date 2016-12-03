@@ -1,23 +1,57 @@
-
-/* Carousel base class */
-.carousel {
-    height: 410px;
-    margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    z-index: 10;
+.navbar-wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-    height: 410px;
-    background-color: #777;
+.navbar-wrapper > .container{ padding-right: 0; padding-left: 0;}
+.navbar-wrapper .navbar{ padding-right: 15px; padding-left: 15px;}
+.navbar-wrapper .navbar .container{ width: auto;}
+@media (min-width: 768px) {
+    .navbar-wrapper{ margin-top: 20px;}
+    .navbar-wrapper .container{ padding-right: 15px; padding-left: 15px;}
+    .navbar-wrapper .navbar{ padding-right: 0; padding-left: 0;}
+    .navbar-wrapper .navbar{ border-radius: 4px;}
 }
-.carousel-inner > .item > img {
+/* Carousel */
+.carousel{ background-color: #dedede; height: 410px; margin-bottom: 20px;}
+.carousel-caption{ z-index: 10;}
+.carousel .item{ height: 410px; background-color: #777;}
+.carousel-inner > .item > img{
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 500px;
+    height: 410px;
 }
+.carousel-control{
+    transition: all linear .2s;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .5s;
+    -o-transition: all linear .5s;
+}
+.carousel-control, .carousel-control:focus{ opacity: 0; filter: alpha(opacity=0);}
+.carousel:hover .carousel-control{ opacity: .4; filter: alpha(opacity=40);}
+
+/* wrap */
+.loading{
+    background-image: url(../js/plugins/layer/skin/default/loading-0.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding: 100px 0;
+}
+.section-item{ padding-bottom: 30px;}
+.section-item1, .section-item3{ background-color: #f3f6fb;}
+.caption h4{
+    line-height: 22px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+.caption h4 a{ color: #333;}.caption h4 a:hover{ color: #3598db; text-decoration: none;}
+.caption p{ margin: 0;}

@@ -1,0 +1,134 @@
+[
+  {
+    "column": "精品公开课",
+    "list": [
+      {
+        "image": "../images/prd/001.jpg",
+        "title": "Photoshop人像后期处理基础课程",
+        "lector": "黄俊龙",
+        "url": "javascript:void(0);",
+        "other": "技能侠设计学院"
+      },
+      {
+        "image": "../images/prd/002.jpg",
+        "title": "Photography我的第一堂摄影课",
+        "lector": "彭伟",
+        "url": "javascript:void(0);",
+        "other": "视频特效设计学院"
+      },
+      {
+        "image": "../images/prd/003.jpg",
+        "title": "电子商务 淘宝运营班",
+        "lector": "吴洁",
+        "url": "javascript:void(0);",
+        "other": "电商学院"
+      },
+      {
+        "image": "../images/prd/004.jpg",
+        "title": "PS+SAI人物转手绘进阶班",
+        "lector": "覃艳花",
+        "url": "javascript:void(0);",
+        "other": "人物转手绘"
+      }
+    ]
+  },
+  {
+    "column": "设计创作",
+    "list": [
+      {
+        "image": "../images/prd/002.jpg",
+        "title": "Photography我的第一堂摄影课",
+        "lector": "彭伟",
+        "url": "javascript:void(0);",
+        "other": "视频特效设计学院"
+      },
+      {
+        "image": "../images/prd/001.jpg",
+        "title": "Photoshop人像后期处理基础课程",
+        "lector": "黄俊龙",
+        "url": "javascript:void(0);",
+        "other": "技能侠设计学院"
+      },
+      {
+        "image": "../images/prd/004.jpg",
+        "title": "PS+SAI人物转手绘进阶班",
+        "lector": "覃艳花",
+        "url": "javascript:void(0);",
+        "other": "人物转手绘"
+      },
+      {
+        "image": "../images/prd/003.jpg",
+        "title": "电子商务 淘宝运营班",
+        "lector": "吴洁",
+        "url": "javascript:void(0);",
+        "other": "电商学院"
+      }
+    ]
+  },
+  {
+    "column": "IT互联网",
+    "list": [
+      {
+        "image": "../images/prd/003.jpg",
+        "title": "电子商务 淘宝运营班",
+        "lector": "吴洁",
+        "url": "javascript:void(0);",
+        "other": "电商学院"
+      },
+      {
+        "image": "../images/prd/002.jpg",
+        "title": "Photography我的第一堂摄影课",
+        "lector": "彭伟",
+        "url": "javascript:void(0);",
+        "other": "视频特效设计学院"
+      },
+      {
+        "image": "../images/prd/001.jpg",
+        "title": "Photoshop人像后期处理基础课程",
+        "lector": "黄俊龙",
+        "url": "javascript:void(0);",
+        "other": "技能侠设计学院"
+      },
+      {
+        "image": "../images/prd/004.jpg",
+        "title": "PS+SAI人物转手绘进阶班",
+        "lector": "覃艳花",
+        "url": "javascript:void(0);",
+        "other": "人物转手绘"
+      }
+    ]
+  },
+  {
+    "column": "兴趣生活",
+    "list": [
+      {
+        "image": "../images/prd/004.jpg",
+        "title": "PS+SAI人物转手绘进阶班",
+        "lector": "覃艳花",
+        "url": "javascript:void(0);",
+        "other": "人物转手绘"
+      },
+      {
+        "image": "../images/prd/001.jpg",
+        "title": "Photoshop人像后期处理基础课程",
+        "lector": "黄俊龙",
+        "url": "javascript:void(0);",
+        "other": "技能侠设计学院"
+      },
+      {
+        "image": "../images/prd/002.jpg",
+        "title": "Photography我的第一堂摄影课",
+        "lector": "彭伟",
+        "url": "javascript:void(0);",
+        "other": "视频特效设计学院"
+      },
+      {
+        "image": "../images/prd/003.jpg",
+        "title": "电子商务 淘宝运营班",
+        "lector": "吴洁",
+        "url": "javascript:void(0);",
+        "other": "电商学院"
+      }
+    ]
+  }
+]

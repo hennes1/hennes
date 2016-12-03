@@ -10,70 +10,78 @@
     <title>非固定头部 - HennesProject</title>
     <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
     <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
-
+    <link rel="stylesheet" href="../css/single.css">
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.min.js"></script>
     <script src="../js/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="navbar-wrapper">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                    <span class="sr-only">导航切换</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/hennes/" class="navbar-brand">
-                    <i class="glyphicons glyphicons-leaf"></i> HennesProject
-                </a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="javascript:void(0);">链接</a></li>
-                    <li><a href="javascript:void(0);">链接</a></li>
-                    <li><a href="javascript:void(0);">链接</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">下拉菜单 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another action</a></li>
-                            <li><a href="javascript:void(0);">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="javascript:void(0);">Separated link</a></li>
-                            <li><a href="javascript:void(0);">One more separated link</a></li>
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                            <span class="sr-only">导航切换</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/hennes/" class="navbar-brand">
+                            <i class="glyphicons glyphicons-leaf"></i> HennesProject
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="javascript:void(0);">链接</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">下拉菜单 <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Nav header</li>
+                                    <li><a href="javascript:void(0);">Separated link</a></li>
+                                    <li><a href="javascript:void(0);">One more separated link</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./">Default</a></li>
-                    <li class="active"><a href="static.html">Static Top</a></li>
-                    <li><a href="fixed.html">Fixed Top</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
-    <!--/ navbar end -->
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Navbar example</h1>
-            <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-            <p>
-                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs »</a>
-            </p>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="./">Default</a></li>
+                            <li class="active"><a href="static.html">Static Top</a></li>
+                            <li><a href="fixed.html">Fixed Top</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+            <!--/ navbar end -->
         </div>
     </div>
+    <!--{ carousel -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel"></div>
+    <!--/ carousel } -->
+    <div class="wrap full-wrap loading"></div>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/showCarousel.js"></script>
+    <script>
+        $('#myCarousel').showCarousel({
+            asBg: true,
+            asText: false,
+            slide: [
+                { url: 'javascript:void(0);', image: '../images/carousel/01.jpg', bgColor: '#b1b5a7', active: true},
+                { url: 'javascript:void(0);', image: '../images/carousel/02.jpg', bgColor: '#f7f7f7'},
+                { url: 'javascript:void(0);', image: '../images/carousel/03.jpg', bgColor: '#b0a48a'}
+            ]
+        });
 
-<script>
-    $(function(){
-
-    });
-</script>
+        //加载数据
+        $(window).on('load', function () {
+            singleData('.wrap');
+        });
+    </script>
 </body>
 </html>

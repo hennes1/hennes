@@ -33,8 +33,6 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="javascript:void(0);">链接</a></li>
-                        <li><a href="javascript:void(0);">链接</a></li>
                         <li><a href="javascript:void(0);">链接</a></li>
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">下拉菜单 <span class="caret"></span></a>
@@ -58,46 +56,29 @@
             </div><!--/.container-fluid -->
         </nav>
         <!--{ carousel -->
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0"></li>
-                <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item" style="background: #b1b5a7 url(../images/carousel/01.jpg) 50% 0 no-repeat;">
-                    <div class="container hide">
-                        <div class="carousel-caption text-left">
-                            <h1>标题</h1>
-                            <p>人想不通就是受罪，想通了就是幸福</p>
-                            <p><a class="btn btn-lg btn-primary" href="javascript:void(0);" role="button">Sign up today</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item active" style="background: #fff url(../images/carousel/02.jpg) 50% 0 no-repeat;"></div>
-                <div class="item" style="background: #b0a48a url(../images/carousel/03.jpg) 50% 0 no-repeat;"></div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicons glyphicons-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicons glyphicons-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000"></div>
         <!--/ carousel } -->
-
-
     </div>
+    <div class="wrap index-wrap loading"></div>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/showCarousel.js"></script>
+    <script>
+        $('#myCarousel').showCarousel({
+            asBg: true,
+            asText: false,
+            slide: [
+                { url: 'javascript:void(0);', image: '../images/carousel/01.jpg', bgColor: '#b1b5a7', active: true, title: "1111", content: "内容1内容1内容1"},
+                { url: 'javascript:void(0);', image: '../images/carousel/02.jpg', bgColor: '#f7f7f7', title: "2222", content: "内容2内容2内容2"},
+                { url: 'javascript:void(0);', image: '../images/carousel/03.jpg', bgColor: '#b0a48a', title: "333", content: "内容3内容3内容3"}
+            ]
+        });
 
-<script>
-    $(function(){
-
-    });
-</script>
+        //加载数据
+        $(window).on('load', function () {
+            singleData('.wrap');
+        });
+    </script>
 </body>
 </html>

@@ -78,40 +78,58 @@
     }
 })(jQuery);
 
-//页面数据
-function singleData(e) {
-    var $wrap = $(e), html = '';
+var HennesSingle = {
+    //当前菜单
+    currHd: function (ele) {
+        var $curLay = $('#' + ele);
+        $curLay.addClass('active');
+    },
+    //页面数据
+    singleData: function (e) {
+        var $wrap = $(e), html = '';
 
-    $.getJSON('../json/singleData.json', function (data) {
-        for(var i = 0, len = data.length; i < len; i++) {
-            html += '<div class="section-item section-item'+ (i+1) +'">'
-                +' <div class="container">'
-                + '<div class="page-header">'
-                +'     <h3>'+ data[i].column +'</h3>'
-                +' </div>'
-                +' <div class="row">';
-            for(var m = 0; m < data[i].list.length; m++) {
-                html += '<div class="col-xs-6 col-sm-6 col-md-3">'
-                    + '    <div class="thumbnail">'
-                    + '        <a href="'+ data[i].list[m].url +'">'
-                    + '            <img src="'+ data[i].list[m].image +'" alt="">'
-                    + '        </a>'
-                    + '        <div class="caption">'
-                    + '            <h4><a href="'+ data[i].list[m].url +'">'+ data[i].list[m].title +'</a></h4>'
-                    + '            <p class="text-muted">'
-                    + '                主讲人：'+ data[i].list[m].lector +'<a href="'+ data[i].list[m].url +'" class="pull-right text-primary" target="_blank">'+ data[i].list[m].other +'</a>'
-                    + '            </p>'
-                    + '        </div>'
-                    + '    </div>'
-                    + ' </div>';
+        $.getJSON('../json/singleData.json', function (data) {
+            for(var i = 0, len = data.length; i < len; i++) {
+                html += '<div class="section-item section-item'+ (i+1) +'">'
+                    +' <div class="container">'
+                    + '<div class="page-header">'
+                    +'     <h3>'+ data[i].column +'</h3>'
+                    +' </div>'
+                    +' <div class="row">';
+                for(var m = 0; m < data[i].list.length; m++) {
+                    html += '<div class="col-xs-6 col-sm-6 col-md-3 col-item">'
+                        + '    <div class="thumbnail">'
+                        + '        <a href="'+ data[i].list[m].url +'" class="col-img-a">'
+                        + '            <img src="'+ data[i].list[m].image +'" alt="">'
+                        + '             <div class="info">'
+                        + '                 <span>最近直播：'+ data[i].list[m].time +'</span>'
+                        + '             </div>'
+                        + '        </a>'
+                        + '        <div class="caption">'
+                        + '            <h4><a href="'+ data[i].list[m].url +'">'+ data[i].list[m].title +'</a></h4>'
+                        + '            <p class="text-muted">'
+                        + '                主讲人：'+ data[i].list[m].lector +'<a href="'+ data[i].list[m].url +'" class="pull-right text-primary" target="_blank">'+ data[i].list[m].other +'</a>'
+                        + '            </p>'
+                        + '        </div>'
+                        + '    </div>'
+                        + ' </div>';
+                }
+
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
             }
 
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-        }
-
-        //添加数据
-        $wrap.append(html).removeClass('loading');
-    });
-}
+            //添加数据
+            $wrap.append(html).removeClass('loading');
+        });
+    },
+    //加载头部
+    loadSingleHead: function (e, headID) {
+        $(e).load('../include/singleHead.html', function () {
+            setTimeout(function () {
+                HennesSingle.currHd(headID);
+            }, 300);
+        });
+    }
+};

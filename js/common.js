@@ -146,19 +146,18 @@ var Hennes = {
      * @html：追加数据的html
      */
     insertTrData: function (e, parentEle, sonEle, html) {
-        var $i = $(e).find('i'),
-            $currLay = $(e).parents(parentEle),
-            len = $currLay.find(sonEle).length;
+        var $i = $(e).find('i'), $currLay = $(e).parents(parentEle), len = $currLay.find(sonEle).length;
+        var jia = 'glyphicons-plus', jian = 'glyphicons-minus';
 
-        if($i.hasClass('glyphicons-plus')) {
+        if($i.hasClass(jia)) {
             var currHtml = '<tr class="detail-view"><td colspan="' + len + '">' + html + '</td></tr>';
             $('.detail-view').remove();
-            $currLay.siblings('tr').removeClass('selected').find('td:first-child').find('i').removeClass('glyphicons-minus').addClass('glyphicons-plus');
+            $currLay.siblings('tr').removeClass('selected').find('td:first-child').find('i').removeClass(jian).addClass(jia);
             $currLay.removeClass('selected').after(currHtml);
-            $i.removeClass('glyphicons-plus').addClass('glyphicons-minus');
+            $i.removeClass(jia).addClass(jian);
         }else{
             $currLay.next('.detail-view').remove();
-            $i.removeClass('glyphicons-minus').addClass('glyphicons-plus');
+            $i.removeClass(jian).addClass(jia);
         }
     },
     /*

@@ -83,5 +83,23 @@
     white-space: nowrap;
     word-break: keep-all;
 }
-.caption h4 a{ color: #333;}.caption h4 a:hover{ color: #3598db; text-decoration: none;}
+a{ color: #333;}.caption h4 a:hover{ color: #3598db; text-decoration: none;}
 .caption p{ margin: 0;}
+/* footer */
+.footer{
+    background-color: #fbfbfb;
+    border-top: 1px #f3f3f3 solid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.5;
+}
+.footer a{
+    color: #575e65;
+    margin-right: 10px;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.friend{ margin-top: 5px; margin-bottom: 5px;}
+.footer a:hover{ color: #3598db; text-decoration: none;}
+.copyright, .friend a{ color: #848e99;}
+.img-rounded{ width: 73px; height: auto;}

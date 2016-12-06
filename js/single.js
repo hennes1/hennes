@@ -131,5 +131,9 @@ var HennesSingle = {
                 HennesSingle.currHd(headID);
             }, 300);
         });
+    },
+    //加载底部
+    loadSingleFoot: function () {
+        $('.footer').load('../include/singleFoot.html');
     }
 };

@@ -56,6 +56,7 @@ var Hennes = {
         var option = {};
         var defaultSetting = {
             open : "right", //默认箭头在左，即右打开
+            drops: 'down',
             format: "YYYY-MM-DD", //默认为短日期，长日期：YYYY-MM-DD HH:mm:ss
             timeSelect: false, //默认不显示下拉时间
             dateType: false, //默认双日历
@@ -105,6 +106,7 @@ var Hennes = {
                 '全时期': [moment().startOf('year'), moment().endOf('year')]
             },
             "opens": defaultSetting.open,
+            "drops": defaultSetting.drops,
             "alwaysShowCalendars": true,
             "startDate": defaultSetting.startDate,
             "endDate": defaultSetting.endDate,
@@ -207,7 +209,7 @@ var Hennes = {
                              +'             <ul class="nav navbar-nav">';
                                             for(var n = 0; n < data[i].menu.length; n++){
                                                 html += '  <li id="side_nav'+ (i+1) +'_'+ (n+1) +'">'
-                                                     +'        <a href="/hennes/pages/'+ data[i].menu[n].link +'">'
+                                                     +'        <a href="'+ data[i].menu[n].link +'">'
                                                      +'            <i class="glyphicons '+ data[i].menu[n].icoName +' fn-mr-10"></i>'
                                                      +'            '+ data[i].menu[n].title +''
                                                      +'        </a>'

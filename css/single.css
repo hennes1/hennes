@@ -16,7 +16,7 @@
     .navbar-wrapper .navbar{ border-radius: 4px;}
 }
 /* Carousel */
-.carousel{ background-color: #dedede; height: 410px; margin-bottom: 20px;}
+.carousel{ background-color: #dedede; height: 410px;}
 .carousel-caption{ z-index: 10;}
 .carousel .item{ height: 410px; background-color: #777;}
 .carousel-inner > .item > img{

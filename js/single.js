@@ -47,9 +47,9 @@
                 //作为背景
                 if (showBg === true) {
                     if(showTx === false){ //无文字
-                        html = ''+ imgBg +'</div>';
+                        html = imgBg +'</div>';
                     }else{ //有文字
-                        html = ''+ imgBg +''+ txHtml +'</div>';
+                        html = imgBg +''+ txHtml +'</div>';
                     }
                 }else{ //作为图片
                     if(showTx === false){ //无文字
@@ -115,9 +115,9 @@ var HennesSingle = {
                         + ' </div>';
                 }
 
-                html += '</div>';
-                html += '</div>';
-                html += '</div>';
+                html += '   </div>'
+                    + '  </div>'
+                    + '</div>';
             }
 
             //添加数据

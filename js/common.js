@@ -205,7 +205,7 @@ var Hennes = {
                              +'         </h4>'
                              +'     </div>'
                              +'     <div id="'+ data[i].name +'" class="panel-collapse collapse">'
-                             +'         <div class="panel-body">'
+                             +'         <div class="panel-body side-scroll">'
                              +'             <ul class="nav navbar-nav">';
                                             for(var n = 0; n < data[i].menu.length; n++){
                                                 html += '  <li id="side_nav'+ (i+1) +'_'+ (n+1) +'">'
@@ -317,30 +317,5 @@ $(function () {
     var ContentMethod = function(txt) {
         return txt;
     };
-
-    $('[data-toggle="popover"]').each(function () {
-        var element = $(this), id = element.attr('id'), txt = element.html();
-        element.popover({
-            trigger: 'manual',
-            //placement: 'right', //top, bottom, left or right
-            title: txt,
-            html: 'true',
-            content: ContentMethod(txt)
-        }).on("mouseenter", function () {
-            var _this = this;
-            $(this).popover("show");
-            $(this).siblings(".popover").on("mouseleave", function () {
-                $(_this).popover('hide');
-            });
-        }).on("mouseleave", function () {
-            var _this = this;
-            setTimeout(function () {
-                if (!$(".popover:hover").length) {
-                    $(_this).popover("hide");
-                }
-            }, 100);
-        });
-    });
-
 
 });

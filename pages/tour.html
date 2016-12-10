@@ -154,70 +154,71 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- flash复制插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- Tour引导插件 -->
-    <script src="../js/plugins/bootStrapTour/bootstrap-tour.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav2_8');
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'bootstrapTour', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav2_8');
 
-            var runLay = '#run_tour', $runBtn = $(runLay), pageGuide;
+                var runLay = '#run_tour', $runBtn = $(runLay), pageGuide;
 
-            //Tour引导
-            pageGuide = new Tour({
-                storage: false, //window.localStorage
-                backdrop: true, //透明背景
-                backdropPadding: '5',
-                animation: true,
-                onStart: function() {
-                    return $runBtn.addClass("disabled", true);
-                },
-                onEnd: function() {
-                    return $runBtn.removeClass("disabled", true);
-                },
-                steps: [
-                    {
-                        element: "#bootstrap",
-                        title: "基于BootStrap使用时",
-                        placement: "right",
-                        content: "基于BootStrap使用时，需引入相关CSS和JS文件。"
+                //Tour引导
+                pageGuide = new Tour({
+                    storage: false, //window.localStorage
+                    backdrop: true, //透明背景
+                    backdropPadding: '5',
+                    animation: true,
+                    onStart: function () {
+                        return $runBtn.addClass("disabled", true);
                     },
-                    {
-                        element: "#standalone",
-                        title: "单独使用时",
-                        placement: "left",
-                        content: "不依赖BootStrap时，需引入带有standalone的CSS和JS文件。"
+                    onEnd: function () {
+                        return $runBtn.removeClass("disabled", true);
                     },
-                    {
-                        element: '#simple',
-                        title: '基本调用参数',
-                        placement: 'bottom',
-                        content: '做以下的一些基本设置，就可以调用引导了；详情参数会在下面的内容中讲到。'
-                    },
-                    {
-                        element: '#minute',
-                        title: '详细参数',
-                        placement: 'top',
-                        content: '以下的参数按照提示说明，可根据需要应用到项目中。'
+                    steps: [
+                        {
+                            element: "#bootstrap",
+                            title: "基于BootStrap使用时",
+                            placement: "right",
+                            content: "基于BootStrap使用时，需引入相关CSS和JS文件。"
+                        },
+                        {
+                            element: "#standalone",
+                            title: "单独使用时",
+                            placement: "left",
+                            content: "不依赖BootStrap时，需引入带有standalone的CSS和JS文件。"
+                        },
+                        {
+                            element: '#simple',
+                            title: '基本调用参数',
+                            placement: 'bottom',
+                            content: '做以下的一些基本设置，就可以调用引导了；详情参数会在下面的内容中讲到。'
+                        },
+                        {
+                            element: '#minute',
+                            title: '详细参数',
+                            placement: 'top',
+                            content: '以下的参数按照提示说明，可根据需要应用到项目中。'
+                        }
+                    ]
+                }).init();
+
+                //运行Tour
+                $(document).on('click', runLay, function (e) {
+                    e.preventDefault();
+                    if ($(this).hasClass("disabled")) {
+                        return;
                     }
-                ]
-            }).init();
-
-            //运行Tour
-            $(document).on('click', runLay, function(e) {
-                e.preventDefault();
-                if ($(this).hasClass("disabled")) {
-                    return;
-                }
-                pageGuide.restart();
+                    pageGuide.restart();
+                });
             });
         });
     </script>

@@ -5,6 +5,7 @@ body{ background-color: #f5f7fa;}
 .fn-mb-5{ margin-bottom: 5px;}.fn-mb-10{ margin-bottom: 10px;}.fn-mb-15{ margin-bottom: 15px;}.fn-mb-20{ margin-bottom: 20px;}
 .fn-pg-15{ padding: 15px;}.fn-mn-15{ margin: -15px 0 30px;}
 a{ color:#333}a:hover{ color:#3598db}
+.pos-r{ position: relative}.pos-a{ position: absolute}
 .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6{ margin-top: 2px; margin-bottom: 2px;}
 .current-page{ margin-top: -5px; margin-bottom: 10px;}
 .blockquote-reverse.index-quote{ border-right-color: #ace1ff; margin-bottom: 0; padding: 0 15px 0 0;}
@@ -291,8 +292,6 @@ p.bg-success{ border-radius: 3px; padding: 3px 5px; margin-bottom: 5px;}
 }
 label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
 
-
-
 .highlight{ margin-bottom: 15px; position: relative;}
 .highlight .btn{
     border-color: #e1e1e8;
@@ -322,3 +321,12 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
     text-shadow: 0 1px 0 #fff;
 }
 .pretty-print .p{ color: #333;}
+
+.pf-loading{
+    background-color: #00a644;
+    width: 0;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

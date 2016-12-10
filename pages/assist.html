@@ -171,14 +171,15 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav1_5');
+        seajs.config({base: '../js/'});
+
+        seajs.use(['jquery', 'bootstrap', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav1_5');
+            });
         });
     </script>
 </body>

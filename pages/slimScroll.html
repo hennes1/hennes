@@ -115,24 +115,25 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- flash复制插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- 滚动条插件 -->
-    <script src="../js/plugins/slimScroll/jq.slimScroll.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav2_5');
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'slimScroll', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav2_5');
 
-            //滚动条
-            $('.slimScroll').slimScroll({
-                height: '460px'
+                //滚动条
+                $('.slimScroll').slimScroll({
+                    height: '460px'
+                });
             });
         });
     </script>

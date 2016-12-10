@@ -231,50 +231,53 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- select2插件 -->
-    <script src="../js/plugins/select2/select2.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- flash复制插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        //定义有图片时select下拉显示格式
-        function formatState (state) {
-            if (!state.id) { return state.text;}
-
-            var $state = $('<span><img src="../images/bank/'+ state.element.value.toLowerCase() +'.png" class="select-ico" />' + state.text + '</span>');
-            return $state;
-        }
-
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav2_2');
-
-            //执行有图片的select
-            $('select[name="has_ico"]').select2({
-                templateResult: formatState,
-                templateSelection: formatState
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
             });
+        });
+        seajs.use(['jquery', 'bootstrap', 'select2', 'ZeroClipboard', 'common'], function () {
+            //定义有图片时select下拉显示格式
+            function formatState(state) {
+                if (!state.id) {
+                    return state.text;
+                }
 
-            //点击标签执行select选择
-            var $tagSelect = $('#tag_select').select2();
-            $('.tag-item').click(function () {
-                var val = $(this).data('value');
-                $tagSelect.val(val).trigger('change');
-            });
+                var $state = $('<span><img src="../images/bank/' + state.element.value.toLowerCase() + '.png" class="select-ico" />' + state.text + '</span>');
+                return $state;
+            }
 
-            //打开select
-            $('.open').click(function () {
-                $tagSelect.select2('open');
-            });
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav2_2');
 
-            //清空select
-            $('.clear').on('click', function () {
-                $tagSelect.val(null).trigger("change");
+                //执行有图片的select
+                $('select[name="has_ico"]').select2({
+                    templateResult: formatState,
+                    templateSelection: formatState
+                });
+
+                //点击标签执行select选择
+                var $tagSelect = $('#tag_select').select2();
+                $('.tag-item').click(function () {
+                    var val = $(this).data('value');
+                    $tagSelect.val(val).trigger('change');
+                });
+
+                //打开select
+                $('.open').click(function () {
+                    $tagSelect.select2('open');
+                });
+
+                //清空select
+                $('.clear').on('click', function () {
+                    $tagSelect.val(null).trigger("change");
+                });
             });
         });
     </script>

@@ -859,50 +859,53 @@
     </div>
     <!--/ clip-panel }-->
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- Flash复制插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav1_1');
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav1_1');
 
-            var layerIndex, $li = $('.font-list li'), icoLen = $li.length;
+                var layerIndex, $li = $('.font-list li'), icoLen = $li.length;
 
-            //图标数
-            $('.icoTotal').text(icoLen);
+                //图标数
+                $('.icoTotal').text(icoLen);
 
-            $li.each(function () {
-                var $self = $(this), $clip = $('#clip_panel');
-                $self.click(function () {
-                    var html = $self.html(), ruleHtml = html.replace(/</g, '&lt;');
-                    $('#i_clip').html(html);
-                    $('#clip_content').html(ruleHtml);
+                $li.each(function () {
+                    var $self = $(this), $clip = $('#clip_panel');
+                    $self.click(function () {
+                        var html = $self.html(), ruleHtml = html.replace(/</g, '&lt;');
+                        $('#i_clip').html(html);
+                        $('#clip_content').html(ruleHtml);
 
-                    layerIndex = layer.open({
-                        type: 1,
-                        title: '提示',
-                        closeBtn: 0,
-                        move: false,
-                        area: ['480px', 'auto'],
-                        content: $clip.removeClass('hide')
+                        layerIndex = layer.open({
+                            type: 1,
+                            title: '提示',
+                            closeBtn: 0,
+                            move: false,
+                            area: ['480px', 'auto'],
+                            content: $clip.removeClass('hide')
+                        });
                     });
                 });
+
+                //关闭弹层
+                $('#close_btn').click(function () {
+                    layer.closeAll();
+                });
+
+                //调用复制
+                Hennes.zClipboard('.clip-btn', $('#clip_content'));
+
             });
-
-            //关闭弹层
-            $('#close_btn').click(function () {
-                layer.closeAll();
-            });
-
-            //调用复制
-            Hennes.zClipboard('.clip-btn', $('#clip_content'));
-
         });
     </script>
 </body>

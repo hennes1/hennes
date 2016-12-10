@@ -294,21 +294,22 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav2_7');
+        seajs.config({base: '../js/'});
 
-            //tab标签js调用
-            $('ul#myTab a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show');
+        seajs.use(['jquery', 'bootstrap', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav2_7');
+
+                //tab标签js调用
+                $('ul#myTab a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+
             });
-
         });
     </script>
 </body>

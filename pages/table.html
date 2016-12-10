@@ -221,18 +221,21 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- ZeroClipboard插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav1_4');
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav1_4');
+            });
         });
     </script>
 </body>

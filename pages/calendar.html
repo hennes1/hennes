@@ -280,73 +280,73 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap/bootstrap.min.js"></script>
-    <!-- 日历插件 -->
-    <script src="../js/plugins/dateRangePicker/moment.min.js"></script>
-    <script src="../js/plugins/dateRangePicker/dateRangePicker.min.js"></script>
-    <!-- 弹窗插件 -->
-    <script src="../js/plugins/layer/layer.js"></script>
-    <!-- flash复制插件 -->
-    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
-    <!-- 公用Js -->
-    <script src="../js/common.js"></script>
+    <script src="../js/sea.min.js"></script>
     <script>
-        $(function(){
-            //当前页
-            Hennes.loadNav('../', 'header', 'side_nav2_3');
-
-            //单日历有时间
-            $('#odd_cal_time').daterangepicker(Hennes.timeFrameOption({
-                format: 'YYYY-MM-DD HH:mm:ss',
-                timeSelect: true,
-                dateType: true
-            }), function (end) {
-                var endDate = end.format('YYYY-MM-DD HH:mm:ss');
-                console.log('你选择了: ' + endDate);
+        seajs.config({base: '../js/'});
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
             });
+        });
+        seajs.use(['jquery', 'bootstrap', 'moment', 'datePicker', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav2_3');
 
-            //单日历
-            $('#odd_cal').daterangepicker(Hennes.timeFrameOption({
-                format: 'YYYY-MM-DD',
-                dateType: true,
-                open: 'left',
-                minDate: moment().weekday(-7), //上个周日
-                maxDate: moment().weekday(14) //下下个周日
-            }), function (end) {
-                var endDate = end.format('YYYY-MM-DD');
-                console.log('你选择了: ' + endDate);
-            });
+                //单日历有时间
+                $('#odd_cal_time').daterangepicker(Hennes.timeFrameOption({
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    timeSelect: true,
+                    dateType: true
+                }), function (end) {
+                    var endDate = end.format('YYYY-MM-DD HH:mm:ss');
+                    console.log('你选择了: ' + endDate);
+                });
 
-            //双日历有时间
-            $('#double_cal_time').daterangepicker(Hennes.timeFrameOption({
-                format: 'YYYY-MM-DD HH:mm:ss',
-                timeSelect: true,
-                minDate: moment(),
-                maxDate: moment().day(16) //一周：7，2周：7*2，...
-            }), function (start, end) {
-                var starDate = start.format('YYYY-MM-DD HH:mm:ss'),
-                    endDate = end.format('YYYY-MM-DD HH:mm:ss');
+                //单日历
+                $('#odd_cal').daterangepicker(Hennes.timeFrameOption({
+                    format: 'YYYY-MM-DD',
+                    dateType: true,
+                    open: 'left',
+                    minDate: moment().weekday(-7), //上个周日
+                    maxDate: moment().weekday(14) //下下个周日
+                }), function (end) {
+                    var endDate = end.format('YYYY-MM-DD');
+                    console.log('你选择了: ' + endDate);
+                });
 
-                console.log('你选择了: ' + starDate + ' ～ ' + endDate);
+                //双日历有时间
+                $('#double_cal_time').daterangepicker(Hennes.timeFrameOption({
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    timeSelect: true,
+                    minDate: moment(),
+                    maxDate: moment().day(16) //一周：7，2周：7*2，...
+                }), function (start, end) {
+                    var starDate = start.format('YYYY-MM-DD HH:mm:ss'),
+                            endDate = end.format('YYYY-MM-DD HH:mm:ss');
 
-                //给开始和结束时间传值
-                $('input[name="s_month1"]').val(starDate);
-                $('input[name="e_month1"]').val(endDate);
-            });
+                    console.log('你选择了: ' + starDate + ' ～ ' + endDate);
 
-            //双日历
-            $('#double_cal').daterangepicker(Hennes.timeFrameOption({
-                format: 'YYYY-MM-DD'
-            }), function (start, end) {
-                var starDate = start.format('YYYY-MM-DD'),
-                    endDate = end.format('YYYY-MM-DD');
+                    //给开始和结束时间传值
+                    $('input[name="s_month1"]').val(starDate);
+                    $('input[name="e_month1"]').val(endDate);
+                });
 
-                console.log('你选择了: ' + starDate + ' ～ ' + endDate);
+                //双日历
+                $('#double_cal').daterangepicker(Hennes.timeFrameOption({
+                    format: 'YYYY-MM-DD'
+                }), function (start, end) {
+                    var starDate = start.format('YYYY-MM-DD'),
+                            endDate = end.format('YYYY-MM-DD');
 
-                //给开始和结束时间传值
-                $('input[name="s_month2"]').val(starDate);
-                $('input[name="e_month2"]').val(endDate);
+                    console.log('你选择了: ' + starDate + ' ～ ' + endDate);
+
+                    //给开始和结束时间传值
+                    $('input[name="s_month2"]').val(starDate);
+                    $('input[name="e_month2"]').val(endDate);
+                });
             });
         });
     </script>

@@ -49,17 +49,10 @@
     ]
   },
   {
-    "column": "插件控件",
+    "column": "相关插件",
     "name": "plugins",
     "ico": "glyphicons-magic",
     "menu": [
-      {
-        "title": "右键菜单",
-        "icoName": "glyphicons-list",
-        "icoColor": "text-success",
-        "description": "单独JS和CSS，可自定义标题、图标样式（可选）和对应功能操作！",
-        "link": "smartMenu.html"
-      },
       {
         "title": "Select控件",
         "icoName": "glyphicons-list-alt",
@@ -75,11 +68,11 @@
         "link": "calendar.html"
       },
       {
-        "title": "scrollSpy",
-        "icoName": "glyphicons-mouse-scroll",
-        "icoColor": "text-warning",
-        "description": "此为Bootstrap的滚动监听插件，调用简单，可以剥离出来单独使用。",
-        "link": "scrollSpy.html"
+        "title": "Tab插件",
+        "icoName": "glyphicons-puzzle",
+        "icoColor": "text-success",
+        "description": "此为Bootstrap的标签切换插件，调用简单，可以剥离出来单独使用。",
+        "link": "tab.html"
       },
       {
         "title": "slimScroll",
@@ -89,6 +82,13 @@
         "link": "slimScroll.html"
       },
       {
+        "title": "scrollSpy",
+        "icoName": "glyphicons-mouse-scroll",
+        "icoColor": "text-warning",
+        "description": "此为Bootstrap的滚动监听插件，调用简单，可以剥离出来单独使用。",
+        "link": "scrollSpy.html"
+      },
+      {
         "title": "Affix粘附导航",
         "icoName": "glyphicons-lasso",
         "icoColor": "text-warning",
@@ -96,23 +96,37 @@
         "link": "Affix.html"
       },
       {
-        "title": "Tab插件",
-        "icoName": "glyphicons-puzzle",
-        "icoColor": "text-success",
-        "description": "此为Bootstrap的标签切换插件，调用简单，可以剥离出来单独使用。",
-        "link": "tab.html"
-      },
-      {
         "title": "Tour引导插件",
         "icoName": "glyphicons-nearby-square",
         "icoColor": "text-primary",
         "description": "可不依赖Bootstrap，单独拿后缀名带有standalone的JS和CSS使用。",
         "link": "tour.html"
+      }
+    ]
+  },
+  {
+    "column": "第三方插件",
+    "name": "third",
+    "ico": "glyphicons-puzzle-2",
+    "menu": [
+      {
+        "title": "右键菜单",
+        "icoName": "glyphicons-list",
+        "icoColor": "text-primary",
+        "description": "单独JS和CSS，可自定义标题、图标样式（可选）和对应功能操作！",
+        "link": "smartMenu.html"
+      },
+      {
+        "title": "二维码插件",
+        "icoName": "glyphicons-qrcode",
+        "icoColor": "text-success",
+        "description": "能够生成矩阵二维码的jQ插件！支持IE9+及其它高版本浏览器。",
+        "link": "QRCode.html"
       },
       {
         "title": "ZeroClipboard",
         "icoName": "glyphicons-duplicate",
-        "icoColor": "text-success",
+        "icoColor": "text-muted",
         "description": "国外大神开发基于Flash来实现跨浏览器的用于剪贴板复制的插件。",
         "link": "zeroClipboard.html"
       }

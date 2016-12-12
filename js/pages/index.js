@@ -2,6 +2,7 @@
  * Created by hennes on 2016/11/26.
  */
 
+seajs.config({base: './js/'});
 //引入layer
 define(function (require, exports, module) {
     var layer = require("layer");
@@ -41,7 +42,7 @@ seajs.use(['jquery', 'bootstrap', 'common'], function () {
                             + '           </div>'
                             + '       </div>'
                             + '       <div class="panel-footer pos-r text-right">'
-                            + '           <a class="btn btn-primary btn-sm url-jump" href="javascript:void(0);" data-url="pages/' + data[i].menu[m].link + '" role="button">了解详情 »</a>'
+                            + '           <button class="btn btn-primary btn-sm url-jump" data-url="pages/' + data[i].menu[m].link + '" role="button">了解详情 »</button>'
                             + '       </div>'
                             + '   </div>'
                             + '</div>';
@@ -57,7 +58,7 @@ seajs.use(['jquery', 'bootstrap', 'common'], function () {
         });
 
         //跳转页效果
-        $(document).on('click', 'a.url-jump', function () {
+        $(document).on('click', '.url-jump', function () {
             var $self = $(this),
                 $panel = $self.parents('.jump-panel'),
                 url = $self.data('url');
@@ -66,6 +67,7 @@ seajs.use(['jquery', 'bootstrap', 'common'], function () {
                 $pfLoad = $('<div class="pf-loading" />'),
                 $bg = $('<div />');
 
+            $self.addClass('disabled');
             $('.head-nav').css({zIndex: 3});
             $bg.remove().appendTo($('body')).css({
                 backgroundColor: '#fff',

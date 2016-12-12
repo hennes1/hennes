@@ -282,7 +282,6 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        seajs.config({base: '../js/'});
         //引入layer
         define(function (require, exports, module) {
             var layer = require("layer");
@@ -293,7 +292,7 @@
         seajs.use(['jquery', 'bootstrap', 'moment', 'datePicker', 'ZeroClipboard', 'common'], function () {
             $(function () {
                 //当前页
-                Hennes.loadNav('../', 'header', 'side_nav2_3');
+                Hennes.loadNav('../', 'header', 'side_nav2_2');
 
                 //单日历有时间
                 $('#odd_cal_time').daterangepicker(Hennes.timeFrameOption({

@@ -156,7 +156,6 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        seajs.config({base: '../js/'});
         //引入layer
         define(function (require, exports, module) {
             var layer = require("layer");
@@ -167,7 +166,7 @@
         seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'bootstrapTour', 'common'], function () {
             $(function () {
                 //当前页
-                Hennes.loadNav('../', 'header', 'side_nav2_8');
+                Hennes.loadNav('../', 'header', 'side_nav2_7');
 
                 var runLay = '#run_tour', $runBtn = $(runLay), pageGuide;
 

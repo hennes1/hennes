@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <meta name="Author" Content="Hennes，Email：hsokio@qq.com；Home：https://hennes1.github.io/hennes/">
+    <title>QRCode插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
+    <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav hd-loading" id="header_nav"></nav>
+    <aside class="aside sd-loading" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/hennes/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>第三方插件</li>
+            <li class="active">QRCode插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>
+                    <i class="glyphicons glyphicons-qrcode fn-mr-10"></i>QRCode插件
+                </h4>
+            </div>
+            <div class="panel-body tour-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="h-first">QRCode使用</h3>
+                        <p>
+                            引入QRCode所需的插件，然后创建一个DOM元素去包含生成qr码，最后用此DOM的ID或Class去调用QRCode来生成二维码。如：
+                        </p>
+                        <code class="pretty-print fn-mb-15">
+                            <ol>
+                                <li><span class="p">&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</span></li>
+                                <li><span class="p">&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.qrcode.min.js&quot;&gt;&lt;/script&gt;</span></li>
+                                <li></li>
+                                <li><span class="p"><span class="s no-ml">//DOM</span></span></li>
+                                <li><span class="p">&lt;div id="qr_code"&gt;&lt;/div&gt;</span></li>
+                                <li></li>
+                                <li><span class="p"><span class="s no-ml">//生成</span></span></li>
+                                <li><span class="p">$qrCode.qrcode({</span></li>
+                                <li><span class="p tx-indent">render: "table", <span class="s">//按'table'方式渲染</span></span></li>
+                                <li><span class="p tx-indent">width: 100, <span class="s">//二维码宽度</span></span></li>
+                                <li><span class="p tx-indent">height: 100, <span class="s">//二维码高度</span></span></li>
+                                <li><span class="p tx-indent">text: str <span class="s">//二维码信息，任意内容 </span></span></li>
+                                <li><span class="p">});</span></li>
+                            </ol>
+                        </code>
+                        <div class="form-group">
+                            <textarea id="qr_code" rows="6" class="form-control" style="resize: none;">这里就是二维码要生成的信息</textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="qr_code_btn">生成二维码</button>
+                        </div>
+                        <p>
+                            <span class="label label-danger">注意</span>：由于 <code>jquery.qrcode.js</code> 不支持中文，因此，在对中文字符进行相应的处理，处理函数如下：
+                        </p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p"><span class="s no-ml">//中文字符处理</span></span></li>
+                                    <li><span class="p">var toUtf8 = function (str) {</span></li>
+                                    <li><span class="p tx-indent">var out, i, len, c;</span></li>
+                                    <li><span class="p tx-indent">out = "";</span></li>
+                                    <li><span class="p tx-indent">len = str.length;</span></li>
+                                    <li><span class="p tx-indent">for (i = 0; i < len; i++) {</span></li>
+                                    <li><span class="p long-indent">c = str.charCodeAt(i);</span></li>
+                                    <li><span class="p long-indent">if ((c >= 0x0001) && (c <= 0x007F)) {</span></li>
+                                    <li><span class="p max-indent">out += str.charAt(i);</span></li>
+                                    <li><span class="p long-indent">} else if (c > 0x07FF) {</span></li>
+                                    <li><span class="p max-indent">out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));</span></li>
+                                    <li><span class="p max-indent">out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));</span></li>
+                                    <li><span class="p max-indent">out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));</span></li>
+                                    <li><span class="p long-indent">} else {</span></li>
+                                    <li><span class="p max-indent">out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));</span></li>
+                                    <li><span class="p max-indent">out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));</span></li>
+                                    <li><span class="p long-indent">}</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p tx-indent">return out;</span></li>
+                                    <li><span class="p">};</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <div class="qr-code hidden" style="padding: 15px;"></div>
+
+    <script src="../js/sea.min.js"></script>
+    <script>
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'QRCode', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav3_2');
+
+                var $tx = $('#qr_code'), $QRBtn = $('#qr_code_btn');
+
+                $QRBtn.click(function () {
+                    var val = $.trim($tx.val());
+                    if(val !== ''){
+                        //生成二维码
+                        Hennes.outPutQRCode('.qr-code', 'table', val, 150, 150);
+
+                        //弹层显示二维码
+                        layer.open({
+                            type: 1,
+                            title: '显示二维码',
+                            move: false,
+                            area: ['auto'],
+                            content: $('.qr-code').removeClass('hidden')
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

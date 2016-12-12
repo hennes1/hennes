@@ -24,7 +24,7 @@
     <div class="container-fluid main-wrap show-side" id="H_main">
         <ol class="breadcrumb current-page">
             <li><a href="/hennes/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
-            <li>插件控件</li>
+            <li>第三方插件</li>
             <li class="active">ZeroClipboard插件</li>
         </ol>
         <!-- { panel -->
@@ -227,7 +227,6 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        seajs.config({base: '../js/'});
         //引入layer
         define(function (require, exports, module) {
             var layer = require("layer");
@@ -238,7 +237,7 @@
         seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
             $(function () {
                 //当前页
-                Hennes.loadNav('../', 'header', 'side_nav2_9');
+                Hennes.loadNav('../', 'header', 'side_nav3_3');
 
             });
         });

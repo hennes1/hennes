@@ -1,7 +1,6 @@
 /**
  * Created by hennes on 2016/11/26.
  */
-seajs.config({base: '../js/'});
 
 //引入layer
 define(function (require, exports, module) {
@@ -14,7 +13,7 @@ define(function (require, exports, module) {
 seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'smartMenu', 'common'], function () {
     $(function () {
         //当前页
-        Hennes.loadNav('../', 'header', 'side_nav2_1');
+        Hennes.loadNav('../', 'header', 'side_nav3_1');
 
         //定义右键菜单data
         var rightMenu_1 = {

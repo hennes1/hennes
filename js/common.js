@@ -268,6 +268,49 @@ var Hennes = {
             var $name = $(this).parents(e).find(name), $val = $(this).html();
             $name.html($val);
         });
+    },
+    //中文字符处理
+    toUtf8: function (str) {
+        var out, i, len, c;
+        out = "";
+        len = str.length;
+        for (i = 0; i < len; i++) {
+            c = str.charCodeAt(i);
+            if ((c >= 0x0001) && (c <= 0x007F)) {
+                out += str.charAt(i);
+            } else if (c > 0x07FF) {
+                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+                out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            } else {
+                out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+                out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+            }
+        }
+        return out;
+    },
+    /*
+     * outPutQRCode：输出二维码图片
+     * @e：显示二维码的元素
+     * @renderType：渲染方式（table | canvas）
+     * @txt：要生成的信息内容
+     * @width：二维码宽
+     * @width：二维码高
+     */
+    outPutQRCode: function (e, renderType, txt, width, height) {
+        //先清空
+        $(e).empty();
+
+        //中文格式转换
+        var str = Hennes.toUtf8(txt);
+
+        //生成二维码
+        $(e).qrcode({
+            render: renderType,
+            width: width,
+            height: height,
+            text: str
+        });
     }
 };
 

@@ -10,6 +10,8 @@ a{ color:#333}a:hover{ color:#3598db}
 .current-page{ margin-top: -5px; margin-bottom: 10px;}
 .blockquote-reverse.index-quote{ border-right-color: #ace1ff; margin-bottom: 0; padding: 0 15px 0 0;}
 .blockquote-reverse.index-quote footer:after{ content: "";}
+legend{ margin-bottom: 5px}
+.form-group:last-child{ margin-bottom: 0}
 /* head nav */
 .head-nav{ background-color: #3598db; margin-bottom: 0;}
 .head-nav .nav>li>a{ color: #9bccee; height: 60px; line-height: 30px;}

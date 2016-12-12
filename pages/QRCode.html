@@ -48,7 +48,7 @@
                                 <li><span class="p">&lt;div id="qr_code"&gt;&lt;/div&gt;</span></li>
                                 <li></li>
                                 <li><span class="p"><span class="s no-ml">//生成</span></span></li>
-                                <li><span class="p">$qrCode.qrcode({</span></li>
+                                <li><span class="p">$('#qr_code').qrcode({</span></li>
                                 <li><span class="p tx-indent">render: "table", <span class="s">//按'table'方式渲染</span></span></li>
                                 <li><span class="p tx-indent">width: 100, <span class="s">//二维码宽度</span></span></li>
                                 <li><span class="p tx-indent">height: 100, <span class="s">//二维码高度</span></span></li>
@@ -56,12 +56,15 @@
                                 <li><span class="p">});</span></li>
                             </ol>
                         </code>
-                        <div class="form-group">
-                            <input type="text" id="qr_code" class="form-control" value="这里就是二维码要生成的信息">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" id="qr_code_btn">生成二维码</button>
-                        </div>
+                        <fieldset class="fn-mb-20">
+                            <legend>生成二维码</legend>
+                            <div class="form-group">
+                                <input type="text" id="qr_code" class="form-control" value="这里就是二维码要生成的信息">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" id="qr_code_btn">生成二维码</button>
+                            </div>
+                        </fieldset>
                         <p>
                             <span class="label label-danger">注意</span>：由于 <code>jquery.qrcode.js</code> 不支持中文，因此，在对中文字符进行相应的处理，处理函数如下：
                         </p>

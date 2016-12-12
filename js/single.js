@@ -100,7 +100,7 @@ var HennesSingle = {
                     html += '<div class="col-xs-6 col-sm-6 col-md-3 col-item">'
                         + '    <div class="thumbnail">'
                         + '        <a href="'+ data[i].list[m].url +'" class="col-img-a">'
-                        + '            <img src="'+ data[i].list[m].image +'" alt="">'
+                        + '            <img src="../images/grey.gif" data-original="'+ data[i].list[m].image +'" alt="" class="lazy">'
                         + '             <div class="info">'
                         + '                 <span>最近直播：'+ data[i].list[m].time +'</span>'
                         + '             </div>'
@@ -122,6 +122,11 @@ var HennesSingle = {
 
             //添加数据
             $wrap.append(html).removeClass('loading');
+
+            // lazy
+            $('img.lazy').lazyload({
+                effect: 'fadeIn'
+            });
         });
     },
     //加载头部

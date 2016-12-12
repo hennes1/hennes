@@ -52,7 +52,13 @@
 }
 .col-item{ padding-top: 15px; padding-bottom: 15px;}
 .col-item:hover{ background-color:#fff; box-shadow: 0 0 9px 1px #ccc}
-.col-img-a{ display: block; overflow: hidden; position: relative;}
+.col-img-a{
+    background-color: #ddd;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.col-img-a img{ min-height: 100px; _height: 100px; height: auto;}
 .col-item:hover .col-img-a img{
     -webkit-transform: scale(1.15);
     -moz-transform: scale(1.15);

@@ -83,8 +83,10 @@ seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'smartMenu', 'common'], funct
         //显示|隐藏详情
         $('.i-detail-btn').click(function () {
             var self = this, id = $(self).parents('tr').data('id');
-            var html = '';
-            var loading = layer.load(0, {shade: false});
+            var html = '', loading;
+            var currSelected = $(self).find('i').hasClass('glyphicons-plus');
+
+            if(currSelected) loading = layer.load(0, {shade: false});
 
             $.getJSON('../json/smartData.json?v=' + new Date, function (data) {
                 html += '<table class="table table-bordered table-striped table-hover">'

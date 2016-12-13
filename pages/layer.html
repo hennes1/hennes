@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <meta name="Author" Content="Hennes，Email：hsokio@qq.com；Home：https://hennes1.github.io/hennes/">
+    <title>Layer弹层组件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
+    <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav hd-loading" id="header_nav"></nav>
+    <aside class="aside sd-loading" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/hennes/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>第三方插件</li>
+            <li class="active">Layer弹层组件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>
+                    <i class="glyphicons glyphicons-new-window-alt fn-mr-10"></i>Layer弹层组件
+                </h4>
+            </div>
+            <div class="panel-body tour-body">
+                <table class="table table-bordered table-striped">
+                    <caption>
+                        <p class="tx-indent">layer是一款近年来备受青睐的web弹层组件，她具备全方位的解决方案，致力于服务各水平段的开发人员，使得用户页面轻松地拥有丰富友好的操作体验。</p>
+                        <p class="tx-indent">在与同类组件的比较中，layer总是能轻易获胜。她尽可能地在以更少的代码展现更强健的功能，且格外注重性能的提升、易用和实用性，正因如此，越来越多的开发者将媚眼投上了layer。其甚至兼容了包括IE6在内的所有主流浏览器。她数量可观的接口，使得您可以自定义太多您需要的风格，每一种弹层模式各具特色，广受欢迎。</p>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th width="22%">参数</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>type</strong><br /><small class="text-muted">基本层类型</small></td>
+                            <td>
+                                类型：<code>Number</code>，默认：<code>0</code>；<br />提供了5种层类型。可传入的值有：
+                                <code>0</code> 信息框，默认 <code>1</code>页面层 <code>2</code> iframe层 <code>3</code> 加载层 <code>4</code> tips层。<br />
+                                若你采用<code>layer.open({type: 1})</code>方式调用，则type为必填项（信息框除外）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>title</strong> <br /><small class="text-muted">标题</small></td>
+                            <td>
+                                类型：<code>String/Array/Boolean</code>，默认：<code>'信息'</code><br />
+                                title支持三种类型的值，若传入的是普通的字符串，如 <code>title :'我是标题'</code>，那么只会改变标题文本；<br />
+                                如若自定义标题区域样式，那么可以如此 <code>title: ['文本', 'font-size:18px;']</code>，数组第二项可以写任意css样式；<br />
+                                如果你不想显示标题栏，你可以 <code>title: false</code>。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>content</strong> <br /><small class="text-muted">内容</small></td>
+                            <td>
+                                类型：<code>String/DOM/Array</code>，默认：<code>''</code><br />
+                                content可传入的值是灵活多变的，不仅可以传入普通的html内容，还可以指定DOM，更可以随着type的不同而不同。<button class="btn btn-xs btn-success" data-target="content">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>skin</strong> <br /><small class="text-muted">样式类名</small></td>
+                            <td>
+                                类型：<code>String</code>，默认：<code>''</code><br />
+                                skin不仅允许你传入layer内置的样式class名，还可以传入您自定义的class名，定义自己的风格。<button class="btn btn-xs btn-success" data-target="skin">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>area</strong> <br /><small class="text-muted">宽高</small></td>
+                            <td>
+                                类型：<code>String/Array</code>，默认：<code>'auto'</code><br />
+
+                                在默认状态下，layer是宽高都自适应的，但当你只想定义宽度时，你可以 <code>area: '500px'</code>，高度仍然是自适应的。<br />
+                                当你宽高都要定义时，可以 <code>area: ['500px', '300px']</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>offset</strong> <br /><small class="text-muted">坐标</small></td>
+                            <td>
+                                类型：<code>String/Array</code>，默认：<code>'auto'</code><br />
+                                默认垂直水平居中。但当你只想定义top时，你可以 <CODE>offset: '100px'</CODE>。当您top、left都要定义时，你可以 <code>offset: ['100px', '200px']</code>。除此之外，你还可以定义 <code>offset: 'rb'</code>，表示右下角。其它的特殊坐标，你可以自己计算赋值。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>icon</strong> <br /><small class="text-muted">图标。信息框和加载层的私有参数</small></td>
+                            <td>
+                                类型：<code>Number</code>，默认：<code>-1</code>（信息框）/ <code>0</code>（加载层）<br />
+                                信息框默认不显示图标。当你想显示图标时，默认皮肤可以传入<code>0-6</code>；如果是加载层，可以传入 <code>0-2</code>。<button class="btn btn-xs btn-success" data-target="icon">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>btn</strong> <br /><small class="text-muted">按钮</small></td>
+                            <td>
+                                类型：<code>String/Array</code>，默认：<code>'确认'</code><br />
+                                信息框模式时，btn默认是一个确认按钮，其它层类型则默认不显示，加载层和tips层则无效。
+                                <br />当您只想自定义一个按钮时，你可以 <code>btn: '我知道了'</code>，
+                                <br />当你要定义两个按钮时，你可以 <code>btn: ['yes', 'no']</code>。
+                                <br />当然，你也可以定义更多按钮，比如：<code>btn: ['按钮1', '按钮2', '按钮3', …]</code>，按钮1和按钮2的回调分别是yes和cancel，而从按钮3开始，则回调为 <code>btn3: function(){}</code>，以此类推。<button class="btn btn-xs btn-success" data-target="btn">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>closeBtn</strong> <br /><small class="text-muted">关闭按钮</small></td>
+                            <td>
+                                类型：<code>String/Boolean</code>，默认：<code>1</code><br/>
+                                layer提供了两种风格的关闭按钮，可通过配置<code>1</code>和<code>2</code>来展示，如果不显示，则 <code>closeBtn: 0</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>shade</strong> <br/><small class="text-muted">遮罩</small> </td>
+                            <td>
+                                类型：<code>String/Array/Boolean</code>，默认：<code>0.3</code><br/>
+                                即弹层外区域。默认是0.3透明度的黑色背景（'#000'）。<br/>
+                                如果想定义别的颜色，可以 <code>shade: [0.8, '#393D49']</code>；<br/>
+                                如果不想显示遮罩，可以 <code>shade: 0</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>shadeClose</strong><br/><small class="text-muted">是否点击遮罩关闭</small> </td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>false</code><br/>
+                                如果存在shade，可以设定shadeClose来控制点击弹层外区域关闭。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>time</strong><br/><small class="text-muted">自动关闭所需毫秒</small></td>
+                            <td>
+                                类型：<code>Number</code>，默认：<code>0</code><br/>
+                                默认不会自动关闭。当要自动关闭时，可以 <code>time: 3000</code>，即代表3秒后自动关闭，注意单位是毫秒（1秒=1000毫秒）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>id</strong><br/><small class="text-muted">用于控制弹层唯一标识</small></td>
+                            <td>
+                                类型：<code>String</code>，默认：空字符<br/>
+                                设置该值后，不管是什么类型的层，都只允许同时弹出一个。一般用于页面层和iframe层模式
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>shift</strong><br/><small class="text-muted">动画</small></td>
+                            <td>
+                                类型：<code>Number</code>，默认：<code>0</code><br/>
+                                从1.9开始，出场动画全部采用CSS3。这意味着除了ie6-9，其它所有浏览器都是支持的。<br/>目前shift可支持的动画类型有<code>0-6</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>maxmin</strong><br/><small class="text-muted">最大最小化</small></td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>false</code><br/>
+                                该参数值对 <code>type:1</code> 和 <code>type:2</code> 有效。<br/>默认不显示最大小化按钮，需要显示配置 <code>maxmin: true</code> 即可
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>fix</strong><br/><small class="text-muted">固定</small></td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>true</code><br/>
+                                即鼠标滚动时，层是否固定在可视区域。如果不想，设置 <code>fix: false</code> 即可
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>scrollbar</strong><br/><small class="text-muted">是否允许浏览器出现滚动条</small></td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>true</code><br/>
+                                默认允许浏览器滚动，如果设定 <code>scrollbar: false</code>，则屏蔽
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>maxWidth</strong><br/><small class="text-muted">最大宽度</small> </td>
+                            <td>
+                                默认：<code>360</code><br/>
+                                当 <code>area: 'auto'</code> 时，maxWidth的设定才有效
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>zIndex</strong><br/><small class="text-muted">层叠顺序</small> </td>
+                            <td>
+                                默认：19891014（作者生日）<br/>
+                                一般用于解决和其它组件的层叠冲突。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>move</strong><br><small class="text-muted">触发拖动的元素</small></td>
+                            <td>
+                                类型：<code>String/DOM/Boolean</code>，默认：<code>'.layui-layer-title'</code><br/>
+                                默认是触发标题区域拖拽。如果想单独定义，指向元素的选择器或者DOM即可，如 <code>move: '.mine-move'</code>。<br/>
+                                还可以配置设定 <code>move: false</code> 来禁止拖拽
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>moveType</strong><br/><small class="text-muted">拖拽风格</small></td>
+                            <td>
+                                类型：<code>Number</code>，默认：<code>0</code><br/>
+                                默认的拖拽风格会有个过度的透明框。如若不喜欢，可以设定 <code>moveType: 1</code> 切换到传统的拖拽模式
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>moveOut</strong><br/><small class="text-muted">是否允许拖拽到窗口外</small></td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>false</code><br/>
+                                默认只能在窗口内拖拽，如若想拖到窗外，可设定 <code>moveOut: true</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>moveEnd</strong><br/><small class="text-muted">拖动完毕后的回调方法</small></td>
+                            <td>
+                                类型：<code>Function</code>，默认：<code>null</code><br/>
+                                默认不会触发moveEnd，如需要，设定 <code>moveEnd: function(){}</code> 即可
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>tips</strong><br/><small class="text-muted">tips方向和颜色</small></td>
+                            <td>
+                                类型：<code>Number/Array</code>，默认：<code>2</code><br/>
+                                tips层的私有参数，支持上右下左四个方向，通过 <code>1-4</code> 进行方向设定。<br/>
+                                如 <code>tips: 3</code> 则表示在元素的下面出现。<br/>
+                                有时还可能会定义一些颜色，可设定 <code>tips: [1, '#c00']</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>tipsMore</strong><br/><small class="text-muted">是否允许多个tips</small></td>
+                            <td>
+                                类型：<code>Boolean</code>，默认：<code>false</code><br/>
+                                允许多个意味着不会销毁之前的tips层，通过 <code>tipsMore: true</code> 开启
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>success<br/><small class="text-muted">层弹出后的成功回调方法</small> </td>
+                            <td>
+                                类型：<code>Function</code>，默认：<code>null</code><br/>
+                                当需要在层创建完毕时即执行一些语句，可以通过该回调。success会携带两个参数，分别是<code>当前层DOM</code>和<code>当前层索引</code>。<button class="btn btn-xs btn-success" data-target="success">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>yes</strong><br/><small class="text-muted"> 确定按钮回调方法</small></td>
+                            <td>
+                                类型：<code>Function</code>，默认：<code>null</code><br/>
+                                该回调携带两个参数，分别为<code>当前层DOM</code>和<code>当前层索引</code>。<button class="btn btn-xs btn-success" data-target="yes">示例</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>cancel</strong><br/><small class="text-muted">取消和关闭按钮触发的回调</small></td>
+                            <td>
+                                类型：<code>Function</code>，默认：<code>null</code><br/>
+                                该回调同样只携带当前层索引一个参数，无需进行手工关闭。<br/>如果不想关闭，<code>return false</code>即可，如 <code>cancel: function(index){ return false; }</code> 则不会关闭；
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>end</strong><br/><small class="text-muted">层销毁后触发的回调</small></td>
+                            <td>
+                                类型：<code>Function</code>，默认：<code>null</code><br/>
+                                无论是确认还是取消，只要层被销毁了，end都会执行，不携带任何参数
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="content">
+        <p class="text-muted">如果是页面层</p>
+        <div class="row fn-mb-10">
+            <div class="col-sm-6">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">type: 1,</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//这里content是一个普通的String</span></span></li>
+                        <li><span class="p tx-indent">content: '传入任意的文本或html'</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+            <div class="col-sm-6">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">type: 1,</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//这里content是一个DOM</span></span></li>
+                        <li><span class="p tx-indent">content: $('#id')</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+        <p class="text-muted">Ajax获取</p>
+        <div class="row fn-mt-10 fn-mb-10">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">$.post('url', {}, function(str){</span></li>
+                        <li><span class="p tx-indent">layer.open({</span></li>
+                        <li><span class="p long-indent">type: 1,</span></li>
+                        <li><span class="p long-indent">content: str <span class="s">//注意，如果str是object，那么需要字符拼接</span></span></li>
+                        <li><span class="p tx-indent">});</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+        <p class="text-muted">如果是iframe层</p>
+        <div class="row fn-mt-10  fn-mb-10">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">type: 2,</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//这里content是一个URL，如果你不想让iframe出现滚动条，你还可以 <code>content: ['http://sentsin.com', 'no']</code></span></span></li>
+                        <li><span class="p tx-indent">content: 'https://hennes1.github.io/hennes'</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+        <p class="text-muted">如果是用layer.open执行tips层</p>
+        <div class="row fn-mt-10">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">type: 4,</span></li>
+                        <li><span class="p tx-indent">content: ['内容', '#id'] <span class="s">//数组第二项即吸附元素选择器或者DOM</span></span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="skin">
+        <div class="row fn-mb-10">
+            <div class="col-sm-5">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//单个使用<sup>①</sup></span></span></li>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">skin: 'demo-class'</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+            <div class="col-sm-7">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//全局使用，即所有弹层都默认采用，但 ① 的优先级更高</span></span></li>
+                        <li><span class="p">layer.config({</span></li>
+                        <li><span class="p tx-indent">skin: 'demo-class'</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//CSS</span></span></li>
+                        <li><span class="p">body .demo-class .layui-layer-title{background:#c00; color:#fff; border: none;}</span></li>
+                        <li><span class="p">body .demo-class .layui-layer-btn{border-top:1px solid #E9E7E7}</span></li>
+                        <li><span class="p">body .demo-class .layui-layer-btn a{background:#333;}</span></li>
+                        <li><span class="p">body .demo-class .layui-layer-btn .layui-layer-btn1{background:#999;}</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="icon">
+        <div class="row">
+            <div class="col-sm-4">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//Eg.</span></span></li>
+                        <li><span class="p">layer.alert('酷毙了',</span></li>
+                        <li><span class="p">{ icon: 1});</span></li>
+                    </ol>
+                </code>
+            </div>
+            <div class="col-sm-4 mid-pd-ml">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//Eg.</span></span></li>
+                        <li><span class="p">layer.msg('不开心。。',</span></li>
+                        <li><span class="p">{ icon: 5});</span></li>
+                    </ol>
+                </code>
+            </div>
+            <div class="col-sm-4">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//Eg.</span></span></li>
+                        <li><span class="p"><span class="s no-ml">//风格1的加载</span></span></li>
+                        <li><span class="p">layer.load(1);</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="btn">
+        <div class="row">
+            <div class="col-sm-6">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//Eg. 1</span></span></li>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">content: 'test',</span></li>
+                        <li><span class="p tx-indent">btn: ['按钮一', '按钮二', '按钮三'],</span></li>
+                        <li><span class="p tx-indent">yes: function(index, layero){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//【按钮一】的回调</span></span></li>
+                        <li><span class="p tx-indent">}, btn2: function(index, layero){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//【按钮二】的回调</span></span></li>
+                        <li><span class="p tx-indent">}, btn3: function(index, layero){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//【按钮三】的回调</span></span></li>
+                        <li><span class="p tx-indent">}, cancel: function(){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//右上角关闭回调</span></span></li>
+                        <li><span class="p tx-indent">}</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+            <div class="col-sm-6">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p"><span class="s no-ml">//Eg. 2</span></span></li>
+                        <li><span class="p">layer.confirm('纳尼？', {</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//btn可以无限个按钮</span></span></li>
+                        <li><span class="p tx-indent">btn: ['按钮一', '按钮二', '按钮三'],</span></li>
+                        <li><span class="p tx-indent">btn3: function(index, layero){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//【按钮三】的回调</span></span></li>
+                        <li><span class="p tx-indent">}</span></li>
+                        <li><span class="p">}, function(index, layero){</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//【按钮一】的回调</span></span></li>
+                        <li><span class="p">}, function(index){</span></li>
+                        <li><span class="p tx-indent"><span class="s no-ml">//【按钮二】的回调</span></span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="success">
+        <div class="row">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">content: '测试回调',</span></li>
+                        <li><span class="p tx-indent">success: function(layero, index){</span></li>
+                        <li><span class="p long-indent">console.log(layero, index);</span></li>
+                        <li><span class="p tx-indent">}</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 fn-mb-15 fn-mt-15 hidden" id="yes">
+        <div class="row">
+            <div class="col-sm-12">
+                <code class="pretty-print">
+                    <ol>
+                        <li><span class="p">layer.open({</span></li>
+                        <li><span class="p tx-indent">content: '测试回调',</span></li>
+                        <li><span class="p tx-indent">yes: function(index, layero){</span></li>
+                        <li><span class="p long-indent"><span class="s no-ml">//do something</span></span></li>
+                        <li><span class="p long-indent">layer.close(index); <span class="s">//如果设定了yes回调，需进行手工关闭</span></span></li>
+                        <li><span class="p tx-indent">}</span></li>
+                        <li><span class="p">});</span></li>
+                    </ol>
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/sea.min.js"></script>
+    <script>
+        //引入layer
+        define(function (require, exports, module) {
+            var layer = require("layer");
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+        });
+        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav3_3');
+
+                $('button[data-target]').on('click', function () {
+                    var $self = $(this), $id = $self.data('target'), $target = $('#' + $id), $tr = $self.parents('tr');
+                    if($target.length > 0) {
+                        layer.open({
+                            type: 1,
+                            title: $id + '代码示例',
+                            move: false,
+                            area: ['800px'],
+                            content: $target.removeClass('hidden'),
+                            success: function (layero, index) {
+                                $tr.addClass('selected');
+                            },
+                            cancel: function () {
+                                $tr.removeClass('selected');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

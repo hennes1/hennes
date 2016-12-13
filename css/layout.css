@@ -12,6 +12,7 @@ a{ color:#333}a:hover{ color:#3598db}
 .blockquote-reverse.index-quote footer:after{ content: "";}
 legend{ margin-bottom: 5px}
 .form-group:last-child{ margin-bottom: 0}
+td small.text-muted{ color: #c8c8c8}
 /* head nav */
 .head-nav{ background-color: #3598db; margin-bottom: 0;}
 .head-nav .nav>li>a{ color: #9bccee; height: 60px; line-height: 30px;}
@@ -188,6 +189,7 @@ h4, h5, h6{ margin-bottom: 10px; margin-top: 15px;}
 .i-detail-btn{ color: #3598db;}
 .i-detail-btn:hover{ color: #74b3de;}
 .detail-view table{ margin: 0;}
+tbody .selected td{ background-color: #fff4cf;}
 
 /*+++++++++++++++++++ ScrollSpy +++++++++++++++++++ */
 .a-primary{ color: #428bca;}
@@ -323,7 +325,6 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
     text-shadow: 0 1px 0 #fff;
 }
 .pretty-print .p{ color: #333;}
-
 .pf-loading{
     background-color: #00a644;
     width: 0;
@@ -332,3 +333,5 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
     left: 0;
     top: 0;
 }
+
+.mid-pd-ml{ padding-left: 0; padding-right: 0;}

@@ -122,5 +122,13 @@ seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'smartMenu', 'common'], funct
                 Hennes.rightMenu('.detail-view tbody tr', loadSubMenuData);
             });
         });
+
+        //给table选中的行高亮（子行除外）
+        $(document).on('click', '#info_list tr', function (e) {
+            var $self = $(this);
+            if (!$self.hasClass('detail-view')) {
+                $self.hasClass('selected') ? $self.removeClass('selected') : $self.addClass('selected');
+            }
+        });
     });
 });

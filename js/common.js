@@ -345,14 +345,6 @@ $(function () {
         });
     }
 
-    //给table选中的行高亮（子行除外）
-    $(document).on('click', '.table tbody tr', function () {
-        var $self = $(this);
-        if (!$self.hasClass('detail-view')) {
-            $self.hasClass('selected') ? $self.removeClass('selected') : $self.addClass('selected');
-        }
-    });
-
     //tooltip
     $('[data-toggle="tooltip"]').tooltip({container: 'body', placement: 'top', trigger: 'hover'});
 

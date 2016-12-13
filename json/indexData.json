@@ -124,6 +124,13 @@
         "link": "QRCode.html"
       },
       {
+        "title": "Layer弹层组件",
+        "icoName": "glyphicons-new-window-alt",
+        "icoColor": "text-info",
+        "description": "近年来备受青睐的web弹层组件，以更少的代码展现更强健的功能。",
+        "link": "layer.html"
+      },
+      {
         "title": "ZeroClipboard",
         "icoName": "glyphicons-duplicate",
         "icoColor": "text-muted",

@@ -33,6 +33,7 @@
                 </h4>
             </div>
             <div class="panel-body tour-body">
+                <h3 class="h-first">基础参数</h3>
                 <table class="table table-bordered table-striped">
                     <caption>
                         <p class="tx-indent">layer是一款近年来备受青睐的web弹层组件，她具备全方位的解决方案，致力于服务各水平段的开发人员，使得用户页面轻松地拥有丰富友好的操作体验。</p>
@@ -263,7 +264,6 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
         <!--/ panel }-->
@@ -487,6 +487,17 @@
         </div>
     </div>
 
+    <div class="test-layer hidden" id="test_lay">
+        <textarea id="J_test" rows="10">layer.open({
+    title: 'test',
+    content: 'hello layer'
+});
+        </textarea>
+        <p class="text-right">
+            <a href="javascript:;" class="btn btn-primary" onclick="try{new Function($('#J_test').val())();}catch(e){alert('语句异常：'+e.message)}">在线调试</a>
+        </p>
+    </div>
+
     <script src="../js/sea.min.js"></script>
     <script>
         //引入layer
@@ -517,6 +528,32 @@
                                 $tr.removeClass('selected');
                             }
                         });
+                    }
+                });
+
+                //在线调试
+                layer.open({
+                    type: 1,
+                    title: '在线调试',
+                    closeBtn: false,
+                    moveType: 1,
+                    id: 'Lay_layer_debug',
+                    area: ['320px'],
+                    content: $('#test_lay').removeClass('hidden'),
+                    shade: false,
+                    maxmin: true,
+                    offset: 'rb',
+                    success: function(layero, index){
+                        layer.style(index, {
+                            marginLeft: -10,
+                            marginTop: -10
+                        });
+                    },
+                    min: function (layero, index) {
+                        layero.css({ top: 'auto', right: '10px', bottom: '10px', left: 'auto', marginLeft: 0, marginTop: 0});
+                    },
+                    full: function (layero, index) {
+                        layero.css({ top: 0, right: 0, bottom: 0, left: 0, marginLeft: 0, marginTop: 0});
                     }
                 });
             });

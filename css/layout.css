@@ -333,5 +333,15 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
     left: 0;
     top: 0;
 }
-
 .mid-pd-ml{ padding-left: 0; padding-right: 0;}
+/*+++++++++++++++++++ layer +++++++++++++++++++*/
+.test-layer textarea{
+    background-color: #efefef;
+    border: 0;
+    display: block;
+    width: 100%;
+    outline: none;
+    resize: none;
+    padding: 10px;
+}
+.test-layer p{ margin: 0; padding: 10px;}

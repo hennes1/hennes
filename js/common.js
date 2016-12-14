@@ -19,9 +19,6 @@ var Hennes = {
         if (typeof ZeroClipboard === 'undefined') {
             throw new Error('缺少ZeroClipboard插件，请引入');
         }
-        if (typeof layer === 'undefined') {
-            throw new Error('缺少layer弹层插件，请引入');
-        }
         //定义ZeroClipboard对像
         var zClip = new ZeroClipboard($(btn));
         zClip.on('ready', function (event) {
@@ -316,7 +313,7 @@ var Hennes = {
 
 $(function () {
     //如果引入了ZeroClipboard和layer插件，则添加复制按钮
-    if (typeof ZeroClipboard !== 'undefined' && typeof layer !== 'undefined') {
+    if (typeof ZeroClipboard !== 'undefined') {
         var copyBtn = '<a href="javascript:void(0);" class="btn btn-default btn-xs flash-copy">复制</a>';
         $('.highlight').find('code').before(copyBtn);
 

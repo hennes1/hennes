@@ -3,15 +3,13 @@
  */
 
 seajs.config({base: './js/'});
-//引入layer
-define(function (require, exports, module) {
-    var layer = require("layer");
+
+seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
+    //弹层CSS路径
     layer.config({
         path: './js/plugins/layer/'
     });
-});
 
-seajs.use(['jquery', 'bootstrap', 'common'], function () {
     $(function () {
         //当前页
         Hennes.loadNav('', 'header');

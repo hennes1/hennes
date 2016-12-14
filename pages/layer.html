@@ -67,7 +67,7 @@
                             <td><strong>content</strong> <br /><small class="text-muted">内容</small></td>
                             <td>
                                 类型：<code>String/DOM/Array</code>，默认：<code>''</code><br />
-                                content可传入的值是灵活多变的，不仅可以传入普通的html内容，还可以指定DOM，更可以随着type的不同而不同。<button class="btn btn-xs btn-success" data-target="content">示例</button>
+                                content可传入的值是灵活多变的，不仅可以传入普通的html内容，还可以指定DOM，更可以随着type的不同而不同。<button class="btn btn-xs btn-success" data-target="content" data-height="400">示例</button>
                             </td>
                         </tr>
                         <tr>
@@ -500,26 +500,25 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        //引入layer
-        define(function (require, exports, module) {
-            var layer = require("layer");
+        seajs.use(['jquery', 'bootstrap', 'layer', 'ZeroClipboard', 'common'], function () {
+            //弹层CSS路径
             layer.config({
                 path: '../js/plugins/layer/'
             });
-        });
-        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
+
             $(function () {
                 //当前页
                 Hennes.loadNav('../', 'header', 'side_nav3_3');
 
                 $('button[data-target]').on('click', function () {
-                    var $self = $(this), $id = $self.data('target'), $target = $('#' + $id), $tr = $self.parents('tr');
+                    var $self = $(this), id = $self.data('target'), $target = $('#' + id), $tr = $self.parents('tr');
+                    var h = $self.data('height'), hgt = (h === '' || typeof h === 'undefined') ? 'auto' : h + 'px';
                     if($target.length > 0) {
                         layer.open({
                             type: 1,
-                            title: $id + '代码示例',
+                            title: id + '代码示例',
                             move: false,
-                            area: ['800px'],
+                            area: ['800px', hgt],
                             content: $target.removeClass('hidden'),
                             success: function (layero, index) {
                                 $tr.addClass('selected');
@@ -542,18 +541,15 @@
                     content: $('#test_lay').removeClass('hidden'),
                     shade: false,
                     maxmin: true,
+                    shift: 2,
                     offset: 'rb',
                     success: function(layero, index){
-                        layer.style(index, {
-                            marginLeft: -10,
-                            marginTop: -10
-                        });
+                        layero.css({ top: 'auto', left: 'auto', right: '10px', bottom: '10px'});
                     },
-                    min: function (layero, index) {
-                        layero.css({ top: 'auto', right: '10px', bottom: '10px', left: 'auto', marginLeft: 0, marginTop: 0});
-                    },
-                    full: function (layero, index) {
-                        layero.css({ top: 0, right: 0, bottom: 0, left: 0, marginLeft: 0, marginTop: 0});
+                    min: function (layero) {
+                        setTimeout(function () {
+                            layero.css({ top: 'auto', right: '10px', bottom: '10px', left: 'auto'});
+                        }, 10);
                     }
                 });
             });

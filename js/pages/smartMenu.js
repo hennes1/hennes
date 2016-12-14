@@ -2,15 +2,12 @@
  * Created by hennes on 2016/11/26.
  */
 
-//引入layer
-define(function (require, exports, module) {
-    var layer = require("layer");
+seajs.use(['jquery', 'bootstrap', 'layer', 'ZeroClipboard', 'smartMenu', 'common'], function () {
+    //弹层CSS路径
     layer.config({
         path: '../js/plugins/layer/'
     });
-});
 
-seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'smartMenu', 'common'], function () {
     $(function () {
         //当前页
         Hennes.loadNav('../', 'header', 'side_nav3_1');

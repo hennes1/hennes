@@ -49,7 +49,7 @@
                                 <li></li>
                                 <li><span class="p"><span class="s no-ml">//生成</span></span></li>
                                 <li><span class="p">$('#qr_code').qrcode({</span></li>
-                                <li><span class="p tx-indent">render: "table", <span class="s">//按'table'方式渲染</span></span></li>
+                                <li><span class="p tx-indent">render: "table", <span class="s">//亦可按'canvas'来渲染</span></span></li>
                                 <li><span class="p tx-indent">width: 100, <span class="s">//二维码宽度</span></span></li>
                                 <li><span class="p tx-indent">height: 100, <span class="s">//二维码高度</span></span></li>
                                 <li><span class="p tx-indent">text: str <span class="s">//二维码信息，任意内容 </span></span></li>
@@ -58,11 +58,26 @@
                         </code>
                         <fieldset class="fn-mb-20">
                             <legend>生成二维码</legend>
-                            <div class="form-group">
-                                <input type="text" id="qr_code" class="form-control" value="这里就是二维码要生成的信息">
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary" id="qr_code_btn">生成二维码</button>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">二维码信息：</label>
+                                    <div class="col-lg-7">
+                                        <input type="text" id="qr_code" class="form-control" value="https://hennes1.github.io/hennes/">
+                                        <span class="help-block">‘table’渲染方式下对网址可能支持上不太友好</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">渲染方式：</label>
+                                    <div class="col-lg-9">
+                                        <label class="radio-inline"><input type="radio" name="rd" value="0"> table</label>
+                                        <label class="radio-inline"><input type="radio" name="rd" value="1" checked> canvas</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-lg-offset-3">
+                                        <button class="btn btn-primary" id="qr_code_btn">生成二维码</button>
+                                    </div>
+                                </div>
                             </div>
                         </fieldset>
                         <p>
@@ -102,29 +117,26 @@
         <!--/ panel }-->
     </div>
 
-    <div class="qr-code hidden" style="padding: 15px;"></div>
+    <div class="qr-code" style="display: none; padding: 15px;"></div>
 
     <script src="../js/sea.min.js"></script>
     <script>
-        //引入layer
-        define(function (require, exports, module) {
-            var layer = require("layer");
+        seajs.use(['jquery', 'bootstrap', 'layer', 'QRCode', 'ZeroClipboard', 'common'], function () {
+            //弹层CSS路径
             layer.config({
                 path: '../js/plugins/layer/'
             });
-        });
-        seajs.use(['jquery', 'bootstrap', 'QRCode', 'ZeroClipboard', 'common'], function () {
+
             $(function () {
                 //当前页
                 Hennes.loadNav('../', 'header', 'side_nav3_2');
 
-                var $tx = $('#qr_code'), $QRBtn = $('#qr_code_btn');
-
-                $QRBtn.click(function () {
-                    var val = $.trim($tx.val());
+                $('#qr_code_btn').click(function () {
+                    var val = $.trim($('#qr_code').val()), $Rd = $('input[name="rd"]:checked');
                     if(val !== ''){
+                        var type = (parseInt($Rd.val()) === 0) ? 'table' : 'canvas';
                         //生成二维码
-                        Hennes.outPutQRCode('.qr-code', 'table', val, 150, 150);
+                        Hennes.outPutQRCode('.qr-code', type, val, 180, 180);
 
                         //弹层显示二维码
                         layer.open({
@@ -132,8 +144,9 @@
                             title: '显示二维码',
                             move: false,
                             area: ['auto'],
-                            content: $('.qr-code').removeClass('hidden')
+                            content: $('.qr-code')
                         });
+                        return false;
                     }
                 });
 

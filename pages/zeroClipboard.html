@@ -227,14 +227,12 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        //引入layer
-        define(function (require, exports, module) {
-            var layer = require("layer");
+        seajs.use(['jquery', 'bootstrap', 'layer', 'ZeroClipboard', 'common'], function () {
+            //弹层CSS路径
             layer.config({
                 path: '../js/plugins/layer/'
             });
-        });
-        seajs.use(['jquery', 'bootstrap', 'ZeroClipboard', 'common'], function () {
+
             $(function () {
                 //当前页
                 Hennes.loadNav('../', 'header', 'side_nav3_4');

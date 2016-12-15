@@ -1019,6 +1019,7 @@
                         title: '<b>在线调试</b>',
                         id: 'Lay_layer_debug',
                         content: $('#test_lay'),
+                        area: ['480px'],
                         skin: 'goTo-debug-max',
                         shade: false,
                         offset: 'rb',
@@ -1030,31 +1031,34 @@
                                 marginTop: -10
                             });
                         },
-                        end: function (layero, index) {
-                            //打开缩小版“在线调试”
-                            layer.open({
-                                type: 1,
-                                title: '<b>在线调试</b>',
-                                skin: 'goTo-debug-min',
-                                shade: false,
-                                offset: 'rb',
-                                resize: false,
-                                success: function(layero, index){
-                                    layer.style(index, {
-                                        marginLeft: -10,
-                                        marginTop: -10
-                                    });
-                                },
-                                end: function () {
-                                    //打开“在线调试”
-                                    popDebug();
-                                }
-                            });
+                        end: function () {
+                            smallDebug();
                         }
                     });
                     J_test.focus();
                 };
-                popDebug();
+
+                //最小窗口
+                var smallDebug = function () {
+                    layer.open({
+                        type: 1,
+                        title: '<b>在线调试</b>',
+                        skin: 'goTo-debug-min',
+                        shade: false,
+                        offset: 'rb',
+                        resize: false,
+                        success: function(layero, index){
+                            layer.style(index, {
+                                marginLeft: -10,
+                                marginTop: -10
+                            });
+                        },
+                        end: function () {
+                            popDebug();
+                        }
+                    });
+                };
+                smallDebug();
 
                 //相册
                 layer.photos({

@@ -335,13 +335,42 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
 }
 .mid-pd-ml{ padding-left: 0; padding-right: 0;}
 /*+++++++++++++++++++ layer +++++++++++++++++++*/
+.eg-layer{ margin: 15px;}
+.eg-layer, .test-layer{ display: none;}
+.eg-layer .table{ margin-bottom: 0;}
 .test-layer textarea{
     background-color: #efefef;
     border: 0;
     display: block;
-    width: 100%;
+    width: 360px;
+    height: 160px;
     outline: none;
-    resize: none;
     padding: 10px;
+    font-size: 12px;
+    font-family: Courier New;
 }
 .test-layer p{ margin: 0; padding: 10px;}
+b.text-primary{ cursor: pointer;}
+.layer-photos{ font-size: 0;}
+.layer-photos img{
+    display: inline-block;
+    width: auto;
+    height: 90px;
+    vertical-align: top;
+    margin-right: 5px;
+}
+.goTo-debug-max .layui-layer-setwin .layui-layer-close1{ background: none;}
+.goTo-debug-max .layui-layer-setwin .layui-layer-close1 cite{
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    left: 0;
+    top: 50%;
+    margin-top: -1px;
+    background-color: #2E2D3C;
+    cursor: pointer;
+}
+.goTo-debug-max .layui-layer-setwin .layui-layer-close1:hover cite{background-color: #2D93CA;}
+.goTo-debug-min .layui-layer-btn{ padding: 3px 0!important;}
+.goTo-debug-min .layui-layer-setwin .layui-layer-close1{ background-position: -65px -40px;}
+.goTo-debug-min .layui-layer-setwin .layui-layer-close1:hover{ background-position:-49px -40px}

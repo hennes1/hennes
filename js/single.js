@@ -89,36 +89,36 @@ var HennesSingle = {
         var $wrap = $(e), html = '';
 
         $.getJSON('../json/singleData.json', function (data) {
-            for(var i = 0, len = data.length; i < len; i++) {
+            $.each(data, function (i, row) {
                 html += '<div class="section-item section-item'+ (i+1) +'">'
                     +' <div class="container">'
                     + '<div class="page-header">'
-                    +'     <h3>'+ data[i].column +'</h3>'
+                    +'     <h3>'+ row.column +'</h3>'
                     +' </div>'
                     +' <div class="row">';
-                for(var m = 0; m < data[i].list.length; m++) {
+                $.each(row.list, function (m, val) {
                     html += '<div class="col-xs-6 col-sm-6 col-md-3 col-item">'
                         + '    <div class="thumbnail">'
-                        + '        <a href="'+ data[i].list[m].url +'" class="col-img-a">'
-                        + '            <img src="../images/grey.gif" data-original="'+ data[i].list[m].image +'" alt="" class="lazy">'
+                        + '        <a href="'+ val.url +'" class="col-img-a">'
+                        + '            <img src="../images/grey.gif" data-original="'+ val.image +'" alt="" class="lazy">'
                         + '             <div class="info">'
-                        + '                 <span>最近直播：'+ data[i].list[m].time +'</span>'
+                        + '                 <span>最近直播：'+ val.time +'</span>'
                         + '             </div>'
                         + '        </a>'
                         + '        <div class="caption">'
-                        + '            <h4><a href="'+ data[i].list[m].url +'">'+ data[i].list[m].title +'</a></h4>'
+                        + '            <h4><a href="'+ val.url +'">'+ val.title +'</a></h4>'
                         + '            <p class="text-muted">'
-                        + '                主讲人：'+ data[i].list[m].lector +'<a href="'+ data[i].list[m].url +'" class="pull-right text-primary" target="_blank">'+ data[i].list[m].other +'</a>'
+                        + '                主讲人：'+ val.lector +'<a href="'+ val.url +'" class="pull-right text-primary" target="_blank">'+ val.other +'</a>'
                         + '            </p>'
                         + '        </div>'
                         + '    </div>'
                         + ' </div>';
-                }
+                });
 
                 html += '   </div>'
                     + '  </div>'
                     + '</div>';
-            }
+            });
 
             //添加数据
             $wrap.append(html).removeClass('loading');
@@ -126,7 +126,7 @@ var HennesSingle = {
             // lazy
             $('img.lazy').lazyload({
                 effect: 'fadeIn'
-            });
+            }).css({ background: 'none'});
         });
     },
     //加载头部

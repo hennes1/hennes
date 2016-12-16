@@ -95,18 +95,18 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'ZeroClipboard', 'smartMenu', 'common
                     + '      </tr>'
                     + '  </thead>'
                     + '  <tbody>';
-                for (var i = 0; i < data.length; i++) {
-                    var leaderId = data[i].leader;
+                $.each(data, function (i, res) {
+                    var leaderId = res.leader;
                     if (leaderId == id) {
-                        for (var n = 0; n < data[i].other.length; n++) {
-                            html += '<tr data-id="s_' + data[i].leader + '_' + (n + i + 1) + '">'
-                                + '     <td>' + data[i].other[n].skills + '</td>'
-                                + '     <td>' + data[i].other[n].disciple + '</td>'
-                                + '     <td>' + data[i].other[n].relation + '</td>'
+                        $.each(res.other, function (n, val) {
+                            html += '<tr data-id="s_' + leaderId + '_' + (n + 1) + '">'
+                                + '     <td>' + val.skills + '</td>'
+                                + '     <td>' + val.disciple + '</td>'
+                                + '     <td>' + val.relation + '</td>'
                                 + ' </tr>';
-                        }
+                        });
                     }
-                }
+                });
                 html += '</tbody>';
 
                 //插入数据

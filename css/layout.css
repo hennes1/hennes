@@ -102,14 +102,16 @@ td small.text-muted{ color: #c8c8c8}
 }
 .aside .panel-heading{ padding: 0;}
 .aside .panel-title{ font-size: 14px;}
-.aside .panel-title a{ display: block; padding: 12px 15px;}
+.aside .panel-title a{ display: block; padding: 10px;}
 .aside .panel-title a:hover, .aside .panel-title a:focus{ text-decoration: none;}
 .aside .panel-body{ border: 0!important; border-color: transparent; padding: 0;}
 .aside .navbar-nav, .aside .navbar-nav li{ float: none!important;}
 .aside .navbar-nav a:hover, .aside .navbar-nav a:focus{ background-color: #e7f5ff; color: #777;}
 .aside .navbar-nav .active a, .aside .navbar-nav .active a:hover, .aside .navbar-nav .active a:focus{ background-color: #c9e8fe; color: #333;}
-.aside .collapse .nav li a, .aside .collapsing .nav li a{ padding-left: 24px;}
+.aside .collapse .nav li a, .aside .collapsing .nav li a{ padding-left: 18px;}
+.aside .collapse .nav li a i, .aside .collapsing .nav li a i{ margin-right: 3px;}
 .panel-collapse{ margin-top: -2px;}
+.side-scroll{ overflow: hidden; overflow-y: auto;}
 /* main-wrap */
 .main-wrap{ margin-top: 76px;}
 .show-side{ margin-left: 160px;}

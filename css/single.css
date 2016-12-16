@@ -58,7 +58,8 @@
     overflow: hidden;
     position: relative;
 }
-.col-img-a img{ min-height: 100px; _height: 100px; height: auto;}
+.col-img-a img{ min-height: 140px; _height: 140px; height: auto;}
+.lazy{ background: url(../images/loading.gif) 50% 50% no-repeat;}
 .col-item:hover .col-img-a img{
     -webkit-transform: scale(1.15);
     -moz-transform: scale(1.15);

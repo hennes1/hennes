@@ -20,32 +20,32 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
             var $index = $('#index_list'), html = '';
 
             $.getJSON('json/indexData.json?v=' + new Date, function (data) {
-                for (var i = 0, len = data.length; i < len; i++) {
-                    for (var m = 0; m < data[i].menu.length; m++) {
+                $.each(data, function (i, series) {
+                    $.each(series.menu, function (m, val) {
                         html += '<div class="col-sm-4 jump-panel">'
                             + '   <div class="panel panel-default">'
                             + '       <div class="panel-heading">'
                             + '           <h4 class="panel-title">'
-                            + '                <i class="glyphicons ' + data[i].menu[m].icoName + ' fn-mr-5"></i>' + data[i].menu[m].title + ''
+                            + '                <i class="glyphicons ' + val.icoName + ' fn-mr-5"></i>' + val.title + ''
                             + '           </h4>'
                             + '       </div>'
                             + '       <div class="panel-body">'
                             + '           <div class="media">'
-                            + '               <div class="media-left media-middle ' + data[i].menu[m].icoColor + '">'
-                            + '                 <i class="glyphicons ' + data[i].menu[m].icoName + '"></i>'
+                            + '               <div class="media-left media-middle ' + val.icoColor + '">'
+                            + '                 <i class="glyphicons ' + val.icoName + '"></i>'
                             + '               </div>'
                             + '               <div class="media-body">'
-                            + '                   <p>' + data[i].menu[m].description + '</p>'
+                            + '                   <p>' + val.description + '</p>'
                             + '               </div>'
                             + '           </div>'
                             + '       </div>'
                             + '       <div class="panel-footer pos-r text-right">'
-                            + '           <button class="btn btn-primary btn-sm url-jump" data-url="pages/' + data[i].menu[m].link + '" role="button">了解详情 »</button>'
+                            + '           <button class="btn btn-primary btn-sm url-jump" data-url="pages/' + val.link + '" role="button">了解详情 »</button>'
                             + '       </div>'
                             + '   </div>'
                             + '</div>';
-                    }
-                }
+                    });
+                });
 
                 //添加数据
                 $index.append(html);

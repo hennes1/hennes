@@ -45,11 +45,18 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
             }).animate({opacity: .95});
             $panel.css({
                 position: 'fixed',
+                left: 'auto',
+                top: '50%',
+                marginTop: 'auto',
+                marginLeft: 'auto',
+                opacity: 0,
+                zIndex: 10
+            }).animate({
                 left: '50%',
                 top: '50%',
+                opacity: 1,
                 marginTop: -t,
-                marginLeft: -l,
-                zIndex: 10
+                marginLeft: -l
             });
             $pfLoad.remove().appendTo($foot);
 

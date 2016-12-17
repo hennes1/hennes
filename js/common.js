@@ -170,18 +170,10 @@ var Hennes = {
             $sideNav = $('#side_nav'); //侧边菜单id
 
         //如果有头部菜单
-        if($headNav.length === 1){
-            if(topID === 'header'){
-                $headNav.load(root + 'include/header.html', function () {
-                    $(this).removeClass('hd-loading');
-                });
-            }
-            if(typeof topID !== 'undefined') {
-                $headNav.load(root + 'include/header.html', function () {
-                    $(this).removeClass('hd-loading');
-                    Hennes.currNav(topID);
-                });
-            }
+        if(topID === 'header'){
+            $headNav.load(root + 'include/header.html', function () {
+                $(this).removeClass('hd-loading');
+            });
         }
 
         //侧边菜单
@@ -189,45 +181,85 @@ var Hennes = {
             if(typeof sideID === 'undefined'){
                 return false;
             }else{
-                $.getJSON(root + 'json/indexData.json', function (data) {
-                    var html = '';
-                    html += '<div class="panel-group side-scroll" id="accordion">';
-                    $.each(data, function (i, group) {
-                        html += '<div class="panel panel-default">'
-                            +'     <div class="panel-heading">'
-                            +'         <h4 class="panel-title">'
-                            +'             <a data-toggle="collapse" data-parent="#accordion" href="#'+ group.name +'">'
-                            +'                 <i class="glyphicons '+ group.ico +' fn-mr-10"></i>'+ group.column +''
-                            +'             </a>'
-                            +'         </h4>'
-                            +'     </div>'
-                            +'     <div id="'+ group.name +'" class="panel-collapse collapse">'
-                            +'         <div class="panel-body">'
-                            +'             <ul class="nav navbar-nav">';
-                                    $.each(group.menu, function (n, nav) {
-                                        html += '  <li id="side_nav'+ (i+1) +'_'+ (n+1) +'">'
-                                            +'        <a href="'+ nav.link +'">'
-                                            +'            <i class="glyphicons '+ nav.icoName +' fn-mr-5"></i>'
-                                            +'            '+ nav.title +''
-                                            +'        </a>'
-                                            +'    </li>';
-                                    });
-                        html += '           </ul>'
-                            +'         </div>'
-                            +'     </div>'
-                            +' </div>';
-                    });
-
-                    html += '</div>';
-
-                    $sideNav.removeClass('sd-loading').append(html);
-                    setTimeout(function () {
-                        Hennes.currNav(sideID);
-                        Hennes.setSideHeight();
-                    }, 600);
-                });
+                Hennes.getMenuData(root, $sideNav, sideID);
             }
         }
+    },
+    getMenuData: function (root, e, id) {
+        $.getJSON(root + 'json/menuData.json', function (data) {
+            var html = '';
+            if(typeof id !== 'undefined' && id !== '') {
+                var sideHtml = html + '<div class="panel-group side-scroll" id="accordion">';
+                $.each(data, function (i, group) {
+                    sideHtml += '<div class="panel panel-default">'
+                        + '     <div class="panel-heading">'
+                        + '         <h4 class="panel-title">'
+                        + '             <a data-toggle="collapse" data-parent="#accordion" href="#' + group.name + '">'
+                        + '                 <i class="glyphicons ' + group.ico + ' fn-mr-10"></i>' + group.column + ''
+                        + '             </a>'
+                        + '         </h4>'
+                        + '     </div>'
+                        + '     <div id="' + group.name + '" class="panel-collapse collapse">'
+                        + '         <div class="panel-body">'
+                        + '             <ul class="nav navbar-nav">';
+                    $.each(group.menu, function (n, nav) {
+                        sideHtml += '  <li id="side_nav' + (i + 1) + '_' + (n + 1) + '">'
+                            + '        <a href="' + nav.link + '">'
+                            + '            <i class="glyphicons ' + nav.icoName + ' fn-mr-5"></i>'
+                            + '            ' + nav.title + ''
+                            + '        </a>'
+                            + '    </li>';
+                    });
+                    sideHtml += '  </ul>'
+                        + '     </div>'
+                        + '  </div>'
+                        + '</div>';
+                });
+
+                sideHtml += '</div>';
+
+                e.removeClass('sd-loading').append(sideHtml);
+                setTimeout(function () {
+                    Hennes.currNav(id);
+                    Hennes.setSideHeight();
+                }, 600);
+            }
+            if(typeof id === 'undefined'){
+                var loading = layer.load(0, {shade: false});
+                $.each(data, function (i, series) {
+                    $.each(series.menu, function (m, val) {
+                        html += '<div class="col-sm-4 jump-panel">'
+                            + '   <div class="panel panel-default">'
+                            + '       <div class="panel-heading">'
+                            + '           <h4 class="panel-title">'
+                            + '                <i class="glyphicons ' + val.icoName + ' fn-mr-5"></i>' + val.title + ''
+                            + '           </h4>'
+                            + '       </div>'
+                            + '       <div class="panel-body">'
+                            + '           <div class="media">'
+                            + '               <div class="media-left media-middle ' + val.icoColor + '">'
+                            + '                 <i class="glyphicons ' + val.icoName + '"></i>'
+                            + '               </div>'
+                            + '               <div class="media-body">'
+                            + '                   <p>' + val.description + '</p>'
+                            + '               </div>'
+                            + '           </div>'
+                            + '       </div>'
+                            + '       <div class="panel-footer pos-r text-right">'
+                            + '           <button class="btn btn-primary btn-sm url-jump" data-url="pages/' + val.link + '" role="button">了解详情 »</button>'
+                            + '       </div>'
+                            + '   </div>'
+                            + '</div>';
+                    });
+                });
+
+                //添加数据
+                e.append(html);
+
+                //关闭loading
+                layer.closeAll('loading');
+            }
+        });
     },
     /* chkBoxAndRd：复选框和单选框选取 */
     chkBoxAndRd: function () {

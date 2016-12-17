@@ -16,43 +16,10 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
 
         //page data
         $(window).on('load', function (e) {
-            var loading = layer.load(0, {shade: false});
-            var $index = $('#index_list'), html = '';
+            var $index = $('#index_list');
 
-            $.getJSON('json/indexData.json?v=' + new Date, function (data) {
-                $.each(data, function (i, series) {
-                    $.each(series.menu, function (m, val) {
-                        html += '<div class="col-sm-4 jump-panel">'
-                            + '   <div class="panel panel-default">'
-                            + '       <div class="panel-heading">'
-                            + '           <h4 class="panel-title">'
-                            + '                <i class="glyphicons ' + val.icoName + ' fn-mr-5"></i>' + val.title + ''
-                            + '           </h4>'
-                            + '       </div>'
-                            + '       <div class="panel-body">'
-                            + '           <div class="media">'
-                            + '               <div class="media-left media-middle ' + val.icoColor + '">'
-                            + '                 <i class="glyphicons ' + val.icoName + '"></i>'
-                            + '               </div>'
-                            + '               <div class="media-body">'
-                            + '                   <p>' + val.description + '</p>'
-                            + '               </div>'
-                            + '           </div>'
-                            + '       </div>'
-                            + '       <div class="panel-footer pos-r text-right">'
-                            + '           <button class="btn btn-primary btn-sm url-jump" data-url="pages/' + val.link + '" role="button">了解详情 »</button>'
-                            + '       </div>'
-                            + '   </div>'
-                            + '</div>';
-                    });
-                });
-
-                //添加数据
-                $index.append(html);
-
-                //关闭loading
-                layer.closeAll('loading');
-            });
+            //加载数据
+            Hennes.getMenuData('', $index);
         });
 
         //跳转页效果

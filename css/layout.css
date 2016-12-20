@@ -337,6 +337,16 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
 }
 .mid-pd-ml{ padding-left: 0; padding-right: 0;}
 /*+++++++++++++++++++ layer +++++++++++++++++++*/
+.layui-layer.dir-layer{ border: 1px #dedede solid; box-shadow: 0 0 6px rgba(0,0,0,.15);}
+.site-dir{ margin: 0; padding: 10px;}
+.layui-layer.dir-layer li{ list-style-type: disc; margin-left: 0; font-weight: 600;}
+.site-dir ul{ margin-left: 10px; padding-left: 10px;}
+.site-dir ul li{ list-style-type: circle!important; font-weight: normal!important;}
+.site-dir li a em{ color: #c2c2c2; margin-left: 5px; font-style: normal; font-size: 12px;}
+.site-dir li a:hover, .site-dir li a:focus{ text-decoration: none;}
+.site-dir li.active a{ color: #3598db; font-weight: 600}
+.site-dir li.active a em{ font-weight: normal}
+
 .eg-layer{ margin: 15px;}
 .eg-layer, .test-layer{ display: none;}
 .eg-layer .table{ margin-bottom: 0;}

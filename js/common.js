@@ -346,9 +346,12 @@ var Hennes = {
     },
     setSideHeight: function () {
         var winHg = $(window).height(), h = winHg - 60;
-        $('.side-scroll').slimScroll({
-            height: h
-        });
+        var $sideScroll = $('.side-scroll');
+        if($sideScroll.length > 0) {
+            $sideScroll.slimScroll({
+                height: h
+            });
+        }
     },
     titleTip: function () {
         $('[data-toggle="tooltip"]').tooltip({container: 'body', trigger: 'hover'});

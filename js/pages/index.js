@@ -16,6 +16,9 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
 
         //page data
         $(window).on('load', function (e) {
+            //移除preloader
+            $(".preloader").remove();
+
             var $index = $('#index_list');
 
             //加载数据
@@ -45,18 +48,11 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
             }).animate({opacity: .95});
             $panel.css({
                 position: 'fixed',
-                left: 'auto',
-                top: '50%',
-                marginTop: 'auto',
-                marginLeft: 'auto',
-                opacity: 0,
-                zIndex: 10
-            }).animate({
                 left: '50%',
                 top: '50%',
-                opacity: 1,
                 marginTop: -t,
-                marginLeft: -l
+                marginLeft: -l,
+                zIndex: 10
             });
             $pfLoad.remove().appendTo($foot);
 
@@ -70,7 +66,7 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
                         window.location.href = url;
                     });
                 }
-            }, 10);
+            }, 5);
         });
     });
 });

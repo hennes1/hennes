@@ -16,10 +16,10 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
 
         //page data
         $(window).on('load', function (e) {
+            var $index = $('#index_list');
+
             //移除preloader
             $(".preloader").remove();
-
-            var $index = $('#index_list');
 
             //加载数据
             Hennes.getMenuData('', $index);

@@ -173,6 +173,7 @@ var Hennes = {
         if(topID === 'header'){
             $headNav.load(root + 'include/header.html', function () {
                 $(this).removeClass('hd-loading');
+                Hennes.titleTip();
             });
         }
 
@@ -348,6 +349,9 @@ var Hennes = {
         $('.side-scroll').slimScroll({
             height: h
         });
+    },
+    titleTip: function () {
+        $('[data-toggle="tooltip"]').tooltip({container: 'body', trigger: 'hover'});
     }
 };
 
@@ -387,8 +391,5 @@ $(function () {
     }
 
     //tooltip
-    $('[data-toggle="tooltip"]').tooltip({container: 'body', placement: 'top', trigger: 'hover'});
-
-
-
+    Hennes.titleTip();
 });

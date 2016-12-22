@@ -2,7 +2,7 @@
  * Created by hennes on 2016/11/26.
  */
 
-seajs.use(['jquery', 'bootstrap', 'layer', 'ZeroClipboard', 'smartMenu', 'common'], function () {
+seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'ZeroClipboard', 'smartMenu', 'common'], function () {
     //弹层CSS路径
     layer.config({
         path: '../js/plugins/layer/'

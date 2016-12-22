@@ -12,9 +12,7 @@
 */
 (function ($) {
     $.fn.citySelect = function (settings) {
-        if (this.length < 1) {
-            return;
-        }
+        if (this.length < 1) return;
 
         // 默认值
         settings = $.extend({
@@ -47,13 +45,10 @@
             city_obj.empty().attr("disabled", true);
             dist_obj.empty().attr("disabled", true);
 
-            if (prov_id < 0 || typeof(city_json.citylist[prov_id].s) == "undefined") {
+            if (prov_id < 0 || typeof(city_json.citylist[prov_id].s) === "undefined") {
                 if (_noData == "none") {
                     city_obj.css("display", "none");
                     dist_obj.css("display", "none");
-                } else if (_noData == "hidden") {
-                    city_obj.css("visibility", "hidden");
-                    dist_obj.css("visibility", "hidden");
                 }
                 return;
             }
@@ -63,7 +58,7 @@
             $.each(city_json.citylist[prov_id].s, function (i, city) {
                 temp_html += "<option value='" + city.n + "'>" + city.n + "</option>";
             });
-            city_obj.html(temp_html).attr("disabled", false).css({"display": "", "visibility": ""});
+            city_obj.html(temp_html).attr("disabled", false).css({"display": ""});
             distStart();
         };
 
@@ -77,11 +72,9 @@
             }
             dist_obj.empty().attr("disabled", true);
 
-            if (prov_id < 0 || city_id < 0 || typeof(city_json.citylist[prov_id].s[city_id].s) == "undefined") {
+            if (prov_id < 0 || city_id < 0 || typeof(city_json.citylist[prov_id].s[city_id].s) === "undefined") {
                 if (_noData == "none") {
                     dist_obj.css("display", "none");
-                } else if (_noData == "hidden") {
-                    dist_obj.css("visibility", "hidden");
                 }
                 return;
             }
@@ -91,7 +84,7 @@
             $.each(city_json.citylist[prov_id].s[city_id].s, function (i, dist) {
                 temp_html += "<option value='" + dist.n + "'>" + dist.n + "</option>";
             });
-            dist_obj.html(temp_html).attr("disabled", false).css({"display": "", "visibility": ""});
+            dist_obj.html(temp_html).attr("disabled", false).css({"display": ""});
         };
 
         var init = function () {
@@ -100,16 +93,16 @@
             $.each(city_json.citylist, function (i, prov) {
                 temp_html += "<option value='" + prov.n + "'>" + prov.n + "</option>";
             });
-            prov_obj.html(temp_html);
 
             if(_noData === 'none'){ //只赋值省份/直辖市
                 if(_required === true){
-                    dist_obj.select2({placeholder: ""});
+                    //dist_obj.select2({placeholder: ""});
                 }else{ //未赋值且非必须项
                     city_obj.empty().attr("disabled", true);
                     dist_obj.empty().attr("disabled", true);
                 }
             }
+            prov_obj.html(temp_html);
 
             // 若有传入省份与市级的值，则选中（setTimeout为兼容IE6而设置）
             setTimeout(function () {

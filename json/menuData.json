@@ -49,7 +49,7 @@
     ]
   },
   {
-    "column": "相关插件",
+    "column": "BT相关插件",
     "name": "plugins",
     "ico": "glyphicons-magic",
     "menu": [
@@ -73,13 +73,6 @@
         "icoColor": "text-success",
         "description": "此为Bootstrap的标签切换插件，调用简单，可以剥离出来单独使用。",
         "link": "tab.html"
-      },
-      {
-        "title": "slimScroll",
-        "icoName": "glyphicons-reflect-y",
-        "icoColor": "text-info",
-        "description": "第三方滚动条插件，提供了较多用户可自定义的参数，值得拥有。",
-        "link": "slimScroll.html"
       },
       {
         "title": "scrollSpy",
@@ -129,6 +122,13 @@
         "icoColor": "text-info",
         "description": "近年来备受青睐的web弹层组件，以更少的代码展现更强健的功能。",
         "link": "layer.html"
+      },
+      {
+        "title": "slimScroll",
+        "icoName": "glyphicons-reflect-y",
+        "icoColor": "text-info",
+        "description": "第三方滚动条插件，提供了较多用户可自定义的参数，值得拥有。",
+        "link": "slimScroll.html"
       },
       {
         "title": "ZeroClipboard",

@@ -345,7 +345,9 @@ var Hennes = {
     },
     setSideHeight: function () {
         var winHg = $(window).height(), h = winHg - 60;
-        $('.side-scroll').css({ height: h});
+        $('.side-scroll').slimScroll({
+            height: h
+        });
     }
 };
 

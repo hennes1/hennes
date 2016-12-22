@@ -32,6 +32,7 @@
                 <h4><i class="glyphicons glyphicons-calendar fn-mr-10"></i>日历插件<small>（外部插件，部分css依赖）</small></h4>
             </div>
             <div class="panel-body">
+                <div class="bg-success sm-tip">本站对此插件做了 <code>CSS</code> 的分离，直接将其复制到自己项目中，然后将 <code>common.js</code> 中的相关代码也复制到项目中，酌情调用，经测试正常无误。</div>
                 <div class="row">
                     <div class="col-sm-12">
                         <form class="form-horizontal fn-mt-15">
@@ -285,7 +286,7 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'layer', 'moment', 'datePicker', 'ZeroClipboard', 'common'], function () {
+        seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'moment', 'datePicker', 'ZeroClipboard', 'common'], function () {
             //弹层CSS路径
             layer.config({
                 path: '../js/plugins/layer/'

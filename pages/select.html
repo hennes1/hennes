@@ -29,16 +29,17 @@
         <!-- { panel -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4><i class="glyphicons glyphicons-list-alt fn-mr-10"></i>select控件<small>（外部插件）</small></h4>
+                <h4><i class="glyphicons glyphicons-list-alt fn-mr-10"></i>select控件<small>（JS部分依赖）</small></h4>
             </div>
             <div class="panel-body">
+                <div class="bg-success sm-tip">本站对此插件做了 <code>CSS</code> 和 <code>JS</code> 的分离，直接将其复制到自己项目中，酌情调用，经测试正常无误。</div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <form class="form-horizontal fn-mt-15">
+                        <form class="form-horizontal fn-mt-15" id="select_frm">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">无搜索框：</label>
                                 <div class="col-sm-5">
-                                    <select name="status" class="select" data-search="true" style="width: 100%;">
+                                    <select name="no_search" class="select" data-search="true" style="width: 100%;">
                                         <option></option>
                                         <option value="11">11</option>
                                         <option value="12">12</option>
@@ -51,7 +52,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">有搜索框：</label>
                                 <div class="col-sm-5">
-                                    <select name="status" class="select" style="width: 100%;">
+                                    <select name="has_search" class="select" style="width: 100%;">
                                         <option></option>
                                         <option value="1">广州小朋网络有限公司</option>
                                         <option value="2">网易</option>
@@ -98,36 +99,44 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">城市选择：</label>
+                                <label class="col-sm-3 control-label">城市联动：</label>
                                 <div class="col-sm-5 city-select-con" id="city_select">
-                                    <select class="select prov" style="width:35%;"></select>
-                                    <select class="select city" style="width:35%;"></select>
-                                    <select class="select dist" style="width:27%;"></select>
+                                    <select class="select prov" name="a_prov" style="width:35%;"></select>
+                                    <select class="select city" name="a_city" style="width:35%;"></select>
+                                    <select class="select dist" name="a_dist" style="width:27%;"></select>
                                     <span class="help-block">有默认的初始城市</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">城市选择：</label>
+                                <label class="col-sm-3 control-label">城市联动：</label>
                                 <div class="col-sm-5 city-select-con" id="city_select2">
-                                    <select class="select prov" style="width:35%;"></select>
-                                    <select class="select city" style="width:35%;"></select>
-                                    <select class="select dist" style="width:27%;"></select>
+                                    <select class="select prov" name="b_prov" style="width:35%;"></select>
+                                    <select class="select city" name="b_city" style="width:35%;"></select>
+                                    <select class="select dist" name="b_dist" style="width:27%;"></select>
                                     <span class="help-block">没有默认初始值</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">城市选择：</label>
+                                <label class="col-sm-3 control-label">城市联动：</label>
                                 <div class="col-sm-5 city-select-con" id="city_select3">
-                                    <select class="select prov" style="width:35%;"></select>
-                                    <select class="select city" style="width:35%;"></select>
-                                    <select class="select dist" style="width:27%;"></select>
+                                    <select class="select prov" name="c_prov" style="width:35%;"></select>
+                                    <select class="select city" name="c_city" style="width:35%;"></select>
+                                    <select class="select dist" name="c_dist" style="width:27%;"></select>
                                     <span class="help-block">默认省（直辖市）</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">自定义联动：</label>
+                                <div class="col-sm-5 city-select-con" id="city_select4">
+                                    <select class="select prov" name="d_prov" style="width:33%;"></select>
+                                    <select class="select city" name="d_city" style="width:33%;"></select>
+                                    <select class="select dist" name="d_dist" style="width:31%;"></select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">select其它操作：</label>
                                 <div class="col-sm-5">
-                                    <select class="select" id="tag_select" multiple="multiple" style="width: 100%;">
+                                    <select class="select" id="tag_select" name="tag_select" multiple="multiple" style="width: 100%;">
                                         <option value="2">test</option>
                                         <option value="3">admin</option>
                                         <option value="4">那一剑的风情</option>
@@ -226,7 +235,7 @@
 
     <script src="../js/sea.min.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'select2', 'citySelect', 'layer', 'ZeroClipboard', 'common'], function () {
+        seajs.use(['jquery', 'bootstrap', 'select2', 'citySelect', 'layer', 'slimScroll', 'ZeroClipboard', 'common'], function () {
             //弹层CSS路径
             layer.config({
                 path: '../js/plugins/layer/'
@@ -238,8 +247,11 @@
                     return state.text;
                 }
 
-                var $state = $('<span><img src="../images/bank/' + state.element.value.toLowerCase() + '.png" class="select-ico" />' + state.text + '</span>');
-                return $state;
+                var imgItem = '<span>'
+                    +'  <img src="../images/bank/' + state.element.value.toLowerCase() + '.png" class="select-ico" />'
+                    +   state.text
+                    +'</span>';
+                return $(imgItem);
             }
 
             $(function () {
@@ -269,13 +281,16 @@
                     $tagSelect.val(null).trigger("change");
                 });
 
-                var $citySelect = $('#city_select'), $citySelect2 = $('#city_select2'), $citySelect3 = $('#city_select3');
+                var $citySelect = $('#city_select'),
+                    $citySelect2 = $('#city_select2'),
+                    $citySelect3 = $('#city_select3'),
+                    $citySelect4 = $('#city_select4');
 
                 //默认省（直辖市）/市/区（县）
                 $citySelect.citySelect({
                     prov: "广东省",
-                    city: "广州市",
-                    dist: "天河区"
+                    city: "佛山市",
+                    dist: "顺德区"
                 });
 
                 //无数据
@@ -289,12 +304,22 @@
                     prov: "上海市",
                     nodata: "none"
                 });
-                
+
+                //自定义联动
+                $citySelect4.citySelect({
+                    url:{"citylist":[
+                        {"n":"前端技术","s":[{"n":"HTML"},{"n":"CSS","s":[{"n":"CSS2.0"},{"n":"CSS3.0"}]},{"n":"JavaScript"}]},
+                        {"n":"编程语言","s":[{"n":"C"},{"n":"C++"},{"n":"Objective-C"},{"n":"PHP"},{"n":"JAVA"}]},
+                        {"n":"数据库","s":[{"n":"Mysql"},{"n":"SqlServer"},{"n":"Oracle"},{"n":"DB2"}]}
+                    ]},
+                    nodata: "none",
+                    required: false
+                });
+
+                //确定
                 $('#ok_btn').on('click', function () {
-                    var a = [$citySelect.find('.prov').val(), $citySelect.find('.city').val(), $citySelect.find('.dist').val()],
-                        b = [$citySelect2.find('.prov').val(), $citySelect2.find('.city').val(), $citySelect2.find('.dist').val()],
-                        c = [$citySelect3.find('.prov').val(), $citySelect3.find('.city').val(), $citySelect3.find('.dist').val()];
-                    console.log(a + '\n' + b + '\n' + c);
+                    var frmData = $('#select_frm').serialize();
+                    console.log(frmData);
                     return false;
                 });
             });

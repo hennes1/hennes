@@ -2,8 +2,7 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
     <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
@@ -11,8 +10,7 @@
     <title>首页 - HennesProject</title>
     <link rel="stylesheet" href="css/bootStrap/bootStrap.min.css">
     <link rel="stylesheet" href="css/glyphicons/glyphicons.min.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/preload.css">
+    <link rel="stylesheet" href="css/index.css">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
@@ -22,16 +20,55 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader-inner square-spin">
-                <span><i class="glyphicons glyphicons-leaf"></i></span>
+                <img src="images/logo.png" width="60">
             </div>
         </div>
     </div>
     <!--/ preloader -->
 
-    <nav class="navbar navbar-fixed-top head-nav hd-loading" id="header_nav"></nav>
-    <div class="container-fluid main-wrap">
-        <div class="row" id="index_list"></div>
+    <nav class="navbar navbar-fixed-top head-nav">
+        <div class="container hd-loading" id="header_nav"></div>
+    </nav>
+    <div id="hdCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="carousel-caption">
+                    <h2>CSS字体图标</h2>
+                    <div class="caption-text">本例中共收集了799个字体图标并一 一罗列，对其样式也做了分离，方便学习和运用；在本例DEMO中点击每个图标可以查看其构成，亦可将其复制到自己的项目中使用。</div>
+                    <p><a class="btn btn-lg btn-success" href="pages/font.html" role="button">DEMO</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-caption">
+                    <h2>按钮类</h2>
+                    <div class="caption-text">按钮是每个网站必不可少都会运用到的，但是往往因为其重用性不够或是根本没有，而增加了代码量，亦不易于阅读，本例旨在减少代码量，提升其重用性提供了一个解决方案。</div>
+                    <p><a class="btn btn-lg btn-success" href="pages/button.html" role="button">DEMO</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-caption">
+                    <h2>辅助类</h2>
+                    <div class="caption-text">一个优秀的网站对于辅助类的定义绝对是登峰造极的，其对网站的开发速度、后期的维护管理和其他开发人员的阅读等都起到关键性的作用；其意义相当于建房时的地基，作用很关键。</div>
+                    <p><a class="btn btn-lg btn-success" href="pages/assist.html" role="button">DEMO</a></p>
+                </div>
+            </div>
+        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#hdCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#hdCarousel" data-slide-to="1"></li>
+            <li data-target="#hdCarousel" data-slide-to="2"></li>
+        </ol>
+        <a class="left carousel-control" href="#hdCarousel" data-slide="prev">
+            <span class="glyphicons glyphicons-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#hdCarousel" data-slide="next">
+            <span class="glyphicons glyphicons-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+    <!--/ carousel end -->
+    <div class="container">sfsdfsd</div>
 
     <script src="js/sea.min.js"></script>
     <script src="js/pages/index.js"></script>

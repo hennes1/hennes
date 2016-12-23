@@ -22,7 +22,7 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'common'], function () {
             $(".preloader").remove();
 
             //加载数据
-            Hennes.getMenuData('', $index);
+            //Hennes.getMenuData('', $index);
         });
 
         //跳转页效果

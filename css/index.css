@@ -172,7 +172,7 @@
 .index .carousel-inner .item{ height: 500px;}
 .index .carousel-caption{
     bottom: 28%;
-    right: 30%;
+    right: 35%;
     text-align: left;
     padding: 0;
     text-shadow: none;
@@ -196,4 +196,23 @@
 @media screen and (max-width: 900px){
     .index .carousel-caption{ left: 5%; right: 5%;}
     .index .carousel-control{ width: 5%;}
+
 }
+/* text-padding */
+.section-item .container{ padding: 60px 0; font-size: 16px;}
+.section-item h2{ margin-bottom: 20px;}
+.section-item h4{ margin-bottom: 10px; margin-top: 25px;}
+.color-bg{ background-color: #EEF6F9;}
+.ico-item{
+    background-color: #fff;
+    border-radius: 50%;
+    color: #3598db;
+    display: block;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 56px;
+    margin: 0 auto;
+}
+.series-tx{color: #535353; font-size: 12px; line-height: 2.0}

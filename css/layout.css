@@ -15,6 +15,7 @@ legend{ margin-bottom: 5px}
 td small.text-muted{ color: #c8c8c8}
 .sm-tip{ margin: -15px -15px 15px; padding: 10px 15px;}
 /* head nav */
+.index-menu{ display: none!important;}
 .head-nav{ background-color: #3598db; margin-bottom: 0;}
 .head-nav .nav>li>a{ color: #9bccee; height: 60px; line-height: 30px;}
 .head-nav .nav .open>a, .head-nav .nav .open>a:focus, .head-nav .nav .open>a:hover{ border-color: transparent;}

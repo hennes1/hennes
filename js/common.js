@@ -363,6 +363,23 @@ $(function () {
         Hennes.setSideHeight();
     });
 
+    //侧边菜单 show | hide
+    $(document).on('click', '.toggle-btn', function () {
+        var $m = $('#H_main'), $s = $('#side_nav'), bl = $m.hasClass('show-side');
+        if(bl){
+            $m.stop().animate({marginLeft: 0}, 300, function () {
+                $m.removeAttr('style').removeClass('show-side');
+            });
+            $s.stop().animate({left: '-170px'}, 300);
+        }else{
+            $m.stop().animate({marginLeft: '160px'}, 300, function () {
+                $m.removeAttr('style').addClass('show-side');
+            });
+            $s.stop().animate({left: 0}, 300);
+        }
+    });
+
+
     //如果引入了ZeroClipboard和layer插件，则添加复制按钮
     if (typeof ZeroClipboard !== 'undefined') {
         var copyBtn = '<a href="javascript:void(0);" class="btn btn-default btn-xs flash-copy">复制</a>';

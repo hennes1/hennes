@@ -16,6 +16,15 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'common'], function () 
             $('html, body').animate({scrollTop: 0}, 300);
         });
 
+        //滚动监听
+        $('body').scrollspy({
+            target: '#site_dir'
+        });
+        $('#site_dir').on('activate.bs.scrollspy', function(item) {
+            var a = $(item.target).position().top;
+            if(a > 220) $('.layui-layer-content').animate({scrollTop: a - 200}, 50);
+        });
+
         var $tx = $('#J_test'), txVal = $tx.val();
 
         //定义弹窗，默认最小化右下角打开

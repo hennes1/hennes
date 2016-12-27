@@ -35,7 +35,7 @@
                 </h4>
             </div>
             <div class="panel-body">
-                <h3 class="h-first">基础参数</h3>
+                <h3 class="h-first" id="basic">基础参数</h3>
                 <table class="table table-bordered table-striped">
                     <caption>
                         <p class="tx-indent">layer是一款近年来备受青睐的web弹层组件，她具备全方位的解决方案，致力于服务各水平段的开发人员，使得用户页面轻松地拥有丰富友好的操作体验。</p>
@@ -274,6 +274,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <h3 class="h-first" id="lz">内置方法</h3>
                 <h3 class="h-first" id="layer_config">layer.config(options) <small>- 初始化全局配置</small></h3>
                 <p>
                     这是一个可以重要也可以不重要的方法；重要的是，它的权利真的很大，尤其是在模块化加载layer时，必须要用到它，它不仅可以配置一些诸如路径、加载的模块，甚至还可以决定整个弹层的默认参数；而说它不重要，是因为多数情况下很少需要它。本站就是使用了这种情况。</p>
@@ -553,6 +554,7 @@
                 </div>
                 <h3 id="layer_full">layer.full()、layer.min()、layer.restore() <small>- 手工执行最大小化</small></h3>
                 <p>一般用于在自定义元素上触发最大化、最小化和全屏</p>
+                <h3 class="h-first" id="other">其它内置层</h3>
                 <h3 id="layer_prompt">layer.prompt(options, yes) <small>- 输入层</small></h3>
                 <p><code>prompt</code>的参数也是向前补齐的。<code>options</code>不仅可支持传入<b class="text-primary">基础参数</b>，还可以传入<code>prompt</code>专用的属性。当然，也可以不传。yes携带 <code>value:</code> 表单值<code class="fn-ml-15">index:</code> 索引<code class="fn-ml-15">elem:</code> 表单元素</p>
                 <div class="fn-mb-10">
@@ -681,66 +683,58 @@
     </div>
 
     <div id="site_dir">
-        <ul class="site-dir pos-r">
-            <li>基础参数</li>
-            <ul>
-                <li><a href="#type">type<em>层类型</em></a></li>
-                <li><a href="#title">title<em>标题</em></a></li>
-                <li><a href="#content">content<em>内容</em></a></li>
-                <li><a href="#skin">skin<em>皮肤</em></a></li>
-                <li><a href="#area">area<em>宽高</em></a></li>
-                <li><a href="#offset">offset<em>坐标</em></a></li>
-                <li><a href="#icon">icon<em>提示图标</em></a></li>
-                <li><a href="#btn">btn<em>提示按钮</em></a></li>
-                <li><a href="#btnAlign">btnAlign<em>按钮排列</em></a></li>
-                <li><a href="#closeBtn">closeBtn<em>右上关闭</em></a></li>
-                <li><a href="#shade">shade<em>遮罩</em></a></li>
-                <li><a href="#shadeClose">shadeClose</a></li>
-                <li><a href="#time">time<em>自动关闭</em></a></li>
-                <li><a href="#id">id<em>唯一id</em></a></li>
-                <li><a href="#anim">anim<em>动画</em></a> </li>
-                <li><a href="#maxmin">maxmin<em>最大小化</em></a></li>
-                <li><a href="#fixed">fixed<em>是否固定</em></a></li>
-                <!--<li><a href="#resize">resize<em>是否允许拉伸</em></a></li>-->
-                <li><a href="#scrollbar">scrollbar<em>屏蔽滚动</em></a></li>
-                <li><a href="#maxWidth">maxWidth<em>最大宽</em></a></li>
-                <li><a href="#zIndex">zIndex<em>层叠值</em></a></li>
-                <li><a href="#move">move<em>拖拽元素</em></a></li>
-                <li><a href="#moveOut">moveOut<em>拖出</em></a></li>
-                <li><a href="#moveEnd">moveEnd<em>回调</em></a></li>
-                <li><a href="#tips">tips<em>Tips参数</em></a></li>
-                <li><a href="#tipsMore">tipsMore<em>允许多tips</em></a> </li>
-                <li><a href="#success">success<em>弹出后回调</em></a> </li>
-                <li><a href="#yes">yes<em>确定回调</em></a> </li>
-                <li><a href="#cancel">cancel<em>关闭回调</em></a> </li>
-                <li><a href="#end">end<em>销毁后回调</em></a> </li>
-            </ul>
-            <li>内置方法</li>
-            <ul>
-                <li><a href="#layer.config">config<em>全局设置</em></a></li>
-                <li><a href="#layer.ready">ready<em>就绪</em></a></li>
-                <li><a href="#layer.open">open<em>核心方法</em></a></li>
-                <li><a href="#layer.alert">alert<em>弹框</em></a></li>
-                <li><a href="#layer.confirm">confirm<em>询问</em></a></li>
-                <li><a href="#layer.msg">msg<em>提示</em></a></li>
-                <li><a href="#layer.load">load<em>加载</em></a></li>
-                <li><a href="#layer.tips">tips<em>吸附</em></a></li>
-                <li><a href="#layer.close">close<em>关闭层</em></a></li>
-                <li><a href="#layer.closeAll">closeAll<em>关闭全部</em></a></li>
-                <li><a href="#layer.style">style</a></li>
-                <li><a href="#layer.getChildFrame">getChildFrame</a></li>
-                <li><a href="#layer.getFrameIndex">getFrameIndex</a></li>
-                <li><a href="#layer.iframeAuto">iframeAuto</a></li>
-                <li><a href="#layer.iframeSrc">iframeSrc</a></li>
-                <li><a href="#layer.setTop">setTop<em>多层置顶</em></a></li>
-                <li><a href="#layer.full">full/min/restore</a></li>
-            </ul>
-            <li>其他内置层</li>
-            <ul>
-                <li><a href="#layer.prompt">prompt<em>输入层</em></a></li>
-                <li><a href="#layer.tab">tab<em>选项卡层</em></a></li>
-                <li><a href="#layer.photos">photos<em>图片层</em></a></li>
-            </ul>
+        <ul class="nav site-dir pos-r">
+            <li><a href="#type">type<em>层类型</em></a></li>
+            <li><a href="#title">title<em>标题</em></a></li>
+            <li><a href="#content">content<em>内容</em></a></li>
+            <li><a href="#skin">skin<em>皮肤</em></a></li>
+            <li><a href="#area">area<em>宽高</em></a></li>
+            <li><a href="#offset">offset<em>坐标</em></a></li>
+            <li><a href="#icon">icon<em>提示图标</em></a></li>
+            <li><a href="#btn">btn<em>提示按钮</em></a></li>
+            <li><a href="#btnAlign">btnAlign<em>按钮排列</em></a></li>
+            <li><a href="#closeBtn">closeBtn<em>右上关闭</em></a></li>
+            <li><a href="#shade">shade<em>遮罩</em></a></li>
+            <li><a href="#shadeClose">shadeClose</a></li>
+            <li><a href="#time">time<em>自动关闭</em></a></li>
+            <li><a href="#id">id<em>唯一id</em></a></li>
+            <li><a href="#anim">anim<em>动画</em></a> </li>
+            <li><a href="#maxmin">maxmin<em>最大小化</em></a></li>
+            <li><a href="#fixed">fixed<em>是否固定</em></a></li>
+            <!--<li><a href="#resize">resize<em>是否允许拉伸</em></a></li>-->
+            <li><a href="#scrollbar">scrollbar<em>屏蔽滚动</em></a></li>
+            <li><a href="#maxWidth">maxWidth<em>最大宽</em></a></li>
+            <li><a href="#zIndex">zIndex<em>层叠值</em></a></li>
+            <li><a href="#move">move<em>拖拽元素</em></a></li>
+            <li><a href="#moveOut">moveOut<em>拖出</em></a></li>
+            <li><a href="#moveEnd">moveEnd<em>回调</em></a></li>
+            <li><a href="#tips">tips<em>Tips参数</em></a></li>
+            <li><a href="#tipsMore">tipsMore<em>允许多tips</em></a> </li>
+            <li><a href="#success">success<em>弹出后回调</em></a> </li>
+            <li><a href="#yes">yes<em>确定回调</em></a> </li>
+            <li><a href="#cancel">cancel<em>关闭回调</em></a> </li>
+            <li><a href="#end">end<em>销毁后回调</em></a> </li>
+            <li><a href="#layer_config">config<em>全局设置</em></a></li>
+            <li><a href="#layer_ready">ready<em>就绪</em></a></li>
+            <li><a href="#layer_open">open<em>核心方法</em></a></li>
+            <li><a href="#layer_alert">alert<em>弹框</em></a></li>
+            <li><a href="#layer_confirm">confirm<em>询问</em></a></li>
+            <li><a href="#layer_msg">msg<em>提示</em></a></li>
+            <li><a href="#layer_load">load<em>加载</em></a></li>
+            <li><a href="#layer_tips">tips<em>吸附</em></a></li>
+            <li><a href="#layer_close">close<em>关闭层</em></a></li>
+            <li><a href="#layer_closeAll">closeAll<em>关闭全部</em></a></li>
+            <li><a href="#layer_style">style</a></li>
+            <li><a href="#layer_getChildFrame">getChildFrame</a></li>
+            <li><a href="#layer_getFrameIndex">getFrameIndex</a></li>
+            <li><a href="#layer_iframeAuto">iframeAuto</a></li>
+            <li><a href="#layer_iframeSrc">iframeSrc</a></li>
+            <li><a href="#layer_setTop">setTop<em>多层置顶</em></a></li>
+            <li><a href="#layer_full">full/min/restore</a></li>
+            <li><a href="#layer_prompt">prompt<em>输入层</em></a></li>
+            <li><a href="#layer_tab">tab<em>选项卡层</em></a></li>
+            <li><a href="#layer_photos">photos<em>图片层</em></a></li>
+
         </ul>
     </div>
 

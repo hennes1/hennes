@@ -21,8 +21,12 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'common'], function () 
             target: '#site_dir'
         });
         $('#site_dir').on('activate.bs.scrollspy', function(item) {
-            var a = $(item.target).position().top;
-            if(a > 220) $('.layui-layer-content').animate({scrollTop: a - 200}, 50);
+            var a = $(item.target).position().top, $lay = $('.layui-layer-content');
+            if(a > 220){
+                $lay.animate({scrollTop: a - 200}, 50);
+            }else{
+                $lay.animate({scrollTop: 0}, 50);
+            }
         });
 
         var $tx = $('#J_test'), txVal = $tx.val();

@@ -136,6 +136,13 @@
         "icoColor": "text-muted",
         "description": "国外大神开发基于Flash来实现跨浏览器的用于剪贴板复制的插件。",
         "link": "zeroClipboard.html"
+      },
+      {
+        "title": "SuperSlide",
+        "icoName": "glyphicons-transfer",
+        "icoColor": "text-default",
+        "description": "致力于解决网站大部分特效展示问题，使其规范整洁，方便维护更新。",
+        "link": "SuperSlide.html"
       }
     ]
   }

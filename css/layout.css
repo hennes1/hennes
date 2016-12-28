@@ -390,3 +390,78 @@ label.error{ color: #a94442; margin-bottom: 0; font-weight: normal}
 .goTo-debug-min .layui-layer-btn{ padding: 3px 0!important;}
 .goTo-debug-min .layui-layer-setwin .layui-layer-close1{ background-position: -65px -40px;}
 .goTo-debug-min .layui-layer-setwin .layui-layer-close1:hover{ background-position:-49px -40px}
+/*+++++++++++++++++++ superSlide +++++++++++++++++++*/
+.fn-fl{ float: left}.fn-fr{float: right}
+.super-slide{
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.super-slide ul, .super-slide li{ margin: 0; padding: 0}
+.super-slide li{ list-style: none;}
+.super-slide .hd{
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    background: #f7f7f9;
+    padding: 0 10px;
+    text-align: right;
+}
+.super-slide .hd ul, .super-slide .hd li{
+    display: inline-block;
+    height: 8px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.super-slide .hd ul li{
+    background-color: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 8px;
+    text-indent: -999px;
+    margin: 0 2px;
+    vertical-align: top;
+}
+.super-slide .hd ul li.on{ background-color: #ff902b;}
+.super-slide .hd a.next, .super-slide .hd a.prev{
+    cursor: pointer;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-width: 6px;
+    border-color: #ddd;
+}
+.super-slide .hd a.prev:hover, .super-slide .hd a.next:hover{ border-color: #ff902b;}
+.super-slide .hd a.next, .super-slide .hd a.prev,
+.super-slide .hd a.prev:hover, .super-slide .hd a.next:hover{ border-style: dashed; border-top-color: transparent; border-bottom-color: transparent;}
+.super-slide .hd a.next{ border-left-style: solid; border-right-width: 0;}
+.super-slide .hd a.prev{ border-right-style: solid; border-left-width: 0;}
+#tx_slide .bd{ padding: 10px;}
+#tx_slide .bd li{ display: block; height: 26px; line-height: 26px;}
+#img_slide .bd li{ text-align: center}
+#focus_slide .hd{
+    background: transparent;
+    height: 8px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9;
+}
+#focus_slide .hd ul{ vertical-align: top;}
+#focus_slide .next, #focus_slide .prev{
+    display: block;
+    width: 18px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
+    z-index: 9;
+}
+#focus_slide .next{ right: 1%;}
+#focus_slide .prev{ left: 1%;}

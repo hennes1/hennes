@@ -1,0 +1,295 @@
+@charset "utf-8";
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, textarea, p, blockquote, th, td, img { padding: 0; margin: 0;}
+fieldset, img { border: 0;}
+address, caption, cite, code, dfn, em, strong, th, var, i { font-weight: normal; font-style: normal;}
+ol, ul, li { list-style: none;}
+caption, th { text-align: left;}
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: 100%;}
+q:before, q:after { content: '';}
+abbr, acronym { border: 0;}
+/*-- All --*/
+body {
+    color: #333;
+    font: 12px/20px Arial, "Microsoft YaHei", "宋体", sans-serif;
+    background: #fff;
+}
+a { color: #333; text-decoration: none; outline: none;}
+a:hover { color: #f00; text-decoration: underline;}
+table { border-collapse: collapse; border-spacing: 0; empty-cells: show;}
+table td, table th { border: #ddd solid 1px; padding: 5px 0;}
+table th { background: #39A4DC; color: #fff;}
+table .new td { color: #f60;
+    font-weight: bold;}
+/* css三角形 */
+.arrow, .arrow s {
+    position: relative;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: dashed;
+    border-width: 5px;
+}
+.arrowR, .arrowR s { border-left-color: #aaa; border-left-style: solid;}
+.arrowR s {
+    border-left-color: #fff;
+    position: absolute;
+    left: -7px;
+    top: -5px;
+}
+.arrowR:hover { border-left-color: #f60;}
+.arrowL, .arrowL s { border-right-color: #aaa; border-right-style: solid;}
+.arrowL s {
+    border-right-color: #fff;
+    position: absolute;
+    right: -7px;
+    top: -5px;
+}
+.arrowL:hover { border-right-color: #f60;}
+.arrowT, .arrowT s { border-bottom-color: #aaa; border-bottom-style: solid;}
+.arrowT s {
+    border-bottom-color: #fff;
+    position: absolute;
+    left: -5px;
+    top: -3px;
+}
+.arrowT:hover { border-bottom-color: #f60;}
+.arrowB, .arrowB s { border-top-color: #aaa; border-top-style: solid;}
+.arrowB s {
+    border-top-color: #fff;
+    position: absolute;
+    left: -5px;
+    bottom: -3px;
+}
+.arrowB:hover { border-top-color: #f60;}
+/* css圆形 */
+.circle {
+    line-height: 100%;
+    overflow: hidden;
+    font-family: Tahoma, Helvetica;
+    font-size: 18px;
+    color: #aaa;
+}
+.circle:hover { color: #f60;}
+.demoBox { padding: 0 10px 20px 10px; background: #f2f2f2; border-bottom: 3px dotted #ccc;}
+.demoBox .hd { padding: 10px;}
+.demoBox .hd h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #39A4DC;
+    line-height: 30px;
+    margin-top: 15px;
+}
+.demoBox .hd h3 span { color: #ccc; font-style: italic; font-size: 60px;}
+.demoBox .bd { overflow: hidden; zoom: 1;}
+.demoBox .bd .iframeWrap { overflow: hidden; float: left;}
+.demoBox iframe { width: 100%; height: 100%; vertical-align: middle;}
+.demoBox .botTit {
+    height: 22px;
+    line-height: 22px;
+    background: #eee;
+    text-align: right;
+    padding: 5px 0;
+    overflow: hidden;
+    display: none;
+}
+.demoBox .botTit em { float: left; font-weight: bold; padding-left: 10px;}
+.demoBox .botTit span a {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    background: #f60;
+    margin-right: 10px;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: none;
+}
+.demoBox .botTit span a:hover { text-decoration: none; background: #f60;}
+.params {
+    width: 498px;
+    height: 100%;
+    margin-left: 10px;
+    float: left;
+    _display: inline;
+    background: #fff;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.params table { background: #fff;}
+.params table .tit td { padding: 5px 10px; background: #39A4DC; color: #fff;}
+.params table td { border: 1px solid #fff;}
+.params table .n { width: 153px; text-align: right;}
+.params table .new { color: #f00;}
+.params table i { color: #999;}
+.params p { padding: 10px 0 0 10px;}
+.params .curJsCode {
+    color: #f60;
+    display: block;
+    white-space: normal;
+    word-wrap: break-word;
+    font-family: SimSun;
+}
+.rightNav {
+    position: fixed;
+    width: 140px;
+    right: 0;
+    top: 100px;
+    _position: absolute;
+    text-align: left;
+    cursor: pointer;
+    background-image: url(about:blank);
+}
+.rightNav a {
+    display: block;
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 2px;
+    background: #fff;
+    padding-right: 10px;
+    width: 130px;
+    overflow: hidden;
+    cursor: pointer;
+    right: -110px;
+}
+.rightNav a:hover { text-decoration: none; color: #39A4DC;}
+.rightNav a:hover em { background: #00b700}
+.rightNav a em {
+    display: block;
+    float: left;
+    width: 30px;
+    background: #39A4DC;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 10px;
+}
+.rightNav a.new em { background: #f60;}
+.demoBox .iframeWrap { width: 452px;}
+.demoBox .iframeWrap iframe { width: 452px; height: 232px; background: url(../images/loading.gif) center center no-repeat;}
+#picScroll-left iframe { height: 174px;}
+#picScroll-top iframe { height: 415px;}
+#picMarquee-left iframe { height: 172px;}
+#picMarquee-top iframe { height: 415px;}
+#txtScroll-left iframe { height: 80px;}
+#txtScroll-top iframe { height: 182px;}
+#txtMarquee-left iframe { height: 107px;}
+#txtMarquee-top iframe { height: 184px;}
+#sideMenu iframe { height: 227px;}
+/* 隐藏代码盒子 */
+#displayBox {
+    z-index: 10;
+    display: none;
+    position: fixed;
+    _position: absolute;
+    width: 1000px;
+    height: 500px;
+    left: 50%;
+    top: 60px;
+    margin-left: -500px;
+    background: #fff;
+    border: 5px solid #eee;
+    -webkit-box-shadow: #333 0 0 8px;
+    -moz-box-shadow: #333 0 0 8px;
+    box-shadow: #333 0 0 8px;
+}
+#displayBox .hd {
+    height: 30px;
+    line-height: 30px;
+    background: #eee;
+    padding: 0 10px;
+    position: relative;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#F7F7F7), to(#eee));
+    background: -webkit-linear-gradient(#F7F7F7, #eee);
+    background: -moz-linear-gradient(#F7F7F7, #eee);
+    background: -ms-linear-gradient(#F7F7F7, #eee);
+    background: -o-linear-gradient(#F7F7F7, #eee);
+    background: linear-gradient(#F7F7F7, #eee);
+}
+#displayBox .hd h3 { font-weight: bold; color: #39A4DC;}
+#displayBox .hd a {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    width: 20px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    background: #f60;
+    color: #fff;
+    cursor: pointer;
+}
+#displayBox .hd a:hover { text-decoration: none;}
+#displayBox .bd { padding: 10px 0; background: #fff;}
+#displayBox textarea {
+    width: 458px;
+    height: 230px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: block;
+}
+#displayBox .bd p { padding-top: 10px; }
+#displayBox iframe { width: 1000px; height: 440px; margin: 0 auto;}
+.authorWord { margin-bottom: 25px; text-align: left; background: #fff;}
+.authorWord h3 {
+    padding: 0 20px;
+    height: 30px;
+    font: normal 14px/30px "Microsoft YaHei";
+    overflow: hidden;
+    cursor: pointer;
+    border-bottom: 1px dotted #ccc;
+}
+.authorWord h3 .arrow { float: right; border-top-color: #fff; margin-top: 11px;}
+.authorWord .con { padding: 10px 20px; line-height: 22px;}
+.authorWord .con p { margin-bottom: 5px}
+.authorWord a { color: #f60; text-decoration: underline;}
+.demoList { overflow: hidden; padding-top: 10px;}
+.demoList li {
+    position: relative;
+    cursor: pointer;
+    float: left;
+    width: 160px;
+    text-align: center;
+    margin: 0 30px 30px 0;
+    padding: 4px 4px 0 4px;
+    background: #e3e3e3;
+    color: #000;
+}
+.demoList li img {
+    display: block;
+    width: 160px;
+    height: 120px;
+    background: url(../images/loading.gif) center center no-repeat;
+}
+.demoList li h3 { height: 28px; line-height: 28px;}
+.demoList li.new i {
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 1;
+    width: 31px;
+    height: 31px;
+    background: url(images/new.png) 0 0 no-repeat;
+}
+.demoList li.on {
+    background: #666;
+    color: #fff;
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+}
+.demoBoxEven { background: #fff;}
+.demoBoxEven .demoList li.on { background: #666; color: #fff;}

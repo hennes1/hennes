@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SuperSlide - 图片无缝滚动特效-左</title>
+    <style type="text/css">
+        /* css 重置 */
+        *{margin:0; padding:0; list-style:none; }
+        body{ background:#fff; font:normal 12px/22px 宋体;  }
+        img{ border:0;  }
+        a{ text-decoration:none; color:#333;  }
+
+        /* 本例子css */
+        .picMarquee-left{ overflow:hidden; position:relative;  border:1px solid #ccc;   }
+        .picMarquee-left .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;  }
+        .picMarquee-left .hd .prev,.picMarquee-left .hd .next{ display:block;  width:5px; height:9px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
+            cursor:pointer; background:url("../../images/slide/arrow.png") no-repeat;}
+        .picMarquee-left .hd .next{ background-position:0 -50px;  }
+        .picMarquee-left .hd .prevStop{ background-position:-60px 0; }
+        .picMarquee-left .hd .nextStop{ background-position:-60px -50px; }
+
+        .picMarquee-left .bd{ padding:10px;   }
+        .picMarquee-left .bd ul{ overflow:hidden; zoom:1; }
+        .picMarquee-left .bd ul li{ margin:0 8px; float:left; _display:inline; overflow:hidden; text-align:center;  }
+        .picMarquee-left .bd ul li .pic{ text-align:center; }
+        .picMarquee-left .bd ul li .pic img{ width:120px; height:90px; display:block; padding:2px; border:1px solid #ccc; }
+        .picMarquee-left .bd ul li .pic a:hover img{ border-color:#999;  }
+        .picMarquee-left .bd ul li .title{ line-height:24px;   }
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/plugins/SuperSlide/jquery.SuperSlide.min.js"></script>
+</head>
+
+<body>
+<div class="picMarquee-left">
+    <div class="hd">
+        <a class="next"></a>
+        <a class="prev"></a>
+    </div>
+    <div class="bd">
+        <ul class="picList">
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/001.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图1</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/002.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图2</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/003.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图3</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/004.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图4</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/carousel/01.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图5</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/carousel/02.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图6</a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script id="jsID">
+    var ary = location.href.split("&");
+    jQuery(".picMarquee-left").slide({
+        mainCell: ".bd ul",
+        autoPlay: true,
+        effect: ary[1],
+        vis: ary[2],
+        interTime: ary[3],
+        opp: ary[4],
+        pnLoop: ary[5],
+        trigger: ary[6],
+        mouseOverStop: ary[7]
+    });
+</script>
+</body>
+</html>

@@ -32,6 +32,7 @@
             <div class="panel-heading">
                 <h4>
                     <i class="glyphicons glyphicons-transfer fn-mr-10"></i>SuperSlide滚动插件
+                    <small class="fn-ml-10"><button class="btn btn-primary btn-xs view_slide">点击查看效果</button></small>
                 </h4>
             </div>
             <div class="panel-body">
@@ -283,71 +284,37 @@
                         </div>
                     </li>
                 </ol>
-                <h3>部分效果</h3>
-                <div class="row fn-mb-15">
-                    <div class="col-sm-4">
-                        <div class="super-slide" id="tx_slide">
-                            <div class="hd">
-                                <span class="fn-fl">文字列表滚动</span>
-                                <a class="prev"></a>
-                                <ul></ul>
-                                <a class="next"></a>
-                            </div>
-                            <div class="bd">
-                                <ul>
-                                    <li>select控件--Bootstrap相关控件</li>
-                                    <li>日历插件--Bootstrap相关控件</li>
-                                    <li>Layer弹层组件--第三方插件</li>
-                                    <li>二维码插件--第三方插件</li>
-                                    <li>右键菜单--Bootstrap相关控件</li>
-                                    <li>Tour引导插件--Bootstrap相关控件</li>
-                                    <li>ZeroClipboard插件--第三方插件</li>
-                                    <li>字体图标--Bootstrap元素</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="super-slide" id="img_slide">
-                            <div class="hd">
-                                <span class="fn-fl">图片滚动</span>
-                                <a class="prev"></a>
-                                <a class="next"></a>
-                            </div>
-                            <div class="bd">
-                                <ul>
-                                    <li><img src="../images/prd/001.jpg" height="150" alt=""></li>
-                                    <li><img src="../images/prd/002.jpg" height="150" alt=""></li>
-                                    <li><img src="../images/prd/003.jpg" height="150" alt=""></li>
-                                    <li><img src="../images/prd/004.jpg" height="150" alt=""></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="super-slide" id="focus_slide">
-                            <div class="hd">
-                                <ul></ul>
-                            </div>
-                            <div class="bd">
-                                <ul>
-                                    <li><img src="../images/carousel/01.jpg" width="100%" alt=""></li>
-                                    <li><img src="../images/carousel/02.jpg" width="100%" alt=""></li>
-                                    <li><img src="../images/carousel/03.jpg" width="100%" alt=""></li>
-                                </ul>
-                            </div>
-                            <a class="prev"><i class="glyphicons glyphicons-chevron-left"></i></a>
-                            <a class="next"><i class="glyphicons glyphicons-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <p>更多效果可参见官方网站：<a href="http://www.superslide2.com/" target="_blank" class="a-primary">SuperSlide</a></p>
+                <p class="text-danger"><b>查看调用方式及其对应的显示效果，你可以</b> <button class="btn btn-primary view_slide">点击查看效果</button></p>
             </div>
         </div>
         <!--/ panel }-->
     </div>
 
     <script src="../js/sea.min.js"></script>
-    <script src="../js/pages/superSlide.js"></script>
+    <script>
+        seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'ZeroClipboard', 'common'], function () {
+            //弹层CSS路径
+            layer.config({
+                path: '../js/plugins/layer/'
+            });
+
+            $(function () {
+                //当前页
+                Hennes.loadNav('../', 'header', 'side_nav3_6');
+
+                //查看效果
+                $('button.view_slide').click(function () {
+                    layer.open({
+                        type: 2,
+                        title: 'SuperSlide效果',
+                        move: false,
+                        area: ['1000px', '600px'],
+                        resize: false,
+                        content: 'iframe/demo.html'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

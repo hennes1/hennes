@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SuperSlide - 图片上滚动特效-上</title>
+    <style type="text/css">
+        /* css 重置 */
+        *{margin:0; padding:0; list-style:none; }
+        body{ background:#fff; font:normal 12px/22px 宋体;  }
+        img{ border:0;  }
+        a{ text-decoration:none; color:#333;  }
+
+        /* 本例子css */
+        .picScroll-top{ margin:0 auto;  width:210px;  overflow:hidden; position:relative;  border:1px solid #ccc;   }
+        .picScroll-top .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;  }
+        .picScroll-top .hd .prev,.picScroll-top .hd .next{ display:block;  width:9px; height:5px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
+            cursor:pointer; background:url("../../images/slide/arrow.png") 0 -100px no-repeat;}
+        .picScroll-top .hd .next{ background-position:0 -140px;  }
+        .picScroll-top .hd .prevStop{ background-position:-60px -100px;  }
+        .picScroll-top .hd .nextStop{ background-position:-60px -140px;  }
+        .picScroll-top .hd ul{ float:right; overflow:hidden; margin-top:10px; zoom:1; }
+        .picScroll-top .hd ul li{ float:left;  width:9px; height:9px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background:url("../../images/slide/icoCircle.gif") 0 -9px no-repeat; }
+        .picScroll-top .hd ul li.on{ background-position:0 0; }
+        .picScroll-top .bd{ padding:10px;   }
+        .picScroll-top .bd ul{ overflow:hidden; zoom:1; }
+        .picScroll-top .bd ul li{ text-align:center; zoom:1; }
+        .picScroll-top .bd ul li .pic{ text-align:center; }
+        .picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
+        .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
+        .picScroll-top .bd ul li .title{ line-height:24px; }
+
+    </style>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/plugins/SuperSlide/jquery.SuperSlide.min.js"></script>
+</head>
+
+<body>
+
+<div class="picScroll-top">
+    <div class="hd">
+        <a class="next"></a>
+        <ul></ul>
+        <a class="prev"></a>
+        <span class="pageState"></span>
+    </div>
+    <div class="bd">
+        <ul class="picList">
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/001.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图1</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/002.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图2</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/003.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图3</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/prd/004.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图4</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/carousel/01.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图5</a></div>
+            </li>
+            <li>
+                <div class="pic"><a href="javascript:void(0);" target="_blank"><img
+                        src="../../images/carousel/02.jpg"/></a></div>
+                <div class="title"><a href="javascript:void(0);" target="_blank">效果图6</a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script id="jsID">
+    var ary = location.href.split("&");
+    jQuery(".picScroll-top").slide({
+        titCell: ".hd ul",
+        mainCell: ".bd ul",
+        autoPage: true,
+        effect: ary[1],
+        autoPlay: ary[2],
+        scroll: ary[3],
+        vis: ary[4],
+        easing: ary[5],
+        delayTime: ary[6],
+        pnLoop: ary[7],
+        trigger: ary[8],
+        mouseOverStop: ary[9]
+    });
+</script>
+</body>
+</html>
+

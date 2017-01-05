@@ -143,6 +143,13 @@
         "icoColor": "text-default",
         "description": "致力于解决网站大部分特效展示问题，使其规范整洁，方便维护更新。",
         "link": "SuperSlide.html"
+      },
+      {
+        "title": "AutoComplete",
+        "icoName": "glyphicons-drop",
+        "icoColor": "text-success",
+        "description": "自动补全插件，兼容Chrome/IE/Firefox/Opera/Safari等浏览器。",
+        "link": "AutoComplete.html"
       }
     ]
   }

@@ -680,10 +680,10 @@
             }
 
             // Build suggestions inner HTML:
-            var showAutoList = false; //是否显示符合输入条件的下拉，默认不显示
+            var isAutoShow = false; //是否显示符合输入条件的下拉，默认false
             $.each(that.suggestions, function (i, suggestion) {
                 if (value.length > 0 && suggestion.value.indexOf(value) !== -1) {
-                    showAutoList = true;
+                    isAutoShow = true;
                     if (groupBy) {
                         html += formatGroup(suggestion, value, i);
                     }
@@ -703,7 +703,7 @@
             }
 
             that.fixPosition();
-            if(showAutoList === true) container.show();
+            if(isAutoShow === true) container.show();
 
             // Select first value by default:
             if (options.autoSelectFirst) {

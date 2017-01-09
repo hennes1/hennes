@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="Hennes,Project,插件,字体图标,select控件,日历控件,右键菜单,bootstrap">
+    <meta name="description" content="HennesProject是一个集bootstrap模板和实用插件运用为展示的平台">
+    <meta name="Author" Content="Hennes，Email：hsokio@qq.com；Home：https://hennes1.github.io/hennes/">
+    <title>AutoComplete自动补全插件 - HennesProject</title>
+    <link rel="stylesheet" href="../css/bootStrap/bootStrap.min.css">
+    <link rel="stylesheet" href="../css/glyphicons/glyphicons.min.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/jquery.autocomplete.css">
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hennes-body">
+    <nav class="navbar navbar-fixed-top head-nav">
+        <div class="container-fluid hd-loading" id="header_nav"></div>
+    </nav>
+    <aside class="aside sd-loading" id="side_nav"></aside>
+    <div class="container-fluid main-wrap show-side" id="H_main">
+        <ol class="breadcrumb current-page">
+            <li><a href="/hennes/"><i class="glyphicons glyphicons-home fn-mr-5"></i>首页</a></li>
+            <li>插件控件</li>
+            <li class="active">AutoComplete自动补全插件</li>
+        </ol>
+        <!-- { panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="glyphicons glyphicons-drop fn-mr-10"></i>AutoComplete自动补全插件</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="h-first">AutoComplete运用</h3>
+                        <p>Ajax自动补全插件仅依赖jQuery，它能轻松的为文本框创建自动下拉补全功能，其压缩过后文件大小只有2.7K。</p>
+                        <p><b>Html</b>：</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p">&lt;input type="text" id="autocomplete"&gt;</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p><b>Ajax 请求</b>：</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p">$('#autocomplete').autocomplete({</span></li>
+                                    <li><span class="p tx-indent">serviceUrl: '/path/your.json',</span></li>
+                                    <li><span class="p tx-indent">onSelect: function (suggestion) {</span></li>
+                                    <li><span class="p long-indent">console.log('游戏：' + suggestion.value + ', 原折扣：' + suggestion.fill + ', 现折扣：' + suggestion.refill);</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p">});</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p><input type="text" class="form-control" id="auto_complete_ajax"></p>
+                        <p><b>本地数据</b>：</p>
+                        <div class="highlight">
+                            <code class="pretty-print">
+                                <ol>
+                                    <li><span class="p">var gameData = [</span></li>
+                                    <li><span class="p tx-indent">{value: "天天飞车", fill: "4.5", refill: "4.6"},</span></li>
+                                    <li><span class="p tx-indent">{value: "天天跑酷", fill: "4.1", refill: "5.0"},</span></li>
+                                    <li><span class="p tx-indent">{value: "天龙八部", fill: "3.7", refill: "4.3"},</span></li>
+                                    <li><span class="p tx-indent">{value: "守护者们", fill: "4.5", refill: "5.2"},</span></li>
+                                    <li><span class="p tx-indent">{value: "热血街霸3D(送春丽)", fill: "4.5", refill: "5.2"},</span></li>
+                                    <li><span class="p tx-indent">{value: "画江湖之灵主（暴力美学指尖感触）", fill: "8.5", refill: "7.2"},</span></li>
+                                    <li><span class="p tx-indent">{value: "神雕侠侣", fill: "7.5", refill: "5.6"}</span></li>
+                                    <li><span class="p">];</span></li>
+                                    <li></li>
+                                    <li><span class="p">$('#autocomplete').autocomplete({</span></li>
+                                    <li><span class="p tx-indent">lookup: gameData,</span></li>
+                                    <li><span class="p tx-indent">onSelect: function (suggestion) {</span></li>
+                                    <li><span class="p long-indent">console.log('游戏：' + suggestion.value + ', 原折扣：' + suggestion.fill + ', 现折扣：' + suggestion.refill);</span></li>
+                                    <li><span class="p tx-indent">}</span></li>
+                                    <li><span class="p">});</span></li>
+                                </ol>
+                            </code>
+                        </div>
+                        <p><input type="text" class="form-control" id="auto_complete_local"></p>
+                        <h3>全部参数</h3>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="180px">参数</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>serviceUrl</strong><br /><small class="text-muted">服务器请求地址</small></td>
+                                    <td>
+                                        类型：<code>字符串，函数</code>，默认值: <code>null</code><br />
+                                        返回服务器端URL或回调函数。 如果提供了本地查找数据(lookup)，则可选
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>lookup</strong><br /><small class="text-muted">查找数组或对象</small></td>
+                                    <td>
+                                        类型：<code>数组</code>，默认值: <code>null</code><br />
+                                        <code>suggestion</code> 组成的数组，<code>suggestion</code> 可以是字符串数组或对象数组.<br />
+                                        suggestion: 单体数据字符串或后面这种 <code>{ 'value': 'string', 'data': 'any'}</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>lookupFilter</strong><br /><small class="text-muted">过滤函数</small></td>
+                                    <td>
+                                        类型：<code>函数</code><br />
+                                        数据为本地时对数据进行过滤的函数，默认只会进行局部匹配
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>onSelect</strong><br /><small class="text-muted">选择后的回调函数</small></td>
+                                    <td>
+                                        类型：<code>函数</code>，默认值: <code>null</code><br />
+                                        选择suggestions之后的回调函数，this对象和绑定的input关联
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>minChars</strong><br /><small class="text-muted">最小字符数</small></td>
+                                    <td>
+                                        类型：<code>数字</code>，默认值: <code>1</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>maxHeight</strong><br /><small class="text-muted">最大高度</small></td>
+                                    <td>
+                                        类型：<code>数字</code>，默认值: <code>300</code><br />
+                                        suggestions容器的最大高度（以像素为单位）
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>deferRequestBy</strong><br /><small class="text-muted">请求间隔时间</small></td>
+                                    <td>
+                                        类型：<code>数字</code>，默认值: <code>0</code><br />
+                                        keyUp之后发起请求的间隔时间
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>width</strong><br /><small class="text-muted">宽度</small></td>
+                                    <td>
+                                        类型：<code>数字，字符串</code>，默认值: <code>'auto'</code><br />
+                                        suggestions容器的宽度（以像素为单位）
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>params</strong><br /><small class="text-muted"></small></td>
+                                    <td>
+                                        类型：<code>对象</code><br />
+                                        与请求一起传递的其他参数，可选
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>formatResult</strong><br /><small class="text-muted">格式化函数</small></td>
+                                    <td>
+                                        类型：<code>函数</code>，默认值: 默认格式化函数<br />
+                                        格式化suggestions容器中的suggestion entry, 可选
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>delimiter</strong><br /><small class="text-muted">分隔符</small></td>
+                                    <td>
+                                        类型：<code>字符串或者正则</code>，默认值: <code>null</code><br />
+                                        splits字符串并把得出数组的最后一项作为query进行请求.当需要分别对两个或者以上的词汇进行自动完成时很有用
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>type</strong><br /><small class="text-muted">类型</small></td>
+                                    <td>
+                                        默认值: <code>GET</code><br />
+                                        suggestions的Ajax请求类型
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>noCache</strong><br /><small class="text-muted">是否缓存</small></td>
+                                    <td>
+                                        类型：<code>布尔值</code>，默认值: <code>false</code><br />
+                                        设置是否缓存ajax结果的布尔值
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>onSearchStart</strong><br /><small class="text-muted">开始查询</small></td>
+                                    <td>
+                                        类型：<code>函数</code>，默认值: <code>noop</code><br />
+                                        Ajax请求之前调用；可用于前端验证，<code>this</code> 被绑定在input上
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>onSearchComplete</strong><br /><small class="text-muted">查询完成</small></td>
+                                    <td>
+                                        类型：<code>函数</code>，默认值: <code>noop</code><br />
+                                        请求成功之后的回调，<code>this</code> 被绑定在input上
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>onSearchError</strong><br /><small class="text-muted"></small></td>
+                                    <td>
+                                        类型：<code>函数</code>，默认值: <code>noop</code><br />
+                                        如果ajax请求失败，则调用，<code>this</code> 被绑定在input上
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>tabDisabled</strong></td>
+                                    <td>
+                                        类型：<code>布尔值</code>，默认值: <code>false</code><br />
+                                        设置为true的话，用户选择结果之后，鼠标指针会blur，默认行为是focus
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>transformResult</strong></td>
+                                    <td>
+                                        类型：<code>函数</code><br />
+                                        Ajax请求完成后用于调节response.suggestions的格式.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>appendTo</strong><br /><small class="text-muted">追加到...</small></td>
+                                    <td>
+                                        默认值: <code>document.body</code><br />
+                                        suggestions 容器被插入的地方
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>zIndex</strong><br /><small class="text-muted">容器层级</small></td>
+                                    <td>
+                                        类型：<code>数字</code>，默认值: <code>9999</code><br />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <!--/ row end-->
+            </div>
+        </div>
+        <!--/ panel }-->
+    </div>
+
+    <script src="../js/sea.min.js"></script>
+    <script src="../js/pages/ac.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "query": "Unit",
+  "suggestions": [
+    {"value": "天天飞车", "fill": "4.5", "refill": "4.6"},
+    {"value": "天天跑酷", "fill": "4.1", "refill": "5"},
+    {"value": "天龙八部", "fill": "3.7", "refill": "4.3"},
+    {"value": "守护者们", "fill": "4.5", "refill": "5.2"},
+    {"value": "热血街霸3D(送春丽)", "fill": "4.5", "refill": "5.2"},
+    {"value": "画江湖之灵主（暴力美学指尖感触）", "fill": "8.5", "refill": "7.2"},
+    {"value": "神雕侠侣", "fill": "7.5", "refill": "5.6"},
+    {"value": "仙剑五前传", "fill": "4.8", "refill": "4.0"},
+    {"value": "途游德州扑克", "fill": "9.1", "refill": "8.0"},
+    {"value": "航海王强者之路", "fill": "3.5", "refill": "2.0"},
+    {"value": "仙魂（剑仙缘）", "fill": "7.6", "refill": "5.5"},
+    {"value": "山海经之赤影传说", "fill": "9.5", "refill": "8.8"},
+    {"value": "夏目的美丽日记", "fill": "8.8", "refill": "6.6"},
+    {"value": "帝国塔防3", "fill": "7.8", "refill": "5.5"},
+    {"value": "暗黑黎明", "fill": "6.8", "refill": "6.0"},
+    {"value": "口袋妖怪2", "fill": "8.5", "refill": "6.8"},
+    {"value": "大神仙", "fill": "6.5", "refill": "5.3"},
+    {"value": "大圣捉妖记", "fill": "8.8", "refill": "7.6"},
+    {"value": "战舰帝国-舰队对战", "fill": "7.2", "refill": "5.6"},
+    {"value": "霸道天下（剑灵觉醒）", "fill": "4.5", "refill": "3.2"}
+  ]
+}

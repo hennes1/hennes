@@ -25,8 +25,7 @@
 }(function ($) {
     'use strict';
 
-    var
-        utils = (function () {
+    var utils = (function () {
             return {
                 escapeRegExChars: function (value) {
                     return value.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
@@ -82,14 +81,14 @@
                 triggerSelectOnValidInput: true,
                 preventBadQueries: true,
                 lookupFilter: function (suggestion, originalQuery, queryLowerCase) {
-                    return suggestion.value.toLowerCase().indexOf(queryLowerCase) !== -1;
+                    return suggestion.value.indexOf(queryLowerCase) !== -1;
                 },
                 paramName: 'query',
                 transformResult: function (response) {
                     return typeof response === 'string' ? $.parseJSON(response) : response;
                 },
                 showNoSuggestionNotice: false,
-                noSuggestionNotice: 'No results',
+                noSuggestionNotice: '暂无匹配结果',
                 orientation: 'bottom',
                 forceFixPosition: false
             };
@@ -144,9 +143,7 @@
     };
 
     Autocomplete.prototype = {
-
         killerFn: null,
-
         initialize: function () {
             var that = this,
                 suggestionSelector = '.' + that.classes.suggestion,
@@ -165,8 +162,7 @@
             };
 
             // html() deals with many types: htmlString or Element or Array or jQuery
-            that.noSuggestionsContainer = $('<div class="autocomplete-no-suggestion"></div>')
-                                          .html(this.options.noSuggestionNotice).get(0);
+            that.noSuggestionsContainer = $('<div class="autocomplete-no-suggestion" />').html(this.options.noSuggestionNotice).get(0);
 
             that.suggestionsContainer = Autocomplete.utils.createNode(options.containerClass);
 
@@ -211,7 +207,6 @@
             that.el.on('change.autocomplete', function (e) { that.onKeyUp(e); });
             that.el.on('input.autocomplete', function (e) { that.onKeyUp(e); });
         },
-
         onFocus: function () {
             var that = this;
 
@@ -221,11 +216,9 @@
                 that.onValueChange();
             }
         },
-
         onBlur: function () {
             this.enableKillerFn();
         },
-        
         abortAjax: function () {
             var that = this;
             if (that.currentRequest) {
@@ -233,7 +226,6 @@
                 that.currentRequest = null;
             }
         },
-
         setOptions: function (suppliedOptions) {
             var that = this,
                 options = that.options;
@@ -255,30 +247,24 @@
                 'z-index': options.zIndex
             });
         },
-
-
         clearCache: function () {
             this.cachedResponse = {};
             this.badQueries = [];
         },
-
         clear: function () {
             this.clearCache();
             this.currentValue = '';
             this.suggestions = [];
         },
-
         disable: function () {
             var that = this;
             that.disabled = true;
             clearInterval(that.onChangeInterval);
             that.abortAjax();
         },
-
         enable: function () {
             this.disabled = false;
         },
-
         fixPosition: function () {
             // Use only when container has already its content
 
@@ -338,17 +324,14 @@
 
             $container.css(styles);
         },
-
         enableKillerFn: function () {
             var that = this;
             $(document).on('click.autocomplete', that.killerFn);
         },
-
         disableKillerFn: function () {
             var that = this;
             $(document).off('click.autocomplete', that.killerFn);
         },
-
         killSuggestions: function () {
             var that = this;
             that.stopKillSuggestions();
@@ -367,11 +350,9 @@
                 that.stopKillSuggestions();
             }, 50);
         },
-
         stopKillSuggestions: function () {
             window.clearInterval(this.intervalId);
         },
-
         isCursorAtEnd: function () {
             var that = this,
                 valLength = that.el.val().length,
@@ -388,7 +369,6 @@
             }
             return true;
         },
-
         onKeyPress: function (e) {
             var that = this;
 
@@ -448,7 +428,6 @@
             e.stopImmediatePropagation();
             e.preventDefault();
         },
-
         onKeyUp: function (e) {
             var that = this;
 
@@ -476,7 +455,6 @@
                 }
             }
         },
-
         onValueChange: function () {
             var that = this,
                 options = that.options,
@@ -504,16 +482,12 @@
                 that.getSuggestions(query);
             }
         },
-
         isExactMatch: function (query) {
             var suggestions = this.suggestions;
-
             return (suggestions.length === 1 && suggestions[0].value.toLowerCase() === query.toLowerCase());
         },
-
         getQuery: function (value) {
-            var delimiter = this.options.delimiter,
-                parts;
+            var delimiter = this.options.delimiter, parts;
 
             if (!delimiter) {
                 return value;
@@ -521,7 +495,6 @@
             parts = value.split(delimiter);
             return $.trim(parts[parts.length - 1]);
         },
-
         getSuggestionsLocal: function (query) {
             var that = this,
                 options = that.options,
@@ -542,7 +515,6 @@
 
             return data;
         },
-
         getSuggestions: function (q) {
             var response,
                 that = this,
@@ -607,7 +579,6 @@
                 options.onSearchComplete.call(that.element, q, []);
             }
         },
-
         isBadQuery: function (q) {
             if (!this.options.preventBadQueries){
                 return false;
@@ -624,7 +595,6 @@
 
             return false;
         },
-
         hide: function () {
             var that = this,
                 container = $(that.suggestionsContainer);
@@ -639,7 +609,6 @@
             $(that.suggestionsContainer).hide();
             that.signalHint(null);
         },
-
         suggest: function () {
             if (!this.suggestions.length) {
                 if (this.options.showNoSuggestionNotice) {
@@ -715,7 +684,6 @@
             that.visible = true;
             that.findBestHint();
         },
-
         noSuggestions: function() {
              var that = this,
                  container = $(that.suggestionsContainer),
@@ -734,7 +702,6 @@
             container.show();
             that.visible = true;
         },
-
         adjustContainerWidth: function() {
             var that = this,
                 options = that.options,
@@ -749,7 +716,6 @@
                 container.css('width', width > 0 ? width : 300);
             }
         },
-
         findBestHint: function () {
             var that = this,
                 value = that.el.val().toLowerCase(),
@@ -769,7 +735,6 @@
 
             that.signalHint(bestMatch);
         },
-
         signalHint: function (suggestion) {
             var hintValue = '',
                 that = this;
@@ -782,7 +747,6 @@
                 (this.options.onHint || $.noop)(hintValue);
             }
         },
-
         verifySuggestionsFormat: function (suggestions) {
             // If suggestions is string array, convert them to supported format:
             if (suggestions.length && typeof suggestions[0] === 'string') {
@@ -793,7 +757,6 @@
 
             return suggestions;
         },
-
         validateOrientation: function(orientation, fallback) {
             orientation = $.trim(orientation || '').toLowerCase();
 
@@ -803,7 +766,6 @@
 
             return orientation;
         },
-
         processResponse: function (result, originalQuery, cacheKey) {
             var that = this,
                 options = that.options;
@@ -826,7 +788,6 @@
             that.suggestions = result.suggestions;
             that.suggest();
         },
-
         activate: function (index) {
             var that = this,
                 activeItem,
@@ -846,21 +807,18 @@
 
             return null;
         },
-
         selectHint: function () {
             var that = this,
                 i = $.inArray(that.hint, that.suggestions);
 
             that.select(i);
         },
-
         select: function (i) {
             var that = this;
             that.hide();
             that.onSelect(i);
             that.disableKillerFn();
         },
-
         moveUp: function () {
             var that = this;
 
@@ -878,7 +836,6 @@
 
             that.adjustScroll(that.selectedIndex - 1);
         },
-
         moveDown: function () {
             var that = this;
 
@@ -888,19 +845,14 @@
 
             that.adjustScroll(that.selectedIndex + 1);
         },
-
         adjustScroll: function (index) {
-            var that = this,
-                activeItem = that.activate(index);
+            var that = this, activeItem = that.activate(index);
 
             if (!activeItem) {
                 return;
             }
 
-            var offsetTop,
-                upperBound,
-                lowerBound,
-                heightDelta = $(activeItem).outerHeight();
+            var offsetTop, upperBound, lowerBound, heightDelta = $(activeItem).outerHeight();
 
             offsetTop = activeItem.offsetTop;
             upperBound = $(that.suggestionsContainer).scrollTop();
@@ -917,7 +869,6 @@
             }
             that.signalHint(null);
         },
-
         onSelect: function (index) {
             var that = this,
                 onSelectCallback = that.options.onSelect,
@@ -937,7 +888,6 @@
                 onSelectCallback.call(that.element, suggestion);
             }
         },
-
         getValue: function (value) {
             var that = this,
                 delimiter = that.options.delimiter,
@@ -957,7 +907,6 @@
 
             return currentValue.substr(0, currentValue.length - parts[parts.length - 1].length) + value;
         },
-
         dispose: function () {
             var that = this;
             that.el.off('.autocomplete').removeData('autocomplete');

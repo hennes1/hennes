@@ -97,8 +97,8 @@ html[dir="rtl"] .pywSelect-container .pywSelect-choice > .pywSelect-chosen { mar
   border-radius: 4px 4px 0 0;
   box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
 }
-.pywSelect-drop-active { border: 1px solid #5897fb; border-top: none;}
-.pywSelect-drop.pywSelect-drop-above.pywSelect-drop-active { border-top: 1px solid #5897fb;}
+.pywSelect-drop-active { border: 1px solid #66afe9; border-top: none;}
+.pywSelect-drop.pywSelect-drop-above.pywSelect-drop-active { border-top: 1px solid #66afe9;}
 .pywSelect-drop-auto-width { border-top: 1px solid #aaa; width: auto;}
 .pywSelect-container .pywSelect-choice .pywSelect-arrow {
   display: inline-block;

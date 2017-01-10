@@ -10,24 +10,11 @@
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.autocomplete-suggestion {
-    padding: 2px 5px;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.autocomplete-no-suggestion {
-    padding: 2px 5px;
-}
-.autocomplete-selected {
-    background: #F0F0F0;
-}
-.autocomplete-suggestions strong {
-    font-weight: bold;
-    color: #c00;
-}
-.autocomplete-group {
-    padding: 2px 5px;
-}
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden;}
+.autocomplete-no-suggestion { padding: 2px 5px;}
+.autocomplete-selected { background: #F0F0F0;}
+.autocomplete-suggestions strong { font-weight: bold; color: #c00;}
+.autocomplete-group { padding: 2px 5px;}
 .autocomplete-group strong {
     font-weight: bold;
     font-size: 16px;

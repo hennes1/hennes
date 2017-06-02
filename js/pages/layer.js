@@ -22,7 +22,7 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'niceScroll', 'common'], function () 
         });
         $('#site_dir').on('activate.bs.scrollspy', function(item) {
             var a = $(item.target).position().top, $lay = $('.layui-layer-content');
-            if(a > 220){
+            if(a > 0){
                 $lay.animate({scrollTop: a - 200}, 50);
             }else{
                 $lay.animate({scrollTop: 0}, 50);
@@ -96,10 +96,13 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'niceScroll', 'common'], function () 
 
         //显示当前状态
         $('.site-dir li a').on('click', function () {
-            var $self = $(this), $li = $self.parent('li'), id = $self.attr('href').replace('#', '').replace('.', '_');
+            var $self = $(this),
+                $li = $self.parent('li'),
+                id = $self.attr('href').replace('#', '').replace('.', '_'),
+                $curr = $('#' + id);
             $self.parents('.site-dir').find('li').removeClass('active');
             $li.addClass('active');
-            $('html,body').animate({scrollTop: $('#' + id).offset().top - 61}, 500);
+            $('html,body').animate({scrollTop: $curr.offset().top - $curr.height()}, 500);
         });
 
         $('button[data-target]').on('click', function () {

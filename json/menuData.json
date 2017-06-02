@@ -61,13 +61,6 @@
         "link": "select.html"
       },
       {
-        "title": "日历插件",
-        "icoName": "glyphicons-calendar",
-        "icoColor": "text-danger",
-        "description": "Bootstrap自有插件，本站进行了JS和CSS完全分离，可直接使用！",
-        "link": "calendar.html"
-      },
-      {
         "title": "Tab插件",
         "icoName": "glyphicons-puzzle",
         "icoColor": "text-success",
@@ -103,6 +96,34 @@
     "ico": "glyphicons-puzzle-2",
     "menu": [
       {
+        "title": "AutoComplete",
+        "icoName": "glyphicons-drop",
+        "icoColor": "text-success",
+        "description": "自动补全插件，兼容Chrome/IE/Firefox/Opera/Safari等浏览器。",
+        "link": "AutoComplete.html"
+      },
+      {
+        "title": "日历插件",
+        "icoName": "glyphicons-calendar",
+        "icoColor": "text-danger",
+        "description": "Bootstrap自有插件，本站进行了JS和CSS完全分离，可直接使用！",
+        "link": "calendar.html"
+      },
+      {
+        "title": "Layer弹层组件",
+        "icoName": "glyphicons-new-window-alt",
+        "icoColor": "text-info",
+        "description": "近年来备受青睐的web弹层组件，以更少的代码展现更强健的功能。",
+        "link": "layer.html"
+      },
+      {
+        "title": "SuperSlide",
+        "icoName": "glyphicons-transfer",
+        "icoColor": "text-default",
+        "description": "致力于解决网站大部分特效展示问题，使其规范整洁，方便维护更新。",
+        "link": "SuperSlide.html"
+      },
+      {
         "title": "右键菜单",
         "icoName": "glyphicons-list",
         "icoColor": "text-primary",
@@ -117,18 +138,11 @@
         "link": "QRCode.html"
       },
       {
-        "title": "Layer弹层组件",
-        "icoName": "glyphicons-new-window-alt",
-        "icoColor": "text-info",
-        "description": "近年来备受青睐的web弹层组件，以更少的代码展现更强健的功能。",
-        "link": "layer.html"
-      },
-      {
-        "title": "slimScroll",
+        "title": "niceScroll",
         "icoName": "glyphicons-reflect-y",
         "icoColor": "text-info",
         "description": "第三方滚动条插件，提供了较多用户可自定义的参数，值得拥有。",
-        "link": "slimScroll.html"
+        "link": "niceScroll.html"
       },
       {
         "title": "ZeroClipboard",
@@ -136,20 +150,6 @@
         "icoColor": "text-muted",
         "description": "国外大神开发基于Flash来实现跨浏览器的用于剪贴板复制的插件。",
         "link": "zeroClipboard.html"
-      },
-      {
-        "title": "SuperSlide",
-        "icoName": "glyphicons-transfer",
-        "icoColor": "text-default",
-        "description": "致力于解决网站大部分特效展示问题，使其规范整洁，方便维护更新。",
-        "link": "SuperSlide.html"
-      },
-      {
-        "title": "AutoComplete",
-        "icoName": "glyphicons-drop",
-        "icoColor": "text-success",
-        "description": "自动补全插件，兼容Chrome/IE/Firefox/Opera/Safari等浏览器。",
-        "link": "AutoComplete.html"
       }
     ]
   }

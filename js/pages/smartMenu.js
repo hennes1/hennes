@@ -2,7 +2,7 @@
  * Created by hennes on 2016/11/26.
  */
 
-seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'ZeroClipboard', 'smartMenu', 'common'], function () {
+seajs.use(['jquery', 'bootstrap', 'layer', 'niceScroll', 'ZeroClipboard', 'smartMenu', 'common'], function () {
     //弹层CSS路径
     layer.config({
         path: '../js/plugins/layer/'
@@ -10,7 +10,7 @@ seajs.use(['jquery', 'bootstrap', 'layer', 'slimScroll', 'ZeroClipboard', 'smart
 
     $(function () {
         //当前页
-        Hennes.loadNav('../', 'header', 'side_nav3_1');
+        Hennes.loadNav('../', 'header', 'side_nav3_5');
 
         //定义右键菜单data
         var rightMenu_1 = {

@@ -1,0 +1,244 @@
+.date-picker {
+    width: 170px;
+    height: 25px;
+    padding: 0;
+    border: 0;
+    padding-left: 10px;
+    font: 12px/25px Arial,"Microsoft YaHei","黑体","宋体",sans-serif bold;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    z-index: 2;
+}
+.date-picker-wrapper {
+    position: absolute;
+    z-index: 1998;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+    font-size: 12px;
+    line-height: 20px;
+    color: #aaa;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+    box-sizing: initial;
+}
+.date-picker-wrapper.inline-wrapper { position: relative; box-shadow: none; z-index: 1}
+.date-picker-wrapper.single-date { width: auto;}
+.date-picker-wrapper.no-shortcuts { padding-bottom: 12px;}
+.date-picker-wrapper.no-topbar { padding-top: 12px;}
+.date-picker-wrapper .footer { font-size: 12px; padding: 5px 10px;}
+.date-picker-wrapper.no-shortcuts .footer,
+.date-picker-wrapper.single-date .footer{ padding: 0; font-size: 0;}
+.date-picker-wrapper b { font-weight: 700;}
+.date-picker-wrapper a { color: rgb(107, 180, 214); text-decoration: underline;}
+.date-picker-wrapper .month-name { text-transform: uppercase;}
+.date-picker-wrapper .month-wrapper {
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 0 10px;
+    padding: 5px;
+    cursor: default;
+    position: relative;
+    _overflow: hidden;
+}
+.date-picker-wrapper .month-wrapper table,
+.date-picker-wrapper .month-wrapper table.month2 { width: 190px; float: left;}
+.date-picker-wrapper .month-wrapper table th,
+.date-picker-wrapper .month-wrapper table td {
+    vertical-align: middle;
+    text-align: center;
+    line-height: 14px;
+    margin: 0;
+    padding: 0;
+}
+.month-wrapper tbody tr:last-child td{ border-bottom: none!important;}
+.date-picker-wrapper .month-wrapper table .day {
+    padding: 5px 0;
+    line-height: 1;
+    font-size: 12px;
+    margin-bottom: 1px;
+    color: #cdcdcd;
+    cursor: default;
+}
+.date-picker-wrapper .month-wrapper table div.day.lastMonth,
+.date-picker-wrapper .month-wrapper table div.day.nextMonth { color: #999; cursor: default;}
+.date-picker-wrapper .month-wrapper table .day.checked { background-color: #9cdbf7;}
+.date-picker-wrapper .month-wrapper table .week-name {
+    height: 20px;
+    line-height: 20px;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+.date-picker-wrapper .month-wrapper table .day.has-tooltip { cursor: help !important;}
+.date-picker-wrapper .time label { white-space: nowrap;}
+.date-picker-wrapper .month-wrapper table .day.toMonth.valid { color: #333; cursor: pointer;}
+.date-picker-wrapper .month-wrapper table .day.toMonth.hovering { background-color: #cdecfa;}
+.date-picker-wrapper .month-wrapper table .day.nextMonth,
+.date-picker-wrapper .month-wrapper table .day.lastMonth { display: none;}
+.date-picker-wrapper .month-wrapper table .day.real-today { background-color: #ffe684;}
+.date-picker-wrapper .month-wrapper table .day.real-today.checked,
+.date-picker-wrapper .month-wrapper table .day.real-today.hovering { background-color: #70ccd5;}
+.date-picker-wrapper table .caption { height: 40px;}
+.date-picker-wrapper table .caption .next,
+.date-picker-wrapper table .caption .prev {
+    padding: 5px;
+    cursor: pointer;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+.date-picker-wrapper table .caption .next:hover,
+.date-picker-wrapper table .caption .prev:hover { background-color: #ccc; color: white;}
+.date-picker-wrapper .gap {
+    position: relative;
+    z-index: 1;
+    width: 15px;
+    background-color: red;
+    font-size: 0;
+    line-height: 0;
+    float: left;
+    top: -5px;
+    margin: 0 10px -10px;
+    visibility: hidden;
+    height: 0;
+}
+.date-picker-wrapper .gap .gap-lines { height: 100%; overflow: hidden;}
+.date-picker-wrapper .gap .gap-line {
+    height: 15px;
+    width: 15px;
+    position: relative;
+}
+.date-picker-wrapper .gap .gap-line .gap-1 {
+    z-index: 1;
+    height: 0;
+    border-left: 8px solid white;
+    border-top: 8px solid #eee;
+    border-bottom: 8px solid #eee;
+}
+.date-picker-wrapper .gap .gap-line .gap-2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-top: 8px solid white;
+}
+.date-picker-wrapper .gap .gap-line .gap-3 {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    z-index: 2;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+.date-picker-wrapper .gap .gap-top-mask {
+    width: 6px;
+    height: 1px;
+    position: absolute;
+    top: -1px;
+    left: 1px;
+    background-color: #eee;
+    z-index: 3;
+}
+.date-picker-wrapper .gap .gap-bottom-mask {
+    width: 6px;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 7px;
+    background-color: #eee;
+    z-index: 3;
+}
+.date-picker-wrapper .selected-days { display: none;}
+.date-picker-wrapper .drp_top-bar {
+    background-color: #3598db;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+    line-height: 40px;
+    height: 40px;
+    position: relative;
+    padding: 0 10px;
+    margin: -1px -1px 10px;
+}
+.date-picker-wrapper .drp_top-bar .error-top,
+.date-picker-wrapper .drp_top-bar .normal-top { display: none;}
+.date-picker-wrapper .drp_top-bar .default-top { display: block;}
+.date-picker-wrapper .drp_top-bar.error .default-top { display: none;}
+.date-picker-wrapper .drp_top-bar.error .error-top { display: block; color: red;}
+.date-picker-wrapper .drp_top-bar.normal .default-top { display: none;}
+.date-picker-wrapper .drp_top-bar.normal .normal-top { display: block;}
+.date-picker-wrapper .drp_top-bar .btn-cont{ position: absolute; right: 10px; top: 8px; line-height: 0;}
+.date-picker-wrapper .drp_top-bar .apply-btn, .date-picker-wrapper .drp_top-bar .clear-btn{
+    border: 1px solid #59ea17;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 12px;
+    line-height: initial;
+}
+.date-picker-wrapper .drp_top-bar .clear-btn{ color: #934441; background-color: #ffbbb9; border-color: #fdafad; margin-left: 5px;}
+.date-picker-wrapper .drp_top-bar .clear-btn:hover{ color: #873431; background-color: #fe9591;border-color: #fe8884}
+.date-picker-wrapper .drp_top-bar .apply-btn {
+    background-color: #59ea17;
+    color: #028225;
+    position: absolute;
+    right: 8px;
+    top: 7px;
+}
+.date-picker-wrapper .drp_top-bar .apply-btn.disabled {
+    color: #999;
+    cursor: not-allowed;
+    background-color: #f1f1f1;
+    border-color: #dedede;
+    font-weight: 400;
+}
+.date-picker-wrapper .drp_top-bar .apply-btn:hover{ opacity: .8; filter: alpha(opacity=80);}
+.date-picker-wrapper .drp_top-bar .apply-btn.disabled:hover{ opacity: 1; filter: alpha(opacity=100);}
+/*time styling*/
+.date-picker-wrapper .time { position: relative;}
+.date-picker-wrapper.single-month .time { display: none;}
+.date-picker-wrapper .time input[type=range] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 129px;
+    padding: 0;
+    margin: 0;
+    height: 20px;
+}
+.date-picker-wrapper .time1, .time2 {
+    width: 180px;
+    padding: 0 5px;
+    text-align: center;
+}
+.date-picker-wrapper .time1 { float: left;}
+.date-picker-wrapper .time2 { float: right;}
+.date-picker-wrapper .hour, .minute { text-align: right;}
+.date-picker-wrapper .hide { display: none;}
+.date-picker-wrapper .first-date-selected { background-color: #49e !important; color: white !important;}
+.date-picker-wrapper .last-date-selected { background-color: #49e !important; color: white !important;}
+.date-picker-wrapper .date-range-length-tip {
+    position: absolute;
+    margin-top: -4px;
+    margin-left: -8px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    display: none;
+    background-color: yellow;
+    padding: 0 6px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, .3));
+}
+.date-picker-wrapper .date-range-length-tip:after {
+    content: '';
+    position: absolute;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid yellow;
+    left: 50%;
+    margin-left: -4px;
+    bottom: -4px;
+}

@@ -1,7 +1,7 @@
 /**
  * Created by hennes on 2016/12/27.
  */
-seajs.use(['jquery', 'bootstrap', 'slimScroll', 'ZeroClipboard', 'common'], function () {
+seajs.use(['jquery', 'bootstrap', 'niceScroll', 'ZeroClipboard', 'common'], function () {
 
     $(function () {
         //当前页

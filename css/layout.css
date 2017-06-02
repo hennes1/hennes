@@ -224,15 +224,15 @@ tbody .selected td{ background-color: #fff4cf;}
 .no-ml{ margin-left: 0!important;}
 p.bg-success{ border-radius: 3px; padding: 3px 5px; margin-bottom: 5px;}
 
-/*+++++++++++++++++++ slimScroll 滚动条插件 +++++++++++++++++++ */
-.slimScroll-wrap{
+/*+++++++++++++++++++ niceScroll 滚动条插件 +++++++++++++++++++ */
+.niceScroll-wrap{
     border-bottom: 1px #dedede solid;
     margin-right: -15px;
     margin-left: -15px;
     margin-bottom: 15px;
 }
-.slimScroll-tx{ line-height: 1.8; padding-left: 15px; padding-right: 15px;}.slimScroll-tx p{ text-indent: 30px;}
-.slimScroll h3{ margin-top: 10px; margin-bottom: 30px;}.slimScroll h4{ font-weight: 600; margin-bottom: 20px; margin-top: 15px;}
+.niceScroll-tx{ line-height: 1.8; padding-left: 15px; padding-right: 15px;}.niceScroll-tx p{ text-indent: 30px;}
+.niceScroll h3{ margin-top: 10px; margin-bottom: 30px;}.niceScroll h4{ font-weight: 600; margin-bottom: 20px; margin-top: 15px;}
 .js{ padding: 10px 15px; line-height: 1.5;}.js, .p, .html-code{ display: block;}
 .tx-indent{ text-indent: 30px;}.long-indent{ text-indent: 60px;}.max-indent{ text-indent: 90px;}.s{ color: #ababab; margin-left: 5px;}
 .p-paragraph{ padding-left: 30px;}.p-paragraph .no-ml{ display: inline-block; margin-left: 20px!important;}

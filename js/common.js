@@ -43,77 +43,6 @@ var Hennes = {
         });
     },
     /*
-     * timeFrameOption：日期时间段插件
-     * @settings：调用参数
-    */
-    timeFrameOption: function (settings) {
-        if(typeof daterangepicker === 'undefined' || typeof moment === 'undefined'){
-            throw new Error('缺少DateRangePicker插件或moment插件及其样式，请引入');
-        }
-        var option = {};
-        var defaultSetting = {
-            open : "right", //默认箭头在左，即右打开
-            drops: 'down',
-            format: "YYYY-MM-DD", //默认为短日期，长日期：YYYY-MM-DD HH:mm:ss
-            timeSelect: false, //默认不显示下拉时间
-            dateType: false, //默认双日历
-            monSelect: false, //默认不显示下拉月
-            customType: false, //默认不显示“自定义”
-            timeIncrement: 1,
-            applyLabel: "确定",
-            cancelLabel: "取消",
-            startDate: moment().startOf('day'),
-            endDate: moment().endOf('day'),
-            minDate: false, //最小日期，即在此之前的不可选择；默认为0，即不定义；格式同format
-            maxDate: false, //最大日期，类minDate
-            daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
-            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-        };
-        $.extend(defaultSetting, settings);
-
-        option = {
-            "singleDatePicker": defaultSetting.dateType,
-            "showDropdowns": defaultSetting.monSelect,
-            "timePicker": defaultSetting.timeSelect, //是否显示小时和分钟
-            "autoApply": defaultSetting.timeSelect,
-            "timePicker24Hour": defaultSetting.timeSelect, //是否使用24小时制来显示时间
-            "timePickerSeconds": defaultSetting.timeSelect,
-            "showCustomRangeLabel": defaultSetting.customType,
-            "timePickerIncrement": defaultSetting.timeIncrement, //时间的增量，单位为分钟
-            "locale": {
-                "format": defaultSetting.format,
-                "separator": " ～ ",
-                "applyLabel": defaultSetting.applyLabel,
-                "cancelLabel": defaultSetting.cancelLabel,
-                "fromLabel": "起始时间",
-                "toLabel": "结束时间",
-                "customRangeLabel": "自定义",
-                "weekLabel": "W",
-                "daysOfWeek": defaultSetting.daysOfWeek,
-                "monthNames": defaultSetting.monthNames,
-                "firstDay": 1
-            },
-            "ranges": {
-                '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                '今日': [moment(), moment()],
-                '近7日': [moment().subtract(6, 'days'), moment()],
-                '近30日': [moment().subtract(29, 'days'), moment()],
-                '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                '本月': [moment().startOf('month'), moment().endOf('month')],
-                '全时期': [moment().startOf('year'), moment().endOf('year')]
-            },
-            "opens": defaultSetting.open,
-            "drops": defaultSetting.drops,
-            "alwaysShowCalendars": true,
-            "startDate": defaultSetting.startDate,
-            "endDate": defaultSetting.endDate,
-            "minDate": defaultSetting.minDate,
-            "maxDate": defaultSetting.maxDate
-        };
-
-        return option;
-    },
-    /*
      * rightMenu：右键菜单
      * @ele：当前元素
      * @menuData：菜单数据
@@ -348,9 +277,9 @@ var Hennes = {
         var winHg = $(window).height(), h = winHg - 60;
         var $sideScroll = $('.side-scroll');
         if($sideScroll.length > 0) {
-            $sideScroll.slimScroll({
-                height: h
-            });
+            $sideScroll.css('height', h);
+            $sideScroll.niceScroll({cursorcolor: '#888'});
+            $sideScroll.getNiceScroll().resize();
         }
     },
     titleTip: function () {
@@ -359,6 +288,14 @@ var Hennes = {
 };
 
 $(function () {
+    $('html').niceScroll({
+        cursorcolor: '#888',
+        cursorwidth: '10px',
+        cursorborder: 'none',
+        zindex: 1031
+    });
+
+    Hennes.setSideHeight();
     $(window).on('resize', function () {
         Hennes.setSideHeight();
     });
@@ -377,6 +314,11 @@ $(function () {
             });
             $s.stop().animate({left: 0}, 300);
         }
+    });
+
+    //侧边菜单伸展执行
+    $(document).on('click', 'a[data-toggle="collapse"]', function () {
+        Hennes.setSideHeight();
     });
 
 

@@ -1,7 +1,7 @@
 /**
  * Created by hennes on 2017/01/04.
  */
-seajs.use(['jquery', 'bootstrap', 'slimScroll', 'layer', 'AutoComplete', 'ZeroClipboard', 'common'], function () {
+seajs.use(['jquery', 'bootstrap', 'niceScroll', 'layer', 'AutoComplete', 'ZeroClipboard', 'common'], function () {
     //弹层CSS路径
     layer.config({
         path: '../js/plugins/layer/'
@@ -20,7 +20,7 @@ seajs.use(['jquery', 'bootstrap', 'slimScroll', 'layer', 'AutoComplete', 'ZeroCl
 
     $(function () {
         //当前页
-        Hennes.loadNav('../', 'header', 'side_nav3_7');
+        Hennes.loadNav('../', 'header', 'side_nav3_1');
 
         //Ajax调用
         $('#auto_complete_ajax').autocomplete({

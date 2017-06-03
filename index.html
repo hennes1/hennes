@@ -147,20 +147,19 @@
         </div>
     </footer>
 
-    <script src="js/sea.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/plugins/niceScroll/jquery.nicescroll.min.js"></script>
+    <script src="js/common.js"></script>
     <script>
-        seajs.config({base: './js/'});
-        seajs.use(['jquery', 'bootstrap', 'niceScroll', 'common'], function () {
-            $(function () {
-                //当前页
-                Hennes.loadNav('', 'header');
+        $(function () {
+            //当前页
+            Hennes.loadNav('', 'header');
 
-                //page data
-                $(window).on('load', function (e) {
-                    //移除preloader
-                    $(".preloader").remove();
-                });
-
+            //page data
+            $(window).on('load', function (e) {
+                //移除preloader
+                $(".preloader").remove();
             });
         });
     </script>

@@ -201,21 +201,19 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/sea.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/layer/layer.min.js"></script>
+    <script src="../js/plugins/niceScroll/jquery.nicescroll.min.js"></script>
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <script src="../js/common.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'niceScroll', 'layer', 'ZeroClipboard', 'common'], function () {
-            //弹层CSS路径
-            layer.config({
-                path: '../js/plugins/layer/'
-            });
+        $(function () {
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav3_7');
 
-            $(function () {
-                //当前页
-                Hennes.loadNav('../', 'header', 'side_nav3_7');
-
-                //滚动条
-                $('.niceScroll').niceScroll({cursorcolor:"#888"});
-            });
+            //滚动条
+            $('.niceScroll').niceScroll({cursorcolor:"#888"});
         });
     </script>
 </body>

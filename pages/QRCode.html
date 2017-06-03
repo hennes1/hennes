@@ -121,38 +121,37 @@
 
     <div class="qr-code" style="display: none; padding: 15px;"></div>
 
-    <script src="../js/sea.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/layer/layer.min.js"></script>
+    <script src="../js/plugins/jquery.qrcode.min.js"></script>
+    <script src="../js/plugins/niceScroll/jquery.nicescroll.min.js"></script>
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <script src="../js/common.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'layer', 'niceScroll', 'QRCode', 'ZeroClipboard', 'common'], function () {
-            //弹层CSS路径
-            layer.config({
-                path: '../js/plugins/layer/'
+        $(function () {
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav3_6');
+
+            $('#qr_code_btn').click(function () {
+                var val = $.trim($('#qr_code').val()), $Rd = $('input[name="rd"]:checked');
+                if(val !== ''){
+                    var type = (parseInt($Rd.val()) === 0) ? 'table' : 'canvas';
+                    //生成二维码
+                    Hennes.outPutQRCode('.qr-code', type, val, 180, 180);
+
+                    //弹层显示二维码
+                    layer.open({
+                        type: 1,
+                        title: '显示二维码',
+                        move: false,
+                        area: ['auto'],
+                        content: $('.qr-code')
+                    });
+                    return false;
+                }
             });
 
-            $(function () {
-                //当前页
-                Hennes.loadNav('../', 'header', 'side_nav3_6');
-
-                $('#qr_code_btn').click(function () {
-                    var val = $.trim($('#qr_code').val()), $Rd = $('input[name="rd"]:checked');
-                    if(val !== ''){
-                        var type = (parseInt($Rd.val()) === 0) ? 'table' : 'canvas';
-                        //生成二维码
-                        Hennes.outPutQRCode('.qr-code', type, val, 180, 180);
-
-                        //弹层显示二维码
-                        layer.open({
-                            type: 1,
-                            title: '显示二维码',
-                            move: false,
-                            area: ['auto'],
-                            content: $('.qr-code')
-                        });
-                        return false;
-                    }
-                });
-
-            });
         });
     </script>
 </body>

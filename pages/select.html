@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">4.0.3版本可多选：</label>
+                                <label class="col-sm-3 control-label">可多选：</label>
                                 <div class="col-sm-5">
                                     <select class="tags2" multiple="multiple" style="width: 100%;">
                                         <option value="1">guest</option>
@@ -236,98 +236,98 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/sea.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/layer/layer.min.js"></script>
+    <script src="../js/plugins/select2/select2.min.js"></script>
+    <script src="../js/plugins/citySelect/jquery.cityselect.js"></script>
+    <script src="../js/plugins/niceScroll/jquery.nicescroll.min.js"></script>
+    <script src="../js/plugins/ZeroClipboard/ZeroClipboard.min.js"></script>
+    <script src="../js/common.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'select2', 'citySelect', 'layer', 'niceScroll', 'ZeroClipboard', 'common'], function () {
-            //弹层CSS路径
-            layer.config({
-                path: '../js/plugins/layer/'
-            });
-
-            //定义有图片时select下拉显示格式
-            function formatState(state) {
-                if (!state.id) {
-                    return state.text;
-                }
-
-                var imgItem = '<span>'
-                    +'  <img src="../images/bank/' + state.element.value.toLowerCase() + '.png" class="select-ico" />'
-                    +   state.text
-                    +'</span>';
-                return $(imgItem);
+        //定义有图片时select下拉显示格式
+        function formatState(state) {
+            if (!state.id) {
+                return state.text;
             }
 
-            $(function () {
-                //当前页
-                Hennes.loadNav('../', 'header', 'side_nav2_1');
+            var imgItem = '<span>'
+                +'  <img src="../images/bank/' + state.element.value.toLowerCase() + '.png" class="select-ico" />'
+                +   state.text
+                +'</span>';
+            return $(imgItem);
+        }
 
-                //4.0.3版本(现使用版本)
-                $('.tags2').select2();
+        $(function () {
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav2_1');
 
-                //执行有图片的select
-                $('select[name="has_ico"]').select2({
-                    templateResult: formatState,
-                    templateSelection: formatState
-                });
+            //4.0.3版本(现使用版本)
+            $('.tags2').select2();
 
-                //点击标签执行select选择
-                var $tagSelect = $('#tag_select').select2();
-                $('.tag-item').click(function () {
-                    var val = $(this).data('value');
-                    $tagSelect.val(val).trigger('change');
-                });
+            //执行有图片的select
+            $('select[name="has_ico"]').select2({
+                templateResult: formatState,
+                templateSelection: formatState
+            });
 
-                //打开select
-                $('.open').click(function () {
-                    $tagSelect.select2('open');
-                });
+            //点击标签执行select选择
+            var $tagSelect = $('#tag_select').select2();
+            $('.tag-item').click(function () {
+                var val = $(this).data('value');
+                $tagSelect.val(val).trigger('change');
+            });
 
-                //清空select
-                $('.clear').on('click', function () {
-                    $tagSelect.val(null).trigger("change");
-                });
+            //打开select
+            $('.open').click(function () {
+                $tagSelect.select2('open');
+            });
 
-                var $citySelect = $('#city_select'),
-                    $citySelect2 = $('#city_select2'),
-                    $citySelect3 = $('#city_select3'),
-                    $citySelect4 = $('#city_select4');
+            //清空select
+            $('.clear').on('click', function () {
+                $tagSelect.val(null).trigger("change");
+            });
 
-                //默认省（直辖市）/市/区（县）
-                $citySelect.citySelect({
-                    prov: "广东省",
-                    city: "佛山市",
-                    dist: "顺德区"
-                });
+            var $citySelect = $('#city_select'),
+                $citySelect2 = $('#city_select2'),
+                $citySelect3 = $('#city_select3'),
+                $citySelect4 = $('#city_select4');
 
-                //无数据
-                $citySelect2.citySelect({
-                    nodata: "none",
-                    required: false
-                });
+            //默认省（直辖市）/市/区（县）
+            $citySelect.citySelect({
+                prov: "广东省",
+                city: "佛山市",
+                dist: "顺德区"
+            });
 
-                //默认省（直辖市）
-                $citySelect3.citySelect({
-                    prov: "上海市",
-                    nodata: "none"
-                });
+            //无数据
+            $citySelect2.citySelect({
+                nodata: "none",
+                required: false
+            });
 
-                //自定义联动
-                $citySelect4.citySelect({
-                    url:{"citylist":[
-                        {"n":"前端技术","s":[{"n":"HTML"},{"n":"CSS","s":[{"n":"CSS2.0"},{"n":"CSS3.0"}]},{"n":"JavaScript"}]},
-                        {"n":"编程语言","s":[{"n":"C"},{"n":"C++"},{"n":"Objective-C"},{"n":"PHP"},{"n":"JAVA"}]},
-                        {"n":"数据库","s":[{"n":"Mysql"},{"n":"SqlServer"},{"n":"Oracle"},{"n":"DB2"}]}
-                    ]},
-                    nodata: "none",
-                    required: false
-                });
+            //默认省（直辖市）
+            $citySelect3.citySelect({
+                prov: "上海市",
+                nodata: "none"
+            });
 
-                //确定
-                $('#ok_btn').on('click', function () {
-                    var frmData = $('#select_frm').serialize();
-                    console.log(frmData);
-                    return false;
-                });
+            //自定义联动
+            $citySelect4.citySelect({
+                url:{"citylist":[
+                    {"n":"前端技术","s":[{"n":"HTML"},{"n":"CSS","s":[{"n":"CSS2.0"},{"n":"CSS3.0"}]},{"n":"JavaScript"}]},
+                    {"n":"编程语言","s":[{"n":"C"},{"n":"C++"},{"n":"Objective-C"},{"n":"PHP"},{"n":"JAVA"}]},
+                    {"n":"数据库","s":[{"n":"Mysql"},{"n":"SqlServer"},{"n":"Oracle"},{"n":"DB2"}]}
+                ]},
+                nodata: "none",
+                required: false
+            });
+
+            //确定
+            $('#ok_btn').on('click', function () {
+                var frmData = $('#select_frm').serialize();
+                console.log(frmData);
+                return false;
             });
         });
     </script>

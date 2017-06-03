@@ -224,9 +224,9 @@ var Hennes = {
      * @e：a标签的根父级元素id
      * @name：要显示名字的元素id
      */
-    getName: function (e, name) {
+    getName: function () {
         $('[role="menu"]>li>a').click(function () {
-            var $name = $(this).parents(e).find(name), $val = $(this).html();
+            var $name = $(this).parents('ul').prev('button').find('span').eq(0), $val = $(this).html();
             $name.html($val);
         });
     },
@@ -288,6 +288,7 @@ var Hennes = {
 };
 
 $(function () {
+    //改变body的滚动条样式
     $('html').niceScroll({
         cursorcolor: '#888',
         cursorwidth: '10px',

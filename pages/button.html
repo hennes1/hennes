@@ -143,13 +143,14 @@
         <!--/ panel }-->
     </div>
 
-    <script src="../js/sea.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/niceScroll/jquery.nicescroll.min.js"></script>
+    <script src="../js/common.js"></script>
     <script>
-        seajs.use(['jquery', 'bootstrap', 'niceScroll', 'common'], function () {
-            $(function () {
-                //当前页
-                Hennes.loadNav('../', 'header', 'side_nav1_6');
-            });
+        $(function () {
+            //当前页
+            Hennes.loadNav('../', 'header', 'side_nav1_6');
         });
     </script>
 </body>

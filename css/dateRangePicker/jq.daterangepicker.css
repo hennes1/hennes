@@ -28,7 +28,7 @@
 .date-picker-wrapper .footer { font-size: 12px; padding: 10px;}
 .date-picker-wrapper.no-shortcuts .footer,
 .date-picker-wrapper.single-date .footer{ padding: 0 0 10px; font-size: 0;}
-.date-picker-wrapper.no-shortcuts .customValues{ font-size: 12px; padding-left: 10px; padding-top: 10px}
+.date-picker-wrapper.no-shortcuts .customValues{ font-size: 12px; padding-left: 10px; padding-top: 10px;}
 .date-picker-wrapper b { font-weight: 700;}
 .date-picker-wrapper a { color: rgb(107, 180, 214); text-decoration: underline;}
 .date-picker-wrapper .month-name { text-transform: uppercase;}

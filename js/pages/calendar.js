@@ -49,7 +49,7 @@ $(function () {
             // obj will be something like this:
             // {
             // 		date1: (Date object of the earlier date)
-            // }
+            //}
         })
         .bind('datepicker-change', function (event, obj) {
             var dateRange = obj.value.split(' ~ ');

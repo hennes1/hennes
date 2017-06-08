@@ -293,6 +293,7 @@ $(function () {
     });
 
     Hennes.setSideHeight();
+
     $(window).on('resize', function () {
         Hennes.setSideHeight();
     });

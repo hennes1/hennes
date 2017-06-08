@@ -159,7 +159,7 @@
                 //'prev-days': [1,3,5,7],
                 // 'next-days': [3,5,7],
                 //'prev' : ['week','month','year'],
-                // 'next' : ['week','month','year']
+                //'next' : ['week','month','year']
             },
             customShortcuts: [],
             inline: false,

@@ -319,7 +319,6 @@ $(function () {
         Hennes.setSideHeight();
     });
 
-
     //如果引入了ZeroClipboard和layer插件，则添加复制按钮
     if (typeof ZeroClipboard !== 'undefined') {
         var copyBtn = '<a href="javascript:void(0);" class="btn btn-default btn-xs flash-copy">复制</a>';

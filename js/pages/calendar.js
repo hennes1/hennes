@@ -46,7 +46,7 @@ $(function () {
         .bind('datepicker-first-date-selected', function (event, obj) {
             /* This event will be triggered when first date is selected */
             console.log('first-date-selected', obj);
-            // obj will be something like this:
+            //obj will be something like this:
             // {
             // 		date1: (Date object of the earlier date)
             //}

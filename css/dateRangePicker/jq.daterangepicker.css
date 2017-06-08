@@ -22,7 +22,7 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
     box-sizing: initial;
 }
-.date-picker-wrapper.inline-wrapper { position: relative; box-shadow: none; z-index: 1}
+.date-picker-wrapper.inline-wrapper { position: relative; box-shadow: none; z-index: 1;}
 .date-picker-wrapper.single-date { width: auto;}
 .date-picker-wrapper.no-topbar { padding-top: 12px;}
 .date-picker-wrapper .footer { font-size: 12px; padding: 10px;}

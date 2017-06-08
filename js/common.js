@@ -27,7 +27,7 @@ var Hennes = {
             //开始复制
             zClip.on('copy', function (event) {
                 var clipboard = event.clipboardData,
-                    text = target.text(); //获取要复制的内容
+                    text = $.trim(target.text()); //获取要复制的内容
                 clipboard.setData('text/plain', text);
             })
                 .on('aftercopy', function (event) {
@@ -219,11 +219,7 @@ var Hennes = {
             }
         });
     },
-    /*
-     * getName：获取下拉菜单中a标签的名字
-     * @e：a标签的根父级元素id
-     * @name：要显示名字的元素id
-     */
+    //getName：获取下拉菜单中a标签的名字
     getName: function () {
         $('[role="menu"]>li>a').click(function () {
             var $name = $(this).parents('ul').prev('button').find('span').eq(0), $val = $(this).html();

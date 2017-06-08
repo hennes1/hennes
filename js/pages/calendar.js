@@ -52,8 +52,9 @@ $(function () {
             // }
         })
         .bind('datepicker-change', function (event, obj) {
+            var dateRange = obj.value.split(' ~ ');
             /* This event will be triggered when second date is selected */
-            console.log('change', obj);
+            console.log('change', dateRange);
             // obj will be something like this:
             // {
             // 		date1: (Date object of the earlier date),
@@ -62,8 +63,9 @@ $(function () {
             // }
         })
         .bind('datepicker-apply', function (event, obj) {
+            var dateRange = obj.value.split(' ~ ');
             /* This event will be triggered when user clicks on the apply button */
-            console.log('apply', obj);
+            console.log('apply', dateRange);
         })
         .bind('datepicker-close', function () {
             /* This event will be triggered before date range picker close animation */

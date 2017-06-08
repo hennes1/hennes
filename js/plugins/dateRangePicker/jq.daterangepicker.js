@@ -136,7 +136,7 @@
         opt = $.extend(true, {
             autoClose: false,
             format: 'YYYY-MM-DD',
-            separator: ' to ',
+            separator: ' ~ ',
             language: 'auto',
             startOfWeek: 'sunday', // or monday
             getValue: function() {
@@ -287,6 +287,17 @@
 
         return this;
 
+        /*function checkVal() {
+            var iptVal = $.trim($(self).val());
+            if(iptVal) {
+                $(self).hover(function () {
+                    console.log(iptVal);
+                }, function () {
+                    console.log('aaa');
+                });
+            }
+        }*/
+
         function IsOwnDatePickerClicked(evt, selfObj) {
             return (selfObj.contains(evt.target) || evt.target == selfObj || (selfObj.childNodes != undefined && $.inArray(evt.target, selfObj.childNodes) >= 0));
         }
@@ -299,7 +310,6 @@
                 return;
             }
             $(this).data('date-picker-opened', true);
-
 
             box = createDom().hide();
             box.append('<div class="date-range-length-tip"></div>');
@@ -332,7 +342,6 @@
 
             //showSelectedInfo();
 
-
             var defaultTopText = '';
             if (opt.singleDate)
                 defaultTopText = translate('default-single');
@@ -351,7 +360,6 @@
             } else {
                 box.addClass('two-months');
             }
-
 
             setTimeout(function() {
                 updateCalendarWidth();
@@ -394,7 +402,6 @@
                 showMonth(nextMonth2, 'month2');
                 showSelectedDays();
             }
-
 
             box.find('.prev').click(function() {
                 if (!opt.stickyMonths)
@@ -539,13 +546,39 @@
                     min = target.name == 'minute' ? $(target).val().replace(/^(\d{1})$/, '0$1') : undefined;
                 setTime('time2', hour, min);
             });
-
         }
 
+        //取窗口可视范围的高度
+        function getClientHeight(){
+            var clientHeight = 0;
+            if(document.body.clientHeight && document.documentElement.clientHeight){
+                clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+            }else{
+                clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+            }
+            return clientHeight;
+        }
+
+        //取窗口滚动条高度
+        function getScrollTop(){
+            var scrollTop = 0;
+            if(document.documentElement && document.documentElement.scrollTop){
+                scrollTop = document.documentElement.scrollTop;
+            }else if(document.body){
+                scrollTop = document.body.scrollTop;
+            }
+            return scrollTop;
+        }
 
         function calcPosition() {
             if (!opt.inline) {
-                var offset = $(self).offset();
+                var offset = $(self).offset(),
+                    selfHg = $(self).outerHeight(),
+                    boxHg = box.outerHeight(),
+                    winViewHgt = getClientHeight(), //窗口可视范围的高度
+                    scrollTop = getScrollTop(),     //滚动条距离浏览器顶部的高度
+                    toBottom = winViewHgt + scrollTop - offset.top - selfHg;
+
                 if ($(opt.container).css('position') == 'relative') {
                     var containerOffset = $(opt.container).offset();
                     box.css({
@@ -553,18 +586,17 @@
                         left: offset.left - containerOffset.left
                     });
                 } else {
-                    //if (offset.left < 460) //left to right
-                    //{
+                    if(toBottom > boxHg){
                         box.css({
-                            top: offset.top + $(self).outerHeight() + parseInt($('body').css('border-top') || 0, 10) + 2,
+                            top: offset.top + selfHg + 2,
                             left: offset.left
                         });
-                    /*} else {
+                    } else {
                         box.css({
-                            top: offset.top + $(self).outerHeight() + parseInt($('body').css('border-top') || 0, 10),
-                            left: offset.left + $(self).width() - box.width() - 16
+                            top: offset.top - boxHg - selfHg%2 - 2,
+                            left: offset.left
                         });
-                    }*/
+                    }
                 }
             }
         }

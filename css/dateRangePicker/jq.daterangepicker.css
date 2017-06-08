@@ -24,11 +24,11 @@
 }
 .date-picker-wrapper.inline-wrapper { position: relative; box-shadow: none; z-index: 1}
 .date-picker-wrapper.single-date { width: auto;}
-.date-picker-wrapper.no-shortcuts { padding-bottom: 12px;}
 .date-picker-wrapper.no-topbar { padding-top: 12px;}
-.date-picker-wrapper .footer { font-size: 12px; padding: 5px 10px;}
+.date-picker-wrapper .footer { font-size: 12px; padding: 10px;}
 .date-picker-wrapper.no-shortcuts .footer,
-.date-picker-wrapper.single-date .footer{ padding: 0; font-size: 0;}
+.date-picker-wrapper.single-date .footer{ padding: 0 0 10px; font-size: 0;}
+.date-picker-wrapper.no-shortcuts .customValues{ font-size: 12px; padding-left: 10px; padding-top: 10px}
 .date-picker-wrapper b { font-weight: 700;}
 .date-picker-wrapper a { color: rgb(107, 180, 214); text-decoration: underline;}
 .date-picker-wrapper .month-name { text-transform: uppercase;}

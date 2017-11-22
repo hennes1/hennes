@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="XiaoMeng H5SDK">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="cache" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>H5SDK测试</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>.mod-login-ulogin .dialog-close{ display: none;}</style>
+</head>
+<body>
+<!--{ 此处为测试用，套用程序后可删除 start -->
+<div id="t_demo" style="background:#fff;bottom:0;left:0;right:0;top:0;padding:10px;position:fixed;z-index:10000">
+    <div id="init_frm">
+        <p style="margin-bottom:10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;game_key：<input type="text" name="game_key" value="123456abc" style="padding:10px 0"></p>
+        <p style="margin-bottom:10px">game_secret：<input type="text" name="game_secret" value="98278b644a68ae06" style="padding:10px 0"></p>
+        <p style="margin-bottom:10px">&nbsp;&nbsp;&nbsp;&nbsp;channel_id：<input type="text" name="channel_id" value="17" style="padding:10px 0"></p>
+        <p style="margin-bottom:10px">游戏背景图：<input type="text" name="game_bg" value="images/game-bg.jpg" style="width:100%;padding:10px 0"></p>
+        <p><input type="button" id="int_btn" value="测试" style="padding:10px 5px;width:100%"></p>
+    </div>
+</div>
+<!--/ 此处为测试用，套用程序后可删除 end }-->
+
+<div class="login-bg"><!--<span>大背景图</span>--></div>
+<div class="mask" id="login_pop"></div>
+<input type="hidden" id="user_name">
+
+<script src="js/zepto.js"></script>
+<script src="js/aes.min.js"></script>
+<script src="js/h5skd.js"></script>
+<script>
+    $('#int_btn').click(function () {
+        var game_key = $('input[name="game_key"]').val(),
+            game_secret = $('input[name="game_secret"]').val(),
+            channel_id = $('input[name="channel_id"]').val(),
+            game_bg = $('input[name="game_bg"]').val();
+
+        var gameBasicConfig = [game_key, game_secret, channel_id, game_bg];
+
+        sessionStorage.setItem("basicConfig", gameBasicConfig);
+        var getGameBasic = sessionStorage.getItem("basicConfig").split(",");
+
+        XiaoMeng.game_key = getGameBasic[0];
+        XiaoMeng.game_secret = getGameBasic[1];
+        XiaoMeng.channel_id = getGameBasic[2];
+        gameBg = getGameBasic[3];
+
+        $('#t_demo').remove();
+
+        // 进入游戏初始化
+        H5Sdk.init();
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="XiaoMeng H5SDK">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="cache" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>H5SDK测试</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>.dialog-close{ display: none;}</style>
+    script
+</head>
+<body>
+<iframe scrolling="no" id="ifr" src="" frameborder="0" width="100%" height="100%"></iframe>
+
+<!-- 浮标 -->
+<div class="floatmod floaticon-right floaticon-anim" id="floatmod">
+    <img src="images/floaticonv2.png?20171102103049" width="46" class="floaticon" id="floaticon">
+    <ul class="float-menu" style="display: none;">
+        <li><a href="javascript:H5Sdk.loadUserPanel('ctl');"><i class="icon-user"></i><p>账户</p></a></li>
+        <li><a href="javascript:H5Sdk.loadUserPanel('gift');"><i class="icon-gift"></i><p>礼包</p></a></li>
+        <li><a href="javascript:H5Sdk.loadUserPanel('kf');"><i class="icon-kf"></i><p>客服</p></a></li>
+    </ul>
+</div>
+
+<!-- 支付面板 -->
+<div class="pay-wp">
+    <a href="javascript:H5Sdk.closePayWindows();" class="pay-close" id="pay_cls"></a>
+    <div class="wrapper mod-pay">
+        <div class="pay-hd"></div>
+        <div class="pay-info">
+            <p>商品：<span id="J_pay_name">游戏商品</span></p>
+            <p>应付款：<span id="J_pay_price">10</span> 元</p>
+        </div>
+        <div class="pay-mod">
+            <div id="pay_form">
+                <div class="pay-mod-tit">支付方式</div>
+                <ul id="pay_list"></ul>
+                <input type="hidden" name="order_price">
+                <input type="hidden" name="cp_product_id">
+                <input type="hidden" name="cp_order_sn">
+                <input type="hidden" name="cp_order_info">
+                <div class="pay-btn-inner"><input type="button" value="确认支付" class="ok-pay-btn" onclick="H5Sdk.openCharge();"></div>
+            </div>
+        </div>
+        <div onclick="maskClose()" class="pay-mask"></div>
+    </div>
+</div>
+<div class="mask" id="uc_pop"></div>
+
+<!--{ 此处为测试用 start -->
+<input type="button" class="open-pay" value="打开支付面板" style="background:#fff;left:10px;bottom:10px;padding:10px;position:fixed;z-index:10000">
+<div id="pay_cont" style="display:none;background:#fff;bottom:0;left:0;right:0;padding:10px;position:fixed;z-index:10000">
+    <a href="javascript:;" class="test-cls" style="background:#fff;width:40px;height:40px;position:absolute;top:-39px;left:0;text-align:center;line-height:40px;font-size:20px">X</a>
+    <p style="padding-bottom:5px">order_price：<input name="t_order_price" value="0.01" type="number" style="padding:5px 0"> 元</p>
+    <p style="padding-bottom:5px">cp_product_id：<input name="t_cp_product_id" value="1" style="padding:5px 0"></p>
+    <p style="padding-bottom:5px">cp_order_sn：<input name="t_cp_order_sn"  value="werwerw" style="padding:5px 0"></p>
+    <p style="padding-bottom:5px">cp_order_info：<input name="t_cp_order_info" value="12we" style="padding:5px 0"></p>
+    <p><input id="pan_btn" type="button" value="支付" style="width:100%;padding:10px" onclick="H5Sdk.getOrderConfig();"></p>
+</div>
+<!--/ 此处为测试用 end }-->
+
+<script src="js/zepto.js"></script>
+<script src="js/aes.min.js"></script>
+<script src="js/h5skd.js"></script>
+<script src="js/floatMenu.min.js"></script>
+<script>
+    H5Sdk.checkUserType();
+
+    /*{++++++++++++++++ 以下为测试用 ++++++++++++++++*/
+    $('.open-pay').click(function () {
+        $('#pay_cont').show();
+    });
+
+    $('.test-cls').click(function () {
+        $('#pay_cont').hide();
+    });
+    /*++++++++++++++++ 以上为测试用 ++++++++++++++++}*/
+
+   $('.dialog-close').live('click', function() {
+        $(this).closest('.mask').html('');
+        if ($('#floatmod').length) {
+            $('#floatmod').show();
+            $('#floaticon').trigger('touchend');
+        }
+   });
+
+
+</script>
+</body>
+</html>

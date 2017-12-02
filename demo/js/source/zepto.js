@@ -63,22 +63,22 @@ History.prototype = {
         this.setCookie(name, '', -1, {"path" : this.path});
         //console.log(document.cookie);
     },
-    initRow : function(title) {
-        return '{"title":"'+title+'"}';
+    initRow : function(title, link) {
+        return '{"title":"'+title+'", "link":"'+link+'"}';
     },
     parse2Json : function(jsonStr) {
         var json = [];
         try {
-            json = JSON.parse(jsonStr);
+            json = JSON.parse(decodeURIComponent(jsonStr));
         } catch(e) {
             //alert('parse error');return;
-            json = eval(jsonStr);
+            json = eval(decodeURIComponent(jsonStr));
         }
 
         return json;
     },
     // 添加记录
-    add : function(title) {
+    add : function(title, link) {
         var jsonStr = this.getCookie(this.key);
         //alert(jsonStr); return;
 
@@ -92,10 +92,11 @@ History.prototype = {
                 }
             }
             // 重新赋值 组装 json 字符串
-            jsonStr = '[' + this.initRow(title) + ',';
+            jsonStr = '[' + this.initRow(title, link) + ',';
             for(var i=0; i<this.limit-1; i++) {
                 if(undefined != this.jsonData[i]) {
-                    jsonStr += this.initRow(this.jsonData[i]['title']) + ',';
+
+                    jsonStr += this.initRow(this.jsonData[i]['title'], this.jsonData[i]['link']) + ',';
                 } else {
                     break;
                 }
@@ -104,7 +105,7 @@ History.prototype = {
             jsonStr += ']';
 
         } else {
-            jsonStr = '['+ this.initRow(title) +']';
+            jsonStr = '['+ this.initRow(title, link) +']';
         }
 
         //alert(jsonStr);
@@ -172,15 +173,12 @@ if(imieCookie == null){ //如果没有
 // basic config
 var https = 'https:' == document.location.protocol;
 var XiaoMeng = {
-    QQ: '274212944',
-    Tel: '020-12345678',
+    QQ: '4000709394',
+    Tel: '4000709394',
     https: https,
     game_url: https ? 'https://ss.xiaomeng1235.com' : 'http://ss.xiaomeng1235.com',
-    app_url: https ? 'https://apisdk.pyw.cn/XiaoMengH5SdkApi' : 'http://apisdk.pyw.cn/XiaoMengH5SdkApi',
-    pay_url: https ? 'https://pyw.cn' : 'http://pyw.cn',
-    /*game_key: '123456abc',
-    game_secret: '98278b644a68ae06',
-    channel_id: 17,*/
+    app_url: https ? 'https://js5.yunyoufeitian.com/XiaoMengH5SdkApi' : 'http://js5.yunyoufeitian.com/XiaoMengH5SdkApi',
+    pay_url: https ? 'https://pay.pyw.cn' : 'http://pay.pyw.cn',
     Os: OSName().name,
     imei: imieCookie == null ? '' : imieCookie
 };

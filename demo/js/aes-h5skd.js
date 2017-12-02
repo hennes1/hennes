@@ -174,13 +174,11 @@ function XiaoMengH5SDK() {
                 sessionStorage.setItem("loginBackVal", okData);
 
                 // 存储用户登录信息
-                /*$.fn.cookie('loginUserName', urn);
-                $.fn.cookie('loginUserPWD', psw);*/
+                var encPW = aesEncrypt(psw, XiaoMeng.game_secret);
                 his.setCookie('loginUserName', urn, his.cacheTime, {"path" : his.path});
-                his.setCookie('loginUserPWD', psw, his.cacheTime, {"path" : his.path});
+                his.setCookie('loginUserPWD', encPW, his.cacheTime, {"path" : his.path});
 
-                var keyword = urn;
-                his.add(keyword, psw);
+                his.add(urn, encPW);
 
                 setTimeout(function () {
                     window.location.href = 'sub.html';
@@ -529,18 +527,18 @@ function XiaoMengH5SDK() {
                 $('.login-group-tool li').addClass('li-phone');
             }
 
-            var loginUser = his.getCookie('loginUserName'), logPWD = his.getCookie('loginUserPWD'), $lgUserName = $('input[name="username"]'), $lgPWD = $('input[name="password"]');
+            var loginUser = his.getCookie('loginUserName'), $lgUserName = $('input[name="username"]'), $lgPWD = $('input[name="password"]');
 
             // 用户名历史下拉
-            var $history = $('.cookie-name-list'),
-                hisData = his.getList();
+            var $history = $('.cookie-name-list'), hisData = his.getList();
             //console.log(hisData)
 
             if(hisData) {
                 var ckIndex = cookieIndexOf(hisData, loginUser);
                 if(ckIndex != -1){
+                    var decPW = aesDecrypt(hisData[ckIndex].link, XiaoMeng.game_secret);
                     $lgUserName.val(hisData[ckIndex].title);
-                    $lgPWD.val(hisData[ckIndex].link);
+                    $lgPWD.val(decPW);
                 }
                 $history.empty();
                 for (var i = 0; i < hisData.length; i++) {
@@ -567,8 +565,9 @@ function XiaoMengH5SDK() {
                 $('.history-item').each(function (i) {
                     $(this).on('click', function (event) {
                         event.stopPropagation();
+                        var decPW1 = aesDecrypt(hisData[i].link, XiaoMeng.game_secret);
                         $lgUserName.val(hisData[i].title);
-                        $lgPWD.val(hisData[i].link);
+                        $lgPWD.val(decPW1);
                         $('b.more').removeClass('t-trans');
                         if ($history.css('display') == 'block') $history.hide();
                     });
@@ -830,7 +829,7 @@ function XiaoMengH5SDK() {
                         var cur = JSON.parse(decodeURIComponent(item[1]));
                         for(var j in cur){
                             if(cur[j].title == cellphone){
-                                cur[j].link = psw;
+                                cur[j].link = aesEncrypt(psw, XiaoMeng.game_secret);
                             }
                         }
 

@@ -15,8 +15,7 @@
     <meta http-equiv="expires" content="0">
     <title>H5SDK测试</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>.dialog-close{ display: none;}</style>
-    script
+    <style>.dialog-close, .mask{ display: none;}</style>
 </head>
 <body>
 <iframe scrolling="no" id="ifr" src="" frameborder="0" width="100%" height="100%"></iframe>
@@ -64,7 +63,7 @@
     <p style="padding-bottom:5px">cp_product_id：<input name="t_cp_product_id" value="1" style="padding:5px 0"></p>
     <p style="padding-bottom:5px">cp_order_sn：<input name="t_cp_order_sn"  value="werwerw" style="padding:5px 0"></p>
     <p style="padding-bottom:5px">cp_order_info：<input name="t_cp_order_info" value="12we" style="padding:5px 0"></p>
-    <p><input id="pan_btn" type="button" value="支付" style="width:100%;padding:10px" onclick="H5Sdk.getOrderConfig();"></p>
+    <p><input id="pan_btn" type="button" value="支付" style="width:100%;padding:10px"></p>
 </div>
 <!--/ 此处为测试用 end }-->
 
@@ -73,7 +72,14 @@
 <script src="js/h5skd.js"></script>
 <script src="js/floatMenu.min.js"></script>
 <script>
-    H5Sdk.checkUserType();
+    H5Sdk.checkUserType(document.location.protocol + '//ss.xiaomeng1235.com');
+
+    /*var LoginBackVal = JSON.parse(sessionStorage.getItem("loginBackVal"));
+    if(LoginBackVal !== null) {
+        console.log(LoginBackVal)
+        var gameUrl = 'c.html?userid=' + LoginBackVal.cp_uid + '&token=' + LoginBackVal.token;
+        $('#ifr').attr('src', gameUrl);
+    }*/
 
     /*{++++++++++++++++ 以下为测试用 ++++++++++++++++*/
     $('.open-pay').click(function () {
@@ -83,15 +89,30 @@
     $('.test-cls').click(function () {
         $('#pay_cont').hide();
     });
+
+    // 下单调起支付面板
+    $('#pan_btn').click(function () {
+        var payMoney = $('input[name="t_order_price"]').val(),
+            productId = $('input[name="t_cp_product_id"]').val(),
+            orderSN = $('input[name="t_cp_order_sn"]').val(),
+            orderInfo = $('input[name="t_cp_order_info"]').val();
+
+        H5Sdk.getOrderConfig(payMoney, productId, orderSN, orderInfo);
+    });
     /*++++++++++++++++ 以上为测试用 ++++++++++++++++}*/
 
    $('.dialog-close').live('click', function() {
-        $(this).closest('.mask').html('');
+        $(this).closest('.mask').html('').hide();
         if ($('#floatmod').length) {
             $('#floatmod').show();
             $('#floaticon').trigger('touchend');
         }
    });
+
+    $(window).on('load', function () {
+        var _w = $(window).width(), _h = $(window).height();
+        $('#ifr').css({width: _w, height: _h});
+    });
 
 
 </script>

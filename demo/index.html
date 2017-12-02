@@ -18,11 +18,11 @@
     <style>.mod-login-ulogin .dialog-close{ display: none;}</style>
 </head>
 <body>
-<!--{ 此处为测试用，套用程序后可删除 start -->
+<!--{ 此处为测试用，套用程序后可删除 start 0d7df5e4165ffa7c -->
 <div id="t_demo" style="background:#fff;bottom:0;left:0;right:0;top:0;padding:10px;position:fixed;z-index:10000">
     <div id="init_frm">
         <p style="margin-bottom:10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;game_key：<input type="text" name="game_key" value="123456abc" style="padding:10px 0"></p>
-        <p style="margin-bottom:10px">game_secret：<input type="text" name="game_secret" value="98278b644a68ae06" style="padding:10px 0"></p>
+        <p style="margin-bottom:10px">game_secret：<input type="text" name="game_secret" value="0d7df5e4165ffa7c" style="padding:10px 0"></p>
         <p style="margin-bottom:10px">&nbsp;&nbsp;&nbsp;&nbsp;channel_id：<input type="text" name="channel_id" value="17" style="padding:10px 0"></p>
         <p style="margin-bottom:10px">游戏背景图：<input type="text" name="game_bg" value="images/game-bg.jpg" style="width:100%;padding:10px 0"></p>
         <p><input type="button" id="int_btn" value="测试" style="padding:10px 5px;width:100%"></p>
@@ -38,26 +38,22 @@
 <script src="js/aes.min.js"></script>
 <script src="js/h5skd.js"></script>
 <script>
+    // 保存定义注销或退出后跳转的页面
+    sessionStorage.setItem("jumpToIndex", document.location.protocol + "//ss.xiaomeng1235.com");
+
     $('#int_btn').click(function () {
+
         var game_key = $('input[name="game_key"]').val(),
             game_secret = $('input[name="game_secret"]').val(),
             channel_id = $('input[name="channel_id"]').val(),
             game_bg = $('input[name="game_bg"]').val();
 
-        var gameBasicConfig = [game_key, game_secret, channel_id, game_bg];
-
-        sessionStorage.setItem("basicConfig", gameBasicConfig);
-        var getGameBasic = sessionStorage.getItem("basicConfig").split(",");
-
-        XiaoMeng.game_key = getGameBasic[0];
-        XiaoMeng.game_secret = getGameBasic[1];
-        XiaoMeng.channel_id = getGameBasic[2];
-        gameBg = getGameBasic[3];
+        gameBg = game_bg;
 
         $('#t_demo').remove();
 
         // 进入游戏初始化
-        H5Sdk.init();
+        H5Sdk.init(game_key, game_secret, channel_id);
     });
 
 

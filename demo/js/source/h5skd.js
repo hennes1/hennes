@@ -1224,7 +1224,7 @@ function XiaoMengH5SDK() {
                 });
 
                 var backURL = sessionStorage.getItem("jumpToIndex"),
-                    payUrl = XiaoMeng.pay_url + '/pay/wx_checkout?out_trade_no=' + result.data.order_sn + '&platform=jssdk&pay_type='+ payType +'&back_url=' + backURL;
+                    payUrl = XiaoMeng.pay_url + '/pay/wx_checkout?out_trade_no=' + result.data.order_sn + '&platform=jssdk&back_url=' + backURL;
 
                 setTimeout(function () {
                     $('.pay-mask').show();

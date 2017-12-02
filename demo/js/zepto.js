@@ -7,55 +7,21 @@ var Zepto=function(){function L(t){return null==t?String(t):j[T.call(t)]||"objec
 /*! layer mobile-v2.0 弹层组件移动版 License LGPL http://layer.layui.com/mobile By 贤心 */
 ;!function(a){"use strict";var b=document,c="querySelectorAll",d="getElementsByClassName",e=function(a){return b[c](a)},f={type:0,shade:!0,shadeClose:!0,fixed:!0,anim:"scale"},g={extend:function(a){var b=JSON.parse(JSON.stringify(f));for(var c in a)b[c]=a[c];return b},timer:{},end:{}};g.touch=function(a,b){a.addEventListener("click",function(a){b.call(this,a)},!1)};var h=0,i=["layui-m-layer"],j=function(a){var b=this;b.config=g.extend(a),b.view()};j.prototype.view=function(){var a=this,c=a.config,f=b.createElement("div");a.id=f.id=i[0]+h,f.setAttribute("class",i[0]+" "+i[0]+(c.type||0)),f.setAttribute("index",h);var g=function(){var a="object"==typeof c.title;return c.title?'<h3 style="'+(a?c.title[1]:"")+'">'+(a?c.title[0]:c.title)+"</h3>":""}(),j=function(){"string"==typeof c.btn&&(c.btn=[c.btn]);var a,b=(c.btn||[]).length;return 0!==b&&c.btn?(a='<span yes type="1">'+c.btn[0]+"</span>",2===b&&(a='<span no type="0">'+c.btn[1]+"</span>"+a),'<div class="layui-m-layerbtn">'+a+"</div>"):""}();if(c.fixed||(c.top=c.hasOwnProperty("top")?c.top:100,c.style=c.style||"",c.style+=" top:"+(b.body.scrollTop+c.top)+"px"),2===c.type&&(c.content='<i></i><i class="layui-m-layerload"></i><i></i><p>'+(c.content||"")+"</p>"),c.skin&&(c.anim="up"),"msg"===c.skin&&(c.shade=!1),f.innerHTML=(c.shade?"<div "+("string"==typeof c.shade?'style="'+c.shade+'"':"")+' class="layui-m-layershade"></div>':"")+'<div class="layui-m-layermain" '+(c.fixed?"":'style="position:static;"')+'><div class="layui-m-layersection"><div class="layui-m-layerchild '+(c.skin?"layui-m-layer-"+c.skin+" ":"")+(c.className?c.className:"")+" "+(c.anim?"layui-m-anim-"+c.anim:"")+'" '+(c.style?'style="'+c.style+'"':"")+">"+g+'<div class="layui-m-layercont">'+c.content+"</div>"+j+"</div></div></div>",!c.type||2===c.type){var k=b[d](i[0]+c.type),l=k.length;l>=1&&layer.close(k[0].getAttribute("index"))}document.body.appendChild(f);var m=a.elem=e("#"+a.id)[0];c.success&&c.success(m),a.index=h++,a.action(c,m)},j.prototype.action=function(a,b){var c=this;a.time&&(g.timer[c.index]=setTimeout(function(){layer.close(c.index)},1e3*a.time));var e=function(){var b=this.getAttribute("type");0==b?(a.no&&a.no(),layer.close(c.index)):a.yes?a.yes(c.index):layer.close(c.index)};if(a.btn)for(var f=b[d]("layui-m-layerbtn")[0].children,h=f.length,i=0;h>i;i++)g.touch(f[i],e);if(a.shade&&a.shadeClose){var j=b[d]("layui-m-layershade")[0];g.touch(j,function(){layer.close(c.index,a.end)})}a.end&&(g.end[c.index]=a.end)},a.layer={v:"2.0",index:h,open:function(a){var b=new j(a||{});return b.index},close:function(a){var c=e("#"+i[0]+a)[0];c&&(c.innerHTML="",b.body.removeChild(c),clearTimeout(g.timer[a]),delete g.timer[a],"function"==typeof g.end[a]&&g.end[a](),delete g.end[a])},closeAll:function(){for(var a=b[d](i[0]),c=0,e=a.length;e>c;c++)layer.close(0|a[0].getAttribute("index"))}},"function"==typeof define?define(function(){return layer}):function(){var a=document.scripts,c=a[a.length-1],d=c.src,e=d.substring(0,d.lastIndexOf("/")+1);c.getAttribute("merge")||document.head.appendChild(function(){var a=b.createElement("link");return a.href=e+"need/layer.css",a.type="text/css",a.rel="styleSheet",a.id="layermcss",a}())}()}(window);
 
-/*!History var data = his.getList();  // [{title:"标题"}] */
-function History(key){this.limit=10;this.key=key||"y_his";this.jsonData=null;this.cacheTime=24;this.path="/"}History.prototype={constructor:History,setCookie:function(name,value,expiresHours,options){options=options||{};var cookieString=name+"="+encodeURIComponent(value);if(undefined!=expiresHours){var date=new Date();date.setTime(date.getTime()+expiresHours*3600*1000);cookieString=cookieString+"; expires="+date.toUTCString()}var other=[options.path?"; path="+options.path:"",options.domain?"; domain="+options.domain:"",options.secure?"; secure":""].join("");document.cookie=cookieString+other},getCookie:function(name){var arrCookie=document.cookie?document.cookie.split("; "):[],val="",tmpArr="";for(var i=0;i<arrCookie.length;i++){tmpArr=arrCookie[i].split("=");tmpArr[0]=tmpArr[0].replace(" ","");if(tmpArr[0]==name){val=decodeURIComponent(tmpArr[1]);break}}return val.toString()},deleteCookie:function(name){this.setCookie(name,"",-1,{"path":this.path})},initRow:function(title){return'{"title":"'+title+'"}'},parse2Json:function(jsonStr){var json=[];try{json=JSON.parse(jsonStr)}catch(e){json=eval(jsonStr)}return json},add:function(title){var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr);for(var x=0;x<this.jsonData.length;x++){if(title==this.jsonData[x]["title"]){return false}}jsonStr="["+this.initRow(title)+",";for(var i=0;i<this.limit-1;i++){if(undefined!=this.jsonData[i]){jsonStr+=this.initRow(this.jsonData[i]["title"])+","}else{break}}jsonStr=jsonStr.substring(0,jsonStr.lastIndexOf(","));jsonStr+="]"}else{jsonStr="["+this.initRow(title)+"]"}this.jsonData=this.parse2Json(jsonStr);this.setCookie(this.key,jsonStr,this.cacheTime,{"path":this.path})},getList:function(){if(null!=this.jsonData){return this.jsonData}var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr)}return this.jsonData},clearHistory:function(){this.deleteCookie(this.key);this.jsonData=null}};
+/**
+ * History
+ * 用法
+ * var his = new History('key');  // 参数标示cookie的键值
+ * his.add("标题", "连接 比如 http://www.baidu.com", "其他内容")；
+ * 得到历史数据 返回的是json数据
+ * var data = his.getList();  // [{title:"标题"}]
+ *
+ */
+function History(key){this.limit=10;this.key=key||"y_his";this.jsonData=null;this.cacheTime=24;this.path="/"}History.prototype={constructor:History,setCookie:function(name,value,expiresHours,options){options=options||{};var cookieString=name+"="+encodeURIComponent(value);if(undefined!=expiresHours){var date=new Date();date.setTime(date.getTime()+expiresHours*3600*1000);cookieString=cookieString+"; expires="+date.toUTCString()}var other=[options.path?"; path="+options.path:"",options.domain?"; domain="+options.domain:"",options.secure?"; secure":""].join("");document.cookie=cookieString+other},getCookie:function(name){var arrCookie=document.cookie?document.cookie.split("; "):[],val="",tmpArr="";for(var i=0;i<arrCookie.length;i++){tmpArr=arrCookie[i].split("=");tmpArr[0]=tmpArr[0].replace(" ","");if(tmpArr[0]==name){val=decodeURIComponent(tmpArr[1]);break}}return val.toString()},deleteCookie:function(name){this.setCookie(name,"",-1,{"path":this.path})},initRow:function(title,link){return'{"title":"'+title+'", "link":"'+link+'"}'},parse2Json:function(jsonStr){var json=[];try{json=JSON.parse(decodeURIComponent(jsonStr))}catch(e){json=eval(decodeURIComponent(jsonStr))}return json},add:function(title,link){var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr);for(var x=0;x<this.jsonData.length;x++){if(title==this.jsonData[x]["title"]){return false}}jsonStr="["+this.initRow(title,link)+",";for(var i=0;i<this.limit-1;i++){if(undefined!=this.jsonData[i]){jsonStr+=this.initRow(this.jsonData[i]["title"],this.jsonData[i]["link"])+","}else{break}}jsonStr=jsonStr.substring(0,jsonStr.lastIndexOf(","));jsonStr+="]"}else{jsonStr="["+this.initRow(title,link)+"]"}this.jsonData=this.parse2Json(jsonStr);this.setCookie(this.key,jsonStr,this.cacheTime,{"path":this.path})},getList:function(){if(null!=this.jsonData){return this.jsonData}var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr)}return this.jsonData},clearHistory:function(){this.deleteCookie(this.key);this.jsonData=null}};
 
 /**
  * 系统检测
  */
-var OSName = function () {
-    var ua = navigator.userAgent,
-        iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
-        isIphone = !iPad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
-        isAndroid = ua.match(/(Android)\s+([\d_]+)/),
-        isMobile = isIphone || isAndroid;
-    if (isAndroid) {
-        return {name:'Android', ver:isAndroid};
-    }else if(iPad){
-        return {name:'iPad', ver:iPad};
-    }else if(isIphone){
-        return {name:'iPhone', ver:isIphone};
-    }else{
-        return {name:'PC', ver:ua};
-    }
-};
-
-var randomCode = function() {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-    return '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-};
+var OSName=function(){var ua=navigator.userAgent,iPad=ua.match(/(iPad).*OS\s([\d_]+)/),isIphone=!iPad&&ua.match(/(iPhone\sOS)\s([\d_]+)/),isAndroid=ua.match(/(Android)\s+([\d_]+)/),isWX=ua.match(/(MicroMessenger)/i),isMobile=isIphone||isAndroid;if(isAndroid){return{name:"Android",ver:isAndroid}}else{if(iPad){return{name:"iPad",ver:iPad}}else{if(isIphone){return{name:"iPhone",ver:isIphone}}else{if(isWX){return{name:"Wechat",ver:isWechat}}else{return{name:"PC",ver:ua}}}}}};var randomCode=function(){function s4(){return Math.floor((1+Math.random())*65536).toString(16).substring(1)}return"-"+s4()+"-"+s4()+"-"+s4()+"-"+s4()+s4()+s4()};
 
 //获取cookie
-var imieCookie = $.fn.cookie("deviceImie");
-if(imieCookie == null){ //如果没有
-    $.fn.cookie('deviceImie', 'XMgH5Sdk' + randomCode());
-}
-//console.log(imieCookie);
-
-// basic config
-var https = 'https:' == document.location.protocol;
-var XiaoMeng = {
-    QQ: '4000709394',
-    Tel: '4000709394',
-    https: https,
-    url: https ? 'https://ss.xiaomeng1235.com' : 'http://ss.xiaomeng1235.com',
-    app_url: https ? 'https://js5.yunyoufeitian.com/XiaoMengH5SdkApi' : 'http://js5.yunyoufeitian.com/XiaoMengH5SdkApi',
-    pay_url: https ? 'https://pyw.cn' : 'http://pyw.cn',
-    /*game_key: '123456abc',
-    game_secret: '98278b644a68ae06',
-    channel_id: 17,*/
-    Os: OSName().name,
-    imei: imieCookie == null ? '' : imieCookie
-};
+var imieCookie=$.fn.cookie("deviceImie");if(imieCookie==null){$.fn.cookie("deviceImie","XMgH5Sdk"+randomCode())}var https="https:"==document.location.protocol;var XiaoMeng={QQ:"4000709394",Tel:"4000709394",https:https,game_url:https?"https://ss.xiaomeng1235.com":"http://ss.xiaomeng1235.com",app_url:https?"https://js5.yunyoufeitian.com/XiaoMengH5SdkApi":"http://js5.yunyoufeitian.com/XiaoMengH5SdkApi",pay_url:https?"https://pay.pyw.cn":"http://pay.pyw.cn",Os:OSName().name,imei:imieCookie==null?"":imieCookie};

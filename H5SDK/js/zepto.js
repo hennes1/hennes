@@ -11,17 +11,213 @@ var Zepto=function(){function L(t){return null==t?String(t):j[T.call(t)]||"objec
  * History
  * 用法
  * var his = new History('key');  // 参数标示cookie的键值
- * his.add("标题", "连接 比如 http://www.baidu.com", "其他内容")；
+ * his.add("账号",  "其他内容")；
  * 得到历史数据 返回的是json数据
- * var data = his.getList();  // [{title:"标题"}]
+ * var data = his.getList();  // [{title:"账号", link:"其他内容"}]
  *
  */
-function History(key){this.limit=10;this.key=key||"y_his";this.jsonData=null;this.cacheTime=24;this.path="/"}History.prototype={constructor:History,setCookie:function(name,value,expiresHours,options){options=options||{};var cookieString=name+"="+encodeURIComponent(value);if(undefined!=expiresHours){var date=new Date();date.setTime(date.getTime()+expiresHours*3600*1000);cookieString=cookieString+"; expires="+date.toUTCString()}var other=[options.path?"; path="+options.path:"",options.domain?"; domain="+options.domain:"",options.secure?"; secure":""].join("");document.cookie=cookieString+other},getCookie:function(name){var arrCookie=document.cookie?document.cookie.split("; "):[],val="",tmpArr="";for(var i=0;i<arrCookie.length;i++){tmpArr=arrCookie[i].split("=");tmpArr[0]=tmpArr[0].replace(" ","");if(tmpArr[0]==name){val=decodeURIComponent(tmpArr[1]);break}}return val.toString()},deleteCookie:function(name){this.setCookie(name,"",-1,{"path":this.path})},initRow:function(title,link){return'{"title":"'+title+'", "link":"'+link+'"}'},parse2Json:function(jsonStr){var json=[];try{json=JSON.parse(decodeURIComponent(jsonStr))}catch(e){json=eval(decodeURIComponent(jsonStr))}return json},add:function(title,link){var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr);for(var x=0;x<this.jsonData.length;x++){if(title==this.jsonData[x]["title"]){return false}}jsonStr="["+this.initRow(title,link)+",";for(var i=0;i<this.limit-1;i++){if(undefined!=this.jsonData[i]){jsonStr+=this.initRow(this.jsonData[i]["title"],this.jsonData[i]["link"])+","}else{break}}jsonStr=jsonStr.substring(0,jsonStr.lastIndexOf(","));jsonStr+="]"}else{jsonStr="["+this.initRow(title,link)+"]"}this.jsonData=this.parse2Json(jsonStr);this.setCookie(this.key,jsonStr,this.cacheTime,{"path":this.path})},getList:function(){if(null!=this.jsonData){return this.jsonData}var jsonStr=this.getCookie(this.key);if(""!=jsonStr){this.jsonData=this.parse2Json(jsonStr)}return this.jsonData},clearHistory:function(){this.deleteCookie(this.key);this.jsonData=null}};
+function History(key) {
+    this.limit = 10;  // 最多10条记录
+    this.key = key || 'y_his';  // 键值
+    this.jsonData = null;  // 数据缓存
+    this.cacheTime = 720;  // 24 小时
+    this.path = '/';  // cookie path
+}
+History.prototype = {
+    constructor : History,
+    setCookie: function(name, value, expiresHours, options) {
+        options = options || {};
+        var cookieString = name + '=' + encodeURIComponent(value);
+        //判断是否设置过期时间
+        if(undefined != expiresHours){
+            var date = new Date();
+            date.setTime(date.getTime() + expiresHours * 3600 * 1000);
+            cookieString = cookieString + '; expires=' + date.toUTCString();
+        }
+
+        var other = [
+            options.path ? '; path=' + options.path : '',
+            options.domain ? '; domain=' + options.domain : '',
+            options.secure ? '; secure' : ''
+        ].join('');
+
+        document.cookie = cookieString + other;
+    },
+    getCookie: function(name) {
+        // cookie 的格式是个个用分号空格分隔
+        var arrCookie = document.cookie ? document.cookie.split('; ') : [], val = '', tmpArr = '';
+
+        for(var i=0; i<arrCookie.length; i++) {
+            tmpArr = arrCookie[i].split('=');
+            tmpArr[0] = tmpArr[0].replace(' ', '');  // 去掉空格
+            if(tmpArr[0] == name) {
+                val = decodeURIComponent(tmpArr[1]);
+                break;
+            }
+        }
+        return val.toString();
+    },
+    deleteCookie: function(name) {
+        this.setCookie(name, '', -1, {"path" : this.path});
+    },
+    initRow : function(title, link) {
+        return '{"title":"'+title+'", "link":"'+link+'"}';
+    },
+    parse2Json : function(jsonStr) {
+        var json = [];
+        try {
+            json = JSON.parse(decodeURIComponent(jsonStr));
+        } catch(e) {
+            //alert('parse error');return;
+            json = eval(jsonStr);
+        }
+
+        return json;
+    },
+    // 添加记录
+    add : function(title, link) {
+        var jsonStr = this.getCookie(this.key);
+
+        if("" != jsonStr && 'undefined' != jsonStr) {
+            this.jsonData = this.parse2Json(jsonStr);
+
+            if(this.jsonData != undefined) {
+                // 排重
+                for (var x = 0; x < this.jsonData.length; x++) {
+                    if (title == this.jsonData[x]['title']) {
+                        return false;
+                    }
+                }
+                // 重新赋值 组装 json 字符串
+                jsonStr = '[' + this.initRow(title, link) + ',';
+                for (var i = 0; i < this.limit - 1; i++) {
+                    if (undefined != this.jsonData[i]) {
+                        jsonStr += this.initRow(this.jsonData[i]['title'], this.jsonData[i]['link']) + ',';
+                    } else {
+                        break;
+                    }
+                }
+                jsonStr = jsonStr.substring(0, jsonStr.lastIndexOf(','));
+                jsonStr += ']';
+            }
+        } else {
+            jsonStr = '['+ this.initRow(title, link) +']';
+        }
+
+        this.jsonData = this.parse2Json(jsonStr);
+        this.setCookie(this.key, jsonStr, this.cacheTime, {"path" : this.path});
+    },
+    // 得到记录
+    getList : function() {
+        // 有缓存直接返回
+        if(null != this.jsonData) {
+            return this.jsonData;  // Array
+        }
+
+        // 没有缓存从 cookie 取
+        var jsonStr = this.getCookie(this.key);
+        if("" != jsonStr && 'undefined' != jsonStr) {
+            this.jsonData = this.parse2Json(jsonStr);
+        }
+
+        return this.jsonData;
+    },
+    // 清空历史
+    clearHistory : function() {
+        this.deleteCookie(this.key);
+        this.jsonData = null;
+    }
+};
 
 /**
  * 系统检测
  */
-var OSName=function(){var ua=navigator.userAgent,iPad=ua.match(/(iPad).*OS\s([\d_]+)/),isIphone=!iPad&&ua.match(/(iPhone\sOS)\s([\d_]+)/),isAndroid=ua.match(/(Android)\s+([\d_]+)/),isWX=ua.match(/(MicroMessenger)/i),isMobile=isIphone||isAndroid;if(isAndroid){return{name:"Android",ver:isAndroid}}else{if(iPad){return{name:"iPad",ver:iPad}}else{if(isIphone){return{name:"iPhone",ver:isIphone}}else{if(isWX){return{name:"Wechat",ver:isWechat}}else{return{name:"PC",ver:ua}}}}}};var randomCode=function(){function s4(){return Math.floor((1+Math.random())*65536).toString(16).substring(1)}return"-"+s4()+"-"+s4()+"-"+s4()+"-"+s4()+s4()+s4()};
+var OSName = function () {
+    var ua = navigator.userAgent,
+        iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
+        isIphone = !iPad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+        isAndroid = ua.match(/(Android)\s+([\d_]+)/),
+        isWX = ua.match(/(MicroMessenger)/i),
+        isMobile = isIphone || isAndroid;
+    if (isAndroid) {
+        return {name:'Android', iosVer: 'ANDROID', ver:isAndroid};
+    }else if(iPad){
+        return {name:'iPad', iosVer: 'IOS', ver:iPad};
+    }else if(isIphone){
+        return {name:'iPhone', iosVer: 'IOS', ver:isIphone};
+    }else if(isWX){
+        return {name:'Wechat', iosVer: 'WECHAT', ver:isWechat};
+    }else{
+        return {name:'PC', iosVer: 'PC', ver:ua};
+    }
+};
 
+// 判断数组中是否包含某字符串
+function hasString(array, obj){
+    for (var i = 0; i < array.length; i++){
+        if (array[i].indexOf(obj) > 0)
+            return i;
+    }
+    return -1;
+}
+function getUserOs() {
+    var device_type = navigator.userAgent, getOs = OSName().name, newModel = "";
+    if (getOs == "iPhone") {//iPhone的处理
+        var deviceArr = device_type.split(";"), i = hasString(deviceArr, "like Mac");
+        if (i > -1) {
+            newModel = deviceArr[i].substring(12, deviceArr[i].indexOf("like Mac"));
+            newModel = newModel.replace(/_/g, '.');
+            if(newModel.indexOf('OS') > -1) newModel = newModel.replace(/OS/ig, '');
+        }
+    } else if (getOs == "iPad") {
+        console.log(device_type)
+        var deviceArr = device_type.split(";"), i = hasString(deviceArr, "like Mac");
+        if (i > -1) {
+            newModel = deviceArr[i].substring(5, deviceArr[i].indexOf("like Mac"));
+            newModel = newModel.replace(/_/g, '.');
+            if(newModel.indexOf('OS') > -1) newModel = newModel.replace(/OS/ig, '');
+        }
+    } else if (getOs == "Android") {//Android系统的处理
+        var deviceArr = device_type.split(";"), i = hasString(deviceArr, "Build/");
+        if (i > -1) {
+            newModel = deviceArr[i].substring(0, deviceArr[i].indexOf("Build/"));
+        }
+    }
+    return newModel;
+}
+var userOs = getUserOs().replace(/\s+/g,'');
+
+var randomCode = function() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s4() + s4() + s4() + s4() + s4() + s4() + (new Date).getTime();
+};
+//debugger
 //获取cookie
-var imieCookie=$.fn.cookie("deviceImie");if(imieCookie==null){$.fn.cookie("deviceImie","XMgH5Sdk"+randomCode())}var https="https:"==document.location.protocol;var XiaoMeng={QQ:"4000709394",Tel:"4000709394",https:https,game_url:https?"https://ss.xiaomeng1235.com":"http://ss.xiaomeng1235.com",app_url:https?"https://js5.yunyoufeitian.com/XiaoMengH5SdkApi":"http://js5.yunyoufeitian.com/XiaoMengH5SdkApi",pay_url:https?"https://pay.pyw.cn":"http://pay.pyw.cn",Os:OSName().name,imei:imieCookie==null?"":imieCookie};
+var imieHistory = new History("deviceImie"), imieCookie = imieHistory.getCookie("deviceImie");
+if(imieCookie == '' || imieCookie == null){ //如果没有
+    try{
+        var getImieVal = window.SdkObj.onGetimie();
+        imieHistory.setCookie("deviceImie", getImieVal, imieHistory.cacheTime, {"path": imieHistory.path});
+    }catch(e){
+        imieHistory.setCookie("deviceImie", "XMgH5Sdk" + randomCode(), imieHistory.cacheTime, {"path": imieHistory.path});
+    }
+}
+
+imieCookie = imieHistory.getCookie("deviceImie");
+
+// basic config
+var https = 'https:' == document.location.protocol;
+var XiaoMeng = {
+    QQ: '4000709394',
+    Tel: '4000709394',
+    https: https,
+    game_url: https ? 'https://ss.xiaomeng1235.com' : 'http://ss.xiaomeng1235.com',
+    app_url: https ? 'https://js5.yunyoufeitian.com/XiaoMengH5SdkApi' : 'http://js5.yunyoufeitian.com/XiaoMengH5SdkApi',
+    pay_url: https ? 'https://pay.pyw.cn' : 'http://pay.pyw.cn',
+    Os: OSName().iosVer,
+    ios_ver: userOs,
+    model: OSName().name,
+    imei: imieCookie
+};

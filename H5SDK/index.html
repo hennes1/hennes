@@ -30,7 +30,9 @@
 </div>
 <!--/ 此处为测试用，套用程序后可删除 end }-->
 
-<div class="login-bg"><!--<span>大背景图</span>--></div>
+<div class="login-bg">
+    <div class="prev-load" style="display: none"></div>
+</div>
 <div class="mask" id="login_pop"></div>
 <input type="hidden" id="user_name">
 
@@ -39,7 +41,7 @@
 <script src="js/h5skd.js"></script>
 <script>
     // 保存定义注销或退出后跳转的页面
-    sessionStorage.setItem("jumpToIndex", document.location.protocol + "//ss.xiaomeng1235.com");
+    sessionStorage.setItem("jumpToIndex", document.location.href);
 
     $('#int_btn').click(function () {
 
@@ -51,6 +53,7 @@
         gameBg = game_bg;
 
         $('#t_demo').remove();
+        $('.prev-load').show();
 
         // 进入游戏初始化
         H5Sdk.init(game_key, game_secret, channel_id);

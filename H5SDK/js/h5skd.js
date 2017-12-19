@@ -3,9 +3,8 @@
  */
 
 function XiaoMengH5SDK() {
-    var self = this, his = new History('key');
+    var self = this, xmUserCookie = new History('key'), isApp = false;
     var getInitBackVal, getGameBasic, getLoginBackVal, getLgAccount;
-    var isApp = false;
 
     /**
      * 初始化sdk
@@ -18,28 +17,21 @@ function XiaoMengH5SDK() {
         sessionStorage.removeItem("basicConfig");
         sessionStorage.setItem("basicConfig", gameBasicConfig);
 
-        // 获取游戏基本信息
-        getGameBasic = sessionStorage.getItem("basicConfig").split(",");
-
-        XiaoMeng.game_key = getGameBasic[0];
-        XiaoMeng.game_secret = getGameBasic[1];
-        XiaoMeng.channel_id = getGameBasic[2];
-
         // 原始数据json字符串
-        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'"}';
+        var param = '{"game_key":"'+game_key +'", "game_secret":"'+ game_secret +'", "channel_id":"'+ channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "ios_ver":"'+ XiaoMeng.ios_ver +'", "model":"'+ XiaoMeng.model +'"}';
 
         // 对原始数字进行加密
-        param = aesEncrypt(param, XiaoMeng.game_secret);
+        param = aesEncrypt(param, game_secret);
 
         // 对加密数据进行urlencode
         param = encodeURIComponent(param);
 
-        getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
+        getJson({"x": game_secret, "param": param}, function(data){
             // urldecode
             var result = decodeURIComponent(data);
 
             // 解密
-            result = aesDecrypt(result, XiaoMeng.game_secret);
+            result = aesDecrypt(result, game_secret);
 
             // 解json
             result = JSON.parse(result);
@@ -67,7 +59,6 @@ function XiaoMengH5SDK() {
                     btn: '我知道了',
                     yes: function(index){
                         location.reload();
-                        layer.close(index);
                     }
                 });
                 return false;
@@ -83,12 +74,13 @@ function XiaoMengH5SDK() {
             layer.open({content: '请在手机模式下打开', btn: '我知道了'});
             return false;
         }else{
+            var $loginBg = $('.login-bg');
+
+            // 获取存储的登录后返回信息
             getLoginBackVal = JSON.parse(sessionStorage.getItem("loginBackVal"));
 
             if(getLoginBackVal == null) {
-                if(typeof gameBg != 'undefined'){
-                    $('.login-bg').html('<img src="' + gameBg + '">');
-                }
+                (typeof gameBg == 'undefined') ? $loginBg.html('') : $loginBg.html('<img src="' + gameBg + '">');
                 this.loadLoginMode();
             }else{
                 window.location.href = 'sub.html';
@@ -100,10 +92,11 @@ function XiaoMengH5SDK() {
      * 登录检测
      */
     this.userLogin = function () {
-        var _form = $('.mod-login-ulogin'),
-            _lgUserName = _form.find('input[name=username]'),
-            _lgPWD = _form.find('input[name=password]'),
-            urn = _lgUserName.val(), psw = _lgPWD.val();
+        var $form = $('.mod-login-ulogin'),
+            $lgUserName = $form.find('input[name=username]'),
+            $lgPWD = $form.find('input[name=password]'),
+            _urn = $lgUserName.val(),
+            _psw = $lgPWD.val();
 
         // 获取游戏基本信息
         getGameBasic = sessionStorage.getItem("basicConfig").split(",");
@@ -113,31 +106,30 @@ function XiaoMengH5SDK() {
 
         // 获取存储的初始化时的返回值
         getInitBackVal = JSON.parse(sessionStorage.getItem("initBackVal"));
-        //console.log(getInitBackVal);
 
-        if (!CSRegular.uname(urn)) {
+        if (!CSRegular.uname(_urn)) {
             layer.open({
                 content: '请输入正确账号',
                 skin: 'msg',
                 style: 'top:-50px',
                 time: 2
             });
-            _lgUserName.focus();
+            $lgUserName.focus();
             return false;
         }
-        if (!CSRegular.pass(psw)) {
+        if (!CSRegular.pass(_psw)) {
             layer.open({
                 content: '请输入6-20位密码',
                 skin: 'msg',
                 style: 'top:-50px',
                 time: 2
             });
-            _lgPWD.focus();
+            $lgPWD.focus();
             return false;
         }
 
         // 原始数据json字符串
-        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "username": "'+ urn +'", "password" : "'+ psw +'", "sign": "'+ md5(urn + XiaoMeng.game_key) +'", "token": "'+ getInitBackVal.token +'"}';
+        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "username": "'+ _urn +'", "password" : "'+ _psw +'", "sign": "'+ md5(_urn + XiaoMeng.game_key) +'", "token": "'+ getInitBackVal.token +'"}';
 
         // 对原始数字进行加密
         param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -147,7 +139,10 @@ function XiaoMengH5SDK() {
 
         // save account
         sessionStorage.removeItem("lgAccount");
-        sessionStorage.setItem("lgAccount", urn);
+        sessionStorage.setItem("lgAccount", _urn);
+
+        // 按钮不可点击
+        self.changeBtnType('.btn-submit');
 
         getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
             // urldecode
@@ -166,24 +161,31 @@ function XiaoMengH5SDK() {
                     style: 'top:-50px',
                     time: 2
                 });
+
                 // 将对象转字符串便于存储
                 var okData = JSON.stringify(result.data);
-                //console.log(okData);
-
                 sessionStorage.removeItem("loginBackVal");
                 sessionStorage.setItem("loginBackVal", okData);
 
-                // 存储用户登录信息
-                var encPW = aesEncrypt(psw, XiaoMeng.game_secret);
-                his.setCookie('loginUserName', urn, his.cacheTime, {"path" : his.path});
-                his.setCookie('loginUserPWD', encPW, his.cacheTime, {"path" : his.path});
+                // 加密用户名和密码
+                var newPort = aesEncrypt(_urn, XiaoMeng.game_secret), newPWD = aesEncrypt(_psw, XiaoMeng.game_secret);
 
-                his.add(urn, encPW);
+                // 存储用户登录信息
+                xmUserCookie.setCookie('loginUserName', newPort, xmUserCookie.cacheTime, {"path": xmUserCookie.path});
+                xmUserCookie.setCookie('loginUserPWD', newPWD, xmUserCookie.cacheTime, {"path": xmUserCookie.path});
+
+                xmUserCookie.add(newPort, newPWD);
+
+                // 替换对应账号下的密码
+                self.reWriteCookie(newPort, newPWD);
 
                 setTimeout(function () {
                     window.location.href = 'sub.html';
                 }, 1000);
             }else{
+                // 按钮可点击
+                self.changeBtnType('.btn-submit', 0);
+
                 layer.open({
                     content: result.msg,
                     skin: 'msg',
@@ -194,6 +196,10 @@ function XiaoMengH5SDK() {
             }
         }, XiaoMeng.app_url + '/login', 'GET', 'jsonp');
 
+        // 按钮6s后可点击
+        setTimeout(function () {
+            self.changeBtnType('.btn-submit', 0);
+        }, 6000);
     }
 
     /**
@@ -202,7 +208,7 @@ function XiaoMengH5SDK() {
      * mod：注册模式 phone | onekey
      */
     this.userRegister = function (ele, mod) {
-        var _form = $(ele).closest('.mod-login-module');
+        var $form = $(ele).closest('.mod-login-module');
 
         // 获取游戏基本信息
         getGameBasic = sessionStorage.getItem("basicConfig").split(",");
@@ -212,44 +218,46 @@ function XiaoMengH5SDK() {
 
         // 手机注册
         if (mod == 'phone') {
-            var _mobPhone = _form.find('input[name=cellphone]'),
-                _mobPWD = _form.find('input[name=password]'),
-                _mobCap = _form.find('input[name=captcha]'),
-                cellphone = _mobPhone.val(), psw = _mobPWD.val(), captcha = _mobCap.val();
+            var $mobPhone = $form.find('input[name=cellphone]'),
+                $mobPWD = $form.find('input[name=password]'),
+                $mobCap = $form.find('input[name=captcha]'),
+                _cellphone = $mobPhone.val(),
+                _psw = $mobPWD.val(),
+                _captcha = $mobCap.val();
 
-            if (!CSRegular.phone(cellphone)) {
+            if (!CSRegular.phone(_cellphone)) {
                 layer.open({
                     content: '请输入正确的手机号',
                     skin: 'msg',
                     style: 'top:-50px',
                     time: 2
                 });
-                _mobPhone.focus();
+                $mobPhone.focus();
                 return false;
             }
-            if (!CSRegular.pass(psw)) {
+            if (!CSRegular.pass(_psw)) {
                 layer.open({
                     content: '请输入6-20位密码',
                     skin: 'msg',
                     style: 'top:-50px',
                     time: 2
                 });
-                _mobPWD.focus();
+                $mobPWD.focus();
                 return false;
             }
-            if (!CSRegular.captcha(captcha)) {
+            if (!CSRegular.captcha(_captcha)) {
                 layer.open({
                     content: '验证码输入有误',
                     skin: 'msg',
                     style: 'top:-50px',
                     time: 2
                 });
-                _mobCap.focus();
+                $mobCap.focus();
                 return false;
             }
 
             // 原始数据json字符串
-            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ cellphone +'", "password" : "'+ psw +'", "sign": "'+ md5(cellphone + XiaoMeng.game_key) +'", "smscode": "'+ captcha +'"}';
+            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ _cellphone +'", "password" : "'+ _psw +'", "sign": "'+ md5(_cellphone + XiaoMeng.game_key) +'", "smscode": "'+ _captcha +'"}';
 
             // 对原始数字进行加密
             param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -257,70 +265,38 @@ function XiaoMengH5SDK() {
             // 对加密数据进行urlencode
             param = encodeURIComponent(param);
 
-            getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
-                // urldecode
-                var result = decodeURIComponent(data);
-
-                // 解密
-                result = aesDecrypt(result, XiaoMeng.game_secret);
-
-                // 解json
-                result = JSON.parse(result);
-
-                if (result.ack == 200) {
-                    layer.open({
-                        content: "注册成功，即将跳转到登录页",
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-
-                    self.openLogin();
-                    $('.mod-login-ulogin').find('input[name=username]').val(cellphone);
-                    $('.mod-login-ulogin').find('input[name=password]').val(psw);
-
-                    setTimeout(function () {
-                        self.userLogin();
-                    }, 2000);
-
-                }else{
-                    layer.open({
-                        content: result.msg,
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-                    return false;
-                }
-            }, XiaoMeng.app_url + '/passportReg', 'GET', 'jsonp');
+            // 提交数据
+            self.registerPost(param, _cellphone, _psw, '/passportReg');
 
         } else { // 一键注册
-            var _oneName = _form.find('input[name=username]'),
-                _onePWD = _form.find('input[name=password]'),
-                urn = _oneName.val(), psw = _onePWD.val();
-            if (!CSRegular.uname(urn)) {
+            var $oneName = $form.find('input[name=username]'),
+                $onePWD = $form.find('input[name=password]'),
+                _urn = $oneName.val(),
+                _psw = $onePWD.val();
+
+            if (!CSRegular.uname(_urn)) {
                 layer.open({
                     content: '请输入正确账号',
                     skin: 'msg',
                     style: 'top:-50px',
                     time: 2
                 });
-                _oneName.focus();
+                $oneName.focus();
                 return false;
             }
-            if (!CSRegular.pass(psw)) {
+            if (!CSRegular.pass(_psw)) {
                 layer.open({
                     content: '请输入6-20位密码',
                     skin: 'msg',
                     style: 'top:-50px',
                     time: 2
                 });
-                _onePWD.focus();
+                $onePWD.focus();
                 return false;
             }
 
             // 原始数据json字符串
-            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "account": "'+ urn +'", "password" : "'+ psw +'", "sign": "'+ md5(urn + XiaoMeng.game_key) +'"}';
+            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "account": "'+ _urn +'", "password" : "'+ _psw +'", "sign": "'+ md5(_urn + XiaoMeng.game_key) +'"}';
 
             // 对原始数字进行加密
             param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -328,42 +304,50 @@ function XiaoMengH5SDK() {
             // 对加密数据进行urlencode
             param = encodeURIComponent(param);
 
-            getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
-                // urldecode
-                var result = decodeURIComponent(data);
-
-                // 解密
-                result = aesDecrypt(result, XiaoMeng.game_secret);
-
-                // 解json
-                result = JSON.parse(result);
-
-                if (result.ack == 200) {
-                    layer.open({
-                        content: "注册成功，即将跳转到登录页",
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-
-                    self.openLogin();
-                    $('.mod-login-ulogin').find('input[name=username]').val(urn);
-                    $('.mod-login-ulogin').find('input[name=password]').val(psw);
-
-                    setTimeout(function () {
-                        self.userLogin();
-                    }, 2000);
-                }else{
-                    layer.open({
-                        content: result.msg,
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-                    return false;
-                }
-            }, XiaoMeng.app_url + '/accountFastRegLogin', 'GET', 'jsonp');
+            // 提交数据
+            self.registerPost(param, _urn, _psw, '/accountFastRegLogin');
         }
+    }
+
+    /**
+     * 注册数据提交
+     */
+    this.registerPost = function (params, passport, password, url) {
+        getJson({"x": XiaoMeng.game_secret, "param": params}, function(data){
+            // urldecode
+            var result = decodeURIComponent(data);
+
+            // 解密
+            result = aesDecrypt(result, XiaoMeng.game_secret);
+
+            // 解json
+            result = JSON.parse(result);
+
+            if (result.ack == 200) {
+                layer.open({
+                    content: "注册成功，即将跳转到登录页",
+                    skin: 'msg',
+                    style: 'top:-50px',
+                    time: 2
+                });
+
+                self.openLogin();
+                $('.mod-login-ulogin').find('input[name=username]').val(passport);
+                $('.mod-login-ulogin').find('input[name=password]').val(password);
+
+                setTimeout(function () {
+                    self.userLogin();
+                }, 2000);
+            }else{
+                layer.open({
+                    content: result.msg,
+                    skin: 'msg',
+                    style: 'top:-50px',
+                    time: 2
+                });
+                return false;
+            }
+        }, XiaoMeng.app_url + url, 'GET', 'jsonp');
     }
 
     /**
@@ -425,14 +409,10 @@ function XiaoMengH5SDK() {
                         time: 2
                     });
 
-                    var oneKeyData = result.data,
-                        strData = JSON.stringify(result.data); // 将对象转字符串便于存储
-                    //console.log(result.data);
+                    var oneKeyData = result.data;
+
                     $('.mod-reg-onekey input[name=username]').val(oneKeyData.account);
                     $('.mod-reg-onekey input[name=password]').val(oneKeyData.password);
-
-                    sessionStorage.removeItem("oneKeyRegAc");
-                    sessionStorage.setItem("oneKeyRegAc", strData);
                 }else{
                     layer.open({
                         content: result.msg,
@@ -450,11 +430,10 @@ function XiaoMengH5SDK() {
      * 忘记密码
      */
     this.forgetPassword = function () {
-        var $userName = $('.mod-login-ulogin').find('input[name="username"]'),
-            userAc = $userName.val();
+        var $userName = $('.mod-login-ulogin').find('input[name="username"]'), _userAc = $userName.val();
 
-        if(userAc !== '' && CSRegular.phone(userAc)) {
-            $('#user_name').val(userAc);
+        if(_userAc !== '' && CSRegular.phone(_userAc)) {
+            $('#user_name').val(_userAc);
             self.loadLoginMode('forgetpass');
         }else{
             layer.open({
@@ -471,7 +450,10 @@ function XiaoMengH5SDK() {
     this.loadLoginMode = function (mode) {
         // 获取存储的初始化时的返回值
         getInitBackVal = JSON.parse(sessionStorage.getItem("initBackVal"));
-        //console.log(getInitBackVal);
+
+        // 获取游戏基本信息
+        getGameBasic = sessionStorage.getItem("basicConfig").split(",");
+        XiaoMeng.game_secret = getGameBasic[1];
 
         var modeHtml = '';
         switch (mode) {
@@ -494,28 +476,30 @@ function XiaoMengH5SDK() {
         }
 
         if(mode == 'phone'){
-            var modePhone_name = $("input[name='cellphone']"), modePhone_PWD = $("input[name='password']");
-            modePhone_PWD.val('');
+            var $modePhone_name = $("input[name='cellphone']"), $modePhone_PWD = $("input[name='password']");
+
+            $modePhone_PWD.val('');
 
             // 非手机号或空格检测
-            modePhone_name.keypress(function() {
+            $modePhone_name.keypress(function() {
                 checkBlank();
             });
         }
 
         if(mode == 'forgetpass'){
-            var $lgAc = $('#user_name'), _forget = $('.mod-lg-find-pass'),
-                forget_phone = _forget.find("input[name='cellphone']"),
-                forget_PWD1 = _forget.find("input[name='password']"),
-                forget_PWD2 = _forget.find("input[name='agpassword']");
+            var $lgAc = $('#user_name'),
+                $forget = $('.mod-lg-find-pass'),
+                $forget_phone = $forget.find("input[name='cellphone']"),
+                $forget_PWD1 = $forget.find("input[name='password']"),
+                $forget_PWD2 = $forget.find("input[name='agpassword']");
 
-            forget_PWD1.val('');
-            forget_PWD2.val('');
+            $forget_PWD1.val('');
+            $forget_PWD2.val('');
 
-            forget_phone.val($lgAc.val());
+            $forget_phone.val($lgAc.val());
 
             // 非手机号或空格检测
-            forget_phone.keypress(function() {
+            $forget_phone.keypress(function() {
                 checkBlank();
             });
         }
@@ -527,22 +511,27 @@ function XiaoMengH5SDK() {
                 $('.login-group-tool li').addClass('li-phone');
             }
 
-            var loginUser = his.getCookie('loginUserName'), $lgUserName = $('input[name="username"]'), $lgPWD = $('input[name="password"]');
+            var loginUser = xmUserCookie.getCookie('loginUserName'),
+                $lgUserName = $('input[name="username"]'),
+                $lgPWD = $('input[name="password"]');
 
             // 用户名历史下拉
-            var $history = $('.cookie-name-list'), hisData = his.getList();
-            //console.log(hisData)
+            var $history = $('.cookie-name-list'),
+                hisData = xmUserCookie.getList();
 
             if(hisData) {
                 var ckIndex = cookieIndexOf(hisData, loginUser);
                 if(ckIndex != -1){
-                    var decPW = aesDecrypt(hisData[ckIndex].link, XiaoMeng.game_secret);
-                    $lgUserName.val(hisData[ckIndex].title);
-                    $lgPWD.val(decPW);
+                    // 解密用户名和密码
+                    var intPort = aesDecrypt(hisData[ckIndex].title, XiaoMeng.game_secret), intPWD = aesDecrypt(hisData[ckIndex].link, XiaoMeng.game_secret);
+
+                    $lgUserName.val(intPort);
+                    $lgPWD.val(intPWD);
                 }
                 $history.empty();
                 for (var i = 0; i < hisData.length; i++) {
-                    var pHtml = '<p class="history-item">' + hisData[i].title + '</p>';
+                    var itemPort = aesDecrypt(hisData[i].title, XiaoMeng.game_secret);
+                    var pHtml = '<p class="history-item">' + itemPort + '</p>';
                     if ($history.length > 0) {
                         $history.append(pHtml);
                     }
@@ -565,9 +554,12 @@ function XiaoMengH5SDK() {
                 $('.history-item').each(function (i) {
                     $(this).on('click', function (event) {
                         event.stopPropagation();
-                        var decPW1 = aesDecrypt(hisData[i].link, XiaoMeng.game_secret);
-                        $lgUserName.val(hisData[i].title);
-                        $lgPWD.val(decPW1);
+                        // 解密密码
+                        var chkPort = aesDecrypt(hisData[i].title, XiaoMeng.game_secret),
+                            chkPWD = aesDecrypt(hisData[i].link, XiaoMeng.game_secret);
+
+                        $lgUserName.val(chkPort);
+                        $lgPWD.val(chkPWD);
                         $('b.more').removeClass('t-trans');
                         if ($history.css('display') == 'block') $history.hide();
                     });
@@ -587,11 +579,14 @@ function XiaoMengH5SDK() {
                 }
             });
 
+            // 退格删除
+            delectInputVal('input[name="username"], input[name="password"]');
+
         }
 
         //用户登录
         function loadLoginPanel() {
-            var html = '<div class="dialog-box mod-login mod-login-module mod-login-ulogin"><a href="javascript:;" title="关闭" class="dialog-close icon-close"></a><div class="login-hd"><div class="login-hd-tit">用户登录</div></div><div class="login-form"><div class="w-form"><div class="w-item login-ipt"><i class="icon-user"></i> <input name="username" type="text" maxlength="15" placeholder="账号"> <b class="more"></b><div class="cookie-name-list"></div></div><div class="w-item"><i class="icon-lock"></i><input name="password" type="password" maxlength="20" placeholder="请输入6-20位密码" autocomplete="off"><a href="javascript:H5Sdk.forgetPassword();" class="m-txt">忘记密码</a></div><a href="javascript:;" class="btn-submit" onclick="H5Sdk.userLogin()">登 录</a></div></div><ul class="login-group-tool"><li><a href="javascript:H5Sdk.openRegisterPhone();">手机注册</a></li><li class="li-fast"><a href="javascript:H5Sdk.openRegisterOneKey();">一键注册</a></li></ul></div>';
+            var html = '<div class="dialog-box mod-login mod-login-module mod-login-ulogin"><a href="javascript:;" title="关闭" class="dialog-close icon-close"></a><div class="login-hd"><div class="login-hd-tit">用户登录</div></div><div class="login-form"><div class="w-form"><div class="w-item login-ipt"><i class="icon-user"></i> <input name="username" type="text" maxlength="15" placeholder="账号"> <b class="more"></b><div class="cookie-name-list"></div></div><div class="w-item"><i class="icon-lock"></i><input name="password" type="password" maxlength="20" placeholder="请输入6-20位密码" autocomplete="off"><a href="javascript:H5Sdk.forgetPassword();" class="m-txt">忘记密码</a></div><input type="button" class="btn-submit" onclick="H5Sdk.userLogin()" value="登 录"></div></div><ul class="login-group-tool"><li><a href="javascript:H5Sdk.openRegisterPhone();">手机注册</a></li><li class="li-fast"><a href="javascript:H5Sdk.openRegisterOneKey();">一键注册</a></li></ul></div>';
             return html;
         }
 
@@ -656,9 +651,6 @@ function XiaoMengH5SDK() {
         if(mode == 'ctl' || mode == undefined){
             getLoginBackVal = JSON.parse(sessionStorage.getItem("loginBackVal"));
             getLgAccount = sessionStorage.getItem("lgAccount");
-            //console.log(getLgAccount)
-            //console.log("显示账号：");
-            //console.log(getLoginBackVal);
 
             // 如果是账号登录
             if(getLoginBackVal.account_type == 0){
@@ -705,14 +697,14 @@ function XiaoMengH5SDK() {
             });
 
             $('.J-eye').click(function() {
-                var $self = $(this), cls = $self.hasClass('icon-oeye');
-                if (cls) {
+                var $self = $(this), $sibling = $self.siblings('.place'), hasClass = $self.hasClass('icon-oeye');
+                if (hasClass) {
                     $self.attr('class','icon-ceye J-eye');
-                    $self.siblings('.place').show();
+                    $sibling.show();
                     $modifyPWD2.focus();
                 }else{
                     $self.attr('class','icon-oeye J-eye');
-                    $self.siblings('.place').hide();
+                    $sibling.hide();
                     $modifyPWD2.focus();
                 }
             });
@@ -753,13 +745,13 @@ function XiaoMengH5SDK() {
      * 修改密码
      */
     this.modifyPass = function (ele) {
-        var part = $(ele).closest('.mod-uc-pass'),
-            cellphone = part.find('input[name="cellphone"]').val(),
-            psw = part.find('input[name="password"]').val(),
-            psw1 = part.find('input[name="agpassword"]').val(),
-            captcha = part.find('input[name="captcha"]').val();
+        var $part = $(ele).closest('.mod-uc-pass'),
+            _cellphone = $part.find('input[name="cellphone"]').val(),
+            _psw = $part.find('input[name="password"]').val(),
+            _psw1 = $part.find('input[name="agpassword"]').val(),
+            _captcha = $part.find('input[name="captcha"]').val();
 
-        if (!CSRegular.pass(psw) || !CSRegular.pass(psw1)) {
+        if (!CSRegular.pass(_psw) || !CSRegular.pass(_psw1)) {
             layer.open({
                 content: '请输入6-20位密码',
                 skin: 'msg',
@@ -768,7 +760,7 @@ function XiaoMengH5SDK() {
             });
             return false;
         }
-        if (psw1 !== psw) {
+        if (_psw1 !== _psw) {
             layer.open({
                 content: '两次输入密码不一致',
                 skin: 'msg',
@@ -777,7 +769,7 @@ function XiaoMengH5SDK() {
             });
             return false;
         }
-        if (!CSRegular.captcha(captcha)) {
+        if (!CSRegular.captcha(_captcha)) {
             layer.open({
                 content: ' 验证码输入不正确',
                 skin: 'msg',
@@ -794,7 +786,7 @@ function XiaoMengH5SDK() {
         XiaoMeng.channel_id = getGameBasic[2];
 
         // 原始数据json字符串
-        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ cellphone +'", "first_password": "'+ psw +'", "second_password": "'+ psw1 +'", "sign": "'+ md5(cellphone + XiaoMeng.game_key) +'", "smscode": "'+ captcha +'"}';
+        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ _cellphone +'", "first_password": "'+ _psw +'", "second_password": "'+ _psw1 +'", "sign": "'+ md5(_cellphone + XiaoMeng.game_key) +'", "smscode": "'+ _captcha +'"}';
 
         // 对原始数字进行加密
         param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -820,24 +812,11 @@ function XiaoMengH5SDK() {
                     time: 2
                 });
 
+                // 加密用户名和密码
+                var newPort = aesEncrypt(_cellphone, XiaoMeng.game_secret), newPWD = aesEncrypt(_psw, XiaoMeng.game_secret);
+
                 // 替换对应账号下的密码
-                var arr = document.cookie.split(';');
-                var newCk;
-                for(var i in arr){
-                    var item = arr[i].split('=');
-                    if(item[0] == ' key'){
-                        var cur = JSON.parse(decodeURIComponent(item[1]));
-                        for(var j in cur){
-                            if(cur[j].title == cellphone){
-                                cur[j].link = aesEncrypt(psw, XiaoMeng.game_secret);
-                            }
-                        }
-
-                        newCk = encodeURIComponent(JSON.stringify(cur));
-                    }
-                }
-
-                his.setCookie('key', newCk, his.cacheTime, {"path" : his.path});
+                self.reWriteCookie(newPort, newPWD);
 
                 setTimeout(function () {
                     sessionStorage.clear();
@@ -857,43 +836,61 @@ function XiaoMengH5SDK() {
     }
 
     /**
+     * 更新账号相同的密码cookie
+     */
+    this.reWriteCookie = function (keyword, keyval) {
+        var rePortSeries, getPortSeries = xmUserCookie.getCookie('key'), jsonPortSeries = JSON.parse(getPortSeries);
+
+        for(var i in jsonPortSeries){
+            if(jsonPortSeries[i].title == keyword){
+                jsonPortSeries[i].link = keyval;
+            }
+        }
+        rePortSeries = JSON.stringify(jsonPortSeries);
+        xmUserCookie.setCookie('key', rePortSeries, xmUserCookie.cacheTime, {"path": xmUserCookie.path});
+    }
+
+    /**
      * 绑定手机
      */
     this.bindPhone = function (ele) {
-        var obj = $(ele), part = obj.parents('.mod-uc-bindphone');
+        var obj = $(ele),
+            $part = obj.parents('.mod-uc-bindphone'),
+            $bdPhone = $part.find('input[name=cellphone]'),
+            $bdPWD = $part.find('input[name=password]'),
+            $bdCap = $part.find('input[name=captcha]'),
+            _cellphone = $bdPhone.val(),
+            _psw = $bdPWD.val(),
+            _captcha = $bdCap.val();
 
-        var _bdPhone = part.find('input[name=cellphone]'),
-            _bdPWD = part.find('input[name=password]'),
-            _bdCap = part.find('input[name=captcha]'),
-            cellphone = _bdPhone.val(), psw = _bdPWD.val(), captcha = _bdCap.val();
-        if (!CSRegular.phone(cellphone)) {
+        if (!CSRegular.phone(_cellphone)) {
             layer.open({
                 content: '请输入正确手机号',
                 skin: 'msg',
                 style: 'top:-50px',
                 time: 2
             });
-            _bdPhone.focus();
+            $bdPhone.focus();
             return false;
         }
-        if (!CSRegular.captcha(captcha)) {
+        if (!CSRegular.captcha(_captcha)) {
             layer.open({
                 content: '验证码输入不正确',
                 skin: 'msg',
                 style: 'top:-50px',
                 time: 2
             });
-            _bdCap.focus();
+            $bdCap.focus();
             return false;
         }
-        if (!CSRegular.pass(psw)) {
+        if (!CSRegular.pass(_psw)) {
             layer.open({
                 content: '请输入6-20位密码',
                 skin: 'msg',
                 style: 'top:-50px',
                 time: 2
             });
-            _bdPWD.focus();
+            $bdPWD.focus();
             return false;
         }
         // 获取游戏基本信息
@@ -903,7 +900,7 @@ function XiaoMengH5SDK() {
         XiaoMeng.channel_id = getGameBasic[2];
 
         // 原始数据json字符串
-        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ cellphone +'", "password": "'+ psw +'", "sign": "'+ md5(cellphone + XiaoMeng.game_key) +'", "smscode": "'+ captcha +'"}';
+        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ _cellphone +'", "password": "'+ _psw +'", "sign": "'+ md5(_cellphone + XiaoMeng.game_key) +'", "smscode": "'+ _captcha +'"}';
 
         // 对原始数字进行加密
         param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -953,8 +950,9 @@ function XiaoMengH5SDK() {
         XiaoMeng.game_secret = getGameBasic[1];
         XiaoMeng.channel_id = getGameBasic[2];
 
-        var $phone = $(ele).closest('.dialog-box').find('input[name="cellphone"]'), cellphone = $phone.val();
-        if (!CSRegular.phone(cellphone)) {
+        var $phone = $(ele).closest('.dialog-box').find('input[name="cellphone"]'), _cellphone = $phone.val();
+
+        if (!CSRegular.phone(_cellphone)) {
             layer.open({
                 content: '请输入正确的手机号码',
                 skin: 'msg',
@@ -965,91 +963,60 @@ function XiaoMengH5SDK() {
             return false;
         }
 
-        if (mod == 'bindphone') {
-            // 绑定手机
-            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ cellphone +'", "sign": "'+ md5(cellphone + XiaoMeng.game_key) +'", "smstype": "2"}';
-
-            // 对原始数字进行加密
-            param = aesEncrypt(param, XiaoMeng.game_secret);
-
-            // 对加密数据进行urlencode
-            param = encodeURIComponent(param);
-
-            getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
-                // urldecode
-                var result = decodeURIComponent(data);
-
-                // 解密
-                result = aesDecrypt(result, XiaoMeng.game_secret);
-
-                // 解json
-                result = JSON.parse(result);
-
-                if (result.ack == 200) {
-                    $('.J-sendcaptcha').attr('disabled','disabled').addClass('w-button-disabled');
-                    var capt_cd = 60;
-                    var capt_timer = setInterval(function(){
-                        capt_cd--;
-                        $('.J-sendcaptcha').text(capt_cd+'秒后重试');
-                        if (capt_cd == 1) {
-                            $('.J-sendcaptcha').text('发送验证码').removeAttr('disabled').removeClass('w-button-disabled');
-                            clearInterval(capt_timer);
-                        }
-                    },1000)
-                }else{
-                    layer.open({
-                        content: result.msg,
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-                    return false;
-                }
-            }, XiaoMeng.app_url + '/getSmsCode', 'GET', 'jsonp');
-        }else{
-            // 手机注册
-            var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ cellphone +'", "sign": "'+ md5(cellphone + XiaoMeng.game_key) +'", "smstype": "1"}';
-
-            // 对原始数字进行加密
-            param = aesEncrypt(param, XiaoMeng.game_secret);
-
-            // 对加密数据进行urlencode
-            param = encodeURIComponent(param);
-
-            getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
-                // urldecode
-                var result = decodeURIComponent(data);
-
-                // 解密
-                result = aesDecrypt(result, XiaoMeng.game_secret);
-
-                // 解json
-                result = JSON.parse(result);
-
-                if (result.ack == 200) {
-                    $('.J-sendcaptcha').attr('disabled','disabled').addClass('w-button-disabled');
-                    var capt_cd = 60;
-                    var capt_timer = setInterval(function(){
-                        capt_cd--;
-                        $('.J-sendcaptcha').text(capt_cd+'秒后重试');
-                        if (capt_cd == 1) {
-                            $('.J-sendcaptcha').text('发送验证码').removeAttr('disabled').removeClass('w-button-disabled');
-                            clearInterval(capt_timer);
-                        }
-                    },1000)
-                }else{
-                    layer.open({
-                        content: result.msg,
-                        skin: 'msg',
-                        style: 'top:-50px',
-                        time: 2
-                    });
-                    return false;
-                }
-            }, XiaoMeng.app_url + '/getSmsCode', 'GET', 'jsonp');
-
+        if (mod == 'bindphone') { // 忘记密码|修改密码
+            self.captchaJsonType(_cellphone, 2);
+        }else{ // 手机注册
+            self.captchaJsonType(_cellphone, 1);
         }
 
+    }
+
+    /**
+     * smsType：找回密码方式
+     * 注册通行证：1，忘记手机密码：2
+     */
+    this.captchaJsonType = function (passport, smsType) {
+        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "passport": "'+ passport +'", "sign": "'+ md5(passport + XiaoMeng.game_key) +'", "smstype": "'+ smsType +'"}';
+
+        // 对原始数字进行加密
+        param = aesEncrypt(param, XiaoMeng.game_secret);
+
+        // 对加密数据进行urlencode
+        param = encodeURIComponent(param);
+
+        getJson({"x": XiaoMeng.game_secret, "param": param}, function(data){
+            // urldecode
+            var result = decodeURIComponent(data);
+
+            // 解密
+            result = aesDecrypt(result, XiaoMeng.game_secret);
+
+            // 解json
+            result = JSON.parse(result);
+
+            if (result.ack == 200) {
+                var $Captcha = $('.J-sendcaptcha');
+
+                $Captcha.attr('disabled', 'disabled').addClass('w-button-disabled');
+                var capt_cd = 60;
+                var capt_timer = setInterval(function(){
+                    capt_cd--;
+                    $Captcha.text(capt_cd + '秒后重试');
+                    if (capt_cd == 1) {
+                        $Captcha.text('发送验证码').removeAttr('disabled').removeClass('w-button-disabled');
+                        clearInterval(capt_timer);
+                    }
+                },1000)
+            }else{
+                layer.open({
+                    content: result.msg,
+                    skin: 'msg',
+                    style: 'top:-50px',
+                    time: 2
+                });
+                return false;
+            }
+        }, XiaoMeng.app_url + '/getSmsCode', 'GET', 'jsonp');
     }
 
     /**
@@ -1095,7 +1062,6 @@ function XiaoMengH5SDK() {
                 });
 
                 var pay_type_val = result.data.pay_type_order.split(",");
-                //console.log(pay_type_val)
 
                 setTimeout(function () {
                     $payWrap.show();
@@ -1116,7 +1082,7 @@ function XiaoMengH5SDK() {
                     style: 'top:-50px',
                     time: 2.5
                 });
-                //$iptType.val('');
+
                 setTimeout(function () {
                     sessionStorage.clear();
                     location.reload();
@@ -1131,10 +1097,11 @@ function XiaoMengH5SDK() {
      */
     this.createPayTypeList = function (e, data) {
         var currPayType = data, html = '';
+        var regex = /micromessenger/i.test(navigator.userAgent);
         for(var i = 0; i < currPayType.length; i++){
             var _tp = currPayType[i], nameArr = (_tp == 2) ? "微信" : (_tp == 3) ? "支付宝" : (_tp == 7) ? "银联" : "";
             var checked = '';
-            if(/micromessenger/i.test(navigator.userAgent)){
+            if(regex){
                 checked = _tp == 2 ? "checked" : '';
             }else{
                 checked = _tp == 3 ? "checked" : '';
@@ -1144,13 +1111,17 @@ function XiaoMengH5SDK() {
         }
         $(e).empty().html(html);
 
-        if(/micromessenger/i.test(navigator.userAgent)){
+        if(regex){
             $('#li_p_3').remove();
         }
 
         // 选择支付类型
         $(document).on('click', '.pay-label', function () {
-            var $self = $(this), $parent = $self.parent(), $ipt = $self.find('input[name="pay_type"]'), $siblingIpt = $parent.siblings().find('input[name="pay_type"]');
+            var $self = $(this),
+                $parent = $self.parent(),
+                $ipt = $self.find('input[name="pay_type"]'),
+                $siblingIpt = $parent.siblings().find('input[name="pay_type"]');
+
             $parent.addClass('checked');
             $ipt.attr('checked', 'checked');
             $parent.siblings().removeClass('checked');
@@ -1174,14 +1145,14 @@ function XiaoMengH5SDK() {
         XiaoMeng.channel_id = getGameBasic[2];
 
         var $form = $('#pay_form'),
-            payType = $form.find('input[name="pay_type"]:checked').val(),
-            orderMoney = $form.find('input[name="order_price"]').val(),
-            productId = $form.find('input[name="cp_product_id"]').val(),
-            orderSN = $form.find('input[name="cp_order_sn"]').val(),
-            orderInfo = $form.find('input[name="cp_order_info"]').val();
+            _payType = $form.find('input[name="pay_type"]:checked').val(),
+            _orderMoney = $form.find('input[name="order_price"]').val(),
+            _productId = $form.find('input[name="cp_product_id"]').val(),
+            _orderSN = $form.find('input[name="cp_order_sn"]').val(),
+            _orderInfo = $form.find('input[name="cp_order_info"]').val();
 
         // 如果未指定支付类型
-        if(payType == undefined){
+        if(_payType == undefined){
             layer.open({
                 content: "请选择支付方式",
                 skin: 'msg',
@@ -1193,10 +1164,9 @@ function XiaoMengH5SDK() {
 
         // 获取登录成功后返回的数据
         getLoginBackVal = JSON.parse(sessionStorage.getItem("loginBackVal"));
-        //console.log(XiaoMeng.game_key + ', ' + XiaoMeng.game_secret + ', ' + XiaoMeng.channel_id);
 
         // 获取参数
-        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "account": "'+ getLoginBackVal.account +'", "token": "'+ getLoginBackVal.token +'", "order_price": "'+ orderMoney +'", "cp_product_id": "'+ productId +'", "cp_uid": "'+ getLoginBackVal.cp_uid +'", "cp_order_sn": "'+ orderSN +'", "cp_order_info": "'+ orderInfo +'", "pay_type": "'+ payType +'", "sign": "'+ md5(getLoginBackVal.account + orderMoney + XiaoMeng.game_key) +'"}';
+        var param = '{"game_key":"'+ XiaoMeng.game_key +'", "game_secret":"'+ XiaoMeng.game_secret +'", "channel_id":"'+ XiaoMeng.channel_id +'", "os":"'+ XiaoMeng.Os +'", "imei":"'+ XiaoMeng.imei +'", "account": "'+ getLoginBackVal.account +'", "token": "'+ getLoginBackVal.token +'", "order_price": "'+ _orderMoney +'", "cp_product_id": "'+ _productId +'", "cp_uid": "'+ getLoginBackVal.cp_uid +'", "cp_order_sn": "'+ _orderSN +'", "cp_order_info": "'+ _orderInfo +'", "pay_type": "'+ _payType +'", "sign": "'+ md5(getLoginBackVal.account + _orderMoney + XiaoMeng.game_key) +'"}';
 
         // 对原始数字进行加密
         param = aesEncrypt(param, XiaoMeng.game_secret);
@@ -1223,7 +1193,7 @@ function XiaoMengH5SDK() {
                 });
 
                 var backURL = sessionStorage.getItem("jumpToIndex"),
-                    payUrl = XiaoMeng.pay_url + '/pay/wx_checkout?out_trade_no=' + result.data.order_sn + '&platform=jssdk&pay_type='+ payType +'&back_url=' + backURL;
+                    payUrl = XiaoMeng.pay_url + '/pay/wx_checkout?out_trade_no=' + result.data.order_sn + '&platform=jssdk&pay_type='+ _payType +'&back_url=' + backURL;
 
                 setTimeout(function () {
                     $('.pay-mask').show();
@@ -1250,6 +1220,7 @@ function XiaoMengH5SDK() {
      */
     this.closePayWindows = function () {
         var $self = $('.pay-close'), $parLay = $('.pay-wp');
+
         $('#pay_list').html('');
         $self.hide();
         $parLay.hide();
@@ -1276,14 +1247,23 @@ function XiaoMengH5SDK() {
      */
     this.checkUserType = function (url) {
         getLoginBackVal = JSON.parse(sessionStorage.getItem("loginBackVal"));
-        //console.log("用户登录凭证：");
-        //console.log(getLoginBackVal);
         if(getLoginBackVal == null ){
             sessionStorage.clear();
             window.location.href = url;
         }
     }
 
+    /**
+     * 改变按钮状态
+     */
+    this.changeBtnType = function (e, t) {
+        var _disabled = 'disabled';
+        if(t == 0){ // 按钮可用
+            $(e).removeAttr(_disabled).removeClass(_disabled);
+        }else{ // 按钮不可用
+            $(e).attr('disabled', _disabled).addClass(_disabled);
+        }
+    }
 
 }
 
@@ -1332,11 +1312,7 @@ function getJson(data, callback, url, type, dType){
 
 function checkBlank() {
     var keyCode = event.keyCode;
-    if ((keyCode >= 48 && keyCode <= 57)) {
-        event.returnValue = true;
-    } else {
-        event.returnValue = false;
-    }
+    event.returnValue = (keyCode >= 48 && keyCode <= 57) ? true : false;
 }
 
 function cookieIndexOf(ckArr, ckStr){
@@ -1348,8 +1324,18 @@ function cookieIndexOf(ckArr, ckStr){
         }
     }
 
-    // 数组中不存在该元素
     return -1;
+}
+
+// 退格删除input值
+function delectInputVal(e) {
+    $(e).keydown(function (event) {
+        var $self = $(this);
+        if(event.keyCode == 8){
+            var txt = $self.val();
+            if(txt.length > 0) $self.val('');
+        }
+    });
 }
 
 // 加密

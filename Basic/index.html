@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="H5Game">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="cache" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>H5小游戏</title>
+    <script>
+        (function(doc,win){var docEl=doc.documentElement,isIOS=navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),dpr=isIOS?Math.min(win.devicePixelRatio,3):1,dpr=window.top===window.self?dpr:1,dpr=1,scale=1/dpr,resizeEvt="orientationchange" in window?"orientationchange":"resize";docEl.dataset.dpr=dpr;var metaEl=doc.createElement("meta");metaEl.name="viewport";metaEl.content="width=device-width, user-scalable=no, initial-scale="+scale+",maximum-scale="+scale+", minimum-scale="+scale;docEl.firstElementChild.appendChild(metaEl);var recalc=function(){var width=docEl.clientWidth;if(width/dpr>720){width=720*dpr}docEl.style.fontSize=100*(width/720)+"px"};recalc();if(!doc.addEventListener){return}win.addEventListener(resizeEvt,recalc,false)})(document,window);
+        // 路径配置
+        var basic = './images/',
+            MAP = basic + 'map/', // 地图
+            eRoot = basic + 'skill_eq/', // 技能装备成就路径
+            mRoot = basic + 'monster/'; // 怪物路径
+    </script>
+    <link rel="stylesheet" href="./common/skin.css">
+</head>
+<body>
+    <div class="pre-load">
+        <div class="pre-load-inner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>
+    </div>
+    <div class="home-page"><a class="open-page" onclick="vGame.loadPage('page1');">打开首页</a></div>
+
+    <div class="page-main">
+        <div class="page-item page-item1" id="page1"></div>
+        <!--/ page1 end -->
+
+        <div class="page-item page-item2 none" id="page2"></div>
+        <!--/ page2 end -->
+
+        <div class="page-item page-item3 none" id="page3"></div>
+        <!--/ page3 end -->
+
+        <div class="page-item page-item4 none" id="page4"></div>
+        <!--/ page4 end -->
+    </div>
+
+    <!--{ tab start -->
+    <div class="page-tab">
+        <div class="page-tab-item">
+            <button class="page-btn page-btn1 active" data-page="page1">地图</button>
+            <button class="page-btn page-btn2" data-page="page2">装备</button>
+            <button class="page-btn page-btn3" data-page="page3">技能</button>
+            <button class="page-btn page-btn4" data-page="page4">成就</button>
+        </div>
+    </div>
+    <!--/ tab end }-->
+
+    <script src="./common/jquery.min.js"></script>
+    <script src="./data/data.js"></script>
+    <script src="./common/game.js"></script>
+</body>
+</html>

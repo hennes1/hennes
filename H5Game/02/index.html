@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="H5Game">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="cache" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>H5小游戏</title>
+    <script>
+        (function(doc,win){var docEl=doc.documentElement,isIOS=navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),dpr=isIOS?Math.min(win.devicePixelRatio,3):1,dpr=window.top===window.self?dpr:1,dpr=1,scale=1/dpr,resizeEvt="orientationchange" in window?"orientationchange":"resize";docEl.dataset.dpr=dpr;var metaEl=doc.createElement("meta");metaEl.name="viewport";metaEl.content="width=device-width, user-scalable=no, initial-scale="+scale+",maximum-scale="+scale+", minimum-scale="+scale;docEl.firstElementChild.appendChild(metaEl);var recalc=function(){var width=docEl.clientWidth;if(width/dpr>640){width=640*dpr}docEl.style.fontSize=100*(width/640)+"px"};recalc();if(!doc.addEventListener){return}win.addEventListener(resizeEvt,recalc,false)})(document,window);
+        // 路径配置
+        var basic = './images/',
+            zyRoot = basic + 'occupation/', // 职业路径，包括职业大图和小图
+            jnRoot = basic + 'skill_eq/', // 技能和装备路径
+            gwRoot = basic + 'monster/'; // 怪物路径
+    </script>
+    <link rel="stylesheet" href="./common/skin.css">
+</head>
+<body>
+    <div class="pre-load">
+        <div class="pre-load-inner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>
+    </div>
+    <!--/ loading end -->
+
+    <div class="game-wrap">
+        <!--{ page1 start -->
+        <div class="game-item" id="page1">
+            <div class="page-wrap">
+                <div class="page-inner">
+                    <div class="game-profession"></div>
+                </div>
+            </div>
+        </div>
+        <!--/ page1 end }-->
+
+        <!--{ page2 start -->
+        <div class="game-item none" id="page2">
+            <div class="kill-wrap">
+                <div class="game-equipment"></div>
+                <!--/ 装备 end -->
+                <div class="game-monster"></div>
+                <!--/ 怪物 end -->
+                <div class="game-skill"></div>
+                <!--/ 技能 end -->
+                <div class="kill-info-panel">
+                    <div class="kill-info-ctrl"></div>
+                    <div class="kill-info"></div>
+                </div>
+            </div>
+        </div>
+        <!--/ page2 end }-->
+    </div>
+
+    <script src="./common/jquery.swiper.min.js"></script>
+    <script src="./common/js/gameData.js"></script>
+    <script src="./common/js/game.js"></script>
+    <script>moGame.startPage();</script>
+</body>
+</html>
